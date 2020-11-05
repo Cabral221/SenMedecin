@@ -17,13 +17,12 @@ class CreateAppointmentTable extends Migration
             $table->id();
             $table->date('date');
             $table->time('time');
-            $table->integer('carnet_id');
-            $table->integer('medecin_id');
-            
+            $table->bigInteger('carnet_id')->unsigned()->index();
+            $table->bigInteger('medecin_id')->unsigned()->index();
             $table->timestamps();
 
-            $table->foreign('carnet_id')->reference('id')->On('carnets')->onDelete('cascade');
-            $table->foreign('medecin_id')->reference('id')->on('medecins')->onDelete('cascade');
+            $table->foreign('carnet_id')->references('id')->on('carnets')->onDelete('cascade');
+            $table->foreign('medecin_id')->references('id')->on('medecins')->onDelete('cascade');
         });
     }
 

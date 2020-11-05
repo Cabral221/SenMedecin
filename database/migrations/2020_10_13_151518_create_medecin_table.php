@@ -18,17 +18,17 @@ class CreateMedecinTable extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('address');
-            $table->string('phone');
-            $table->string('email');
+            $table->string('phone')->unique();
+            $table->string('email')->unique();
             $table->string('password');
             $table->string('gen_password');
-            $table->integer('partener_service_id');
-            $table->integer('responsable_id');
+            $table->bigInteger('partener_service_id')->unsigned()->index();
+            $table->bigInteger('responsable_id')->unsigned()->index();
             $table->boolean('is_active')->default(true);
             $table->timestamps();
 
-            $table->foreign('partener_service_id')->reference('id')->on('partener_services')->onDelete('cascade');
-            $table->foreign('responsable_id')->reference('id')->on('responsables')->onDelete('cascade');
+            $table->foreign('partener_service_id')->references('id')->on('partener_services')->onDelete('cascade');
+            $table->foreign('responsable_id')->references('id')->on('responsables')->onDelete('cascade');
         });
     }
 

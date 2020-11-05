@@ -15,14 +15,14 @@ class CreateRvVaccinsTable extends Migration
     {
         Schema::create('rv_vaccins', function (Blueprint $table) {
             $table->id();
-            $table->integer('vaccin_id');
-            $table->integer('children_id');
-            $table->integer('medecin_id');
+            $table->bigInteger('vaccin_id')->unsigned()->index();
+            $table->bigInteger('children_id')->unsigned()->index();
+            $table->bigInteger('medecin_id')->unsigned()->index();
             $table->timestamps();
 
-            $table->foreign('vaccin_id')->reference('id')->on('vaccins')->onDelete('cascade');
-            $table->foreign('children_id')->reference('id')->on('childrens')->onDelete('cascade');
-            $table->foreign('medecin_id')->reference('id')->on('medecin');
+            $table->foreign('vaccin_id')->references('id')->on('vaccins')->onDelete('cascade');
+            $table->foreign('children_id')->references('id')->on('childrens')->onDelete('cascade');
+            $table->foreign('medecin_id')->references('id')->on('medecins')->onDelete('cascade');
         });
     }
 

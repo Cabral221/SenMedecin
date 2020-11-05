@@ -15,12 +15,12 @@ class CreatePartenerServiceTable extends Migration
     {
         Schema::create('partener_services', function (Blueprint $table) {
             $table->id();
-            $table->integer('partener_id');
-            $table->integer('service_id');
+            $table->bigInteger('partener_id')->unsigned()->index();
+            $table->bigInteger('service_id')->unsigned()->index();
             $table->timestamps();
 
-            $table->foreign('partener_id')->reference('id')->on('parteners')->onDelete('cascade');
-            $table->foreign('service_id')->reference('id')->on('services')->onDelete('cascade');
+            $table->foreign('partener_id')->references('id')->on('parteners')->onDelete('cascade');
+            $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
         });
     }
 

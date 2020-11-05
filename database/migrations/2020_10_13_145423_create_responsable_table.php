@@ -18,14 +18,14 @@ class CreateResponsableTable extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('address');
-            $table->string('phone');
-            $table->string('email');
+            $table->string('phone')->unique();
+            $table->string('email')->unique();
             $table->string('password');
             $table->string('gen_password');
-            $table->integer('partener_id');
+            $table->bigInteger('partener_id')->unsigned()->index();
             $table->timestamps();
 
-            $table->foreign('partener_id')->reference('id')->on('parteners')->onDelete('cascade');
+            $table->foreign('partener_id')->references('id')->on('parteners')->onDelete('cascade');
         });
     }
 

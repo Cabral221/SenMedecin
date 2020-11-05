@@ -19,17 +19,17 @@ class CreatePatientTable extends Migration
             $table->string('last_name');
             $table->dateTime('birthday');
             $table->string('address');
-            $table->string('phone');
-            $table->string('email')->nullable();
+            $table->string('phone')->unique();
+            $table->string('email')->nullable()->unique();
             $table->string('password');
             $table->string('referential');
-            $table->integer('medecin_id');
-            $table->integer('carnet_id');
+            $table->bigInteger('medecin_id')->unsigned()->index();
+            $table->bigInteger('carnet_id')->unsigned()->index();
             $table->boolean('is_active')->default(true);
             $table->timestamps();
 
-            $table->foreign('medecin_id')->reference('id')->on('medecins');
-            $table->foreign('carnet_id')->reference('id')->on('carnets');
+            $table->foreign('medecin_id')->references('id')->on('medecins');
+            $table->foreign('carnet_id')->references('id')->on('carnets');
         });
     }
 
