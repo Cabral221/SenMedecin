@@ -17,4 +17,15 @@ Route::get('/', 'AppController@index')->name('welcome');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
+
+Route::prefix('/patient')->namespace('Patient')->name('patient.')->group(function() {
+    Route::get('/home', 'PatientController@index')->name('home');
+    Route::get('/about', 'PatientController@about')->name('about');
+    Route::get('/Blog', 'PatientController@blog')->name('blog');
+    Route::get('/contact', 'PatientController@contact')->name('contact');
+
+    // Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
+    // Route::post('/login', 'Auth/LoginController@login')->name('login');
+
+});
