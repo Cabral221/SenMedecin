@@ -26,6 +26,7 @@ class CreatePatientTable extends Migration
             $table->bigInteger('medecin_id')->unsigned()->index();
             $table->bigInteger('carnet_id')->unsigned()->index();
             $table->boolean('is_active')->default(true);
+            $table->rememberToken();
             $table->timestamps();
 
             $table->foreign('medecin_id')->references('id')->on('medecins');

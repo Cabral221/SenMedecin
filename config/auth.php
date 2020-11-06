@@ -40,6 +40,22 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'medecin' => [
+            'driver' => 'session',
+            'provider' => 'medecins'
+        ],
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins'
+        ],
+        'responsable' => [
+            'driver' => 'session',
+            'provider' => 'responsables'
+        ],
+        'patient' => [
+            'driver' => 'session',
+            'provider' => 'patients'
+        ],
 
         'api' => [
             'driver' => 'token',
@@ -68,7 +84,23 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model' => App\Models\User::class,
+        ],
+        'medecins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Medecin::class,
+        ],
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Admin::class,
+        ],
+        'responsables' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Responsable::class,
+        ],
+        'patients' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Patient::class,
         ],
 
         // 'users' => [
@@ -95,6 +127,30 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'medecins' => [
+            'provider' => 'medecins',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'admins' => [
+            'provider' => 'admins',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'responsables' => [
+            'provider' => 'responsables',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'patients' => [
+            'provider' => 'patients',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

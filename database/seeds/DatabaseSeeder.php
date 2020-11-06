@@ -1,12 +1,18 @@
 <?php
 
-use Faker\Factory;
+// use Faker\Factory;
 use App\Models\Info;
 use App\Models\User;
 use App\Models\Admin;
+use App\Models\Carnet;
+use App\Models\Medecin;
+use App\Models\Patient;
 use App\Models\Service;
+use App\Models\Partener;
+use App\Models\Responsable;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
+use App\Models\Partener_service;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,7 +24,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call(UserSeeder::class);
-        $faker = Faker\Factory::create();
+        // $faker = Faker\Factory::create();
 
         Admin::create([
             'name' => 'Empro SN',
@@ -30,7 +36,7 @@ class DatabaseSeeder extends Seeder
             'status' => true,
         ],[
             'name' => 'General Medecin SN',
-            'email' => 'medecin@medecin.com',
+            'email' => 'senmedecin@senmedecin.com',
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'gen_password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
@@ -44,14 +50,62 @@ class DatabaseSeeder extends Seeder
             'email' => 'contact@senmedecin.com',
         ]);
 
-        Service::create([
-            'libele' => 'Maternité'
+        $services = Service::create(
+            ['libele' => 'Maternité'],
+            ['libele' => 'Pédiatrie'],
+            ['libele' => 'Gynécologie'],
+        );
+
+        $partener = Partener::create([
+            'name' => 'Partener 1',
+            'address' => 'Adresse du partener 1',
+            'phone' => '330000000',
+            'image' => 'image.jpg',
         ]);
 
-        User::create([
-            'name' => $faker->name,
-            'email' => $faker->unique()->safeEmail,
-            'email_verified_at' => now(),
+        $responsable = Responsable::create([
+            'first_name' => 'Responsable 1',
+            'last_name' => 'Rname',
+            'phone' => '779999999',
+            'email' => 'responsable@responsable.com',
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'gen_password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'partener_id' => $partener->id,
+        ]);
+
+        // dd($services->id);
+        $partener_service = Partener_service::create([
+            'partener_id' => $partener->id,
+            'service_id' => $services->id
+        ]);
+
+        $medecin = Medecin::create([
+            'first_name' => 'Medecin 1',
+            'last_name' => 'Mname',
+            'phone' => '770000000',
+            'email' => 'medecin@medecin.com',
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'gen_password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'partener_service_id' => $partener_service->id,
+            'responsable_id' => $responsable->id,
+            'remember_token' => Str::random(10),
+        ]);
+        
+        $carnet = Carnet::create([
+            'type' => 'A'
+        ]);
+
+        Patient::create([
+            'first_name' => 'Patient 1',
+            'last_name' => 'pname',
+            'birthday' => now(),
+            'address' => '1603 dakar, no precis',
+            'phone' => '770000000',
+            'email' => 'patient@patient.com',
+            'referential' => 'test',
+            'medecin_id' => $medecin->id,
+            'carnet_id' => $carnet->id,
+            // 'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
         ]);
