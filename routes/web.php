@@ -19,6 +19,9 @@ Route::get('/about', 'AppController@about')->name('about');
 Route::get('/Blog', 'AppController@blog')->name('blog');
 Route::get('/contact', 'AppController@contact')->name('contact');
 
+// Routes for attachments store
+Route::post('/attachments', 'AttachmentController@store')->name('attachments.store');
+
 // Routes for client patient
 Route::prefix('/patient')->namespace('Patient')->name('patient.')->group(function() {
     Route::get('/home', 'PatientController@index')->name('home');

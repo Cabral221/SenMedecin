@@ -13,3 +13,7 @@ mig:
 .PHONY:	mig-ref
 mig-ref:
 	php artisan migrate:refresh && php artisan db:seed
+
+.PHONY: test
+test:
+	./vendor/bin/phpunit
