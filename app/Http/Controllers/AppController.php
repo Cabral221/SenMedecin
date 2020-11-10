@@ -16,14 +16,9 @@ class AppController extends Controller
         return view('welcome');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function blog()
     {
-        //
+        return view('pages.blog');
     }
 
     /**

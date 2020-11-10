@@ -2,6 +2,7 @@
 
 // use Faker\Factory;
 use App\Models\Info;
+use App\Models\Post;
 use App\Models\User;
 use App\Models\Admin;
 use App\Models\Carnet;
@@ -108,6 +109,14 @@ class DatabaseSeeder extends Seeder
             // 'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
+        ]);
+
+        Post::create([
+            'title' => 'Mon Titre de blog',
+            'slug' => 'mon-titre-de-blog',
+            'subTitle' => 'Hic totam nihil neque dolor autem reiciendis, earum accusamus, fuga laborum itaque aut nisi?',
+            'content' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis sint asperiores voluptate eius dolorem? Delectus aliquid, quos omnis ipsa optio, iure commodi placeat, itaque cupiditate sit sed suscipit voluptatum? Rem!',
+            'publish' => true,
         ]);
     }
 }

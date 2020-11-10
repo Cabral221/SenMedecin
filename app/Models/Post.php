@@ -9,7 +9,7 @@ class Post extends Model
 {
     use AttachableConcern;
 
-    protected $fillable = ['title','content','subtitle'];
+    protected $fillable = ['title','content','subTitle','slug','publish'];
 
     public static function draft()
     {
@@ -19,5 +19,10 @@ class Post extends Model
     public function scopeNotDraft($query)
     {
         return $query->whereNotNull('title');
-    }  
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }

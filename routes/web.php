@@ -16,11 +16,9 @@ use Illuminate\Support\Facades\Route;
 // Routes For static pages
 Route::get('/', 'AppController@index')->name('welcome');
 Route::get('/about', 'AppController@about')->name('about');
-Route::get('/Blog', 'AppController@blog')->name('blog');
 Route::get('/contact', 'AppController@contact')->name('contact');
 
-// Routes for attachments store
-Route::post('/attachments', 'AttachmentController@store')->name('attachments.store');
+Route::resource('/posts', 'PostController')->only(['index', 'show']);
 
 // Routes for client patient
 Route::prefix('/patient')->namespace('Patient')->name('patient.')->group(function() {
@@ -86,6 +84,8 @@ Route::prefix('/partener')->namespace('Responsable')->name('responsable.')->grou
 Route::prefix('/admin')->namespace('Admin')->name('admin.')->group(function(){
     Route::get('/', 'AdminController@index')->name('home');
 
+    Route::resource('/posts', 'PostController')->except(['show', 'store']);
+
     Route::namespace('Auth')->group(function(){
         Route::get('/login', 'LoginController@showLoginForm')->name('login');
         Route::post('/login', 'LoginController@login')->name('login');
@@ -101,3 +101,6 @@ Route::prefix('/admin')->namespace('Admin')->name('admin.')->group(function(){
         Route::post('/password/reset', 'ResetPasswordController@reset')->name('password.update');
     });
 });
+
+// Routes for attachments store
+Route::post('/attachments', 'AttachmentController@store')->name('attachments.store');

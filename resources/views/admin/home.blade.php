@@ -16,6 +16,9 @@
 
                     {{ __('You are logged in as ADMIN!') }}
                 </div>
+                <div class="card-footer">
+                    <a href="{{ route('admin.posts.index') }}" class="btn btn-primary">Blog</a>
+                </div>
             </div>
         </div>
     </div>
