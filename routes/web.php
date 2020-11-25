@@ -84,6 +84,10 @@ Route::prefix('/partener')->namespace('Responsable')->name('responsable.')->grou
 Route::prefix('/admin')->namespace('Admin')->name('admin.')->group(function(){
     Route::get('/', 'AdminController@index')->name('home');
 
+    Route::resource('/parteners', 'PartenerController');
+    Route::resource('/services', 'ServiceController')->only(['index', 'create', 'store']);
+
+
     Route::resource('/posts', 'PostController')->except(['show', 'store']);
 
     Route::namespace('Auth')->group(function(){

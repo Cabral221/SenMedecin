@@ -16,9 +16,11 @@ class CreatePartenerTable extends Migration
         Schema::create('parteners', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('email')->unique();
+            $table->string('phone')->unique();
             $table->string('address');
-            $table->string('phone');
             $table->string('image');
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }

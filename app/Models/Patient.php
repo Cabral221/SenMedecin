@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
+use App\Models\Medecin;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
 class Patient extends Authenticatable
 {
@@ -37,4 +38,9 @@ class Patient extends Authenticatable
         'email_verified_at' => 'datetime',
         'birthday' => 'datetime',
     ];
+
+    public function medecin()
+    {
+        return $this->belongsTo(Medecin::class);
+    }
 }

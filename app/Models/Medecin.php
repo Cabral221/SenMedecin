@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
+use App\Models\Patient;
+use App\Models\Responsable;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
 class Medecin extends Authenticatable
 {
@@ -36,4 +38,14 @@ class Medecin extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function responsable()
+    {
+        return $this->belongsTo(Responsable::class);
+    }
+
+    public function patients()
+    {
+        return $this->hasMany(Patient::class);
+    }
 }

@@ -52,14 +52,13 @@ class DatabaseSeeder extends Seeder
             'email' => 'contact@senmedecin.com',
         ]);
 
-        $services = Service::create(
-            ['libele' => 'Maternité'],
-            ['libele' => 'Pédiatrie'],
-            ['libele' => 'Gynécologie'],
-        );
+        $s1 = Service::create(['libele' => 'Maternité']);
+        $s2 = Service::create(['libele' => 'Pédiatrie']);
+        $s3 = Service::create(['libele' => 'Gynécologie']);
 
         $partener = Partener::create([
             'name' => 'Partener 1',
+            'email' => 'partener@partener.com',
             'address' => 'Adresse du partener 1',
             'phone' => '330000000',
             'image' => 'image.jpg',
@@ -78,7 +77,15 @@ class DatabaseSeeder extends Seeder
         // dd($services->id);
         $partener_service = Partener_service::create([
             'partener_id' => $partener->id,
-            'service_id' => $services->id
+            'service_id' => $s1->id
+        ]);
+        Partener_service::create([
+            'partener_id' => $partener->id,
+            'service_id' => $s2->id
+        ]);
+        Partener_service::create([
+            'partener_id' => $partener->id,
+            'service_id' => $s3->id
         ]);
 
         $medecin = Medecin::create([

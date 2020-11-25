@@ -32,7 +32,7 @@
         </li>
         
         @if (Auth::guard('admin')->user())
-            @if (Auth::guard('admin')->user()->status == 1)
+            @if (Auth::guard('admin')->user()->status === 1)
                 @include('layouts.admin.adminSidebar')
             @else
                 @include('layouts.admin.medecinSidebar')
