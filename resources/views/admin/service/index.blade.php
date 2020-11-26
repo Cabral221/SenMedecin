@@ -42,8 +42,8 @@
                         @foreach ($services as $service)
                             <tr>
                                 <td>{{ $service->libele }}</td>
-                                <td>{{ $service->partOfPartener() }} %</td>
-                                <td>??%</td>
+                                <td>{{ $service->partOfParteners() }} %</td>
+                                <td>{{ $service->partOfMedecins() }} %</td>
                                 <td>
                                     <button class="btn btn-sm btn-outline-warning" data-toggle="modal" data-target="#modal-service-{{$service->id}}" data-service-id=""><i class="mdi mdi-circle-edit-outline"></i></button>
                                     <a href="#" class="btn btn-sm btn-outline-danger" onclick="event.preventDefault();if(confirm('Êtes vous sûr de vouloir supprimer ce services ?')){document.getElementById('form-delete-service-{{$service->id}}').submit();}"><i class="mdi mdi-delete"></i></a>
