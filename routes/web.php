@@ -85,7 +85,7 @@ Route::prefix('/admin')->namespace('Admin')->name('admin.')->group(function(){
     Route::get('/', 'AdminController@index')->name('home');
 
     Route::resource('/parteners', 'PartenerController');
-    Route::resource('/services', 'ServiceController')->only(['index', 'create', 'store']);
+    Route::resource('/services', 'ServiceController')->only(['index', 'store', 'update','destroy']);
 
 
     Route::resource('/posts', 'PostController')->except(['show', 'store']);
