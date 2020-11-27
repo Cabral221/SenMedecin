@@ -39,6 +39,8 @@
                     <tr>
                         <th>Nom</th>
                         <th>Responsable</th>
+                        <th>Nombre de médecins</th>
+                        <th>Nombre de patients</th>
                         <th>Activités / mois</th>
                         <th>Actions</th>
                     </tr>
@@ -48,6 +50,8 @@
                         <tr>
                             <td>{{ $partener->name }}</td>
                             <td>{{ $partener->responsable->first_name }} {{ $partener->responsable->last_name }}</td>
+                            <td>{{ $partener->responsable->medecins->count() }} </td>
+                            <td>{{ $partener->responsable->patientCount() }} </td>
                             <td class="text-danger"> 28.76% <i class="mdi mdi-arrow-down"></i></td>
                             <td><a class="btn btn-sm btn-gradient-primary" href="{{ route('admin.parteners.show', $partener) }}">Détails</a></td>
                         </tr>

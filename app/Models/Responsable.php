@@ -39,6 +39,15 @@ class Responsable extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function patientCount() : int
+    {
+        $nbPatient = 0;
+        foreach ($this->medecins as $medecin) {
+            $nbPatient += $medecin->patients->count();
+        }
+        return $nbPatient;
+    }
+
     public function partener()
     {
         return $this->hasOne(Partener::class);
