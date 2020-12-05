@@ -63,6 +63,8 @@ Route::prefix('/medecin')->namespace('Medecin')->name('medecin.')->group(functio
 // Routes for partener Responsable
 Route::prefix('/partener')->namespace('Responsable')->name('responsable.')->group(function(){
     Route::get('/home', 'ResponsableController@index')->name('home');
+    Route::resource('/services', 'ServiceController')->only(['index']);
+    Route::resource('/medecins', 'MedecinController');
 
     Route::namespace('Auth')->group(function(){
         Route::get('/login', 'LoginController@showLoginForm')->name('login');
@@ -86,7 +88,6 @@ Route::prefix('/admin')->namespace('Admin')->name('admin.')->group(function(){
 
     Route::resource('/parteners', 'PartenerController');
     Route::resource('/services', 'ServiceController')->only(['index', 'store', 'update','destroy']);
-
 
     Route::resource('/posts', 'PostController')->except(['show', 'store']);
 
