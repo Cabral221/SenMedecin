@@ -22,13 +22,13 @@ class CreateMedecinTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('gen_password');
-            $table->bigInteger('partener_service_id')->unsigned()->index()->default(0);
+            $table->bigInteger('service_id')->unsigned()->index()->default(0);
             $table->bigInteger('responsable_id')->unsigned()->index()->default(0);
             $table->boolean('is_active')->default(true);
             $table->rememberToken();
             $table->timestamps();
 
-            $table->foreign('partener_service_id')->references('id')->on('partener_services')->onDelete('cascade');
+            $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
             $table->foreign('responsable_id')->references('id')->on('responsables')->onDelete('cascade');
         });
     }

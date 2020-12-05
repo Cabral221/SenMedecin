@@ -50,7 +50,7 @@ class Responsable extends Authenticatable
 
     public function partener()
     {
-        return $this->hasOne(Partener::class);
+        return $this->belongsTo(Partener::class);
     }
 
     public function medecins()

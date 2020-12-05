@@ -15,6 +15,11 @@ class Service extends Model
                     ->withTimestamps();
     }
 
+    public function medecins()
+    {
+        return $this->belongsToMany(Medecin::class);
+    }
+
     /**
      * Calcule et retourne le pourcentage des partenaires utilisant ce service
      *
@@ -40,10 +45,22 @@ class Service extends Model
         $allMedecins = Medecin::where('is_active', true)->get();
 
         foreach($allMedecins as $medecin){
-            if($medecin->partener_service->service_id === $this->id) $allMedUsing += 1;
+            if($medecin->service->id === $this->id) $allMedUsing += 1;
         }
 
         $result = $allMedUsing * 100 / $allMedecins->count();
         return $result;
+    }
+
+    public function partOfMedFor(): int
+    {
+        $meds = auth('responsable')->user()->medecins;
+        $nbmed = 0;
+        foreach ($meds as $med) {
+            if($med->service->id == $this->id) $nbmed += 1;
+        }
+
+        return $nbmed * 100 / $meds->count();
+
     }
 }

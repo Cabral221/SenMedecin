@@ -19,7 +19,7 @@ class Medecin extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name', 'phone', 'gen_password', 'email', 'password','partener_service_id','responsable_id','is_active'
+        'first_name', 'last_name', 'phone', 'gen_password', 'email', 'password','service_id','responsable_id','is_active'
     ];
 
     /**
@@ -40,9 +40,9 @@ class Medecin extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function partener_service()
+    public function service()
     {
-        return $this->belongsTo(Partener_service::class);
+        return $this->belongsTo(Service::class, 'service_id');
     }
 
     public function responsable()
@@ -53,5 +53,19 @@ class Medecin extends Authenticatable
     public function patients()
     {
         return $this->hasMany(Patient::class);
+    }
+
+    public function partOfPatient(): int
+    {
+        // recuperer tout les patient du responsable
+        $allPatient = 0;
+        $allMedecin = $this->responsable->medecins;
+        foreach ($allMedecin as $med) {
+            $allPatient += $med->patients->count();
+        }
+
+        $myPatients = $this->patients->count();
+
+        return $myPatients * 100 / $allPatient;
     }
 }

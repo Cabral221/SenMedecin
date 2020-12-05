@@ -95,7 +95,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'medecin@medecin.com',
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'gen_password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'partener_service_id' => $partener_service->id,
+            'service_id' => $partener_service->service_id,
             'responsable_id' => $responsable->id,
             'remember_token' => Str::random(10),
         ]);
