@@ -24,28 +24,23 @@ class ServiceController extends Controller
 
         Service::create(['libele' => $request->service_libele]);
 
-        // Session flash message 
+        session()->flash('success', 'Le service a été créé avec succés !');
 
         return redirect()->route('admin.services.index');
     }
 
     public function update(Request $request, Service $service)
     {
-        $validator = Validator::make($request->all(), [
+        $this->validate($request, [
             'service_libele' => 'required|string|min:2|unique:services,libele',
         ]);
-
-        if($validator->fails()){
-            dd($validator->errors());
-            // Return error session flash
-
-        }
 
         $service->update([
             'libele' => $request->service_libele
         ]);
         
         //  Session flash message
+        session()->flash('success', 'Le service a été modifié avec succés !');
         
         return redirect()->route('admin.services.index');
     }
@@ -56,6 +51,7 @@ class ServiceController extends Controller
         $service->delete();
 
         // Session flash message 
+        session()->flash('danger', 'Le service a été supprimé !');
 
         return redirect()->route('admin.services.index');
     }

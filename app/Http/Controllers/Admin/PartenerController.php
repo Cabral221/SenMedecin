@@ -72,9 +72,10 @@ class PartenerController extends Controller
             'password' => Hash::make($request->responsable_password),
             'gen_password' => Hash::make($request->responsable_gen_password),
         ]);
-        // \session(['message' => 'Le partenaire a été ajouter avec success']);
+        
+        session()->flash('success', 'Le partenaire a été ajouté avec succés');
 
-        return \redirect()->route('admin.parteners.index');
+        return redirect()->route('admin.parteners.index');
         
     }
 
@@ -90,8 +91,23 @@ class PartenerController extends Controller
         $UniqueEmail = Partener::where('id', '!=', $partener->id)->whereEmail($request->partener_email)->first();
         $UniquePhone = Partener::where('id', '!=', $partener->id)->wherePhone($request->partener_phone)->first();
         if($UniqueEmail != null || $UniquePhone != null){
-            dd('errors unique', $UniqueEmail, $UniquePhone);
-            // Return with errors
+            if($UniqueEmail != null && $UniquePhone != null){
+                return redirect()->back()->withErrors([
+                    'partener_email' => 'Cet email est déjà utilisé',
+                    'partener_phone' => 'Ce numéro est déjà utilisé'
+                ]);
+            }else {
+                if($UniqueEmail != null){
+                    return redirect()->back()->withErrors([
+                        'partener_email' => 'Cet email est déjà utilisé',
+                    ]);
+                }
+                 if($UniquePhone != null){
+                    return redirect()->back()->withErrors([
+                        'partener_phone' => 'Ce numéro est déjà utilisé',
+                    ]);
+                }
+            }
         }
         
         if($request->partener_image != null){
@@ -111,19 +127,16 @@ class PartenerController extends Controller
         $partener->address  = $request->partener_address;
         $partener->save();
 
-        // Seesion flash
-        // ...
+        session()->flash('Les modifications ont été enregistré avec succés');
         
         return redirect()->route('admin.parteners.show', $partener);
     }
     
     public function destroy(Partener $partener)
     {
-        $partener->is_active = false;
-        $partener->save();
+        $partener->delete();
 
-        // Session flash
-
+        session()->flash('success', 'Le partenaire a été supprimé');
         return redirect()->route('admin.parteners.index');
     }
 }
