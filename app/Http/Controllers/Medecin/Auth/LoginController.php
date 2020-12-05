@@ -45,19 +45,6 @@ class LoginController extends Controller
         return view('medecin.auth.login');
     }
 
-    public function logout(Request $request)
-    {
-        $this->guard()->logout();
-
-        if ($response = $this->loggedOut($request)) {
-            return $response;
-        }
-
-        return $request->wantsJson()
-            ? new Response('', 204)
-            : redirect('/');
-    }
-
     protected function guard()
     {
         return Auth::guard('medecin');
