@@ -13,7 +13,7 @@ class AppController extends Controller
      */
     public function index()
     {
-        return view('welcome');
+        return view('user.index');
     }
 
     /**
@@ -23,7 +23,38 @@ class AppController extends Controller
      */
     public function create()
     {
-        //
+        return view('user.login');
+    }
+
+    public function profile()
+    {
+        return view('user.profile');
+    }
+
+    public function maman()
+    {
+        return view('user.maman');
+    }
+
+    public function enfant()
+    {
+        return view('user.enfant');
+    }
+
+
+    public function contact()
+    {
+        return view('user.contact');
+    }
+
+    public function about()
+    {
+        return view('user.about');
+    }
+
+    public function sensibiliser()
+    {
+        return view('user.sensibiliser');
     }
 
     /**

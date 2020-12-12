@@ -14,6 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'AppController@index')->name('welcome');
+Route::get('/login-user', 'AppController@create')->name('login-user');
+Route::get('/profile-user', 'AppController@profile')->name('profile-user');
+Route::get('/maman', 'AppController@maman')->name('maman');
+Route::get('/enfant', 'AppController@enfant')->name('enfant');
+Route::get('/contact', 'AppController@contact')->name('contact');
+Route::get('/about', 'AppController@about')->name('about');
+Route::get('/sensibiliser', 'AppController@sensibiliser')->name('sensibiliser');
 
 Auth::routes();
 
