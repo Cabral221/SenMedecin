@@ -34,40 +34,121 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <li class="nav-item">
+                            <a href="{{ route('posts.index') }}" class="nav-link">Blog</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                        @guest('patient')
+                            <li class="nav-item">
+                                <a href="{{ route('patient.home') }}" class="nav-link">Espace Patient</a>
+                            </li>
+                        @else
+                            @if(Auth::guard('patient')->user())
+                                <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        {{ Auth::guard('patient')->user()->first_name }} <span class="caret"></span>
                                     </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('patient.logout') }}"
+                                        onclick="event.preventDefault();
+                                                        document.getElementById('logout-form-patient').submit();">
+                                            {{ __('Logout Patient') }}
+                                        </a>
+
+                                        <form id="logout-form-patient" action="{{ route('patient.logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
+                                    </div>
+                                </li>
+                            @endif
                         @endguest
+
+                        @guest('medecin')
+                            <li class="nav-item">
+                                <a href="{{ route('medecin.home') }}" class="nav-link">Espace Medecin</a>
+                            </li>
+                        @else
+                            @if (Auth::guard('medecin')->user())
+                                <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        {{ Auth::guard('medecin')->user()->first_name }} <span class="caret"></span>
+                                    </a>
+
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('medecin.logout') }}"
+                                        onclick="event.preventDefault();
+                                                        document.getElementById('logout-form-medecin').submit();">
+                                            {{ __('Logout Medecin') }}
+                                        </a>
+
+                                        <form id="logout-form-medecin" action="{{ route('medecin.logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
+                                    </div>
+                                </li>
+                            @endif
+                        @endguest
+
+                        @guest('responsable')
+                            <li class="nav-item">
+                                <a href="{{ route('responsable.home') }}" class="nav-link">Espace Partener</a>
+                            </li>
+                        @else
+                            @if(Auth::guard('responsable')->user())
+                                <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        {{ Auth::guard('responsable')->user()->first_name }} <span class="caret"></span>
+                                    </a>
+
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('responsable.logout') }}"
+                                        onclick="event.preventDefault();
+                                                        document.getElementById('logout-form-responsable').submit();">
+                                            {{ __('Logout Responsable') }}
+                                        </a>
+
+                                        <form id="logout-form-responsable" action="{{ route('responsable.logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
+                                    </div>
+                                </li>
+                            @endif
+                        @endguest
+
+                        @guest('admin')
+                            <li class="nav-item">
+                                <a href="{{ route('admin.home') }}" class="nav-link">Espace Admin</a>
+                            </li>
+                        @else
+                            @if(Auth::guard('admin')->user())
+                                <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        {{ Auth::guard('admin')->user()->name }} <span class="caret"></span>
+                                    </a>
+
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('admin.home') }}">Tableau de Bord</a>
+                                        <a class="dropdown-item" href="{{ route('admin.logout') }}"
+                                        onclick="event.preventDefault();
+                                                        document.getElementById('logout-form-admin').submit();">
+                                            {{ __('Logout Admin') }}
+                                        </a>
+
+                                        <form id="logout-form-admin" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
+                                    </div>
+                                </li>
+                            @endif
+                        @endguest
+
+
                     </ul>
                 </div>
             </div>

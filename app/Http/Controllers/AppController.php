@@ -16,12 +16,7 @@ class AppController extends Controller
         return view('user.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function blog()
     {
         return view('user.login');
     }
@@ -55,6 +50,9 @@ class AppController extends Controller
     public function sensibiliser()
     {
         return view('user.sensibiliser');
+
+        // return view('pages.blog');
+
     }
 
     /**
