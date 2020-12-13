@@ -43,6 +43,18 @@ Route::prefix('/patient')->namespace('Patient')->name('patient.')->group(functio
 // Routes for medecin
 Route::prefix('/medecin')->namespace('Medecin')->name('medecin.')->group(function(){
     Route::get('/home', 'MedecinController@index')->name('home');
+    
+    Route::get('/patients/{patient}/antecedents/create', 'AntecedentController@create')->name('patients.antecedent.create');
+    Route::post('/patients/{patient}/antecedents/store', 'AntecedentController@store')->name('patients.antecedent.store');
+    Route::get('/patients/{patient}/antecedents/{antecedent}/edit', 'AntecedentController@edit')->name('patients.antecedent.edit');
+    Route::put('/patients/{patient}/antecedents/{antecedent}/update', 'AntecedentController@update')->name('patients.antecedent.update');
+    
+    Route::get('/patients/{patient}/calendar', 'PatientController@calendar')->name('patients.calendar');
+    Route::resource('/patients', 'PatientController');
+    
+    Route::get('/pregnacies/{patient}/create', 'PregnacyController@create')->name('pregnacies.create');
+    Route::post('/pregnacies/{patient}/store', 'PregnacyController@store')->name('pregnacies.store');
+
 
     Route::namespace('Auth')->group(function(){
         Route::get('/login', 'LoginController@showLoginForm')->name('login');
@@ -85,6 +97,8 @@ Route::prefix('/partener')->namespace('Responsable')->name('responsable.')->grou
 // Routes for Admin
 Route::prefix('/admin')->namespace('Admin')->name('admin.')->group(function(){
     Route::get('/', 'AdminController@index')->name('home');
+
+    Route::resource('/clients', 'ClientController')->only(['index']);
 
     Route::resource('/parteners', 'PartenerController');
     Route::resource('/services', 'ServiceController')->only(['index', 'store', 'update','destroy']);

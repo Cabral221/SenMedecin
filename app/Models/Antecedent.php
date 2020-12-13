@@ -5,9 +5,9 @@ namespace App\Models;
 use App\Models\Patient;
 use Illuminate\Database\Eloquent\Model;
 
-class Carnet extends Model
+class Antecedent extends Model
 {
-    protected $fillable = ['type'];
+    public $guarded = [];
 
     public function patient()
     {

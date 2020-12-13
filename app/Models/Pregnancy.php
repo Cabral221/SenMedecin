@@ -5,9 +5,9 @@ namespace App\Models;
 use App\Models\Patient;
 use Illuminate\Database\Eloquent\Model;
 
-class Carnet extends Model
+class Pregnancy extends Model
 {
-    protected $fillable = ['type'];
+    public $fillable = ['date', 'accouchement'];
 
     public function patient()
     {
