@@ -3,7 +3,7 @@
         <li class="nav-item nav-profile">
             <a href="#" class="nav-link">
                 <div class="nav-profile-image">
-                    <img src="{{ asset('backend/assets/images/faces/face1.jpg') }}" alt="profile">
+                    <img src="{{ asset('backend/assets/images/logo-vertical.svg') }}" alt="profile">
                     <span class="login-status online"></span>
                     <!--change to offline or busy as needed-->
                 </div>
@@ -19,12 +19,12 @@
 
                     @if (Auth::guard('responsable')->user())
                         <span class="font-weight-bold mb-2">{{ Auth::guard('responsable')->user()->first_name }}</span>        
-                        <span class="text-secondary text-small">Responsable</span>
+                        <span class="text-secondary text-small">{{ Auth::guard('responsable')->user()->partener->name }}</span>
                     @endif
                             
                     @if (Auth::guard('medecin')->user())
                         <span class="font-weight-bold mb-2">{{ Auth::guard('medecin')->user()->first_name }}</span>        
-                        <span class="text-secondary text-small">Médecin</span>
+                        <span class="text-secondary text-small">{{ Auth::guard('medecin')->user()->responsable->partener->name }}</span>
                     @endif
                 </div>
                 <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>

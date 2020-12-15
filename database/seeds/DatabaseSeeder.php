@@ -12,6 +12,7 @@ use App\Models\Service;
 use App\Models\Partener;
 use App\Models\Responsable;
 use Illuminate\Support\Str;
+use App\Models\TypeAppointment;
 use Illuminate\Database\Seeder;
 use App\Models\Partener_service;
 
@@ -24,8 +25,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UserSeeder::class);
-        // $faker = Faker\Factory::create();
+        $this->call(DataSeeder::class);
+        // $faker = Factory::create('fr_FR');
 
         Admin::create([
             'name' => 'Empro SN',
@@ -49,8 +50,13 @@ class DatabaseSeeder extends Seeder
         Info::create([
             'address' => 'Siege social no 1234, Dakar Sénégal',
             'phone' => '+33 987 98 90',
-            'email' => 'contact@senmedecin.com',
+            'email' => 'contact@axxundurel.com',
         ]);
+
+        TypeAppointment::create(['libele' => 'CPN']);
+        TypeAppointment::create(['libele' => 'Suivis']);
+        TypeAppointment::create(['libele' => 'Accouchement']);
+        TypeAppointment::create(['libele' => 'Vaccinal']);
 
         $s1 = Service::create(['libele' => 'Maternité']);
         $s2 = Service::create(['libele' => 'Pédiatrie']);
@@ -95,14 +101,12 @@ class DatabaseSeeder extends Seeder
             'email' => 'medecin@medecin.com',
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'gen_password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'service_id' => $partener_service->service_id,
+            'service_id' => $s1->id,
             'responsable_id' => $responsable->id,
             'remember_token' => Str::random(10),
         ]);
         
-        $carnet = Carnet::create([
-            'type' => 'A'
-        ]);
+        $carnet = Carnet::create();
 
         Patient::create([
             'first_name' => 'Patient 1',
@@ -111,7 +115,7 @@ class DatabaseSeeder extends Seeder
             'address' => '1603 dakar, no precis',
             'phone' => '770000000',
             'email' => 'patient@patient.com',
-            'referential' => 'test',
+            'referential' => Carbon\Carbon::now()->year.Carbon\Carbon::now()->month.'-'.$medecin->id,
             'medecin_id' => $medecin->id,
             'carnet_id' => $carnet->id,
             // 'email_verified_at' => now(),

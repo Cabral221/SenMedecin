@@ -6,6 +6,7 @@ use App\Models\Patient;
 use App\Models\Responsable;
 use App\Models\Partener_service;
 use Illuminate\Notifications\Notifiable;
+use App\Services\Appointment\Appointment;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -40,6 +41,11 @@ class Medecin extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function getFullNameAttribute()
+    {
+        return "{$this->first_name} {$this->last_name}";
+    }
+
     public function service()
     {
         return $this->belongsTo(Service::class, 'service_id');
@@ -53,6 +59,11 @@ class Medecin extends Authenticatable
     public function patients()
     {
         return $this->hasMany(Patient::class);
+    }
+
+    public function appointments()
+    {
+        return $this->hasMany(Appointment::class);
     }
 
     public function partOfPatient(): int
