@@ -10,13 +10,13 @@ class PatientController extends Controller
 {
     
 
-    public function __construct()
-    {
-        $this->middleware('auth:patient');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth:patient');
+    // }
 
     public function index(){
-        return view('patient.home');
+        return view('patient.index');
     }
 
     public function about(){
