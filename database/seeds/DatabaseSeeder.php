@@ -107,7 +107,7 @@ class DatabaseSeeder extends Seeder
         
         $carnet = Carnet::create();
 
-        Patient::create([
+        $patient = Patient::create([
             'first_name' => 'Patient 1',
             'last_name' => 'pname',
             'birthday' => now(),
@@ -120,6 +120,13 @@ class DatabaseSeeder extends Seeder
             // 'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
+            'is_active' => true,
+        ]);
+
+        $patient->childrens()->create([
+            'first_name' => 'children un',
+            'last_name' => 'child',
+            'birthday' => Carbon\Carbon::now()->subMonth(),
         ]);
 
         Post::create([

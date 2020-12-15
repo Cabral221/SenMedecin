@@ -64,8 +64,7 @@
 			<li><a href="http://webenlance.com">Se Connecter</a></li>
 		</ul>
 		<!--foote_bottom_ul_amrc ends here-->
-		<p>Copyright @2020 | Designed With by <a href="#">AXXU NJUREL</a></p>
-
+		
 		<ul class="social_footer_ul">
 			<li><a href="http://webenlance.com"><i class="fab fa-facebook-f"></i></a></li>
 			<li><a href="http://webenlance.com"><i class="fab fa-twitter"></i></a></li>
@@ -73,6 +72,7 @@
 			<li><a href="http://webenlance.com"><i class="fab fa-instagram"></i></a></li>
 		</ul>
 		<!--social_footer_ul ends here-->
+		<p>Copyright @2020 | Designed With by <a href="#">AXXU NJUREL</a></p>
 	</div>
 
 </footer>

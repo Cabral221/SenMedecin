@@ -1,11 +1,12 @@
 
 body{
-    color:#000;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: rgb(10, 10, 10);
     margin: 0;
     padding: 0;
     background-color:#fff;
     font-size: 16px;
-    background-image:url('/user/img/logo opacity.svg');
+    background-image:url('/user/img/axxu_rose.svg');
     background-attachment:fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -15,20 +16,25 @@ body{
 *{
     box-sizing: border-box;
 }
-h1{font-size: 5rem;font-family: cursive;color: black;font-weight: 700;color: #ec4445;}
-h2{font-size: 4rem;font-family: cursive;color: black;font-weight: 700;color: #ec4445;}
-h3{font-size: 3rem;font-family: cursive;color: black;font-weight: 700;color: #ec4445;}
-h4{font-size: 2rem;font-family: cursive;color: black;font-weight: 700;color: #ec4445;}
-h5{font-size: 25px;font-family: cursive;color: black;font-weight: 700;color: #ec4445;}
-h6{font-size: 20px;font-family: cursive;color: black;font-weight: 700;color: #ec4445;}
-p{
-    text-align: justify;
-    text-transform: capitalize;
-    color: rgb(7, 6, 6);
+h1{font-size: 5rem;font-family: cursive;color: black;font-weight: 700;color: rgba(255, 102, 171, 0.867);}
+h2{font-size: 4rem;font-family: cursive;color: black;font-weight: 700;color: rgba(255, 102, 171, 0.867);}
+h3{font-size: 3rem;font-family: cursive;color: black;font-weight: 700;color: rgba(255, 102, 171, 0.867);}
+h4{font-size: 2rem;font-family: cursive;color: black;font-weight: 700;color: rgba(255, 102, 171, 0.867);}
+h5{font-size: 25px;font-family: cursive;color: black;font-weight: 700;color: rgba(255, 102, 171, 0.867);}
+h6{font-size: 20px;font-family: cursive;color: black;font-weight: 700;color: rgba(255, 102, 171, 0.867);}
+
+.text-bold{
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight:700;
-    /* box-shadow:  5px 3px 7px -1px  rgba(253, 126, 104, 0.377); */
-    line-height: 25px;
+}
+.text-primary{
+    color: rgba(255, 102, 171, 0.867);;
+}
+.text-success{
+    color: green;
+}
+.text-warning{
+    color: rgb(247, 140, 0);
 }
 h1 .section-title{
     color: rgb(231, 122, 122);
@@ -48,6 +54,7 @@ h1 .section-title{
     background:#fff;
     /* box-shadow: 0px 3px 8px 1px rgba(19, 18, 18, 0.295); */
     box-shadow: 0px 3px 6px -2px rgba(19, 18, 18, 0.295);
+    z-index: 1000;
 }
 
 .container{
@@ -93,7 +100,7 @@ nav ul li a{
     color:#000;
 }
 nav ul li a:hover{
-    color: #ec4445;
+    color: rgba(255, 102, 171, 0.867);
     text-decoration: none;
 }
 nav ul li a .header-icon{
@@ -111,21 +118,23 @@ nav ul .li-connecter .chevero-login{
     margin-left:5px;
 }
 nav ul .li-connecter ul{
-    border-left: 1px solid #ec4445;
-    border-right: 1px solid #ec4445;
-    border-bottom: 1px solid #ec4445;
-    width: 11%;
-    /* border-radius: 5px; */
+    border: 1px solid rgba(255, 102, 171, 0.867);;
+    width: 15%;
     padding-bottom:2px ;
-    background-color:#ec4445;
+    background-color:rgba(255, 102, 171, 0.867);
+    margin: 5px;
+    margin-left:-30px;
 }
 nav ul .li-connecter ul li{
     float: none;
     margin-top: 8px;
     text-align: center;
 }
+nav ul .li-connecter ul li a{
+    color: #fff;
+  }
 nav ul .li-connecter ul li a:hover{
-  color: #fff;
+  color: #000;
 }
 nav ul .li-connecter ul{
     display: block;
@@ -311,88 +320,131 @@ footer p { font-size:13px; color:#CCC; padding-bottom:0px; margin-bottom:8px;}
 
 
 /* La partie du login */
-.section-login .login-body{
-    display: flex;
-    text-align: center;
-    padding: 25px;
-    margin-bottom: 7em;
-}
-.section-login h1{
-    margin-left: 100px ;
-    font-size: 70px;
-    color: rgba(226, 175, 166, 0.685);
-}
-.section-login .login-left,.login-right{
-    width: 50%;
-}
-.form-group{
-    border: 1px solid rgba(0, 0, 0, 0.062);
+
+section .login-body{
     width: 100%;
-    height: 300px;
-    padding: 10px;
-    background-color: rgba(0, 0, 0, 0.055);
-    box-shadow:  -1px 2px 7px 4px rgba(192, 192, 192, 0.5);
+    margin: 3em 20em;
+    background-color: #fff;
+    box-shadow: 0px 0px 15px #0000001a;
+}
+section .login-body .form-group{
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    margin-left: 55px;
 }
 
-.box{
-    width: 100% auto;
+section .login-body .login-header{
     text-align: center;
-    
-  }
-
-  .box h1{
-    color: rgb(100, 100, 190);
-    text-transform: uppercase;
-    font-weight: 500;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-
-  .box input[type="email"] ,.box input[type="password"]{
-
-    background: none;
     display: block;
-    margin: 20px auto;
+    padding: 20px;
+    margin-bottom: -40px;
+}
+section .login-body .login-header img{
+    width:100px;
+    height: 100px;
+    box-shadow: 0px 0px 15px #0000001a;
+    border-radius: 100%;
+}
+
+section .login-body .form-group .box{
+    width: 100% auto;
+  }
+
+
+  section .login-body .form-group .box input[type="email"] ,.box input[type="password"]{
+  
     text-align: center;
-    border:1px solid #3498db;
-    padding: 14px 10px;
+    border:1px solid rgba(255, 102, 171, 0.867);
+    padding: 10px 10px;
     width: 70%;
     outline: none;
-    color: black;
-    border-radius: 15px;
+    color: rgba(255, 102, 171, 0.867);
+    border-radius: 5px;
     transition:0.25s;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 18px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 15px;
+    margin-left: -11px;
+    border-radius: 0px 5px 5px 0px;
   }
 
-  .box input[type="email"]:focus ,.box input[type="password"]:focus{
-    width: 80%;
-    border-color: #2ecc71;
+  section .login-body .form-group .box input[type="email"]:focus ,.box input[type="password"]:focus{
+    width: 70%;
+    border-color: rgba(255, 102, 171, 0.867);
   }
-  .box input[type="email"]{
-    margin-top: 35px;
+  section .login-body .form-group .box .contour_input{
+      display: flex;
+      width: 100%;
+  }
+  section .login-body .form-group .box .contour_input .icon{
+      width:11%;
+      padding:10px 10px;
+      background-color: rgba(255, 102, 171, 0.867);
+      color: #fff;
+      border-radius: 5px 0px 0px 5px;
+  }
+  /* section .login-body .form-group .box input[type="email"]{
+  
+} */
+
+
+section .login-body .form-group .box  input[type="checkbox"] + label{
+    display: block;
+    margin: 0.2em;
+    cursor: pointer;
+    padding: 0.2em;
+}
+section .login-body .form-group .box  input[type="checkbox"]{
+    display: none;
+}
+section .login-body .form-group .box  input[type="checkbox"] + label:before{
+    content: "\2714";
+    border: 0.1em solid rgba(255, 102, 171, 0.867);;
+    border-radius:0.2em;
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    padding-left: 0.2em;
+    padding-bottom: 0.3em;
+    margin-right: 0.2em;
+    vertical-align: bottom;
+    color: transparent;
+    transition: .2s;
+}
+section .login-body .form-group .box  input[type="checkbox"] + label:active:before{
+    transform: scale(0);
+}
+section .login-body .form-group .box  input[type="checkbox"]:checked + label:before{
+    background-color: rgba(255, 102, 171, 0.867);;
+    border-color: rgba(255, 102, 171, 0.867);;
+    color: #fff;
 }
 
-  .box input[type="submit"]{
-    display: block;
-    margin: 50px  auto 0px;
+
+section .login-body .form-group .box input[type="submit"]{
     text-align: center;
-    border:1px solid blue;
-    background-color: blue;
-    padding: 14px 20px;
+    border:1px solid rgba(255, 102, 171, 0.867);
+    background-color: rgba(255, 102, 171, 0.867);;
+    padding: 12px 20px;
     outline: none;
-    color: rgb(241, 241, 248);
+    color: #fff;
     border-radius: 5px;
     transition:0.25s; 
     cursor: pointer;
-    font-size: 20px;
-    width: 74%;
+    font-size: 15px;
+    font-weight: 700;
+    width: 78%;
   }
-
-  .box input[type="submit"]:hover{
+  section .login-body .form-group .box .forgot_password{
+      margin-left: 80px;
+      text-decoration: underline;
+  }
+  section .login-body .form-group .box input[type="submit"]:hover{
     background: transparent;
-    color: black;
+    color: rgba(255, 102, 171, 0.867);;
    
   }
+
 /* Fin de la partie du login */
 
 /* La partie profil principale */
@@ -420,21 +472,150 @@ footer p { font-size:13px; color:#CCC; padding-bottom:0px; margin-bottom:8px;}
 } */
 /* Partie de la maman */
 
-.profile-right{
+/* Profil right */
+section .profile-right{
     margin-right: 25px;
     width: 80%;
     padding: 0 20px;
     background-color:transparent;
-    border:1px solid rgba(236, 225, 225, 0.863);
+    /* border:1px solid  rgba(255, 102, 171, 0.867); */
 }
-.profile-left {
+section .profile-right .identification ,.antecedent,.calandirier-cpn,.cpn1,.grossesse{
+    border: 1px solid rgba(255, 102, 171, 0.867);
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 10px;
+  
+}
+/* La partie de la grossesse */
+
+ section .profile-right .grossesse .info_grossesse{
+    display: flex;
+    justify-content: space-between;
+}
+ section .profile-right .grossesse .info_grossesse .patient_info{
+    border-right: 1px solid black;
+    margin-right: 20px;
+}
+ section .profile-right .grossesse .info_grossesse .patient_info,.grossess_info{
+    /* border:1px solid red; */
+    width: 50%;
+}
+/* Fin de la partie de la grossesse */
+
+/* La partie des rendez-vous */
+ section .profile-right .grossesse .apointman{
+    display: flex;
+    justify-content: space-between;
+}
+ section .profile-right .grossesse .apointman .apointman_left,.apointman_right{
+    width:50%;
+}
+/* Fin de la partie des rendez-vous */
+
+/* La partie des identification */
+section .profile-right .identification .footer-id{
+    display: flex;
+    text-align: justify;
+    padding: 5px;
+}
+section .profile-right .identification .footer-id .acte,.allocation{
+    width: 50%;
+}
+
+section .profile-right .identification p span{
+    margin-left:10px;
+    margin-right: 10px;
+    border-bottom:1px dotted #000; 
+    font-family: italic;
+    font-size: 18px;
+}
+section .profile-right .identification .footer-id .acte .acte-p{
+    width:50%;
+    border-bottom:1px dotted #000; 
+    font-family: italic;
+    font-size: 18px;
+}
+
+section .profile-right .identification .footer-id .allocation .acte-p{
+    width:50%;
+    border-bottom:1px dotted #000; 
+    font-family: italic;
+    font-size: 18px;
+}
+section .profile-right .identification .cmu{
+    width:25%;
+    border-bottom:1px dotted #000; 
+    font-family: italic;
+    font-size: 18px;
+}
+/* Fin de la partie des identifications */
+
+/* Fin profil right */
+
+section .profile-left {
     width: 20%;
     margin-left:5em;
     margin-right: 1px;
     /* border:1px solid red; */
     font-size: 15px;
-    font-family: sans-serif;  
+    font-family: sans-serif; 
 }
+
+section .profile-left .menu ul{
+	margin:0px;
+	padding:0px 5px;
+	list-style:none;
+	border-radius:5px;
+}
+section .profile-left .menu ul li{
+	padding:15px;
+	position:relative;
+	width:220px;
+	background-color:#34495E;
+	border-right:1px solid #f1c40f;
+	border-top:1px solid silver;
+	vertical-align:middle;
+	cursor:pointer;
+	-webkit-transition:all 0.3s;
+	-o-transition:all 0.3s;
+	transition:all 0.3s;
+} 
+section .profile-left .menu ul li:hover{
+	background-color:#2ecc71;
+}
+section .profile-left .menu > ul > li{
+	border-right:1px solid #f1c40f;
+}
+section .profile-left .menu ul ul{
+	transition:all 0.3s;
+	opacity:0;
+	position:absolute;
+	visibility:hidden;
+	left:101%;
+	top:-2%;
+	border-left:1px solid #f1c40f; 	
+}
+
+
+section .profile-left .menu ul li:hover > ul{
+	opacity:1;
+	visibility:visible;  
+}
+section .profile-left .menu ul li a{
+	color:#fff;
+	text-decoration:none;
+}
+section .profile-left .menu span{
+	margin-right:15px;
+}
+/* section .profile-left .menu > ul > li:nth-off-type(2)::after{
+	content:"+";
+	position:absolute;
+	margin-left:5%;
+	color:#fff;
+	font-size:20px;
+} */
 
 /* fin de la partie de la maman */
 
@@ -559,13 +740,13 @@ section .contact-form form input[type="email"],input[type="text"],textarea{
     border: 1px solid black
 }
 section .contact-form form input[type="email"]:focus{
-    border:1px solid #ec4445;
+    border:1px solid rgba(255, 102, 171, 0.867);
 }
 section .contact-form form input[type="text"]:focus{
-    border:1px solid #ec4445;
+    border:1px solid rgba(255, 102, 171, 0.867);
 }
 section .contact-form form textarea:focus{
-    border:1px solid #ec4445;
+    border:1px solid rgba(255, 102, 171, 0.867);
 }
 section .contact-form form input[type="submit"]{
     margin-top: 8px;
@@ -574,9 +755,9 @@ section .contact-form form input[type="submit"]{
     font-size: 15px;
     font-weight: 700;
     background-color: transparent;
-    color:  #ec4445;
+    color:  rgba(255, 102, 171, 0.867);
     border-radius: 5px;
-    border: 1px solid #ec4445;
+    border: 1px solid rgba(255, 102, 171, 0.867);
     border-radius: 5px;
     outline: none;
 }
@@ -697,61 +878,18 @@ section .sens_right .sens-body-card .card-text p{
     font-weight: none;
     margin-top:-6px ;
     margin-left: -25px;
-    color: #ec4445;
+    color: rgba(255, 102, 171, 0.867);
 }
 section .sens_right .sens-body-card .card-text p a{
     font-size: 11px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: none;
-    color: #ec4445;
+    color: rgba(255, 102, 171, 0.867);
 }
 
 /* Fin de la partie about */
 
-.identification ,.antecedent,.calandirier-cpn,.cpn1{
-    border: 2px solid green;
-    border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 10px;
-}
 
-/* La partie des identification */
-.identification .footer-id{
-    display: flex;
-    text-align: justify;
-    padding: 5px;
-}
-.identification .footer-id .acte,.allocation{
-    width: 50%;
-}
-
-.identification p span{
-    margin-left:10px;
-    margin-right: 10px;
-    border-bottom:1px dotted #000; 
-    font-family: italic;
-    font-size: 18px;
-}
-.identification .footer-id .acte .acte-p{
-    width:50%;
-    border-bottom:1px dotted #000; 
-    font-family: italic;
-    font-size: 18px;
-}
-
-.identification .footer-id .allocation .acte-p{
-    width:50%;
-    border-bottom:1px dotted #000; 
-    font-family: italic;
-    font-size: 18px;
-}
-.identification .cmu{
-    width:25%;
-    border-bottom:1px dotted #000; 
-    font-family: italic;
-    font-size: 18px;
-}
-/* Fin de la partie des identifications */
 
 /* La partie des antecedents */
 .antecedent h4{

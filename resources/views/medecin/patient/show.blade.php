@@ -106,6 +106,8 @@
                     @endif
                     <a href="{{ route('medecin.patients.calendar', $patient) }}" class="btn btn-sm btn-block btn-primary mb-2">Voir Calendrier</a>
                     <a href="#" class="btn btn-sm btn-block btn-primary mb-2">Fixer un rendez-vous</a>    
+                    <a href="#" class="btn btn-sm btn-block btn-primary mb-2">Consulter VAT</a>    
+                    <a href="{{ route('medecin.patients.childs', $patient) }}" class="btn btn-sm btn-block btn-primary mb-2">Gestion des enfants - ({{ count($patient->childrens) }})</a>    
                 @endif
                 <a href="{{ route('medecin.patients.edit', $patient) }}" class="btn btn-sm btn-block btn-outline-warning mb-2"><i class="mdi mdi-content-save-edit"></i> Modifier les informations</a>
                 <a href="#" class="btn btn-sm btn-block btn-outline-danger mb-2" onclick="event.preventDefault();if(confirm('Étes vous sûr de vouloir supprimer cette patiente ?')){document.getElementById('form-delete-patient').submit();}"><i class="mdi mdi-delete"></i> Supprimer la patiente</a>

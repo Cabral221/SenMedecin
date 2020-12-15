@@ -14,25 +14,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Routes For static pages
-Route::get('/', 'AppController@index')->name('welcome');
-Route::get('/login-user', 'AppController@create')->name('login-user');
-Route::get('/profile-user', 'AppController@profile')->name('profile-user');
-Route::get('/maman', 'AppController@maman')->name('maman');
-Route::get('/enfant', 'AppController@enfant')->name('enfant');
-Route::get('/contact', 'AppController@contact')->name('contact');
-Route::get('/about', 'AppController@about')->name('about');
-Route::get('/sensibiliser', 'AppController@sensibiliser')->name('sensibiliser');
+Route::get('/','User\HomeController@index')->name('index');
+Route::get('/contact','User\ContactController@index')->name('user.contact');
+Route::resource('/posts','User\PostController')->only(['index','show']);
+Route::get('/about','User\AboutController@index')->name('user.about');
 
 
-
-Route::get('/about', 'AppController@about')->name('about');
-Route::get('/contact', 'AppController@contact')->name('contact');
-Route::resource('/posts', 'PostController')->only(['index', 'show']);
+// Route::get('/about', 'AppController@about')->name('about');
+// Route::get('/contact', 'AppController@contact')->name('contact');
+// Route::resource('/posts', 'PostController')->only(['index', 'show']);
 
 // Routes for client patient
 Route::prefix('/patient')->namespace('Patient')->name('patient.')->group(function() {
     Route::get('/home', 'PatientController@index')->name('home');
-
     Route::namespace('Auth')->group(function(){
         Route::get('/login', 'LoginController@showLoginForm')->name('login');
         Route::post('/login', 'LoginController@login')->name('login');
@@ -51,7 +45,6 @@ Route::prefix('/patient')->namespace('Patient')->name('patient.')->group(functio
 
 // Routes for medecin
 Route::prefix('/medecin')->namespace('Medecin')->name('medecin.')->group(function(){
-    Route::get('/home', 'MedecinController@index')->name('home');
     
     Route::get('/patients/{patient}/antecedents/create', 'AntecedentController@create')->name('patients.antecedent.create');
     Route::post('/patients/{patient}/antecedents/store', 'AntecedentController@store')->name('patients.antecedent.store');
@@ -60,10 +53,14 @@ Route::prefix('/medecin')->namespace('Medecin')->name('medecin.')->group(functio
     
     Route::get('/patients/{patient}/calendar', 'PatientController@calendar')->name('patients.calendar');
     Route::resource('/patients', 'PatientController');
+
+    Route::get('/child/{patient}', 'ChildController@index')->name('patients.childs');
+    Route::get('/child/{patient}/children/{children}', 'ChildController@show')->name('patients.childs.show');
     
     Route::get('/pregnacies/{patient}/create', 'PregnacyController@create')->name('pregnacies.create');
     Route::post('/pregnacies/{patient}/store', 'PregnacyController@store')->name('pregnacies.store');
-
+    
+    Route::get('/home', 'MedecinController@index')->name('home');
 
     Route::namespace('Auth')->group(function(){
         Route::get('/login', 'LoginController@showLoginForm')->name('login');
