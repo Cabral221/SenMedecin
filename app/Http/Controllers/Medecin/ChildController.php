@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Medecin;
 
+use App\Models\Children;
 use App\Models\Patient;
 use App\Http\Controllers\Controller;
 
@@ -13,6 +14,10 @@ class ChildController extends Controller {
 
     public function index(Patient $patient){
         return view('medecin.patient.child', compact('patient'));
+    }
+
+    public function show(Patient $patient, Children $children){
+        return view('medecin.patient.childShow', compact('patient','children'));
     }
 
 }
