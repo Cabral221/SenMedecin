@@ -51,7 +51,6 @@ Route::prefix('/patient')->namespace('Patient')->name('patient.')->group(functio
 
 // Routes for medecin
 Route::prefix('/medecin')->namespace('Medecin')->name('medecin.')->group(function(){
-    Route::get('/home', 'MedecinController@index')->name('home');
     
     Route::get('/patients/{patient}/antecedents/create', 'AntecedentController@create')->name('patients.antecedent.create');
     Route::post('/patients/{patient}/antecedents/store', 'AntecedentController@store')->name('patients.antecedent.store');
@@ -60,10 +59,14 @@ Route::prefix('/medecin')->namespace('Medecin')->name('medecin.')->group(functio
     
     Route::get('/patients/{patient}/calendar', 'PatientController@calendar')->name('patients.calendar');
     Route::resource('/patients', 'PatientController');
+
+    Route::get('/child/{patient}', 'ChildController@index')->name('patients.childs');
+    Route::get('/child/{patient}/children/{children}', 'ChildController@show')->name('patients.childs.show');
     
     Route::get('/pregnacies/{patient}/create', 'PregnacyController@create')->name('pregnacies.create');
     Route::post('/pregnacies/{patient}/store', 'PregnacyController@store')->name('pregnacies.store');
-
+    
+    Route::get('/home', 'MedecinController@index')->name('home');
 
     Route::namespace('Auth')->group(function(){
         Route::get('/login', 'LoginController@showLoginForm')->name('login');

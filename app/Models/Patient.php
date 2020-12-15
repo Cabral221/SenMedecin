@@ -79,6 +79,11 @@ class Patient extends Authenticatable
         return "{$this->first_name} {$this->last_name}";
     }
 
+    public function childrens()
+    {
+        return $this->hasMany(Children::class);
+    }
+
     public function medecin()
     {
         return $this->belongsTo(Medecin::class);
