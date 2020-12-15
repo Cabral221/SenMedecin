@@ -3,7 +3,6 @@
 // use Faker\Factory;
 use App\Models\Info;
 use App\Models\Post;
-use App\Models\User;
 use App\Models\Admin;
 use App\Models\Carnet;
 use App\Models\Medecin;
