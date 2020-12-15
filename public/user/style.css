@@ -1,0 +1,889 @@
+
+body{
+    color:#000;
+    margin: 0;
+    padding: 0;
+    background-color:#fff;
+    font-size: 16px;
+    background-image:url('/user/img/logo opacity.svg');
+    background-attachment:fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 50%;
+  
+}
+*{
+    box-sizing: border-box;
+}
+h1{font-size: 5rem;font-family: cursive;color: black;font-weight: 700;color: #ec4445;}
+h2{font-size: 4rem;font-family: cursive;color: black;font-weight: 700;color: #ec4445;}
+h3{font-size: 3rem;font-family: cursive;color: black;font-weight: 700;color: #ec4445;}
+h4{font-size: 2rem;font-family: cursive;color: black;font-weight: 700;color: #ec4445;}
+h5{font-size: 25px;font-family: cursive;color: black;font-weight: 700;color: #ec4445;}
+h6{font-size: 20px;font-family: cursive;color: black;font-weight: 700;color: #ec4445;}
+p{
+    text-align: justify;
+    text-transform: capitalize;
+    color: rgb(7, 6, 6);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight:700;
+    /* box-shadow:  5px 3px 7px -1px  rgba(253, 126, 104, 0.377); */
+    line-height: 25px;
+}
+h1 .section-title{
+    color: rgb(231, 122, 122);
+    margin-right:20px;
+}
+
+/* La partie de stylisation du header */
+.header{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    padding-top: 2.5rem;
+    padding-bottom: 1rem;
+    padding-left: 22px;
+    padding-right: 22px;
+    /* border-bottom:1px solid rgba(19, 18, 18, 0.295); */
+    background:#fff;
+    /* box-shadow: 0px 3px 8px 1px rgba(19, 18, 18, 0.295); */
+    box-shadow: 0px 3px 6px -2px rgba(19, 18, 18, 0.295);
+}
+
+.container{
+    /* margin:0% 5% ; */
+    max-width:1200px;
+    margin-left: auto;
+    margin-right: auto;
+    
+
+}
+a {transition: all 0.3s ease 0s;text-decoration:none;
+}
+
+a:visited, a:link, a:active {
+  text-decoration: none;
+}
+a:active, a:hover {
+  outline: 0 none;
+}
+
+nav ul{
+list-style: outside none none;
+margin: 0;
+padding:0;
+}
+nav ul .li-home{
+    margin-left: 0px;
+    margin-right:2em;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+nav ul li{
+    float:left;
+    margin-left: 0.8em;
+    padding: 5px;
+    margin-top: -23px;
+    border-radius: 3px;
+    color: white;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 700;
+}
+nav ul li a{
+    line-height: 20px;
+    color:#000;
+}
+nav ul li a:hover{
+    color: #ec4445;
+    text-decoration: none;
+}
+nav ul li a .header-icon{
+    margin-right: 0.5rem;
+}
+nav ul li a{
+    display: flex;
+}
+
+nav ul .li-connecter{
+    float: right;
+    margin-right: 13px;
+}
+nav ul .li-connecter .chevero-login{
+    margin-left:5px;
+}
+nav ul .li-connecter ul{
+    border-left: 1px solid #ec4445;
+    border-right: 1px solid #ec4445;
+    border-bottom: 1px solid #ec4445;
+    width: 11%;
+    /* border-radius: 5px; */
+    padding-bottom:2px ;
+    background-color:#ec4445;
+}
+nav ul .li-connecter ul li{
+    float: none;
+    margin-top: 8px;
+    text-align: center;
+}
+nav ul .li-connecter ul li a:hover{
+  color: #fff;
+}
+nav ul .li-connecter ul{
+    display: block;
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+}
+nav ul .li-connecter:hover ul{
+    display: block;
+    position: absolute;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Fin de la partie de stylisation du header */
+
+/* La premiere section de la page d'acceuil */
+.box-shadow{
+    margin-top:10em;
+    margin-bottom: 2em;
+    background:transparent;
+    /* box-shadow: 2px 2px 12px rgba(0,0,0,0.2); */
+     box-shadow: 0px 0px 15px #0000001a;  
+}
+section{
+    margin-top: 5em;
+    display: flex;
+    text-align: justify;
+    padding: 20px;
+}
+.section-index{
+    margin-top:-1em;
+    padding-top: 5em;
+    padding-bottom:1em ;
+}
+section .card-left {
+    width: 65%;
+    padding: 0px 15px;
+    margin-top:-80px;
+}
+section .card-left .card-body{
+    margin-top:-45px;
+    margin-right: 25px;
+}
+section .card-left .card-body p{ 
+    margin-right:5em;
+}
+
+section .card-right {
+    width: 35%;
+    /* border: 1px solid red; */
+
+}
+section .card-right .logo{
+   width: 100% auto;
+}
+section .card-right .logo img{
+    box-shadow: 2px 2px 3px 2px rgba(19, 18, 18, 0.295);
+    width:100%;
+    height: auto;
+    float: right;
+}
+/* fin de la premiere section de la page d'acceuil */
+
+
+.top-section{
+    margin-top: 7em;
+}
+
+/* La premiere section de la page d'acceuil rv prenatal */
+section .card-left-section2 {
+    width: 30%;
+}
+section .card-left-section2 .logo{
+    width: 100% auto;
+}
+section .card-left-section2 .logo img{
+    width: 100% auto;
+    
+}
+section .card-right-section2 {
+    width: 70%;
+}
+section .card-right-section2 h5{
+    margin-top:-5px;
+}
+section .card-right-section2 .card-body p:first-child{
+    margin-top:-2rem;
+}
+/* fin de la premiere section de la page d'acceuil rv prnatale*/
+
+
+
+/* La premiere section de la page d'acceuil vaccin */
+section .card-right-section3 {
+    width: 30%;
+}
+section .card-right-section3 .logo{
+    padding: 0px 10px;
+    width: 100%;
+    height: auto;
+}
+section .card-right-section3 .logo img{
+    width: 100%;
+    height: auto;
+}
+section .card-left-section3 {
+    width: 70%;
+    margin-right: 4em;
+    padding-right: 3px;
+}
+section .card-left-section3 h5{
+    margin-top:-5px;
+}
+section .card-left-section3 .card-body p:first-child{
+    margin-top:-2rem;
+}
+/* fin de la premiere section de la page d'acceuil vaccin*/
+/*footer*/
+.col_white_amrc { color:#FFF;}
+footer { width:100%; background-color:#263238; min-height:250px; padding:10px 10px ;}
+.pt2 { padding-top:40px ; margin-bottom:20px ;}
+footer p { font-size:13px; color:#CCC; padding-bottom:0px; margin-bottom:8px;}
+.mb10 { padding-bottom:5px ;}
+.footer_ul_amrc { margin:0px ; list-style-type:none ; font-size:14px; padding:0px 0px 10px 0px ; }
+.footer_ul_amrc li {padding:0px 0px 5px 0px;}
+.footer_ul_amrc li a{ color:#CCC;}
+.footer_ul_amrc li a:hover{ color:#fff; text-decoration:none;}
+.fleft { float:left;}
+.padding-right { padding-right:10px; }
+.bottom_border{
+    display: flex;
+    flex-direction: row;
+
+}
+.footer_left{
+    width:25%;
+    padding: 5px;
+    margin: 0 10px;
+}
+.footer_center_1{
+    width:20%;
+    padding: 5px;
+    margin: 0 10px;
+}
+.footer_center_2{
+    width:20%;
+    padding: 5px;
+    margin: 0 10px;
+}
+.footer_right{
+    width:35%;
+    padding: 5px;
+    margin: 0 10px;
+}
+.footer_ul2_amrc {margin:0px; list-style-type:none; padding:0px;}
+.footer_ul2_amrc li p { display:table; }
+.footer_ul2_amrc li a:hover { text-decoration:none;}
+.footer_ul2_amrc li i { margin-top:5px;}
+
+.bottom_border { border-bottom:1px solid #323f45; padding-bottom:20px;}
+.foote_bottom_ul_amrc {
+	list-style-type:none;
+	padding:0px;
+	display:table;
+	margin-top: 10px;
+	margin-right: auto;
+	margin-bottom: 10px;
+	margin-left: auto;
+}
+.foote_bottom_ul_amrc li { display:inline;}
+.foote_bottom_ul_amrc li a { color:#999; margin:0 12px;}
+
+.social_footer_ul { display:table; margin:15px auto 0 auto; list-style-type:none;  }
+.social_footer_ul li { padding-left:20px; padding-top:10px; float:left; }
+.social_footer_ul li a { color:#CCC; border:1px solid #CCC; padding:8px;border-radius:50%;}
+.social_footer_ul li i {  width:20px; height:20px; text-align:center;}
+.footer_footer p{
+    text-align: center;
+}
+
+/* Fin de la partie stylisation du footer */
+
+
+/* La partie du login */
+.section-login .login-body{
+    display: flex;
+    text-align: center;
+    padding: 25px;
+    margin-bottom: 7em;
+}
+.section-login h1{
+    margin-left: 100px ;
+    font-size: 70px;
+    color: rgba(226, 175, 166, 0.685);
+}
+.section-login .login-left,.login-right{
+    width: 50%;
+}
+.form-group{
+    border: 1px solid rgba(0, 0, 0, 0.062);
+    width: 100%;
+    height: 300px;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.055);
+    box-shadow:  -1px 2px 7px 4px rgba(192, 192, 192, 0.5);
+}
+
+.box{
+    width: 100% auto;
+    text-align: center;
+    
+  }
+
+  .box h1{
+    color: rgb(100, 100, 190);
+    text-transform: uppercase;
+    font-weight: 500;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .box input[type="email"] ,.box input[type="password"]{
+
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border:1px solid #3498db;
+    padding: 14px 10px;
+    width: 70%;
+    outline: none;
+    color: black;
+    border-radius: 15px;
+    transition:0.25s;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+  }
+
+  .box input[type="email"]:focus ,.box input[type="password"]:focus{
+    width: 80%;
+    border-color: #2ecc71;
+  }
+  .box input[type="email"]{
+    margin-top: 35px;
+}
+
+  .box input[type="submit"]{
+    display: block;
+    margin: 50px  auto 0px;
+    text-align: center;
+    border:1px solid blue;
+    background-color: blue;
+    padding: 14px 20px;
+    outline: none;
+    color: rgb(241, 241, 248);
+    border-radius: 5px;
+    transition:0.25s; 
+    cursor: pointer;
+    font-size: 20px;
+    width: 74%;
+  }
+
+  .box input[type="submit"]:hover{
+    background: transparent;
+    color: black;
+   
+  }
+/* Fin de la partie du login */
+
+/* La partie profil principale */
+/* 
+.container-ul .ul-header{
+    margin-left: 80px;
+    padding: 5px;
+    display: flex;
+
+}
+.li-header{
+    padding: 5px 15px;
+    border:1px solid rgba(0, 0, 0, 0.11);
+    background-color: rgba(0, 0, 0, 0.329);
+    border-radius: 5px;
+    font-size: 18px;
+    font-family: serif;
+}
+.li-header:hover{
+    background-color: transparent;
+}
+.container-ul .ul-header li{
+    margin-left: 30px;
+    list-style: none;
+} */
+/* Partie de la maman */
+
+.profile-right{
+    margin-right: 25px;
+    width: 80%;
+    padding: 0 20px;
+    background-color:transparent;
+    border:1px solid rgba(236, 225, 225, 0.863);
+}
+.profile-left {
+    width: 20%;
+    margin-left:5em;
+    margin-right: 1px;
+    /* border:1px solid red; */
+    font-size: 15px;
+    font-family: sans-serif;  
+}
+
+/* fin de la partie de la maman */
+
+/* Partie de l'enfant */
+.rv-enfant{
+    margin: 60px 90px;
+    display: flex;
+   
+}
+.enfant-right,.enfant-left{
+    width: 50%;
+    padding: 0 20px;
+    background-color: rgba(236, 225, 225, 0.24);
+    border:1px solid rgba(236, 225, 225, 0.863);
+}
+.enfant-right{
+    margin-left: 5px;
+}
+.enfant-left{
+    margin-right: 5px;
+}
+.rv-enfant .enfant-left .header{
+    margin-top:-20px;
+    margin-bottom: -30px;
+}
+.rv-enfant .enfant-left .rv-body{
+    background-color: rgba(0, 0, 0, 0.123);
+    margin: 5px 20px;
+    padding: 10px;
+}
+
+.rv-enfant .enfant-left .rv-body .nom ,.infos{
+    font-size: 17px;
+}
+/* fin de la partie de l'enfant */
+
+/* Fin de la partie profil principale */
+
+/* La partie des rendez-vous precedent */
+.precedent{
+    padding: 0px 15px;
+    margin-left: 18em;
+    margin-bottom: 6em;
+    border: 1px solid rgba(17, 16, 16, 0.116);
+    background-color: rgba(2, 2, 2, 0.034);
+    width: 50%;
+    box-shadow:  -1px 2px 7px 4px rgba(192, 192, 192, 0.5);
+}
+.precedent-body:hover{
+    box-shadow:  -1px 2px 7px 4px rgba(192, 192, 192, 0.5);
+}
+.precedent-left{
+    width: 80%;
+}
+.precedent-right{
+    width: 20%;
+    padding: 5px ;
+}
+.precedent-right .precedent-infos p{
+    text-align: center;
+    margin-top: 2em;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 8px;
+}
+.precedent-infos p a{
+    font-size: 20px;
+}
+.precedent-infos p:hover{
+    background-color: rgba(10, 10, 10, 0.445);
+}
+.precedent .precedent-body{
+    padding: 0 12px;
+    display: flex;
+    border: 1px solid rgba(0, 0, 0, 0.082);
+    margin-bottom: 12px;
+    background-color: rgba(0, 0, 0, 0.096);
+}
+.precedent-heure{
+    margin-left: 12px;
+}
+.precedent-body .trait{
+    margin-left: 12px;
+}
+/* Fin de la partie des rendez-vous precedent */
+
+/* La partie du contact */
+
+section .banier-contact{
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.027);
+    background-color: rgba(0, 0, 0, 0.075);
+}
+section .banier-contact h1{
+    text-align: center;
+    font-size: 3em;
+    color: rgba(0, 0, 0, 0.418);
+}
+section .contact-group{
+    display: flex;
+    width: 100%;
+}
+section .contact-form,.google-map{
+    width: 50%;
+}
+section .contact-group .contact-form{
+    box-shadow: 0px 0px 15px #0000001a; 
+    margin-right: 10px;
+    padding: 10px;
+    background-color: #fff;
+}
+section .contact-group .contact-form form .form_group label{
+    color:rgba(0, 0, 0, 0.616);
+    text-align: left;
+    
+}
+section .contact-form form input[type="email"],input[type="text"],textarea{
+    padding: 15px;
+    width: 100%;
+    outline: none;
+    text-align: center;
+    border: 1px solid black
+}
+section .contact-form form input[type="email"]:focus{
+    border:1px solid #ec4445;
+}
+section .contact-form form input[type="text"]:focus{
+    border:1px solid #ec4445;
+}
+section .contact-form form textarea:focus{
+    border:1px solid #ec4445;
+}
+section .contact-form form input[type="submit"]{
+    margin-top: 8px;
+    width: 150px;
+    padding: 15px 10px;
+    font-size: 15px;
+    font-weight: 700;
+    background-color: transparent;
+    color:  #ec4445;
+    border-radius: 5px;
+    border: 1px solid #ec4445;
+    border-radius: 5px;
+    outline: none;
+}
+
+section .google-map{
+    background-color: rgba(0, 0, 0, 0.068);
+    /* box-shadow:  -1px 2px 7px 4px rgba(192, 192, 192, 0.5); */
+}
+section .google-map h1{
+    text-align: center;
+    margin-top: 150px;
+    font-size: 100px;
+    color: white;
+}
+/* Fin de la partie du contact */
+
+/*Debut de la partie about */
+section .about{
+    background-color: rgba(226, 175, 166, 0.048);
+    margin-top: 8em;
+    display: flex;
+    text-align: justify;
+    margin-bottom: 2em;
+}
+section .about_right{
+    width: 90%;
+    margin-left: 10px;
+}
+
+section .about_right h2{
+    margin-top: -0.1em;
+}
+section .about_right p{
+    margin-top: -2em;
+}
+section .about_left{
+    margin-right: 10px;
+}
+section .about_left .logo{
+    width: 100%;
+    box-shadow:  5px 3px 7px -1px rgba(192, 192, 192, 0.5);
+}
+section .about_left .logo img{
+    width:90%;
+    height: auto;
+}
+
+.about_card{
+    background-color: rgba(226, 175, 166, 0.048);
+    border: 1px solid rgba(10, 10, 10, 0.116);
+    display: flex;
+    text-align: justify;
+    margin: 10px;
+    border-radius: 10px;
+}
+section .about_card_body{
+    width: 70%;
+    margin-left: 20px;
+}
+section .about_card_body h4{
+    margin-top: -0.1em;
+}
+section .about_card_body .p1{
+    margin-top: -2em;
+}
+/* La partie de la sensibilisation */
+section .sens{
+    margin-top:30em;
+    background-color: rgba(226, 175, 166, 0.048);
+    display: flex;
+    text-align: justify;
+    margin-bottom: 2em;
+}
+section .sens_left{
+    width: 80%;
+    padding: 10px 10px;
+    margin-right: 10px;
+    /* box-shadow:  5px 3px 7px -1px rgba(192, 192, 192, 0.5); */
+    box-shadow: 0px 0px 15px #0000001a;  
+}
+section .sens_left h3{
+    margin-top: -12px;
+}
+section .sens_left .title{
+    /* box-shadow:  5px 3px 7px -1px rgba(192, 192, 192, 0.5); */
+    margin-right: 10px;
+}
+section .sens_right{
+    width: 25%;
+    margin-left:10px ;
+    box-shadow: 0px 0px 15px #0000001a;
+    border: 1px solid rgba(221, 220, 220, 0.185);
+    padding: 2px;
+    background-color: transparent;
+
+}
+section .sens_right .sens-body-card{
+    background-color:transparent;
+    display: flex;
+    margin-bottom: 0.2em;
+    padding: 2px;
+}
+section .sens_right .sens-body-card .card-img{
+    width:35%;
+}
+
+section .sens_right .sens-body-card .card-img img{
+    width:60%;
+    height: auto;
+}
+section .sens_right .sens-body-card .card-text{
+    width:75%;
+    padding: 0 5px;
+}
+section .sens_right .sens-body-card .card-text p{
+    font-size: 11px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: none;
+    margin-top:-6px ;
+    margin-left: -25px;
+    color: #ec4445;
+}
+section .sens_right .sens-body-card .card-text p a{
+    font-size: 11px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: none;
+    color: #ec4445;
+}
+
+/* Fin de la partie about */
+
+.identification ,.antecedent,.calandirier-cpn,.cpn1{
+    border: 2px solid green;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 10px;
+}
+
+/* La partie des identification */
+.identification .footer-id{
+    display: flex;
+    text-align: justify;
+    padding: 5px;
+}
+.identification .footer-id .acte,.allocation{
+    width: 50%;
+}
+
+.identification p span{
+    margin-left:10px;
+    margin-right: 10px;
+    border-bottom:1px dotted #000; 
+    font-family: italic;
+    font-size: 18px;
+}
+.identification .footer-id .acte .acte-p{
+    width:50%;
+    border-bottom:1px dotted #000; 
+    font-family: italic;
+    font-size: 18px;
+}
+
+.identification .footer-id .allocation .acte-p{
+    width:50%;
+    border-bottom:1px dotted #000; 
+    font-family: italic;
+    font-size: 18px;
+}
+.identification .cmu{
+    width:25%;
+    border-bottom:1px dotted #000; 
+    font-family: italic;
+    font-size: 18px;
+}
+/* Fin de la partie des identifications */
+
+/* La partie des antecedents */
+.antecedent h4{
+    font-weight: 700;
+    font-family: sans-serif;
+}
+.antecedent  p {
+    margin-left:10px;
+    margin-right: 10px;
+    font-family: italic;
+    font-size: 18px;
+}
+.antecedent .mere p span{
+    margin-left:10px;
+    margin-right: 10px;
+    border-bottom:1px dotted #000; 
+    font-family: italic;
+    font-size: 15px;
+}
+
+.antecedent .pere p span{
+    margin-left:10px;
+    margin-right: 10px;
+    border-bottom:1px dotted #000; 
+    font-family: italic;
+    font-size: 15px;
+}
+.antecedent .fam, .at, .traite{
+    font-family: sans-serif;
+    font-size: 15px;
+}
+/* Fin de la partie des antecedents */
+
+
+/* La partie du calandirie cpn */
+
+.calandirier-cpn .table-cpn{
+    border-collapse:collapse;
+    width:100%;   
+}
+.calandirier-cpn .table-cpn .th-cpn{
+    background-color: green;
+    color:#fff;
+    font-weight: 900;
+    font-size: 20px;
+}
+.calandirier-cpn .table-cpn .tr-cpn:hover{
+    background-color: green;
+    color:#fff;
+}
+.calandirier-cpn .table-cpn .td-cpn{
+    font-weight: 700;
+}
+.calandirier-cpn .table-cpn .td-cpn,.th-cpn{
+    border:1px solid black;
+    width:20%;
+    text-align: center;
+    padding: 10px;
+}
+.calandirier-cpn .table-cpn .tr-cpn .td-cpn:first-child{
+    font-weight: 700;
+    font-size: 18px;
+}
+/* Fin de la partie calandirie cpn */
+
+/* La partie du CPN1 */
+
+.cpn1 .partie-1 p{
+    font-family: sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+}
+.cpn1 .partie-1 p span{
+    margin-left:10px;
+    margin-right: 10px;
+    border-bottom:1px dotted black;
+    font-family: italic;
+    font-size: 15px;
+    font-weight: 400;
+}
+.cpn1 .partie-2{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top: 20px;
+}
+.cpn1 .partie-2 span{
+    border: 1px solid orangered;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+    margin-right: 30px;
+    border-radius: 100px;
+    background: orangered;
+    color: #fff;
+    font-weight: 700;
+}
+.cpn1 .partie-3{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.cpn1 .partie-3 p{
+    font-family: sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+}
+.cpn1 .partie-3 p span{
+    margin-left:10px;
+    margin-right: 10px;
+    border-bottom:1px dotted black;
+    font-family: italic;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.cpn1 .partie-4 .table-elements{
+    border-collapse:collapse;
+    width:60%;
+}
+.cpn1 .partie-4 .table-elements .td-element{
+    padding: 8px;
+}
+.cpn1 .partie-4 .table-elements .td-element:first-child{
+    font-weight: 700;
+    font-size: 17px;
+}
+.cpn1 .partie-4 .table-elements .td-element label{
+    margin-left: 30px;
+}
+.cpn1 .partie-4 .table-elements .td-element .text{
+    font-size: 12px;
+    font-size: italic;
+    font-weight: none;
+}
+/* Fin de la partie du CPN1 */
