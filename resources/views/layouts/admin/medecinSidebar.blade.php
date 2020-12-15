@@ -20,8 +20,8 @@
 </li>
 
 <li class="nav-item">
-    <a class="nav-link" href="#">
-        <span class="menu-title">Paiement</span>
+    <a class="nav-link" href="{{ route('admin.clients.index') }}">
+        <span class="menu-title">Clients</span>
         <i class="mdi mdi-format-list-bulleted menu-icon"></i>
     </a>
 </li>

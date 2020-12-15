@@ -16,12 +16,15 @@ class CreateAppointmentTable extends Migration
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
             $table->date('date');
-            $table->time('time');
-            $table->bigInteger('carnet_id')->unsigned()->index();
+            $table->string('description');
+            $table->bigInteger('type_appointment_id')->unsigned()->index();
+            $table->bigInteger('patient_id')->unsigned()->index();
             $table->bigInteger('medecin_id')->unsigned()->index();
+            $table->boolean('passed')->default(false);
             $table->timestamps();
 
-            $table->foreign('carnet_id')->references('id')->on('carnets')->onDelete('cascade');
+            $table->foreign('type_appointment_id')->references('id')->on('type_appointments')->onDelete('cascade');
+            $table->foreign('patient_id')->references('id')->on('patients')->onDelete('cascade');
             $table->foreign('medecin_id')->references('id')->on('medecins')->onDelete('cascade');
         });
     }

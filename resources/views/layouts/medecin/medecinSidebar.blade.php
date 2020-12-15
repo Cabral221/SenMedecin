@@ -6,19 +6,13 @@
 </li>
 
 <li class="nav-item">
-    <a class="nav-link" href="pages/icons/mdi.html">
-        <span class="menu-title">Services</span>
-        <i class="mdi mdi-contacts menu-icon"></i>
-    </a>
-</li>
-<li class="nav-item">
-    <a class="nav-link" href="pages/icons/mdi.html">
+    <a class="nav-link" href="{{ route('medecin.patients.index') }}">
         <span class="menu-title">Patients</span>
         <i class="mdi mdi-contacts menu-icon"></i>
     </a>
 </li>
 <li class="nav-item">
-    <a class="nav-link" href="pages/icons/mdi.html">
+    <a class="nav-link" href="#">
         <span class="menu-title">Rendez-vous</span>
         <i class="mdi mdi-contacts menu-icon"></i>
     </a>
