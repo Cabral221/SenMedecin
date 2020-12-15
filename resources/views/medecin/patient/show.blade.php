@@ -16,11 +16,11 @@
     </nav>
 </div>
 
-<div class="card">
+<div class="card card-outline-primary">
     <div class="card-body">
         <div class="d-flex justify-content-between">
             <div>
-                <span class="card-title">{{ $patient->fullName }} 
+                <span class="card-title mb-2">{{ $patient->fullName }} 
                     @if (!$patient->is_active) 
                         <span class="badge badge-pill badge-danger">Ce compte n'est pas activé</span>                    
                     @else
@@ -32,10 +32,17 @@
                         @endif
                     @endif
                 </span>
-                <h5 class="mt-2">Rendez-vous à venir</h5>
-                @if ($patient->is_active && $patient->come() != null)
-                    <span>{{ $patient->come()->date }} : {{ $patient->come()->type() }}</span>
-                @endif
+                <br>
+                <div class="border border-primary px-3 py-2 mt-2">
+                    <h5 class="mt-1">Rendez-vous à venir</h5>
+                    @if ($patient->is_active && $patient->come() != null)
+                        <span>{{ $patient->come()->date->locale('fr_FR')->isoFormat('LL') }}</span>
+                        <br>
+                        <span>Type : {{ $patient->come()->type() }}</span>
+                        <br>
+                        <span>Description : {{ $patient->come()->description }}</span>
+                    @endif
+                </div>
             </div>
             <div>
                 <span>Identifiant Unique</span>

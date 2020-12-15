@@ -15,11 +15,11 @@ class CreateAntecedentsTable extends Migration
     {
         Schema::create('antecedents', function (Blueprint $table) {
             $table->id();
-            $table->text('father')->default(' ');
-            $table->text('mother')->default(' ');
-            $table->text('family')->default(' ');
-            $table->text('other_exam')->default(' ');
-            $table->text('treating')->default(' ');
+            $table->text('father');
+            $table->text('mother');
+            $table->text('family');
+            $table->text('other_exam');
+            $table->text('treating');
             $table->BigInteger('patient_id')->unsigned()->index();
             $table->timestamps();
 

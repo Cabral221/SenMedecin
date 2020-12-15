@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\Carnet;
 use App\Models\Medecin;
 use App\Models\Antecedent;
+use App\Models\TypeAppointment;
 use Illuminate\Notifications\Notifiable;
 use App\Services\Appointment\Appointment;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -50,6 +51,26 @@ class Patient extends Authenticatable
         static::created(function (Patient $patient) use($now) {
             $patient->referential = $now->year.$now->month.'-'.$patient->medecin->id.'-'.$patient->id;
             $patient->save();
+
+            // Programmer le VAT
+            $type = TypeAppointment::where(['libele' => 'Vaccinal'])->first();
+            $vats = Vat::all();
+            foreach($vats as $vat){
+                $data = [];
+                
+                if($vat->period_month == 0){
+                    $data['passed'] = true;
+                }
+
+                $data = array_merge([
+                    'date' => $now->addMonth($vat->period_month),
+                    'description' => $vat->vaccin,
+                    'type_appointment_id' => $type->id,
+                    'medecin_id' => $patient->medecin->id,
+                ], $data);
+
+                $patient->appointments()->create($data);
+            }
         });
     }
 

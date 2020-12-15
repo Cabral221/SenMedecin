@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Appointment extends Model
 {
-    public $fillable = ['type_appointment_id','description','medecin_id','date'];
+    public $fillable = ['type_appointment_id','description','medecin_id','date', 'passed'];
     
     public $casts = [
         'date' => 'date',

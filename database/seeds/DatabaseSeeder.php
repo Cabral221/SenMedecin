@@ -25,8 +25,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UserSeeder::class);
-        // $faker = Faker\Factory::create();
+        $this->call(DataSeeder::class);
+        // $faker = Factory::create('fr_FR');
 
         Admin::create([
             'name' => 'Empro SN',

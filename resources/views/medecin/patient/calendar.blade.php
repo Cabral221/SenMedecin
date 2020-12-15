@@ -40,7 +40,7 @@
                         <span class="d-block">À : {{ $appointment->medecin->responsable->partener->name }}</span>
                     </td>
                     <td>
-                        @if ($appointment->passed) <span class="badge badge-success">passé</span>
+                        @if ($appointment->passed) <span class="badge badge-success">Passé</span>
                         @else   <span class="badge badge-outline-success">A venir</span>
                         @endif
                     </td>
