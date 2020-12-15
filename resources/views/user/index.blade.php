@@ -15,7 +15,7 @@
 	   </div>
 	   <div class="card-right">
 		   <div class="logo">
-			   <img src="{{ asset('user/img/1.png') }}" alt="" srcset="">
+			   <img src="{{ asset('user/img/axxu_rose.png') }}" alt="" srcset="">
 			</div>
 	   </div>
    </section>
