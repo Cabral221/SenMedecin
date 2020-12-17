@@ -36,6 +36,24 @@ h6{font-size: 20px;font-family: cursive;color: black;font-weight: 700;color: rgb
 .text-warning{
     color: rgb(247, 140, 0);
 }
+.btn-primary{
+    text-align: center;
+    border:1px solid rgba(255, 102, 171, 0.867);
+    background-color: rgba(255, 102, 171, 0.867);;
+    padding: 12px 20px;
+    outline: none;
+    color: #fff;
+    border-radius: 5px;
+    transition:0.25s; 
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 700;
+    width: 100%;
+}
+.btn-primary:hover{
+    background: transparent;
+    color: rgba(255, 102, 171, 0.867);
+}
 h1 .section-title{
     color: rgb(231, 122, 122);
     margin-right:20px;
@@ -118,7 +136,7 @@ nav ul .li-connecter .chevero-login{
     margin-left:5px;
 }
 nav ul .li-connecter ul{
-    border: 1px solid rgba(255, 102, 171, 0.867);;
+    border: 1px solid rgba(255, 102, 171, 0.867);
     width: 15%;
     padding-bottom:2px ;
     background-color:rgba(255, 102, 171, 0.867);
@@ -153,22 +171,22 @@ nav ul .li-connecter:hover ul{
 
 /* La premiere section de la page d'acceuil */
 .box-shadow{
-    margin-top:10em;
-    margin-bottom: 2em;
+    
     background:transparent;
-    /* box-shadow: 2px 2px 12px rgba(0,0,0,0.2); */
-     box-shadow: 0px 0px 15px #0000001a;  
+    box-shadow: 0px 0px 15px #0000001a;  
 }
 section{
     margin-top: 5em;
     display: flex;
     text-align: justify;
     padding: 20px;
+
 }
 .section-index{
     margin-top:-1em;
-    padding-top: 5em;
-    padding-bottom:1em ;
+    margin-bottom: -1em;
+    padding-top: 1em;
+    padding-bottom:3em ;
 }
 section .card-left {
     width: 65%;
@@ -190,9 +208,9 @@ section .card-right {
 }
 section .card-right .logo{
    width: 100% auto;
+   margin-top: -25px;
 }
 section .card-right .logo img{
-    box-shadow: 2px 2px 3px 2px rgba(19, 18, 18, 0.295);
     width:100%;
     height: auto;
     float: right;
@@ -268,25 +286,22 @@ footer p { font-size:13px; color:#CCC; padding-bottom:0px; margin-bottom:8px;}
 .bottom_border{
     display: flex;
     flex-direction: row;
-
 }
 .footer_left{
-    width:25%;
-    padding: 5px;
-    margin: 0 10px;
+    width:40%;
+    margin: 0 20px;
 }
 .footer_center_1{
-    width:20%;
-    padding: 5px;
-    margin: 0 10px;
+    width:30%;
+    margin-left: 5em;
+    
 }
-.footer_center_2{
-    width:20%;
-    padding: 5px;
-    margin: 0 10px;
-}
+/* .footer_center_2{
+    width:30%;
+    text-align: right;
+} */
 .footer_right{
-    width:35%;
+    width:30%;
     padding: 5px;
     margin: 0 10px;
 }
@@ -314,6 +329,10 @@ footer p { font-size:13px; color:#CCC; padding-bottom:0px; margin-bottom:8px;}
 .social_footer_ul li i {  width:20px; height:20px; text-align:center;}
 .footer_footer p{
     text-align: center;
+    margin-top: 20px;
+}
+.footer_footer p a{
+    color: rgba(255, 102, 171, 0.867);
 }
 
 /* Fin de la partie stylisation du footer */
@@ -706,78 +725,123 @@ section .profile-left .menu span{
 
 section .banier-contact{
     width: 100%;
-    border: 1px solid rgba(0, 0, 0, 0.027);
-    background-color: rgba(0, 0, 0, 0.075);
+    border: 1px solid rgba(255, 102, 171, 0.867);
+    background-color: rgba(255, 102, 171, 0.867);
+    margin-top: -1.5em;
 }
 section .banier-contact h1{
     text-align: center;
     font-size: 3em;
-    color: rgba(0, 0, 0, 0.418);
+    color:#fff;
 }
-section .contact-group{
-    display: flex;
+.contact_section{
+    display: block;
+    background-color: #fff;
+    box-shadow: 0px 0px 15px #0000001a; 
+    margin-top: -1px;
+}
+.contact_section .infos_contact{
+    text-align: center;
+    margin-left: 13em;
+    margin-top: 20px;
     width: 100%;
 }
-section .contact-form,.google-map{
+.contact_section .infos_contact .content{
+    display: flex;
+    flex-direction: space-around;
+    width: 100%;
+    text-align:right;
+}
+.contact_section .infos_contact .content p i{
+    border: 1px solid rgba(255, 102, 171, 0.867);
+    padding: 15px;
+    margin:0px 10px;
+    border-radius: 100%;
+    color: rgba(255, 102, 171, 0.867);
+}
+.contact_section .infos_contact .content p i:hover{
+    border: 1px solid rgba(255, 102, 171, 0.867);
+    color: #fff;
+    background-color:  rgba(255, 102, 171, 0.867);
+}
+.contact_section .infos_contact .content p span{
+    margin-right: 30px;
+}
+section .contact_form{
+    display: flex;
+    width: 100%;
+  
+}
+section .contact_form .form_left,.form_right{
     width: 50%;
 }
-section .contact-group .contact-form{
-    box-shadow: 0px 0px 15px #0000001a; 
-    margin-right: 10px;
-    padding: 10px;
-    background-color: #fff;
-}
-section .contact-group .contact-form form .form_group label{
-    color:rgba(0, 0, 0, 0.616);
+section .contact_form  label{
+    color:rgba(255, 102, 171, 0.867);
     text-align: left;
     
 }
-section .contact-form form input[type="email"],input[type="text"],textarea{
+section .contact_form .form_left {
+    padding: 2px;
+    margin-right: 10px;
+}
+section .contact_form .form_left input[type="email"],input[type="text"],textarea{
     padding: 15px;
     width: 100%;
     outline: none;
     text-align: center;
-    border: 1px solid black
+    border: 1px solid rgba(0, 0, 0, 0.199);
+    border-radius:7px;
+    cursor: pointer;
+    color:rgba(255, 102, 171, 0.867);
 }
-section .contact-form form input[type="email"]:focus{
+section .contact_form .form_left input[type="email"]:focus{
     border:1px solid rgba(255, 102, 171, 0.867);
 }
-section .contact-form form input[type="text"]:focus{
+section .contact_form .form_left input[type="text"]:focus{
     border:1px solid rgba(255, 102, 171, 0.867);
 }
-section .contact-form form textarea:focus{
-    border:1px solid rgba(255, 102, 171, 0.867);
+section .contact_form .form_right textarea{
+    width: 100%;
+    height: 242px;
 }
-section .contact-form form input[type="submit"]{
+section .contact_form .form_right textarea:focus{
+    border:1px solid rgba(255, 102, 171, 0.867);
+    width: 100%;
+    height: 242px;
+}
+section .contact_form .form_right{
+    display: block;
+    margin-left: 10px;
+}
+section .contact_form .form_right input[type="submit"]{
     margin-top: 8px;
     width: 150px;
     padding: 15px 10px;
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 700;
-    background-color: transparent;
-    color:  rgba(255, 102, 171, 0.867);
+    background-color:  rgba(255, 102, 171, 0.867);
+    color: #fff;
     border-radius: 5px;
     border: 1px solid rgba(255, 102, 171, 0.867);
     border-radius: 5px;
     outline: none;
+    width: 100%;
 }
-
-section .google-map{
-    background-color: rgba(0, 0, 0, 0.068);
-    /* box-shadow:  -1px 2px 7px 4px rgba(192, 192, 192, 0.5); */
+section .contact_form .form_right input:hover{
+    border: 1px solid rgba(255, 102, 171, 0.867);
+    background-color: transparent;
+    color:  rgba(255, 102, 171, 0.867);
 }
-section .google-map h1{
-    text-align: center;
-    margin-top: 150px;
-    font-size: 100px;
-    color: white;
+.google-map{
+    background-color: rgba(255, 102, 171, 0.867);
+    width: 100%;
+    height: 25em;
 }
 /* Fin de la partie du contact */
 
 /*Debut de la partie about */
 section .about{
-    background-color: rgba(226, 175, 166, 0.048);
-    margin-top: 8em;
+    margin-top: -2em;
     display: flex;
     text-align: justify;
     margin-bottom: 2em;
@@ -785,20 +849,27 @@ section .about{
 section .about_right{
     width: 90%;
     margin-left: 10px;
+    padding-top:15px ;
+
 }
 
 section .about_right h2{
     margin-top: -0.1em;
 }
-section .about_right p{
-    margin-top: -2em;
+section .about_right .about_right_body{
+    margin-top: -3em;
+}
+section .about_right .about_right_body p{
+    line-height: 1.5em;
+}
+section .about_right .about_right_body .contact{
+    margin-top:3em;
 }
 section .about_left{
     margin-right: 10px;
 }
 section .about_left .logo{
     width: 100%;
-    box-shadow:  5px 3px 7px -1px rgba(192, 192, 192, 0.5);
 }
 section .about_left .logo img{
     width:90%;
@@ -806,8 +877,7 @@ section .about_left .logo img{
 }
 
 .about_card{
-    background-color: rgba(226, 175, 166, 0.048);
-    border: 1px solid rgba(10, 10, 10, 0.116);
+    border: 1px solid rgba(255, 102, 171, 0.867);
     display: flex;
     text-align: justify;
     margin: 10px;
@@ -824,67 +894,147 @@ section .about_card_body .p1{
     margin-top: -2em;
 }
 /* La partie de la sensibilisation */
+.sens_top h4{
+    margin-top:2.5em;
+    margin-left: 7.5em;
+    margin-bottom: -3em;
+
+}
 section .sens{
-    margin-top:30em;
-    background-color: rgba(226, 175, 166, 0.048);
     display: flex;
     text-align: justify;
     margin-bottom: 2em;
 }
 section .sens_left{
-    width: 80%;
-    padding: 10px 10px;
+    display: block;
+    width: 70%;
+}
+section .sens_left .sens_left_content{
+    display: flex;
+    flex-direction: space-between;
+    width: 100%;
+    padding: 0px 15px;
     margin-right: 10px;
-    /* box-shadow:  5px 3px 7px -1px rgba(192, 192, 192, 0.5); */
-    box-shadow: 0px 0px 15px #0000001a;  
+    background-color: #fff;
 }
-section .sens_left h3{
-    margin-top: -12px;
+section .sens_left .sens_left_content .sidebar{
+    width:25%;
+    padding: 10px;
+    margin-right: 15px;
+    text-align: right;
 }
-section .sens_left .title{
-    /* box-shadow:  5px 3px 7px -1px rgba(192, 192, 192, 0.5); */
-    margin-right: 10px;
+section .sens_left .sens_left_content .sidebar ul{
+    list-style: none;
 }
+section .sens_left .sens_left_content .sidebar ul li{
+    display:inline-block;
+    font-size:12px
+}
+section .sens_left .sens_left_content .image{
+    width:75%;
+}
+section .sens_left .sens_left_content .image .body_header{
+    display: flex;
+    flex-direction: space-between;
+    margin-top: -1.5em;
+    margin-bottom: -2.1em;
+}
+section .sens_left .sens_left_content .image .body_header .article_title{
+    width: 60%;
+    font-size: 18px;
+    font-weight: 700;
+}
+section .sens_left .sens_left_content .image .body_header .social{
+    width: 40%;
+    text-align: right;
+}
+section .sens_left .sens_left_content .image p img{
+    width:100%;
+    height: auto;
+}
+section .sens_left .sens_left_content .image .text{
+    padding: 10px 0px;
+    color: rgba(0, 0, 0, 0.596);
+    font-size: 17px;
+    text-align: justify;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+section .sens_left .sens_left_content .image .btn-primary{
+    text-align: center;
+    border:1px solid rgba(255, 102, 171, 0.867);
+    background-color: rgba(255, 102, 171, 0.867);;
+    padding: 12px 20px;
+    outline: none;
+    color: #fff;
+    border-radius: 5px;
+    transition:0.25s; 
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 700;
+    width: 100%;
+  }
+  section .sens_left .sens_left_content .image .btn-primary:hover{
+    background: transparent;
+    color: rgba(255, 102, 171, 0.867);;
+   
+  }
+
 section .sens_right{
-    width: 25%;
+    width: 30%;
     margin-left:10px ;
-    box-shadow: 0px 0px 15px #0000001a;
-    border: 1px solid rgba(221, 220, 220, 0.185);
-    padding: 2px;
+    /* box-shadow: 0px 0px 15px #0000001a; */
+    border: 1px solid rgba(221, 220, 220, 0.486);
+    padding: 20px;
     background-color: transparent;
 
 }
+section .sens_right .article_populaire{
+    margin-top: -0.2px;
+    margin-bottom: -1px;
+    text-align: center;
+    background-color: rgba(255, 102, 171, 0.867);
+    color: #fff;
+    border-radius: 2px;
+    padding: 5px;
+}
 section .sens_right .sens-body-card{
+    width: 100%;
     background-color:transparent;
     display: flex;
-    margin-bottom: 0.2em;
-    padding: 2px;
+    margin-top: 1.1em;
+    margin-bottom: -1.2em; 
 }
 section .sens_right .sens-body-card .card-img{
-    width:35%;
+    width:28%;
 }
 
 section .sens_right .sens-body-card .card-img img{
-    width:60%;
+    width:100%;
     height: auto;
 }
 section .sens_right .sens-body-card .card-text{
-    width:75%;
-    padding: 0 5px;
+    width:62%;
+    padding:15px;
+    margin-left: 18px;
 }
-section .sens_right .sens-body-card .card-text p{
-    font-size: 11px;
+section .sens_right .sens-body-card .card-text .date_article{
+    font-size: 13px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: none;
-    margin-top:-6px ;
+    margin-top:-0.01em ;
     margin-left: -25px;
-    color: rgba(255, 102, 171, 0.867);
+    text-align: left;
+    color: #000;
 }
-section .sens_right .sens-body-card .card-text p a{
-    font-size: 11px;
+section .sens_right .sens-body-card .card-text .title_article{
+    margin-top: -1.3em;
+    margin-left: -25px;
+    font-size: 13px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: none;
-    color: rgba(255, 102, 171, 0.867);
+    color: #000;
+    text-align: left;
 }
 
 /* Fin de la partie about */

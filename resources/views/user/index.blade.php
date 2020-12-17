@@ -7,7 +7,7 @@
 <div class="box-shadow section-index container">
 <section class="home_top">
 	<div class="card-left">
-		<h1 class=""><span class="section-title">AXXU</span>NJUREL</h1>
+		<h1 class="">AXXU NJUREL</h1>
 		<div class="card-body">
 				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt nemo nam commodi aliquid minima ratione nihil, praesentium delectus rem, dolorum cupiditate pariatur debitis temporibus iusto eveniet reiciendis repellat ea laborum.</p>
 				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt nemo nam commodi aliquid minima ratione nihil, praesentium delectus rem, dolorum cupiditate pariatur debitis temporibus iusto eveniet reiciendis repellat ea laborum.</p>
@@ -15,7 +15,7 @@
 	   </div>
 	   <div class="card-right">
 		   <div class="logo">
-			   <img src="{{ asset('user/img/axxu_rose.png') }}" alt="" srcset="">
+			   <img src="{{ asset('user/img/axxu_ombre.png') }}" alt="" srcset="">
 			</div>
 	   </div>
    </section>

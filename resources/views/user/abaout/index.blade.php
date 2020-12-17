@@ -8,14 +8,17 @@
    <section class="about">
 	   <div class="about_left">
 		   <div class="logo">
-			   <img src="{{ asset('user/img/1.png') }}" alt="" srcset="">
+			   <img src="{{ asset('user/img/axxu_ombre.png') }}" alt="" srcset="">
 			</div>
 	   </div>
 	   <div class="about_right">
 			<h2 class="">Titre De La Page</h2>
 			<div class="about_right_body">
 				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt nemo nam commodi aliquid minima ratione nihil, praesentium delectus rem, dolorum cupiditate pariatur debitis temporibus iusto eveniet reiciendis repellat ea laborum.</p>
-			<br><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt nemo nam commodi aliquid minima ratione nihil, praesentium delectus rem, dolorum cupiditate pariatur debitis temporibus iusto eveniet reiciendis repellat ea laborum.</p>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt nemo nam commodi aliquid minima ratione nihil, praesentium delectus rem, dolorum cupiditate pariatur debitis temporibus iusto eveniet reiciendis repellat ea laborum.</p>
+			<p class="contact">
+				<a href="" class=" btn-primary">Contactez Nous</a>
+			</p>
 			</div>
 	   </div>
    </section>
