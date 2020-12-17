@@ -86,11 +86,11 @@
                 </div>
                 <hr>
                 <div class="mb-1">
-                    <span class="badge badge-pill badge-primary">3 éme</span>
+                    <span class="badge badge-pill badge-primary">{{ $patient->pregnancies->count() }} éme</span>
                     <span>grossesse (s) enregister dans la plateforme</span>
                 </div>
                 <div class="mb-1">
-                    <span class="badge badge-pill badge-primary">2</span>
+                    <span class="badge badge-pill badge-primary">{{ $patient->childrens->count() }}</span>
                     <span>enfants (s) enregistrer dans la plateforme</span>
                 </div>
             </div>
