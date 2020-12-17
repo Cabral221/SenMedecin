@@ -54,6 +54,10 @@ Route::prefix('/medecin')->namespace('Medecin')->name('medecin.')->group(functio
     Route::get('/patients/{patient}/calendar', 'PatientController@calendar')->name('patients.calendar');
     Route::resource('/patients', 'PatientController');
 
+    Route::delete('/child/{patient}/destroy/{children}', 'ChildController@destroy')->name('patients.childs.destroy');
+    Route::put('/child/{patient}/update/{children}', 'ChildController@update')->name('patients.childs.update');
+    Route::post('/child/{patient}/store', 'ChildController@store')->name('patients.childs.store');
+    Route::get('/child/{patient}/create', 'ChildController@create')->name('patients.childs.create');
     Route::get('/child/{patient}', 'ChildController@index')->name('patients.childs');
     Route::get('/child/{patient}/children/{children}', 'ChildController@show')->name('patients.childs.show');
     

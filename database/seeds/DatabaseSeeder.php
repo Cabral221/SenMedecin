@@ -127,6 +127,7 @@ class DatabaseSeeder extends Seeder
             'first_name' => 'children un',
             'last_name' => 'child',
             'birthday' => Carbon\Carbon::now()->subMonth(),
+            'genre' => 'Masculin',
         ]);
 
         Post::create([
