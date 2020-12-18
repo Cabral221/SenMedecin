@@ -39,11 +39,15 @@ class CommentController extends Controller
          $this->validate($request,[
             'full_name' => 'required',
             'email' => 'required',
-            'message' => 'required',
+            'comment' => 'required',
          ]);
 
-         $comment = Comment::create($request->all());
-         $comment->save();
+         $comment_store = new Comment;
+         $comment_store->full_name = $request->full_name;
+         $comment_store->email = $request->email;
+         $comment_store->comment = $request->comment;
+         $comment_store->post_id = 1;
+         $comment_store->save();
          // Flashy::success('Votre message a ete envoyer');
         return back();
     }

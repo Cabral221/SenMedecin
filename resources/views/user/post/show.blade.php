@@ -6,7 +6,7 @@
 <!-- Premiere section -->
 
  <div class="section-index box-shadow container sens_top">
-	 <h4 class="blog_show_title">Blog</h4>
+	 <h4 class="blog_show_title">Un chevalier conduisant son cheval </h4>
 	 <section class=" container sens">
 		 <div class="sens_left">
 	 	<p>
@@ -21,13 +21,13 @@
 						<li><a href="#">Football,</a></li>
 					</ul>
 					<div class="infos">
-						<p class=""><a href="#">Ousmane Diallo <i class="fa fa-user"></i></a></p>
+						<!-- <p class=""><a href="#">Ousmane Diallo <i class="fa fa-user"></i></a></p> -->
 						<p class=""><a href="#">12 Dec, 2017 <i class="fa fa-clock"></i></a></p>
 						<p class=""><a href="#">1.2M Views <i class="fa fa-eye"></i></a></p>
 						<p class=""><a href="#">06 Comments <i class="fa fa-comments"></i></a></p>
 						<p class="social"> 
-							<a href="#"><span> like <i class="fa fa-user"></i></span> </a>
-							<a href="#"><span>Dislike <i class="fa fa-user"></i></span></a> 
+							<a href="#"><span> like <i class="fa fa-thumbs-up"></i></span> </a>
+							<a href="#"><span>Dislike <i class="fa fa-thumbs-down"></i></span></a> 
 						</p>						
 					</div>
 				</div>
@@ -80,9 +80,9 @@
 						</div>
 						
 						<div class="text">
-							<textarea class="form-control @error('message') is-invalid @enderror" name="message" value="{{ old('message') }}"  autocomplete="message" autofocus id="message" cols="20" rows="5" placeholder="Votre Commentaire"></textarea>
+							<textarea class="form-control @error('comment') is-invalid @enderror" name="comment" value="{{ old('comment') }}"  autocomplete="comment" autofocus id="comment" cols="20" rows="5" placeholder="Votre Commentaire"></textarea>
 							<div class="text-primary">
-								@error('message')
+								@error('comment')
 									<span class="invalid-feedback" role="alert">
 										<strong>{{ $message }}</strong>
 									</span>

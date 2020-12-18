@@ -31,12 +31,12 @@
 					<div class="body_header">
 						<p class="article_title">Un chevalier conduisant son cheval  </p>
 						<p class="social"> 
-							<a href="#"><span> like <i class="fa fa-user"></i></span> </a>
-							<a href="#"><span>Dislike <i class="fa fa-user"></i></span></a> 
+							<a href="#"><span> like <i class="fa fa-thumbs-up"></i></span> </a>
+							<a href="#"><span>Dislike <i class="fa fa-thumbs-down"></i></span></a> 
 						</p>
 					</div>
 					<p class="text">
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima nemo quos corporis quae porro doloribus......
+						Sout-Titre
 					</p>
 					<p class="p_button">
 						<a href="{{ route('posts.show',1) }}" class="btn btn-primary">Detail de l'article</a>
@@ -70,7 +70,7 @@
 						</p>
 					</div>
 					<p class="text">
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima nemo quos corporis quae porro doloribus......
+						Sout-Titre
 					</p>
 					<p class="p_button">
 						<a href="{{ route('posts.show',1) }}" class="btn btn-primary">Detail de l'article</a>

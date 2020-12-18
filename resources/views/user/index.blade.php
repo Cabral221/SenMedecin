@@ -48,19 +48,16 @@
       color: #e74c3c;
       line-height: 20px;
     }
-    .card .content p{
-      text-align: justify;
-      margin: 10px 0;      
-    }
     .card .content .btn{
       display: block;
       text-align: left;
       margin: 10px 0;
     }
     .card .content .btn button{
-      background-color: #e74c3c;
-      color: #fff;
-      border: none;
+	  width:100%;
+	  border:1px solid rgba(255, 102, 171, 0.867);
+      background-color:rgba(255, 102, 171, 0.867);
+      color:#fff;
       outline: none;
       font-size: 17px;
       padding: 5px 8px;
@@ -69,7 +66,9 @@
       transition: .2s;
     }
     .card .content .btn button:hover{
-      transform: scale(.9);
+	  transform: scale(.9);
+	  background-color:transparent;
+	  color:rgba(255, 102, 171, 0.867);
     }
    </style>
 @endsection
@@ -145,7 +144,6 @@
 	<div class="content">
 	  <div class="title">Fann</div>
 	  <div class="subtitle">Hopital Regional</div>
-	  <p>Lorem, ipsum dolor.</p>
 	  <div class="btn">
 		<button class="">Visitez</button>
 	  </div>
@@ -158,21 +156,6 @@
 	<div class="content">
 	  <div class="title">Fann</div>
 	  <div class="subtitle">Hopital Regional</div>
-	  <p>Lorem, ipsum dolor.</p>
-	  <div class="btn">
-		<button class="">Visitez</button>
-	  </div>
-	</div>
-  </div>
-</div>
-
-<div class="card">
-  <div class="img">
-	<img src="{{asset('user/img/img.jpg')}}" alt="">
-	<div class="content">
-	  <div class="title">Fann</div>
-	  <div class="subtitle">Hopital Regional</div>
-	  <p>Lorem, ipsum dolor.</p>
 	  <div class="btn">
 		<button class="">Visitez</button>
 	  </div>
@@ -186,7 +169,6 @@
 	<div class="content">
 	  <div class="title">Fann</div>
 	  <div class="subtitle">Hopital Regional</div>
-	  <p>Lorem, ipsum dolor.</p>
 	  <div class="btn">
 		<button class="">Visitez</button>
 	  </div>
@@ -200,7 +182,19 @@
 	<div class="content">
 	  <div class="title">Fann</div>
 	  <div class="subtitle">Hopital Regional</div>
-	  <p>Lorem, ipsum dolor.</p>
+	  <div class="btn">
+		<button class="">Visitez</button>
+	  </div>
+	</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="img">
+	<img src="{{asset('user/img/img.jpg')}}" alt="">
+	<div class="content">
+	  <div class="title">Fann</div>
+	  <div class="subtitle">Hopital Regional</div>
 	  <div class="btn">
 		<button class="">Visitez</button>
 	  </div>
