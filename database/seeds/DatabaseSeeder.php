@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(DataSeeder::class);
+        // $this->call(DataSeeder::class);
         // $faker = Factory::create('fr_FR');
 
         Admin::create([
