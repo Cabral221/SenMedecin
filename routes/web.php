@@ -50,7 +50,6 @@ Route::prefix('/patient')->namespace('Patient')->name('patient.')->group(functio
 
 // Routes for medecin
 Route::prefix('/medecin')->namespace('Medecin')->name('medecin.')->group(function(){
-    Route::get('/home', 'MedecinController@index')->name('home');
     
     Route::get('/patients/{patient}/antecedents/create', 'AntecedentController@create')->name('patients.antecedent.create');
     Route::post('/patients/{patient}/antecedents/store', 'AntecedentController@store')->name('patients.antecedent.store');
@@ -59,10 +58,18 @@ Route::prefix('/medecin')->namespace('Medecin')->name('medecin.')->group(functio
     
     Route::get('/patients/{patient}/calendar', 'PatientController@calendar')->name('patients.calendar');
     Route::resource('/patients', 'PatientController');
+
+    Route::delete('/child/{patient}/destroy/{children}', 'ChildController@destroy')->name('patients.childs.destroy');
+    Route::put('/child/{patient}/update/{children}', 'ChildController@update')->name('patients.childs.update');
+    Route::post('/child/{patient}/store', 'ChildController@store')->name('patients.childs.store');
+    Route::get('/child/{patient}/create', 'ChildController@create')->name('patients.childs.create');
+    Route::get('/child/{patient}', 'ChildController@index')->name('patients.childs');
+    Route::get('/child/{patient}/children/{children}', 'ChildController@show')->name('patients.childs.show');
     
     Route::get('/pregnacies/{patient}/create', 'PregnacyController@create')->name('pregnacies.create');
     Route::post('/pregnacies/{patient}/store', 'PregnacyController@store')->name('pregnacies.store');
-
+    
+    Route::get('/home', 'MedecinController@index')->name('home');
 
     Route::namespace('Auth')->group(function(){
         Route::get('/login', 'LoginController@showLoginForm')->name('login');
@@ -106,7 +113,9 @@ Route::prefix('/partener')->namespace('Responsable')->name('responsable.')->grou
 Route::prefix('/admin')->namespace('Admin')->name('admin.')->group(function(){
     Route::get('/', 'AdminController@index')->name('home');
 
-    Route::resource('/clients', 'ClientController')->only(['index']);
+    Route::post('/clients/{patient}/active', 'ClientController@active')->name('clients.active');
+    Route::post('/clients/{patient}/deactive', 'ClientController@deactive')->name('clients.deactive');
+    Route::resource('/clients', 'ClientController')->only(['index','destroy']);
 
     Route::resource('/parteners', 'PartenerController');
     Route::resource('/services', 'ServiceController')->only(['index', 'store', 'update','destroy']);

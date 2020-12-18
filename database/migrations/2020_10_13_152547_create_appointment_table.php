@@ -18,11 +18,13 @@ class CreateAppointmentTable extends Migration
             $table->date('date');
             $table->string('description');
             $table->bigInteger('type_appointment_id')->unsigned()->index();
+            $table->bigInteger('children_id')->unsigned()->index()->nullable();
             $table->bigInteger('patient_id')->unsigned()->index();
             $table->bigInteger('medecin_id')->unsigned()->index();
             $table->boolean('passed')->default(false);
             $table->timestamps();
 
+            $table->foreign('children_id')->references('id')->on('childrens')->onDelete('cascade');
             $table->foreign('type_appointment_id')->references('id')->on('type_appointments')->onDelete('cascade');
             $table->foreign('patient_id')->references('id')->on('patients')->onDelete('cascade');
             $table->foreign('medecin_id')->references('id')->on('medecins')->onDelete('cascade');

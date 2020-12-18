@@ -3,7 +3,6 @@
 // use Faker\Factory;
 use App\Models\Info;
 use App\Models\Post;
-use App\Models\User;
 use App\Models\Admin;
 use App\Models\Carnet;
 use App\Models\Medecin;
@@ -108,19 +107,41 @@ class DatabaseSeeder extends Seeder
         
         $carnet = Carnet::create();
 
-        Patient::create([
+        $patient = Patient::create([
             'first_name' => 'Patient 1',
             'last_name' => 'pname',
             'birthday' => now(),
             'address' => '1603 dakar, no precis',
             'phone' => '770000000',
             'email' => 'patient@patient.com',
-            'referential' => Carbon\Carbon::now()->year.Carbon\Carbon::now()->month.'-'.$medecin->id,
             'medecin_id' => $medecin->id,
             'carnet_id' => $carnet->id,
             // 'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
+            'is_active' => true,
+        ]);
+
+        $patient2 = Patient::create([
+            'first_name' => 'Patient 2',
+            'last_name' => 'pname',
+            'birthday' => now(),
+            'address' => '1603 dakar, no precis',
+            'phone' => '770000001',
+            'email' => 'patient2@patient.com',
+            'medecin_id' => $medecin->id,
+            'carnet_id' => $carnet->id,
+            // 'email_verified_at' => now(),
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'remember_token' => Str::random(10),
+            'is_active' => false,
+        ]);
+
+        $patient->childrens()->create([
+            'first_name' => 'children un',
+            'last_name' => 'child',
+            'birthday' => Carbon\Carbon::now()->subMonth(),
+            'genre' => 'Masculin',
         ]);
 
         Post::create([

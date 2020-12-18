@@ -86,11 +86,11 @@
                 </div>
                 <hr>
                 <div class="mb-1">
-                    <span class="badge badge-pill badge-primary">3 éme</span>
+                    <span class="badge badge-pill badge-primary">{{ $patient->pregnancies->count() }} éme</span>
                     <span>grossesse (s) enregister dans la plateforme</span>
                 </div>
                 <div class="mb-1">
-                    <span class="badge badge-pill badge-primary">2</span>
+                    <span class="badge badge-pill badge-primary">{{ $patient->childrens->count() }}</span>
                     <span>enfants (s) enregistrer dans la plateforme</span>
                 </div>
             </div>
@@ -106,6 +106,8 @@
                     @endif
                     <a href="{{ route('medecin.patients.calendar', $patient) }}" class="btn btn-sm btn-block btn-primary mb-2">Voir Calendrier</a>
                     <a href="#" class="btn btn-sm btn-block btn-primary mb-2">Fixer un rendez-vous</a>    
+                    <a href="#" class="btn btn-sm btn-block btn-primary mb-2">Consulter VAT</a>    
+                    <a href="{{ route('medecin.patients.childs', $patient) }}" class="btn btn-sm btn-block btn-primary mb-2">Gestion des enfants - ({{ count($patient->childrens) }})</a>    
                 @endif
                 <a href="{{ route('medecin.patients.edit', $patient) }}" class="btn btn-sm btn-block btn-outline-warning mb-2"><i class="mdi mdi-content-save-edit"></i> Modifier les informations</a>
                 <a href="#" class="btn btn-sm btn-block btn-outline-danger mb-2" onclick="event.preventDefault();if(confirm('Étes vous sûr de vouloir supprimer cette patiente ?')){document.getElementById('form-delete-patient').submit();}"><i class="mdi mdi-delete"></i> Supprimer la patiente</a>

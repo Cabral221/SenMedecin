@@ -74,9 +74,24 @@ class Patient extends Authenticatable
         });
     }
 
+    protected static function active()
+    {
+        return static::where('is_active', true)->get();
+    }
+
+    protected static function notActive()
+    {
+        return static::where('is_active', false)->get();
+    }
+
     public function getFullNameAttribute()
     {
         return "{$this->first_name} {$this->last_name}";
+    }
+
+    public function childrens()
+    {
+        return $this->hasMany(Children::class);
     }
 
     public function medecin()

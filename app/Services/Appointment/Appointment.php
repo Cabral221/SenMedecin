@@ -4,12 +4,13 @@ namespace App\Services\Appointment;
 
 use App\Models\Medecin;
 use App\Models\Patient;
+use App\Models\Children;
 use App\Models\TypeAppointment;
 use Illuminate\Database\Eloquent\Model;
 
 class Appointment extends Model
 {
-    public $fillable = ['type_appointment_id','description','medecin_id','date', 'passed'];
+    public $fillable = ['type_appointment_id','description','medecin_id','date', 'passed', 'children_id'];
     
     public $casts = [
         'date' => 'date',
@@ -34,6 +35,11 @@ class Appointment extends Model
     public function medecin()
     {
         return $this->belongsTo(Medecin::class);
+    }
+
+    public function children()
+    {
+        return $this->belongsTo(Children::class);
     }
 
 }

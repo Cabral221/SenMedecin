@@ -17,11 +17,12 @@ class CreateChildrensTable extends Migration
             $table->id();
             $table->string('first_name');
             $table->string('last_name');
-            $table->dateTime('birthday');
-            $table->bigInteger('mom_id')->unsigned()->index();
+            $table->date('birthday');
+            $table->string('genre');
+            $table->bigInteger('patient_id')->unsigned()->index();
             $table->timestamps();
 
-            $table->foreign('mom_id')->references('id')->on('patients')->onDelete('cascade');
+            $table->foreign('patient_id')->references('id')->on('patients')->onDelete('cascade');
         });
     }
 
