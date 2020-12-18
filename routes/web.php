@@ -108,7 +108,9 @@ Route::prefix('/partener')->namespace('Responsable')->name('responsable.')->grou
 Route::prefix('/admin')->namespace('Admin')->name('admin.')->group(function(){
     Route::get('/', 'AdminController@index')->name('home');
 
-    Route::resource('/clients', 'ClientController')->only(['index']);
+    Route::post('/clients/{patient}/active', 'ClientController@active')->name('clients.active');
+    Route::post('/clients/{patient}/deactive', 'ClientController@deactive')->name('clients.deactive');
+    Route::resource('/clients', 'ClientController')->only(['index','destroy']);
 
     Route::resource('/parteners', 'PartenerController');
     Route::resource('/services', 'ServiceController')->only(['index', 'store', 'update','destroy']);
