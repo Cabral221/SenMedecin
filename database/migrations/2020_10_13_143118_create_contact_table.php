@@ -19,7 +19,6 @@ class CreateContactTable extends Migration
             $table->string('email');
             $table->string('object');
             $table->text('content');
-            $table->dateTime('read_at');
             $table->timestamps();
         });
     }

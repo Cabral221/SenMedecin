@@ -19,7 +19,7 @@
 			<li><a href="{{ route('index') }}">Acceuil</a></li>
 			<li><a href="{{ route('user.about') }}">A propos</a></li>
 			<li><a href="{{ route('posts.index') }}">Blog</a></li>
-			<li><a href="{{ route('user.contact') }}">Contact</a></li>
+			<li><a href="{{ route('contact.index') }}">Contact</a></li>
 			<li><a href="{{ route('patient.login') }}">Patientes</a></li>
 			<li><a href="{{ route('medecin.login') }}">Medecins</a></li>
 			<li><a href="{{ route('responsable.login') }}">Partenaires</a></li>
@@ -78,6 +78,7 @@
 </footer>
 
 
+@section('footersection')
 @section('footersection')
 
 @show

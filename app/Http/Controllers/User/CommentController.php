@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers\User;
-use App\Models\Contact;
+use App\Models\Comment;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ContactController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-        return view('user.contact.index');
+        //
     }
 
     /**
@@ -35,18 +35,16 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = $this->validate($request,[
-            'name' => 'required',
+        // dd($request->all);
+         $this->validate($request,[
+            'full_name' => 'required',
             'email' => 'required',
-            'object' => 'required',
-            'content' => 'required',
-            ]);
+            'message' => 'required',
+         ]);
 
-        // dd($request->all());
-
-       $contact = Contact::create($request->all());
-       $contact->save();
-        // Flashy::success('Votre message a ete envoyer');
+         $comment = Comment::create($request->all());
+         $comment->save();
+         // Flashy::success('Votre message a ete envoyer');
         return back();
     }
 

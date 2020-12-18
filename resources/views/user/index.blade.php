@@ -1,6 +1,77 @@
 @extends('user.layouts.app')
 @section('headsection')
-   
+  <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+   <style>
+	       /* *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins' , 'sans-serif';
+    }
+    html,body{
+      display: grid;
+      height: 100%;
+      place-items: center;
+      text-align: center;
+      background-color: #f2f2f2;
+    } */
+    .slider{
+      max-width: 100%;
+	  display: flex;
+	  /* flex-direction:space-between; */
+    }
+    .slider .card{
+		width:70%;
+      flex: 1;
+      background-color:#fff;
+    }
+    .slider .card .img img{ 
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .slider .card .content{
+      padding: 10px 20px;
+    }
+     .card .content .title{
+      font-size: 25;
+      font-weight: 600;
+    }
+    .card .content .subtitle{
+      font-size: 20;
+      font-weight: 600;
+      color: #e74c3c;
+      line-height: 20px;
+    }
+    .card .content p{
+      text-align: justify;
+      margin: 10px 0;      
+    }
+    .card .content .btn{
+      display: block;
+      text-align: left;
+      margin: 10px 0;
+    }
+    .card .content .btn button{
+      background-color: #e74c3c;
+      color: #fff;
+      border: none;
+      outline: none;
+      font-size: 17px;
+      padding: 5px 8px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: .2s;
+    }
+    .card .content .btn button:hover{
+      transform: scale(.9);
+    }
+   </style>
 @endsection
 @section('main-content')
 <!-- Premiere section -->
@@ -65,18 +136,91 @@
 <!-- fin de la troisieme section -->
 
 <!-- Section des partenaire -->
-<section class="container partener top-section">
-	<div class="card-partener">
-			<img src="{{ asset('user/img/2.png') }}" alt="" srcset="">
-		<div class="card-footer-partener">
-			<span class="title-partener">Partenaire</span>
-		</div>
+<section class="container partener_slider top-section">
+<div class="slider owl-carousel">
+
+<div class="card">
+  <div class="img">
+	<img src="{{asset('user/img/img.jpg')}}" alt="">
+	<div class="content">
+	  <div class="title">Fann</div>
+	  <div class="subtitle">Hopital Regional</div>
+	  <p>Lorem, ipsum dolor.</p>
+	  <div class="btn">
+		<button class="">Visitez</button>
+	  </div>
 	</div>
+  </div>
+</div>
+<div class="card">
+  <div class="img">
+	<img src="{{asset('user/img/img.jpg')}}" alt="">
+	<div class="content">
+	  <div class="title">Fann</div>
+	  <div class="subtitle">Hopital Regional</div>
+	  <p>Lorem, ipsum dolor.</p>
+	  <div class="btn">
+		<button class="">Visitez</button>
+	  </div>
+	</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="img">
+	<img src="{{asset('user/img/img.jpg')}}" alt="">
+	<div class="content">
+	  <div class="title">Fann</div>
+	  <div class="subtitle">Hopital Regional</div>
+	  <p>Lorem, ipsum dolor.</p>
+	  <div class="btn">
+		<button class="">Visitez</button>
+	  </div>
+	</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="img">
+	<img src="{{asset('user/img/img.jpg')}}" alt="">
+	<div class="content">
+	  <div class="title">Fann</div>
+	  <div class="subtitle">Hopital Regional</div>
+	  <p>Lorem, ipsum dolor.</p>
+	  <div class="btn">
+		<button class="">Visitez</button>
+	  </div>
+	</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="img">
+	<img src="{{asset('user/img/img.jpg')}}" alt="">
+	<div class="content">
+	  <div class="title">Fann</div>
+	  <div class="subtitle">Hopital Regional</div>
+	  <p>Lorem, ipsum dolor.</p>
+	  <div class="btn">
+		<button class="">Visitez</button>
+	  </div>
+	</div>
+  </div>
+</div>
+</div>
 </section>
 <!-- fin de la Section des partenaire -->
 </div>
 @section('footersection')
-
+	<script>
+      // alert('jdjjdf');
+      $('.slider').owlCarousel({
+        loop:true,
+        autoplay:true,
+        autoplayTimeout:3000,//200ms = 2s;
+        autoplayHoverPause:true
+      });
+    </script>
 @show
 
 @endsection

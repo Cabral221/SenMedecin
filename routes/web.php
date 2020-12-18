@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 // Routes For static pages
 Route::get('/','User\HomeController@index')->name('index');
-Route::get('/contact','User\ContactController@index')->name('user.contact');
+Route::resource('/contact','User\ContactController')->only(['index','store']);
+Route::resource('/comment','User\CommentController')->only(['store','delete']);
 Route::resource('/posts','User\PostController')->only(['index','show']);
 Route::get('/about','User\AboutController@index')->name('user.about');
 
@@ -27,6 +28,10 @@ Route::get('/about','User\AboutController@index')->name('user.about');
 // Routes for client patient
 Route::prefix('/patient')->namespace('Patient')->name('patient.')->group(function() {
     Route::get('/home', 'PatientController@index')->name('home');
+    Route::get('/profile/{id}', 'PatientController@profile')->name('profile');
+    Route::put('/profile/{id}', 'PatientController@update')->name('update');
+    Route::patch('/profile/{id}', 'PatientController@email')->name('email');
+    Route::put('/profil/{id}', 'PatientController@password')->name('password');
     Route::namespace('Auth')->group(function(){
         Route::get('/login', 'LoginController@showLoginForm')->name('login');
         Route::post('/login', 'LoginController@login')->name('login');

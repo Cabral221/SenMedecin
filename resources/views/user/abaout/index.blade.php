@@ -17,7 +17,7 @@
 				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt nemo nam commodi aliquid minima ratione nihil, praesentium delectus rem, dolorum cupiditate pariatur debitis temporibus iusto eveniet reiciendis repellat ea laborum.</p>
 			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt nemo nam commodi aliquid minima ratione nihil, praesentium delectus rem, dolorum cupiditate pariatur debitis temporibus iusto eveniet reiciendis repellat ea laborum.</p>
 			<p class="contact">
-				<a href="" class=" btn-primary">Contactez Nous</a>
+				<a href="{{ route('contact.index') }}" class=" btn-primary">Contactez Nous</a>
 			</p>
 			</div>
 	   </div>

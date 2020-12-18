@@ -12,31 +12,59 @@
 </section>
 
 <section class="contact_section"> 
-    <form action="" class="contact_form" method="post">
-        
+    <form action="{{ route('contact.store') }}" class="contact_form" method="post">
+        @csrf
         <div class="form_left">
             <div class="form_group">
                 <p> <label for="">Prenom et Nom <i class="fa fa-user"></i></label></p>
-                <input type="text" name="" id="">
+                <input class="form-control" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus id="name" placeholder="">
+                <div class="text-primary">
+                    @error('name')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
             </div>
             
             
             <div class="form_group">
                 <p> <label for="">E-mail Adresse <i class="fa fa-envelope"></i></label></p>
-                <input type="email" name="" id="">
+                <input class="form-control" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus id="email" placeholder="">
+                <div class="text-primary">
+                    @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
             </div>
             
             
             <div class="form_group">
-            <p><label for="">Votre Objet <i class="fa fa-envelope"></i></label></p>
-            <input type="text" name="" id="">
+                <p><label for="">Votre Objet <i class="fa fa-envelope"></i></label></p>
+                <input class="form-control" type="text" class="form-control @error('object') is-invalid @enderror" name="object" value="{{ old('object') }}" required autocomplete="object" autofocus id="object" placeholder="">
+                <div class="text-primary">
+                    @error('object')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
             </div>
         </div>
         
         <div class="form_right">
             <div class="form_group">
                 <p> <label for="">Message <i class="fa fa-comment"></i></label></p>
-                <textarea name="" id="" cols="20" rows="5"></textarea>
+                <textarea class="form-control @error('content') is-invalid @enderror" name="content" value="{{ old('content') }}" required autocomplete="content" autofocus id="content" cols="20" rows="5"></textarea>
+                <div class="text-primary">
+                    @error('content')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
             </div>
         
             <input class="button_contact" type="submit" value="Envoyer">
@@ -53,7 +81,7 @@
 </section>
 
 <section class="google-map">
-    
+    <iframe src="https://www.google.com/maps/place/EMPRO+SN/@14.7111135,-17.4502133,604m/data=!3m1!1e3!4m5!3m4!1s0xec173eabb264a3f:0x3b03193b00bf067c!8m2!3d14.7111341!4d-17.4484616" width="100%" frameborder="0"></iframe>
 </section>
 </div>
 

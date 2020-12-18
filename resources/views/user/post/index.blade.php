@@ -39,7 +39,7 @@
 						Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima nemo quos corporis quae porro doloribus......
 					</p>
 					<p class="p_button">
-						<a href="" class="btn btn-primary">Detail de l'article</a>
+						<a href="{{ route('posts.show',1) }}" class="btn btn-primary">Detail de l'article</a>
 					</p>
 				</div>
 			</div>
@@ -73,7 +73,7 @@
 						Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima nemo quos corporis quae porro doloribus......
 					</p>
 					<p class="p_button">
-						<a href="" class="btn btn-primary">Detail de l'article</a>
+						<a href="{{ route('posts.show',1) }}" class="btn btn-primary">Detail de l'article</a>
 					</p>
 				</div>
 			</div>
