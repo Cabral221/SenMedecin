@@ -34,8 +34,8 @@ class PartenerRequest extends FormRequest
             'responsable_last_name' => 'required|string|min:2',
             'responsable_email' => 'required|email|unique:responsables,email',
             'responsable_phone' => 'required|numeric|unique:responsables,phone',
-            'responsable_password' => 'required|string|min:8',
-            'responsable_gen_password' => 'required|string|min:8',
+            'responsable_password' => 'required|password|confirmed|min:8',
+            'responsable_password_confirmation' => 'required|password|min:8',
         ];
     }
 }

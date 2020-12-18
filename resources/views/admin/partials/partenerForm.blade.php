@@ -141,21 +141,17 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="password">Mot de passe par défault du responsable</label>
+                        <label for="password">Mot de passe</label>
                         <input type="password" name="responsable_password" class="form-control @error('responsable_password') is-invalid @enderror" id="password" placeholder="Mot de passe par défaut" required>
                         @error('responsable_password')
-                        <span class="invalid-feedback">
-                            {{ $message }}
-                        </span>
+                            <span class="invalid-feedback">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="gen_password">Mot de passe par défaut de ses agents</label>
-                        <input type="password" name="responsable_gen_password" class="form-control @error('responsable_gen_password') is-invalid @enderror" id="gen_password" placeholder="MDP par défaut de ses agents" required>
-                        @error('responsable_gen_password')
-                        <span class="invalid-feedback">
-                            {{ $message}}
-                        </span>
+                        <label for="responsable_password_confirmation">Confirmer le mot de passe</label>
+                        <input type="password" name="responsable_password_confirmation" class="form-control @error('responsable_password_confirmation') is-invalid @enderror" id="responsable_password_confirmation" placeholder="MDP par défaut de ses agents" required>
+                        @error('responsable_password_confirmation')
+                            <span class="invalid-feedback">{{ $message}}</span>
                         @enderror
                     </div>
                 </div>
