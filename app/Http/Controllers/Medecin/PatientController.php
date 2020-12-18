@@ -21,8 +21,10 @@ class PatientController extends Controller
 
     public function index()
     {
-        $patients = $this->medecin()->patients;
-        return view('medecin.patient.index', compact('patients'));
+        $patients = $this->medecin()->patients()->orderBy('id','DESC')->get();
+        $patientActives = $this->medecin()->patients()->where('is_active',true)->get();
+        $medecin = $this->medecin();
+        return view('medecin.patient.index', compact('medecin','patients','patientActives'));
     }
 
     public function show(Patient $patient)

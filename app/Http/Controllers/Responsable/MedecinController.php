@@ -20,7 +20,7 @@ class MedecinController extends Controller
     public function index()
     {
         $medecins = [];
-        $allMedecins = $this->responsable()->medecins;
+        $allMedecins = $this->responsable()->medecins()->orderBy('id','DESC')->get();
         foreach($allMedecins as $medecin){
             if($medecin->is_active == 1) $medecins = array_merge($medecins, [$medecin]);
         }
@@ -30,7 +30,8 @@ class MedecinController extends Controller
     
     public function show(Medecin $medecin)
     {
-        return view('responsable.agent.show', compact('medecin'));
+        $appointments = $medecin->appointments()->orderBy('date','DESC')->get();
+        return view('responsable.agent.show', compact('medecin','appointments'));
     }
 
     public function create()
@@ -45,10 +46,10 @@ class MedecinController extends Controller
         $this->validate($request, [
             'medecin_first_name' => 'required|string|min:2',
             'medecin_last_name' => 'required|string|min:2',
-            'medecin_phone' => 'required|numeric',
+            'medecin_phone' => 'required|numeric|unique:medecins,phone',
             'medecin_email' => 'required|email|unique:medecins,email',
-            'medecin_password' => 'required|string|min:8',
-            'medecin_gen_password' => 'required|string|min:8',
+            'medecin_password' => 'required|password|confirmed|min:8',
+            'medecin_password_confirmation' => 'required|string|min:8',
             'medecin_service' => 'required|numeric',
         ]);
 
@@ -56,7 +57,7 @@ class MedecinController extends Controller
             return redirect()->back()->withInput()->withErrors(['medecin_service' => 'Veuillez assigner un service pour cet agent !']);
         }
 
-        $medecin = $this->responsable()->medecins()->create([
+        $this->responsable()->medecins()->create([
             'first_name' => $request->medecin_first_name,
             'last_name' => $request->medecin_last_name,
             'phone' => $request->medecin_phone,

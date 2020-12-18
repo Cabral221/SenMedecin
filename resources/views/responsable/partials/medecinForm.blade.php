@@ -37,17 +37,16 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="medecin_password">Mot de passe de l'agent</label>
+                    <label for="medecin_password">Mot de passe</label>
                     <input type="password" name="medecin_password" id="medecin_password" class="form-control @error('medecin_password') is-invalid @enderror" placeholder="Mot de passe">
                     @error('medecin_password')
                         <span class="invalid-feedback">{{ $message }}</span>
                     @enderror
-
                 </div>
                 <div class="form-group">
-                    <label for="medecin_gen_password">Mot de passe généric pour ses patients</label>
-                    <input type="password" name="medecin_gen_password" id="medecin_gen_password" class="form-control @error('medecin_gen_password') is-invalid @enderror" placeholder="Mot de passe">
-                    @error('medecin_gen_password')
+                    <label for="medecin_password_confirmation">Confirmer Mot de passe</label>
+                    <input type="password" name="medecin_password_confirmation" id="medecin_password_confirmation" class="form-control @error('medecin_password_confirmation') is-invalid @enderror" placeholder="Confirmer Mot de passe">
+                    @error('medecin_password_confirmation')
                         <span class="invalid-feedback">{{ $message }}</span>
                     @enderror
                 </div>
