@@ -75,7 +75,7 @@
             <div class="content">
                 <p><i class="fa fa-envelope"></i> <span class="icon_name">axxu-njurel@njurel.com</span></p>
                 <p><i class="fa fa-phone"></i> <span class="icon_name">+221 33 987 34 89</span></p>
-                <p><i class="fa fa-location-arrow"></i> <span class="icon_name"> Ecole Biscuiterie</span></p>
+                <p><i class="fa fa-map-marker-alt"></i> <span class="icon_name"> Ecole Biscuiterie</span></p>
             </div>
         </div>
     </section>

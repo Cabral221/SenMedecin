@@ -291,6 +291,13 @@ footer p { font-size:13px; color:#CCC; padding-bottom:0px; margin-bottom:8px;}
     width:40%;
     margin: 0 20px;
 }
+footer .footer_left h6{
+    background-color: #fff;
+}
+footer .footer_left h6 img{
+    margin-top: -2em;
+    margin-bottom: -5px;
+}
 .footer_center_1{
     width:30%;
     margin-left: 5em;
@@ -892,7 +899,6 @@ section .profile-left .menu span{
 }
 .contact_section .infos_contact{
     text-align: center;
-    margin-left: 13em;
     margin-top: 20px;
     width: 100%;
 }
@@ -900,7 +906,10 @@ section .profile-left .menu span{
     display: flex;
     flex-direction: space-around;
     width: 100%;
-    text-align:right;
+}
+.contact_section .infos_contact .content p{
+    width: 32%;
+    margin-left: 15px;
 }
 .contact_section .infos_contact .content p i{
     border: 1px solid rgba(255, 102, 171, 0.867);
@@ -908,6 +917,11 @@ section .profile-left .menu span{
     margin:0px 10px;
     border-radius: 100%;
     color: rgba(255, 102, 171, 0.867);
+}
+.contact_section .infos_contact .content p .fa-map-marker-alt{
+    padding: 15px 17px;
+    margin:0px 10px;
+    border-radius: 100%;
 }
 .contact_section .infos_contact .content p i:hover{
     border: 1px solid rgba(255, 102, 171, 0.867);
