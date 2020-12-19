@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Medecin;
 
 use App\Models\Patient;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\TypeAppointment;
 use App\Http\Controllers\Controller;
@@ -15,12 +16,21 @@ class PregnacyController extends Controller
         $this->middleware('auth:medecin');
     }
 
+    /**
+     * @param Patient $patient
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function create(Patient $patient)
     {
-        // dd($patient);
         return view('medecin.patient.createPregnacy', compact('patient'));
     }
 
+    /**
+     * @param Request $request
+     * @param Patient $patient
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Validation\ValidationException
+     */
     public function store(Request $request, Patient $patient)
     {
         $this->validate($request, [
@@ -49,24 +59,28 @@ class PregnacyController extends Controller
             'description' => 'CPN 1',
             'medecin_id' => $patient->medecin->id,
             'date' => $request->pregnacy_cpn1,
+            'passed' => (Carbon::parse($request->pregnacy_cpn1)<=Carbon::now()) ? true : false,
         ]);
         $patient->appointments()->create([
             'type_appointment_id' => $cpn->id,
             'description' => 'CPN 2',
             'medecin_id' => $patient->medecin->id,
             'date' => $request->pregnacy_cpn2,
+            'passed' => (Carbon::parse($request->pregnacy_cpn2)<=Carbon::now()) ? true : false,
         ]);
         $patient->appointments()->create([
             'type_appointment_id' => $cpn->id,
             'description' => 'CPN 3',
             'medecin_id' => $patient->medecin->id,
             'date' => $request->pregnacy_cpn3,
+            'passed' => (Carbon::parse($request->pregnacy_cpn3)<=Carbon::now()) ? true : false,
         ]);
         $patient->appointments()->create([
             'type_appointment_id' => $cpn->id,
             'description' => 'CPN 4',
             'medecin_id' => $patient->medecin->id,
             'date' => $request->pregnacy_cpn4,
+            'passed' => (Carbon::parse($request->pregnacy_cpn4)<=Carbon::now()) ? true : false,
         ]);
         // For Accouchement
         $patient->appointments()->create([

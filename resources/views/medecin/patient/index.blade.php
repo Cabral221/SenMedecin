@@ -5,7 +5,7 @@
     <h3 class="page-title">
         <span class="page-title-icon bg-gradient-primary text-white mr-2">
             <i class="mdi mdi-arrow-collapse-all"></i>
-        </span> Patients 
+        </span> Patientes
     </h3>
     <nav aria-label="breadcrumb">
         <ul class="breadcrumb">
@@ -15,12 +15,23 @@
 </div>
 
 <div class="row">
-    <div class="col-md-4 stretch-card grid-margin">
+    <div class="col-md-6 stretch-card grid-margin">
         <div class="card bg-gradient-primary card-img-holder text-white">
             <div class="card-body">
                 <img src="{{ asset('backend/assets/images/dashboard/circle.svg') }}" class="card-img-absolute" alt="circle-image" />
-                <h4 class="font-weight-normal mb-3">Total patients <i class="mdi mdi-chart-line mdi-24px float-right"></i></h4>
-                <h2 class="mb-5">{{ count($patients) }}</h2>
+                <h4 class="font-weight-normal mb-3">Total patientes <i class="mdi mdi-chart-line mdi-24px float-right"></i></h4>
+                <h2 class="mb-3">{{ count($patients) }}</h2>
+                <span>{{ $patientActives->count() }} patientes actives</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 stretch-card grid-margin">
+        <div class="card bg-gradient-primary card-img-holder text-white">
+            <div class="card-body">
+                <img src="{{ asset('backend/assets/images/dashboard/circle.svg') }}" class="card-img-absolute" alt="circle-image" />
+                <h4 class="font-weight-normal mb-3">Rendez-vous à venir <i class="mdi mdi-chart-line mdi-24px float-right"></i></h4>
+                <h2 class="mb-3">{{ $medecin->lastAppointment()->date->locale('fr_FR')->calendar() }}</h2>
+                <span>{{ $patientActives->count() }} patientes actives</span>
             </div>
         </div>
     </div>

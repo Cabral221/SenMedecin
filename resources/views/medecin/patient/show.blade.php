@@ -5,7 +5,7 @@
     <h3 class="page-title">
         <span class="page-title-icon bg-gradient-primary text-white mr-2">
             <i class="mdi mdi-arrow-collapse-all"></i>
-        </span> Patients 
+        </span> Patientes
     </h3>
     <nav aria-label="breadcrumb">
         <ul class="breadcrumb">
@@ -87,11 +87,11 @@
                 <hr>
                 <div class="mb-1">
                     <span class="badge badge-pill badge-primary">{{ $patient->pregnancies->count() }} éme</span>
-                    <span>grossesse (s) enregister dans la plateforme</span>
+                    <span>grossesse (s) enregister</span>
                 </div>
                 <div class="mb-1">
                     <span class="badge badge-pill badge-primary">{{ $patient->childrens->count() }}</span>
-                    <span>enfants (s) enregistrer dans la plateforme</span>
+                    <span>enfants (s) enregistrer</span>
                 </div>
             </div>
         </div>
