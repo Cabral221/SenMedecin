@@ -50,7 +50,13 @@ Route::prefix('/patient')->namespace('Patient')->name('patient.')->group(functio
 
 // Routes for medecin
 Route::prefix('/medecin')->namespace('Medecin')->name('medecin.')->group(function(){
-    
+
+    Route::get('/calendar', 'CalendarController@index')->name('calendar.index');
+    Route::get('/appointments/day', 'AppointmentController@day')->name('appointments.day');
+    Route::get('/appointments/come', 'AppointmentController@come')->name('appointments.come');
+    Route::get('/appointments/histories', 'AppointmentController@histories')->name('appointments.histories');
+    Route::get('/appointments/{appointment}','AppointmentController@show')->name('appointments.show');
+
     Route::get('/patients/{patient}/antecedents/create', 'AntecedentController@create')->name('patients.antecedent.create');
     Route::post('/patients/{patient}/antecedents/store', 'AntecedentController@store')->name('patients.antecedent.store');
     Route::get('/patients/{patient}/antecedents/{antecedent}/edit', 'AntecedentController@edit')->name('patients.antecedent.edit');
@@ -65,7 +71,7 @@ Route::prefix('/medecin')->namespace('Medecin')->name('medecin.')->group(functio
     Route::get('/child/{patient}/create', 'ChildController@create')->name('patients.childs.create');
     Route::get('/child/{patient}', 'ChildController@index')->name('patients.childs');
     Route::get('/child/{patient}/children/{children}', 'ChildController@show')->name('patients.childs.show');
-    
+
     Route::get('/pregnacies/{patient}/create', 'PregnacyController@create')->name('pregnacies.create');
     Route::post('/pregnacies/{patient}/store', 'PregnacyController@store')->name('pregnacies.store');
     

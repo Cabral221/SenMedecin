@@ -9,7 +9,17 @@
 namespace App\Http\Controllers\Medecin;
 
 
-class CalendarController
-{
+use App\Http\Controllers\Controller;
 
+class CalendarController extends Controller
+{
+    public function __construct()
+    {
+        $this->middleware('auth:medecin');
+    }
+
+    public function index()
+    {
+        return view('medecin.calendar');
+    }
 }
