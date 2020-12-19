@@ -72,7 +72,7 @@
 			<li><a href="http://webenlance.com"><i class="fab fa-instagram"></i></a></li>
 		</ul>
 		<!--social_footer_ul ends here-->
-		<p>Copyright @2020-2020 | Designed With by <a href="{{ route('admin.login') }}">EMPRO</a></p>
+		<p>Copyright @2020-2020 | Designed  by <a href="{{ route('admin.login') }}">EMPRO</a></p>
 	</div>
 
 </footer>

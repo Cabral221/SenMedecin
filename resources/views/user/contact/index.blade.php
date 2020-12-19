@@ -81,7 +81,7 @@
     </section>
 
       <div class="google_map">
-      <iframe src="https://www.google.com/maps/place/EMPRO+SN/@14.7111135,-17.4502133,604m/data=!3m1!1e3!4m5!3m4!1s0xec173eabb264a3f:0x3b03193b00bf067c!8m2!3d14.7111341!4d-17.4484616"  frameborder="0"></iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3859.0256905628767!2d-17.450650285857595!3d14.711139278303794!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xec173eabb264a3f%3A0x3b03193b00bf067c!2sEMPRO%20SN!5e0!3m2!1sfr!2ssn!4v1608318238378!5m2!1sfr!2ssn" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
       </div>
   
 </div>
