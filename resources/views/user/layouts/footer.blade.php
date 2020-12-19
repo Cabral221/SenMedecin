@@ -6,9 +6,9 @@
 			<h6 class="headin5_amrc col_white_amrc pt2"> <img style="width:100%;height:auto;" src="{{ asset('user/img/logo_horizontale.svg') }}" alt=""> </h6>
 			<!--headin5_amrc-->
 			<p class="mb10">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-			<p><i class="fa fa-map-marker-alt"></i> 9878/25 sec 9 rohini 35 </p>
-			<p><i class="fa fa-phone"></i>  +91-9999878398  </p>
-			<p><i class="fa fa-envelope"></i> info@example.com  </p>
+			<p><i class="fa fa-map-marker-alt"> </i> {{ all_info()->address ?? '9878/25 sec 9 rohini 35 '}}</p>
+			<p><i class="fa fa-phone"> </i>  {{ all_info()->phone  ?? '+953 012 3654 896' }} </p>
+			<p><i class="fa fa-envelope"> </i> {{ all_info()->email ?? 'axxu@njurel.com'}}  </p>
 		</div>
 
 
@@ -31,7 +31,7 @@
 		<!-- <div class=" footer_center_2">
 			<h6 class="headin5_amrc col_white_amrc pt2">links</h6>
 			<ul class="footer_ul_amrc">
-			<li><a href="http://webenlance.com">Remove Background</a></li>
+			<li><a href="#">Remove Background</a></li>
 			<li><a href="http://webenlance.com">Shadows & Mirror Reflection</a></li>
 			<li><a href="http://webenlance.com">Logo Design</a></li>
 			<li><a href="http://webenlance.com">Vectorization</a></li>
@@ -77,10 +77,10 @@
 		<!--foote_bottom_ul_amrc ends here-->
 		
 		<ul class="social_footer_ul">
-			<li><a href="http://webenlance.com"><i class="fab fa-facebook-f"></i></a></li>
-			<li><a href="http://webenlance.com"><i class="fab fa-twitter"></i></a></li>
-			<li><a href="http://webenlance.com"><i class="fab fa-linkedin"></i></a></li>
-			<li><a href="http://webenlance.com"><i class="fab fa-instagram"></i></a></li>
+			<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+			<li><a href="#"><i class="fab fa-twitter"></i></a></li>
+			<li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+			<li><a href="#"><i class="fab fa-instagram"></i></a></li>
 		</ul>
 		<!--social_footer_ul ends here-->
 		<p>Copyright @2020-2020 | Designed  by <a href="{{ route('admin.login') }}">EMPRO</a></p>

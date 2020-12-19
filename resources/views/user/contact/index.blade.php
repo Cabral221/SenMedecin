@@ -7,7 +7,7 @@
 <div class="box-shadow section-index container">
     <section class="banier_border">
         <div class="banier-contact ">
-            <h1>Contact US</h1>
+            <h1>Contactez Nous</h1>
         </div>
     </section>
 
@@ -73,9 +73,9 @@
         </form>
         <div class="infos_contact">
             <div class="content">
-                <p><i class="fa fa-envelope"></i> <span class="icon_name">axxu-njurel@njurel.com</span></p>
-                <p><i class="fa fa-phone"></i> <span class="icon_name">+221 33 987 34 89</span></p>
-                <p><i class="fa fa-map-marker-alt"></i> <span class="icon_name"> Ecole Biscuiterie</span></p>
+                <p><i class="fa fa-envelope"></i> <span class="icon_name">{{ all_info()->email ?? 'axxu@njurel.com'}}</span></p>
+                <p><i class="fa fa-phone"></i> <span class="icon_name"> {{ all_info()->phone  ?? '+953 012 3654 896' }} </span></p>
+                <p><i class="fa fa-map-marker-alt"></i> <span class="icon_name"> {{ all_info()->address ?? '9878/25 sec 9 rohini 35 '}}</span></p>
             </div>
         </div>
     </section>

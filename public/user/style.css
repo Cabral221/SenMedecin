@@ -226,24 +226,30 @@ section .card-right .logo img{
 }
 
 /* La premiere section de la page d'acceuil rv prenatal */
+.home_section{
+    background-color: #fff;
+}
 section .card-left-section2 {
-    width: 30%;
+    width: 50%;
+    padding: 10px;
 }
 section .card-left-section2 .logo{
-    width: 100% auto;
+    width: 100%;
+    height: auto;
 }
 section .card-left-section2 .logo img{
-    width: 100% auto;
+    width: 100%;
+    height: auto;
     
 }
 section .card-right-section2 {
-    width: 70%;
+    width: 50%;
+    padding:10px 20px;
 }
 section .card-right-section2 h5{
-    margin-top:-5px;
-}
-section .card-right-section2 .card-body p:first-child{
-    margin-top:-2rem;
+    margin-top:-13px;
+    font-size: 3em;
+    margin-bottom: -1px;
 }
 /* fin de la premiere section de la page d'acceuil rv prnatale*/
 
@@ -251,7 +257,8 @@ section .card-right-section2 .card-body p:first-child{
 
 /* La premiere section de la page d'acceuil vaccin */
 section .card-right-section3 {
-    width: 30%;
+    width: 50%;
+    padding: 10px 20px;
 }
 section .card-right-section3 .logo{
     padding: 0px 10px;
@@ -263,16 +270,16 @@ section .card-right-section3 .logo img{
     height: auto;
 }
 section .card-left-section3 {
-    width: 70%;
-    margin-right: 4em;
-    padding-right: 3px;
+    width: 50%;
+    padding: 10px;
+   
 }
 section .card-left-section3 h5{
-    margin-top:-5px;
+    margin-top:-13px;
+    font-size: 3em;
+    margin-bottom: -1px;
 }
-section .card-left-section3 .card-body p:first-child{
-    margin-top:-2rem;
-}
+/* */
 /* fin de la premiere section de la page d'acceuil vaccin*/
 /*footer*/
 .col_white_amrc { color:#FFF;}
@@ -379,9 +386,13 @@ footer .footer_left h6 img{
 .footer_footer p{
     text-align: center;
     margin-top: 20px;
+    margin-left: 4.5em;
+    
 }
 .footer_footer p a{
     color: rgba(255, 102, 171, 0.867);
+    text-align: center;
+  
 }
 
 /* Fin de la partie stylisation du footer */
@@ -569,6 +580,9 @@ section .profile-right .identification ,.antecedent,.calandirier-cpn,.cpn1,.gros
     /* border:1px solid red; */
     width: 50%;
 }
+.update_profil{
+    margin-bottom: 50px;
+}
 section .profile-right .grossesse .profil_form{
     display: block;
 }
@@ -600,15 +614,15 @@ section .profile-right .grossesse .profil_form .form_content .form_left .contour
     width: 100%;
     font-size: 15px;
     outline: none;
-    text-align: center;
     border: 1px solid rgba(255, 102, 171, 0.867);
     border-radius:7px;
     cursor: pointer;
     margin-left: -9px;
-    color:rgba(255, 102, 171, 0.867);
+    color:#000;
 }
 section .profile-right .grossesse .profil_form .form_content .form_left .contour_input input[type="date"]{
     padding: 9px 10px;
+    color:#000;
 }
 section .profile-right .grossesse .profil_form .form_content .form_right .contour_input .icon{
     width:11%;
@@ -622,12 +636,11 @@ section .profile-right .grossesse .profil_form .form_content .form_right .contou
     width: 100%;
     font-size: 15px;
     outline: none;
-    text-align: center;
     border: 1px solid rgba(255, 102, 171, 0.867);
     border-radius:7px;
     cursor: pointer;
     margin-left: -9px;
-    color:rgba(255, 102, 171, 0.867);
+    color:#000;
 }
 section .profile-right .grossesse .profil_form_2{
     display: flex;
@@ -641,12 +654,11 @@ section .profile-right .grossesse .profil_form_2 input{
     width: 100%;
     font-size: 15px;
     outline: none;
-    text-align: center;
     border: 1px solid rgba(255, 102, 171, 0.867);
     border-radius:7px;
     cursor: pointer;
     margin-left: -9px;
-    color:rgba(255, 102, 171, 0.867);
+    color:#000;
 }
 section .profile-right .grossesse .profil_form_2 .contour_input{
     display: flex;
@@ -684,12 +696,11 @@ section .profile-right .grossesse .profil_form_3 input{
     width: 100%;
     font-size: 15px;
     outline: none;
-    text-align: center;
     border: 1px solid rgba(255, 102, 171, 0.867);
     border-radius:7px;
     cursor: pointer;
     margin-left: -9px;
-    color:rgba(255, 102, 171, 0.867);
+    color:#000;
 }
 section .profile-right .grossesse .profil_form_3 .contour_input{
     display: flex;
@@ -703,7 +714,6 @@ section .profile-right .grossesse .profil_form_3 .contour_input .icon{
     background-color: rgba(255, 102, 171, 0.867);
     color: #fff;
     border-radius: 5px 0px 0px 5px;
-    text-align: center;
 }
 section .profile-right .grossesse .profil_form_3 input[type="submit"]{
     color: #fff;
@@ -773,35 +783,38 @@ section .profile-left {
     width: 20%;
     margin-left:5em;
     margin-right: 1px;
-    /* border:1px solid red; */
+    margin-bottom: 10px;
     font-size: 15px;
     font-family: sans-serif; 
+    border: 1px solid rgba(255, 102, 171, 0.867);
+    border-radius: 5px;
 }
-
+section .profile-left .menu{
+    width: 100%;
+}
 section .profile-left .menu ul{
-	margin:0px;
-	padding:0px 5px;
 	list-style:none;
-	border-radius:5px;
+    border-radius:5px;
+    width: 100%;
 }
 section .profile-left .menu ul li{
-	padding:15px;
+    padding:15px;
 	position:relative;
-	width:220px;
-	background-color:#34495E;
-	border-right:1px solid #f1c40f;
-	border-top:1px solid silver;
+	width:100%;
+	background-color:#fff;
+    color: black;
+	border:1px solid silver;
 	vertical-align:middle;
 	cursor:pointer;
 	-webkit-transition:all 0.3s;
 	-o-transition:all 0.3s;
-	transition:all 0.3s;
+    transition:all 0.3s;
 } 
 section .profile-left .menu ul li:hover{
-	background-color:#2ecc71;
+	background-color:rgba(255, 102, 171, 0.867);
 }
 section .profile-left .menu > ul > li{
-	border-right:1px solid #f1c40f;
+	border:1px solid silver;
 }
 section .profile-left .menu ul ul{
 	transition:all 0.3s;
@@ -810,7 +823,6 @@ section .profile-left .menu ul ul{
 	visibility:hidden;
 	left:101%;
 	top:-2%;
-	border-left:1px solid #f1c40f; 	
 }
 
 
@@ -819,7 +831,7 @@ section .profile-left .menu ul li:hover > ul{
 	visibility:visible;  
 }
 section .profile-left .menu ul li a{
-	color:#fff;
+	color:#000;
 	text-decoration:none;
 }
 section .profile-left .menu span{
@@ -923,10 +935,11 @@ section .profile-left .menu span{
     width: 100%;
     border: 1px solid rgba(255, 102, 171, 0.867);
     background-color: rgba(255, 102, 171, 0.867);
+    margin-top: -1px;
 }
 .banier_border .banier-contact{
     width: 100%;
-    margin-top: -1.5em;
+    padding-top: 2em;
 }
 .banier_border .banier-contact h1{
     text-align: center;
@@ -997,7 +1010,7 @@ section .contact_form .form_left input[type="email"],input[type="text"],textarea
     border: 1px solid rgba(0, 0, 0, 0.199);
     border-radius:7px;
     cursor: pointer;
-    color:rgba(255, 102, 171, 0.867);
+    color:#000;
 }
 section .contact_form .form_left input[type="email"]:focus{
     border:1px solid rgba(255, 102, 171, 0.867);
@@ -1039,7 +1052,9 @@ section .contact_form .form_right input:hover{
     color:  rgba(255, 102, 171, 0.867);
 }
 .google_map{
-    /* background-color: rgba(255, 102, 171, 0.867); */
+    background-color: #fff;
+    padding-bottom:3em ;
+    margin-bottom: -2em;
     width: 100%;
 }
 .google_map iframe{
@@ -1103,11 +1118,16 @@ section .about_card_body .p1{
     margin-top: -2em;
 }
 /* La partie de la sensibilisation */
-.sens_top h4{
+.sens_top .blog_title{
+    margin-top:1em;
+    margin-left: 3.8em;
+    margin-bottom: -1.5em;
+    font-size: 4em;
+}
+.sens_top .blog_show_title{
     margin-top:2.5em;
-    margin-left: 7.5em;
-    margin-bottom: -3em;
-
+    margin-left: 4.7em;
+    margin-bottom: -3.5em;
 }
 section .sens{
     display: flex;
@@ -1278,10 +1298,38 @@ section .sens_left .blog .blog_right .text{
   /* Fin de l'affichage du blog */
 
   /* Partie du commentaire du blog */
+    .post_comment{
+        padding:28px ;
+        background-color: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.171);
+        margin-right: 23px;
+    }
+    .post_comment .comment_content{
+        display: block;
+        margin-bottom:20px;
+    }
+    .post_comment .comment_content .user_name{
+        font-size: 18px;
+        font-weight: 700;
+    }
+    .post_comment .comment_content .comment_date{
+        font-size: 13px;
+        padding: 3px 0 10px 0;
+        color: rgba(0, 0, 0, 0.404);
+        font-weight: 700;
+    }
+    .post_comment .comment_content .content{
+        color: rgba(0, 0, 0, 0.671);
+        font-weight: 700;
+    }
     .comment{
         padding:28px ;
         margin-right: 23px;
+        background-color: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.171);
+        margin-top: 3em;
     }
+   
     .comment .comment_form{
         display: block;
     }
@@ -1297,11 +1345,10 @@ section .sens_left .blog .blog_right .text{
         padding: 15px;
         width: 100%;
         outline: none;
-        text-align: center;
         border: 1px solid rgba(0, 0, 0, 0.199);
         border-radius:7px;
         cursor: pointer;
-        color:rgba(255, 102, 171, 0.867);
+        color:#000;
     }
     .comment .comment_form .comment_input p:last-child{
         margin-left: 15px;
@@ -1382,7 +1429,8 @@ section .sens_right .sens-body-card .card-text .title_article{
 /* Le slider des partenaires */
 .partener_slider{
     background-color: #fff;
-    margin: 7em 5em 0  5em;
+    margin: 7em 5em -3em  5em;
+
 }
 .partener_slider .owl-carousel{
     padding-left: 6.6em;

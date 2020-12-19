@@ -91,7 +91,7 @@
 		   <!-- La Partie de l'grossesse -->
 		   <!-- <h6>ETAT</h6> -->
 		   <p style="margin:-5px 0px 8px;font-size:30px;" class="text-bold">Profile de {{ Auth::guard('patient')->user()->first_name .' '. Auth::guard('patient')->user()->last_name  }} </p>
-		   		<div class="grossesse">
+		   		<div class="grossesse update_profil">
 					<h6 style="margin:-10px 0px;">Modifier Toutes vos informations</h6>
 				
 						<form action="{{ route('patient.update',Auth::guard('patient')->user()->id) }}" class="profil_form" method="post">
@@ -123,18 +123,7 @@
 										</div>
 									</p>
 
-									<p class="contour_input">
-										<i class="fa fa-envelope icon"></i>
-										<input  type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') ?? Auth::guard('patient')->user()->email }}" required autocomplete="email" autofocus id="email" placeholder="Votre Adresse E-mail">
-										<div>
-											@error('email')
-												<span class="invalid-feedback" role="alert">
-													<strong>{{ $message }}</strong>
-												</span>
-											@enderror
-										</div>
-									</p>
-
+						
 									<p class="contour_input">
 										<i class="fa fa-stopwatch-20 icon"></i>
 										<input type="date" class="form-control @error('birthday') is-invalid @enderror" name="birthday" value="{{ old('birthday') ?? Auth::guard('patient')->user()->birthday }}" required autocomplete="birthday" autofocus id="birthday" placeholder="">
@@ -173,32 +162,17 @@
 										</div>
 									</p>
 
-									<p class="contour_input">
-										<i class="fa fa-key icon"></i>
-										<input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password" required autocomplete="current-password" id="" placeholder="Votre Mot de passe">
-										<div>
-											@error('password')
-												<span class="invalid-feedback" role="alert">
-													<strong>{{ $message }}</strong>
-												</span>
-											@enderror
-										</div>
-									</p>
-
-									<p class="contour_input">
-										<i class="fa fa-lock icon"></i>
-										<input type="password" class="form-control @error('password') is-invalid @enderror" name="password_confirmation" id="password" required autocomplete="current-password" id="" placeholder="Confirmez VotreMot de passe">
+									<p>
+										<input class="btn-primary text-bold " type="submit" value="Enregistre les modification">
 									</p>
 								</div>
 							</div>
 							
-							<p>
-								<input class="btn-primary text-bold " type="submit" value="Enregistre les modification">
-							</p>
+							
 						</form>
 				</div>
 
-				<div class="grossesse">
+				<div class="grossesse update_profil">
 					<h6 style="margin:-10px 0px;">Modifier Votre Adresse E-mail</h6>
 					<form action="{{ route('patient.update',Auth::guard('patient')->user()->id) }}" class="profil_form_2" method="post">
 					@csrf 
@@ -220,8 +194,8 @@
 					</form>
 				</div>
 
-				<div class="grossesse">
-					<h6 style="margin:-10px 0px;">Modification De Votre Mot De Passe</h6>
+				<div class="grossesse update_profil">
+					<h6 style="margin:-10px 0px;">Modifiez Votre Mot De Passe</h6>
 					<form action="{{ route('patient.password',Auth::guard('patient')->user()->id) }}" class="profil_form_3" method="post">
 					@csrf 
 					{{ method_field('PUT') }}		

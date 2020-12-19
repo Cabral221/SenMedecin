@@ -7,19 +7,6 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
    <style>
-	       /* *{
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins' , 'sans-serif';
-    }
-    html,body{
-      display: grid;
-      height: 100%;
-      place-items: center;
-      text-align: center;
-      background-color: #f2f2f2;
-    } */
     .slider{
       max-width: 100%;
 	  display: flex;
@@ -36,7 +23,8 @@
       object-fit: cover;
     }
     .slider .card .content{
-      padding: 10px 20px;
+	  padding: 10px 20px;
+	  text-align:center;
     }
      .card .content .title{
       font-size: 25;
@@ -92,7 +80,7 @@
 <!-- fin de la premier section -->
 
 <!-- Deuxieme section -->
-   <section class=" container top-section">
+   <section class=" container home_section  top-section">
    		<div class="card-left-section2">
 		   <div class="logo">
 			   <img src="{{ asset('user/img/pre1.jpeg') }}" alt="" srcset="">
@@ -114,7 +102,7 @@
 
 
 <!-- Troisieme section -->
-<section class=" container top-section">
+<section class=" container home_section top-section">
 	<div class="card-left-section3">
 		<h5>Vaccination  </h5>
 		<div class="card-body">
