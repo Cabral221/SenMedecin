@@ -66,4 +66,9 @@ class PatientController extends Controller
         $update_password->save();
         return back();
     }
+
+    public function destroy($id){
+        Patient::where('id',Auth::guard('patient')->user()->id)->delete();
+        return redirect()->route('patient.home');
+    }
 }

@@ -615,7 +615,7 @@ section .profile-right .grossesse .profil_form .form_content .form_left .contour
     font-size: 15px;
     outline: none;
     border: 1px solid rgba(255, 102, 171, 0.867);
-    border-radius:7px;
+    border-radius:0px 7px 7px 0px;
     cursor: pointer;
     margin-left: -9px;
     color:#000;
@@ -637,7 +637,7 @@ section .profile-right .grossesse .profil_form .form_content .form_right .contou
     font-size: 15px;
     outline: none;
     border: 1px solid rgba(255, 102, 171, 0.867);
-    border-radius:7px;
+    border-radius:0px 7px 7px 0px;
     cursor: pointer;
     margin-left: -9px;
     color:#000;
@@ -655,7 +655,7 @@ section .profile-right .grossesse .profil_form_2 input{
     font-size: 15px;
     outline: none;
     border: 1px solid rgba(255, 102, 171, 0.867);
-    border-radius:7px;
+    border-radius:0px 7px 7px 0px;
     cursor: pointer;
     margin-left: -9px;
     color:#000;
@@ -676,6 +676,7 @@ section .profile-right .grossesse .profil_form_2 .contour_input .icon{
 section .profile-right .grossesse .profil_form_2 input[type="submit"]{
     color: #fff;
     width: 100%;
+    border-radius: 5px;
 }
 section .profile-right .grossesse .profil_form_2 input[type="submit"]:hover{
     color:rgba(255, 102, 171, 0.867);
@@ -697,7 +698,7 @@ section .profile-right .grossesse .profil_form_3 input{
     font-size: 15px;
     outline: none;
     border: 1px solid rgba(255, 102, 171, 0.867);
-    border-radius:7px;
+    border-radius:0px 7px 7px 0px;
     cursor: pointer;
     margin-left: -9px;
     color:#000;
@@ -718,6 +719,7 @@ section .profile-right .grossesse .profil_form_3 .contour_input .icon{
 section .profile-right .grossesse .profil_form_3 input[type="submit"]{
     color: #fff;
     width: 100%;
+    border-radius: 5px;
 }
 section .profile-right .grossesse .profil_form_3 input[type="submit"]:hover{
     color:rgba(255, 102, 171, 0.867);
@@ -726,6 +728,25 @@ section .profile-right .grossesse .profil_form_3 input[type="submit"]:hover{
 section .profile-right .grossesse .profil_form_3  .password_center{
     margin-left: -10px;
     margin-right: 20px;
+}
+
+section .delete_compte{
+    margin-top: -1.5em;
+    margin-bottom: 5em;
+}
+
+section .delete_compte p{
+    margin-top: -1.3px;
+    color:rgba(255, 102, 171, 0.867);
+    font-weight: 700;
+    font-size: 20px;
+}
+section .delete_compte span a{
+  padding: 20px;
+  background-color: rgb(245, 0, 0);
+  width: 200px;
+  color: #fff;
+  border-radius: 7px;
 }
 /* Fin de la partie de la grossesse */
 
@@ -796,6 +817,8 @@ section .profile-left .menu ul{
 	list-style:none;
     border-radius:5px;
     width: 100%;
+    margin-top: 0;
+    padding: 0;
 }
 section .profile-left .menu ul li{
     padding:15px;
