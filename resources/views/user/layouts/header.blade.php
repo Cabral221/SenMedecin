@@ -13,6 +13,7 @@
 								<li><a href="{{ route('medecin.login') }}"> <span class="header-icon"><i class="fas fa-user-nurse"></i></span> Medecins</a></li>
 								<hr>
 								<li><a href="{{ route('responsable.login') }}"> <span class="header-icon"><i class="fas fa-user-md"></i></span> Partenaires</a></li>
+							
 							</ul>
 						</li>
 						
