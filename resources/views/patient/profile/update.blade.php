@@ -1,60 +1,6 @@
 @extends('user.layouts.app')
 @section('headsection')
-<style>
-.menu ul{
-	margin:0px;
-	padding:0px 5px;
-	list-style:none;
-	border-radius:5px;
-}
-.menu ul li{
-	padding:15px;
-	position:relative;
-	width:220px;
-	background-color:#34495E;
-	border-right:1px solid #f1c40f;
-	vertical-align:middle;
-	cursor:pointer;
-	-webkit-transition:all 0.3s;
-	-o-transition:all 0.3s;
-	transition:all 0.3s;
-} 
-.menu ul li:hover{
-	background-color:#2ecc71;
-}
-.menu > ul > li{
-	border-right:1px solid #f1c40f;
-}
-.menu ul ul{
-	transition:all 0.3s;
-	opacity:0;
-	position:absolute;
-	visibility:hidden;
-	left:101%;
-	top:-2%;
-	border-left:1px solid #f1c40f; 	
-}
 
-
-.menu ul li:hover > ul{
-	opacity:1;
-	visibility:visible;  
-}
-.menu ul li a{
-	color:#fff;
-	text-decoration:none;
-}
-.menu span{
-	margin-right:15px;
-}
-/* .menu > ul > li:nth-off-type(2)::after{
-	content:"+";
-	position:absolute;
-	margin-left:5%;
-	color:#fff;
-	font-size:20px;
-} */
-</style>
 @endsection
 @section('main-content')
 
@@ -63,7 +9,7 @@
 
 <!-- Premiere section -->
    <section>
-	   <div class="profile-left">
+   <div class="profile-left">
 			<div class="menu">
 			<ul>
 				<li><a href=""> <span>O</span> Identifiant</a></li>
@@ -91,7 +37,7 @@
 		   <!-- La Partie de l'grossesse -->
 		   <!-- <h6>ETAT</h6> -->
 		   <p style="margin:-5px 0px 8px;font-size:30px;" class="text-bold">Profile de {{ Auth::guard('patient')->user()->first_name .' '. Auth::guard('patient')->user()->last_name  }} </p>
-		   		<div class="grossesse">
+		   		<div class="grossesse update_profil">
 					<h6 style="margin:-10px 0px;">Modifier Toutes vos informations</h6>
 				
 						<form action="{{ route('patient.update',Auth::guard('patient')->user()->id) }}" class="profil_form" method="post">
@@ -123,18 +69,7 @@
 										</div>
 									</p>
 
-									<p class="contour_input">
-										<i class="fa fa-envelope icon"></i>
-										<input  type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') ?? Auth::guard('patient')->user()->email }}" required autocomplete="email" autofocus id="email" placeholder="Votre Adresse E-mail">
-										<div>
-											@error('email')
-												<span class="invalid-feedback" role="alert">
-													<strong>{{ $message }}</strong>
-												</span>
-											@enderror
-										</div>
-									</p>
-
+						
 									<p class="contour_input">
 										<i class="fa fa-stopwatch-20 icon"></i>
 										<input type="date" class="form-control @error('birthday') is-invalid @enderror" name="birthday" value="{{ old('birthday') ?? Auth::guard('patient')->user()->birthday }}" required autocomplete="birthday" autofocus id="birthday" placeholder="">
@@ -173,32 +108,17 @@
 										</div>
 									</p>
 
-									<p class="contour_input">
-										<i class="fa fa-key icon"></i>
-										<input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password" required autocomplete="current-password" id="" placeholder="Votre Mot de passe">
-										<div>
-											@error('password')
-												<span class="invalid-feedback" role="alert">
-													<strong>{{ $message }}</strong>
-												</span>
-											@enderror
-										</div>
-									</p>
-
-									<p class="contour_input">
-										<i class="fa fa-lock icon"></i>
-										<input type="password" class="form-control @error('password') is-invalid @enderror" name="password_confirmation" id="password" required autocomplete="current-password" id="" placeholder="Confirmez VotreMot de passe">
+									<p>
+										<input class="btn-primary text-bold " type="submit" value="Enregistre les modification">
 									</p>
 								</div>
 							</div>
 							
-							<p>
-								<input class="btn-primary text-bold " type="submit" value="Enregistre les modification">
-							</p>
+							
 						</form>
 				</div>
 
-				<div class="grossesse">
+				<div class="grossesse update_profil">
 					<h6 style="margin:-10px 0px;">Modifier Votre Adresse E-mail</h6>
 					<form action="{{ route('patient.update',Auth::guard('patient')->user()->id) }}" class="profil_form_2" method="post">
 					@csrf 
@@ -220,8 +140,8 @@
 					</form>
 				</div>
 
-				<div class="grossesse">
-					<h6 style="margin:-10px 0px;">Modification De Votre Mot De Passe</h6>
+				<div class="grossesse update_profil">
+					<h6 style="margin:-10px 0px;">Modifiez Votre Mot De Passe</h6>
 					<form action="{{ route('patient.password',Auth::guard('patient')->user()->id) }}" class="profil_form_3" method="post">
 					@csrf 
 					{{ method_field('PUT') }}		
@@ -245,6 +165,28 @@
 							<input class="btn-primary text-bold" type="submit" value="Enregistre les modification">
 						</p>
 					</form>
+				</div>
+
+				<div class="delete_compte">
+					<p>Zone Danger</p>
+					<br>
+					<form id="delete-compte" method="post" action="{{ route('patient.destroy',Auth::guard('patient')->user()->id) }}" style="display:none">
+					{{csrf_field()}}
+					{{method_field('delete')}}
+					</form>
+					<span class=""><a href="" class="text-center" 
+					onclick="
+					if(confirm('Etes Vous Sur De Supprimer Votre Compte ?')){
+
+					event.preventDefault();document.getElementById('delete-compte').submit();
+
+					}else{
+
+					event.preventDefault();
+
+					}
+					
+					"><i class="fa fa-trash"> Vous Pouvez Supprimer Votre Compte</i></a></span>
 				</div>
 
 			<!-- Fin de la partie de l'grossesse -->

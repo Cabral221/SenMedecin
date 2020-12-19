@@ -6,7 +6,7 @@
 <!-- Premiere section -->
 
  <div class="section-index box-shadow container sens_top">
-	 <h4>Blog</h4>
+	 <h4 class="blog_title">Blog</h4>
 	 <section class=" container sens">
 	   <div class="sens_left">
 			<div class="sens_left_content">

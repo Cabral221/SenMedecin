@@ -32,6 +32,7 @@ Route::prefix('/patient')->namespace('Patient')->name('patient.')->group(functio
     Route::put('/profile/{id}', 'PatientController@update')->name('update');
     Route::patch('/profile/{id}', 'PatientController@email')->name('email');
     Route::put('/profil/{id}', 'PatientController@password')->name('password');
+    Route::delete('/profile/{id}', 'PatientController@destroy')->name('destroy');
     Route::namespace('Auth')->group(function(){
         Route::get('/login', 'LoginController@showLoginForm')->name('login');
         Route::post('/login', 'LoginController@login')->name('login');

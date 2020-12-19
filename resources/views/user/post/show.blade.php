@@ -9,9 +9,9 @@
 	 <h4 class="blog_show_title">Un chevalier conduisant son cheval </h4>
 	 <section class=" container sens">
 		 <div class="sens_left">
-	 	<p>
-			<img src="{{ asset('user/img/article2.jpg') }}" alt="">
-		</p>
+			<p>
+				<img src="{{ asset('user/img/article2.jpg') }}" alt="">
+			</p>
 			<div class="blog">
 				<div class="blog_left">
 					<ul class="tags">
@@ -47,6 +47,20 @@
 						Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima nemo quos corporis quae porro doloribus
 					</p>
 					
+				</div>
+			</div>
+
+			<div class="post_comment">
+				<div class="comment_content">
+					<div class="user_name">Ousmane Diallo</div>
+					<div class="comment_date"> Decembre 4, 2017 a 3:12 pm </div>
+					<div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, doloribus!</div>
+				</div>
+<hr>
+				<div class="comment_content">
+					<div class="user_name">Ousmane Diallo</div>
+					<div class="comment_date"> Decembre 4, 2017 a 3:12 pm </div>
+					<div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, doloribus!</div>
 				</div>
 			</div>
 			
