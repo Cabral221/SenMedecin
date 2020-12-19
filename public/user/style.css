@@ -1097,6 +1097,14 @@ section .sens_left .sens_left_content .sidebar ul li{
     display:inline-block;
     font-size:12px
 }
+section .sens_left .sens_left_content .sidebar ul li a{
+    color: rgba(0, 0, 0, 0.616);
+    font-weight: 900;
+}
+section .sens_left .sens_left_content .sidebar .infos p a{
+    color: rgba(0, 0, 0, 0.616);
+    font-weight: 900;
+}
 section .sens_left .sens_left_content .image{
     width:75%;
 }
@@ -1114,6 +1122,15 @@ section .sens_left .sens_left_content .image .body_header .article_title{
 section .sens_left .sens_left_content .image .body_header .social{
     width: 40%;
     text-align: right;
+}
+section .sens_left .sens_left_content .image .body_header .social a:first-child{
+    margin-right: 10px;
+}
+section .sens_left .sens_left_content .image .body_header .social a:last-child{
+    margin-left: 10px;
+}
+section .sens_left .sens_left_content .image .body_header .social a{
+    color: rgba(255, 102, 171, 0.867);
 }
 section .sens_left .sens_left_content .image p img{
     width:100%;
@@ -1176,6 +1193,17 @@ section .sens_left .blog .blog_left ul{
 section .sens_left .blog .blog_left ul li{
     display:inline-block;
     font-size:12px
+}
+section .sens_left .blog .blog_left ul li a{
+    color: rgba(0, 0, 0, 0.616);
+    font-weight: 900;
+}
+section .sens_left .blog .blog_left .infos p a:last-child{
+    margin-left: 18px;
+}
+section .sens_left .blog .blog_left .infos p a{
+    color: rgba(0, 0, 0, 0.616);
+    font-weight: 900;
 }
 section .sens_left .blog .blog_right{
     width:75%;

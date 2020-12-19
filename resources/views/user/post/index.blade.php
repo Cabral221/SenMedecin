@@ -18,9 +18,8 @@
 						<li><a href="#">Football,</a></li>
 					</ul>
 					<div class="infos">
-						<p class=""><a href="#">Ousmane Diallo <i class="fa fa-user"></i></a></p>
 						<p class=""><a href="#">12 Dec, 2017 <i class="fa fa-clock"></i></a></p>
-						<p class=""><a href="#">1.2M Views <i class="fa fa-eye"></i></a></p>
+						<p class=""><a href="{{ route('posts.show',1) }}">1.2M Views <i class="fa fa-eye"></i></a></p>
 						<p class=""><a href="#">06 Comments <i class="fa fa-comments"></i></a></p>						
 					</div>
 				</div>
@@ -31,8 +30,8 @@
 					<div class="body_header">
 						<p class="article_title">Un chevalier conduisant son cheval  </p>
 						<p class="social"> 
-							<a href="#"><span> like <i class="fa fa-thumbs-up"></i></span> </a>
-							<a href="#"><span>Dislike <i class="fa fa-thumbs-down"></i></span></a> 
+							<a href="#"><span> 000 <i class="fa fa-thumbs-up"></i></span> </a> 
+							<a href="#"> <span>000 <i class="fa fa-thumbs-down"></i></span></a> 
 						</p>
 					</div>
 					<p class="text">
@@ -52,9 +51,8 @@
 						<li><a href="#">Football,</a></li>
 					</ul>
 					<div class="infos">
-						<p class=""><a href="#">Ousmane Diallo <i class="fa fa-user"></i></a></p>
 						<p class=""><a href="#">12 Dec, 2017 <i class="fa fa-clock"></i></a></p>
-						<p class=""><a href="#">1.2M Views <i class="fa fa-eye"></i></a></p>
+						<p class=""><a href="{{ route('posts.show',1) }}">1.2M Views <i class="fa fa-eye"></i></a></p>
 						<p class=""><a href="#">06 Comments <i class="fa fa-comments"></i></a></p>						
 					</div>
 				</div>
@@ -65,8 +63,8 @@
 					<div class="body_header">
 						<p class="article_title">Un chevalier conduisant son cheval  </p>
 						<p class="social"> 
-							<a href="#"><span> like <i class="fa fa-thumbs-up"></i></span> </a>
-							<a href="#"><span>Dislike <i class="fa fa-thumbs-down"></i></span></a> 
+							<a href="#"><span> 000 <i class="fa fa-thumbs-up"></i></span> </a>
+							<a href="#"><span>000 <i class="fa fa-thumbs-down"></i></span></a> 
 						</p>
 					</div>
 					<p class="text">

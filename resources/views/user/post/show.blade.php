@@ -26,8 +26,8 @@
 						<p class=""><a href="#">1.2M Views <i class="fa fa-eye"></i></a></p>
 						<p class=""><a href="#">06 Comments <i class="fa fa-comments"></i></a></p>
 						<p class="social"> 
-							<a href="#"><span> like <i class="fa fa-thumbs-up"></i></span> </a>
-							<a href="#"><span>Dislike <i class="fa fa-thumbs-down"></i></span></a> 
+							<a href="#"><span> 000 <i class="fa fa-thumbs-up"></i></span> </a>
+							<a href="#"><span>000 <i class="fa fa-thumbs-down"></i></span></a> 
 						</p>						
 					</div>
 				</div>
