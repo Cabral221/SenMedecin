@@ -30,7 +30,7 @@ class MedecinController extends Controller
     
     public function show(Medecin $medecin)
     {
-        $appointments = $medecin->appointments()->orderBy('date','DESC')->get();
+        $appointments = $medecin->appointmentWherePassed(false);
         return view('responsable.agent.show', compact('medecin','appointments'));
     }
 
