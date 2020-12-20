@@ -30,8 +30,10 @@
             <div class="card-body">
                 <img src="{{ asset('backend/assets/images/dashboard/circle.svg') }}" class="card-img-absolute" alt="circle-image" />
                 <h4 class="font-weight-normal mb-3">Rendez-vous à venir <i class="mdi mdi-chart-line mdi-24px float-right"></i></h4>
-                <h2 class="mb-3">{{ $medecin->lastAppointment()->date->locale('fr_FR')->calendar() }}</h2>
-                <span>{{ $patientActives->count() }} patientes actives</span>
+                @if ($medecin->lastAppointment())
+                    <h2 class="mb-3">{{ $medecin->lastAppointment()->date->locale('fr_FR')->calendar() }}</h2>
+                    <span>{{ $patientActives->count() }} patientes actives</span>
+                @endif
             </div>
         </div>
     </div>

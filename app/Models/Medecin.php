@@ -85,7 +85,7 @@ class Medecin extends Authenticatable
         return $myPatients * 100 / $allPatient;
     }
 
-    public function lastAppointment() : Appointment
+    public function lastAppointment() : ?Appointment
     {
         return $this->appointments()->where('passed', false)->first();
     }

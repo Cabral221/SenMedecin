@@ -5,19 +5,18 @@
         <h3 class="page-title">
         <span class="page-title-icon bg-gradient-primary text-white mr-2">
             <i class="mdi mdi-arrow-collapse-all"></i>
-        </span> Rendez-vous à venir
+        </span> Historique
         </h3>
         <nav aria-label="breadcrumb">
             <ul class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page">Rendez-vous</li>
+                <li class="breadcrumb-item active" aria-current="page">Historique</li>
             </ul>
         </nav>
     </div>
 
-
-    <div class="card card-outline-primary mb-4">
+    <div class="card card-outline-primary">
         <div class="card-body">
-            <h4 class="card-title">Rendez-vous prochain</h4>
+            <h4 class="card-title">Rendez-vous passé</h4>
             <table class="table table-hover">
                 <thead>
                 <tr>
