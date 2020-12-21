@@ -45,7 +45,7 @@
 					<p>
 						<input type="submit" class="submit" value="Se Connecter">
 					</p>
-					<p class="forgot_password">	<span> <a href="#"> J'ai oublie mon mot de passe </a> </span></p>
+					<p class="forgot_password">	<span> <a href="{{ route('patient.password.request') }}"> J'ai oublie mon mot de passe </a> </span></p>
 				</form>
 			</div>
 	

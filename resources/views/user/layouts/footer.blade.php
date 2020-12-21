@@ -48,7 +48,7 @@
 			<div class="bulletin">
 				<form action="" class="form_bulletin">
 					<div class="form_input">
-						<input class="form-control" type="email" class="form-control @error('news') is-invalid @enderror" name="news" value="{{ old('news') }}" required autocomplete="news" autofocus id="news" placeholder="Votre Adresse E-mail">
+						<input class="form-control" type="email" class="form-control @error('news') is-invalid @enderror" name="news" value="{{ old('news') }}" required autocomplete="news" id="news" placeholder="Votre Adresse E-mail">
 						<span class="text-primary">
 							@error('news')
 								<span class="invalid-feedback" role="alert">

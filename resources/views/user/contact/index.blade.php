@@ -17,11 +17,11 @@
             <div class="form_left">
                 <div class="form_group">
                     <p> <label for="">Prenom et Nom <i class="fa fa-user"></i></label></p>
-                    <input class="form-control" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus id="name" placeholder="">
+                    <input class="form-control" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name"  id="name" placeholder="">
                     <div class="text-primary">
                         @error('name')
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
+                                <strong class="message_error">{{ $message }}</strong>
                             </span>
                         @enderror
                     </div>
@@ -30,11 +30,11 @@
                 
                 <div class="form_group">
                     <p> <label for="">E-mail Adresse <i class="fa fa-envelope"></i></label></p>
-                    <input class="form-control" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus id="email" placeholder="">
+                    <input class="form-control" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email"  id="email" placeholder="">
                     <div class="text-primary">
                         @error('email')
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
+                                <strong class="message_error">{{ $message }}</strong>
                             </span>
                         @enderror
                     </div>
@@ -43,11 +43,11 @@
                 
                 <div class="form_group">
                     <p><label for="">Votre Objet <i class="fa fa-closed-captioning"></i></label></p>
-                    <input class="form-control" type="text" class="form-control @error('object') is-invalid @enderror" name="object" value="{{ old('object') }}" required autocomplete="object" autofocus id="object" placeholder="">
+                    <input class="form-control" type="text" class="form-control @error('object') is-invalid @enderror" name="object" value="{{ old('object') }}" required autocomplete="object"  id="object" placeholder="">
                     <div class="text-primary">
                         @error('object')
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
+                                <strong class="message_error">{{ $message }}</strong>
                             </span>
                         @enderror
                     </div>
@@ -57,11 +57,11 @@
             <div class="form_right">
                 <div class="form_group">
                     <p> <label for="">Message <i class="fa fa-comment"></i></label></p>
-                    <textarea class="form-control @error('content') is-invalid @enderror" name="content" value="{{ old('content') }}" required autocomplete="content" autofocus id="content" cols="20" rows="5"></textarea>
+                    <textarea class="form-control @error('content') is-invalid @enderror" name="content" value="{{ old('content') }}" required autocomplete="content"  id="content" cols="20" rows="5"></textarea>
                     <div class="text-primary">
                         @error('content')
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
+                                <strong class="message_error">{{ $message }}</strong>
                             </span>
                         @enderror
                     </div>

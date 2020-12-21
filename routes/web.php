@@ -108,8 +108,8 @@ Route::prefix('/partener')->namespace('Responsable')->name('responsable.')->grou
         Route::get('/password/confirm', 'ConfirmPasswordController@showConfirmForm')->name('password.confirm');
         Route::post('/password/confirm', 'ConfirmPasswordController@confirm')->name('password.confirm');
     
-        Route::post('/password/email', 'ForgotPasswordController@sendResetLinkEmail')->name('password.email');
         Route::get('/password/reset', 'ForgotPasswordController@showLinkRequestForm')->name('password.request');
+        Route::post('/password/email', 'ForgotPasswordController@sendResetLinkEmail')->name('password.email');
     
         Route::get('/password/reset/{token}', 'ResetPasswordController@showResetForm')->name('password.reset');
         Route::post('/password/reset', 'ResetPasswordController@reset')->name('password.update');

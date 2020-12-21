@@ -35,7 +35,7 @@ class ConfirmPasswordController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:patient');
+        $this->middleware('guest:patient');
     }
 
     public function showConfirmForm()

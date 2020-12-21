@@ -3,7 +3,7 @@
 				<ul>
 					@guest('patient')
 						<li class="li-home"> <a href="/"> <span class="header-icon"><i class="fas fa-home"></i></span> Home</a></li>
-						<li> <a href="{{ route('user.about') }}"> <span class="header-icon"><i class="fas fa-eject"></i></span> Comment Ca Marche</a></li>
+						<li> <a href="{{ route('user.about') }}"> <span class="header-icon"><i class="fas fa-eject"></i></span> A propos</a></li>
 						<li> <a href="{{ route('posts.index') }}"> <span class="header-icon"><i class="fas fa-blog"></i></span> Blog</a></li>
 						<li> <a href="{{ route('contact.index') }}"> <span class="header-icon"><i class="fas fa-id-card-alt"></i></span> Contact</a></li>    					          		          
 						<li class="li-connecter"><a> <span class="header-icon"><i class="fas fa-sign-in-alt"></i></span> Se connecter <span class="chevero-login"><i class="fas fa-chevron-down"></i></span></a>

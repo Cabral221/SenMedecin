@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('user.layouts.app')
 
-@section('content')
-<div class="container">
+@section('main-content')
+<div class="container" style="margin-top:10em;">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -25,7 +25,7 @@
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong class="message_error">{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>

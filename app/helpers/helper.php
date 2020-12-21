@@ -8,4 +8,3 @@ if(! function_exists('all_info')){
         return $info;
     }
 }
-

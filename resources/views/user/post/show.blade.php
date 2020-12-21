@@ -70,22 +70,22 @@
 						@csrf
 						<div class="comment_input">
 							<p>
-								<input type="text" class="form-control @error('full_name') is-invalid @enderror" name="full_name" value="{{ old('full_name') }}"  autocomplete="full_name" autofocus id="full_name" placeholder="Votre Prenom et Nom">
+								<input type="text" class="form-control @error('full_name') is-invalid @enderror" name="full_name" value="{{ old('full_name') }}"  autocomplete="full_name"  id="full_name" placeholder="Votre Prenom et Nom">
 								<span class="text-primary">
 									@error('full_name')
 										<span class="invalid-feedback" role="alert">
-											<strong>{{ $message }}</strong>
+											<strong class="message_error">{{ $message }}</strong>
 										</span>
 									@enderror
 								</span>
 							</p>
 
 							<p>
-								<input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"  autocomplete="email" autofocus id="email" placeholder="Votre Adresse E-mail">
+								<input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"  autocomplete="email"  id="email" placeholder="Votre Adresse E-mail">
 								<span class="text-primary">
 									@error('email')
 										<span class="invalid-feedback" role="alert">
-											<strong>{{ $message }}</strong>
+											<strong class="message_error">{{ $message }}</strong>
 										</span>
 									@enderror
 								</span>
@@ -94,11 +94,11 @@
 						</div>
 						
 						<div class="text">
-							<textarea class="form-control @error('comment') is-invalid @enderror" name="comment" value="{{ old('comment') }}"  autocomplete="comment" autofocus id="comment" cols="20" rows="5" placeholder="Votre Commentaire"></textarea>
+							<textarea class="form-control @error('comment') is-invalid @enderror" name="comment" value="{{ old('comment') }}"  autocomplete="comment"  id="comment" cols="20" rows="5" placeholder="Votre Commentaire"></textarea>
 							<div class="text-primary">
 								@error('comment')
 									<span class="invalid-feedback" role="alert">
-										<strong>{{ $message }}</strong>
+										<strong class="message_error">{{ $message }}</strong>
 									</span>
 								@enderror
 							</div>

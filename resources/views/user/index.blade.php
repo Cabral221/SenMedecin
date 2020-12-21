@@ -5,7 +5,10 @@
       integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
       crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+	  
+	  {{-- <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/owl.css') }}" /> --}}
    <style>
     .slider{
       max-width: 100%;
@@ -189,20 +192,37 @@
 		</div>
 	</div>
 	</div>
+
+	<div class="card">
+		<div class="img">
+			<img src="{{asset('user/img/img.jpg')}}" alt="">
+			<div class="content">
+			<div class="title">Fann</div>
+			<div class="subtitle">Hopital Regional</div>
+			<div class="btn">
+				<button class="">Visitez</button>
+			</div>
+			</div>
+		</div>
+		</div>
 </div>
 </section>
 <!-- fin de la Section des partenaire -->
 </div>
+
 @section('footersection')
-	<script>
-      // alert('jdjjdf');
-      $('.slider').owlCarousel({
-        loop:true,
-        autoplay:true,
-        autoplayTimeout:3000,//200ms = 2s;
-        autoplayHoverPause:true
-      });
-    </script>
+{{-- <script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ asset('js/owl.js') }}"></script>
+<script src="{{ asset('user/js/script.js') }}"></script> --}}
+<script src="{{ asset('user/js/script.js') }}"></script>
+{{-- <script>
+	$('.slider').owlCarousel({
+  loop:true,
+  autoplay:true,
+  autoplayTimeout:3000,//200ms = 2s;
+  autoplayHoverPause:true
+});
+</script> --}}
 @show
 
 @endsection
