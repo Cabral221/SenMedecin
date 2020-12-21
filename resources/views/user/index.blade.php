@@ -126,69 +126,69 @@
 <section class="container partener_slider top-section">
 <div class="slider owl-carousel">
 
-<div class="card">
-  <div class="img">
-	<img src="{{asset('user/img/img.jpg')}}" alt="">
-	<div class="content">
-	  <div class="title">Fann</div>
-	  <div class="subtitle">Hopital Regional</div>
-	  <div class="btn">
-		<button class="">Visitez</button>
-	  </div>
+	<div class="card">
+	<div class="img">
+		<img src="{{asset('user/img/img.jpg')}}" alt="">
+		<div class="content">
+		<div class="title">Fann</div>
+		<div class="subtitle">Hopital Regional</div>
+		<div class="btn">
+			<button class="">Visitez</button>
+		</div>
+		</div>
 	</div>
-  </div>
-</div>
-<div class="card">
-  <div class="img">
-	<img src="{{asset('user/img/img.jpg')}}" alt="">
-	<div class="content">
-	  <div class="title">Fann</div>
-	  <div class="subtitle">Hopital Regional</div>
-	  <div class="btn">
-		<button class="">Visitez</button>
-	  </div>
 	</div>
-  </div>
-</div>
+	<div class="card">
+	<div class="img">
+		<img src="{{asset('user/img/img.jpg')}}" alt="">
+		<div class="content">
+		<div class="title">Fann</div>
+		<div class="subtitle">Hopital Regional</div>
+		<div class="btn">
+			<button class="">Visitez</button>
+		</div>
+		</div>
+	</div>
+	</div>
 
-<div class="card">
-  <div class="img">
-	<img src="{{asset('user/img/img.jpg')}}" alt="">
-	<div class="content">
-	  <div class="title">Fann</div>
-	  <div class="subtitle">Hopital Regional</div>
-	  <div class="btn">
-		<button class="">Visitez</button>
-	  </div>
+	<div class="card">
+	<div class="img">
+		<img src="{{asset('user/img/img.jpg')}}" alt="">
+		<div class="content">
+		<div class="title">Fann</div>
+		<div class="subtitle">Hopital Regional</div>
+		<div class="btn">
+			<button class="">Visitez</button>
+		</div>
+		</div>
 	</div>
-  </div>
-</div>
+	</div>
 
-<div class="card">
-  <div class="img">
-	<img src="{{asset('user/img/img.jpg')}}" alt="">
-	<div class="content">
-	  <div class="title">Fann</div>
-	  <div class="subtitle">Hopital Regional</div>
-	  <div class="btn">
-		<button class="">Visitez</button>
-	  </div>
+	<div class="card">
+	<div class="img">
+		<img src="{{asset('user/img/img.jpg')}}" alt="">
+		<div class="content">
+		<div class="title">Fann</div>
+		<div class="subtitle">Hopital Regional</div>
+		<div class="btn">
+			<button class="">Visitez</button>
+		</div>
+		</div>
 	</div>
-  </div>
-</div>
+	</div>
 
-<div class="card">
-  <div class="img">
-	<img src="{{asset('user/img/img.jpg')}}" alt="">
-	<div class="content">
-	  <div class="title">Fann</div>
-	  <div class="subtitle">Hopital Regional</div>
-	  <div class="btn">
-		<button class="">Visitez</button>
-	  </div>
+	<div class="card">
+	<div class="img">
+		<img src="{{asset('user/img/img.jpg')}}" alt="">
+		<div class="content">
+		<div class="title">Fann</div>
+		<div class="subtitle">Hopital Regional</div>
+		<div class="btn">
+			<button class="">Visitez</button>
+		</div>
+		</div>
 	</div>
-  </div>
-</div>
+	</div>
 </div>
 </section>
 <!-- fin de la Section des partenaire -->

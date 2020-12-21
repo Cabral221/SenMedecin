@@ -28,7 +28,7 @@
    <section class=" container about_card">
    		<div class="about_card_logo">
 		   <div class="logo">
-			   <img src="{{ asset('user/img/2.png') }}" alt="" srcset="">
+			   <img src="{{ asset('user/img/g1.jpg') }}" alt="" srcset="">
 			</div>
 	   </div>
 	   <div class="about_card_body">
@@ -48,7 +48,7 @@
 <section class=" container about_card">
    		<div class="about_card_logo">
 		   <div class="logo">
-			   <img src="{{ asset('user/img/2.png') }}" alt="" srcset="">
+			   <img src="{{ asset('user/img/vac1.jpeg') }}" alt="" srcset="">
 			</div>
 	   </div>
 	   <div class="about_card_body">
