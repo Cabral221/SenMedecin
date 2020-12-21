@@ -27,11 +27,12 @@
 
 @section('js')
     <script src="{{ asset('backend/fullcalendar/lib/main.js') }}"></script>
-    <script defer>
+    <script>
         window.onload = () => {
             let calendarEl = document.getElementById('calendar')
 
             let calendar = new FullCalendar.Calendar(calendarEl, {
+                themeSystem: 'bootstrap',
                 initialView: 'dayGridMonth',
                 locale: 'fr',
                 timeZone: 'Afrique/Dakar',
@@ -39,7 +40,15 @@
                     start: 'prev,next today',
                     center: 'title',
                     end: 'dayGridMonth,dayGridDay,timeGridWeek,list'
-                }
+                },
+                bootstrapFontAwesome: {
+                    close: 'timer',
+                    prev: 'chevron-left',
+                    next: 'chevron-right',
+                    prevYear: 'chevron-double-left',
+                    nextYear: 'chevron-double-right',
+                },
+                events: {!! $data !!}
             })
 
             calendar.render()

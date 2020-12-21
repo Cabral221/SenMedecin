@@ -31,9 +31,10 @@ class CalendarController extends Controller
                 'title' => $appointment->type() .': '. $appointment->description,
             ];
         }
-        dd($rvs);
 
-        return view('medecin.calendar');
+        $data =  \json_encode($rvs);
+        
+        return view('medecin.calendar', compact('data'));
     }
 
     public function medecin(): Medecin

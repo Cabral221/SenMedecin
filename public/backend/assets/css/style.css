@@ -11171,6 +11171,7 @@ code {
   font-size: 0.875rem;
   line-height: 1;
   font-family: "ubuntu-bold", sans-serif;
+  padding: 0.5rem 1rem;
   /* Buttons with only icons */
   /* Buttons with icon and text */ }
   .btn i {

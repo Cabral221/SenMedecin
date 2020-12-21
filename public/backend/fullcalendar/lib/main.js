@@ -13921,7 +13921,7 @@ var FullCalendar = (function (exports) {
         popoverHeader: 'popover-header',
         popoverContent: 'popover-body',
     };
-    BootstrapTheme.prototype.baseIconClass = 'fa';
+    BootstrapTheme.prototype.baseIconClass = 'mdi';
     BootstrapTheme.prototype.iconClasses = {
         close: 'fa-times',
         prev: 'fa-chevron-left',
@@ -13937,7 +13937,7 @@ var FullCalendar = (function (exports) {
     };
     BootstrapTheme.prototype.iconOverrideOption = 'bootstrapFontAwesome'; // TODO: make TS-friendly. move the option-processing into this plugin
     BootstrapTheme.prototype.iconOverrideCustomButtonOption = 'bootstrapFontAwesome';
-    BootstrapTheme.prototype.iconOverridePrefix = 'fa-';
+    BootstrapTheme.prototype.iconOverridePrefix = 'mdi-';
     var plugin = createPlugin({
         themeClasses: {
             bootstrap: BootstrapTheme,
