@@ -1,9 +1,5 @@
 @extends('layouts.admin.app')
 
-@section('css')
-
-@endsection
-
 @section('content')
     <div class="page-header">
         <h3 class="page-title">
@@ -35,7 +31,7 @@
                 <tbody>
                 @foreach($appointments as $appointment)
                     <tr>
-                        <td>{{ $appointment->date->locale('fr_FR')->calendar(   ) }}</td>
+                        <td>{{ $appointment->date->locale('fr_FR')->calendar() }}</td>
                         <td>{{ $appointment->patient->fullName }}</td>
                         <td>{{ $appointment->type() }}</td>
                         <td>{{ $appointment->description }}</td>

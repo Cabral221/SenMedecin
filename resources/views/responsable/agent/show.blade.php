@@ -65,8 +65,16 @@
                             <td><span class="badge badge-primary">{{ $medecin->patients->count() }}</span></td>
                         </tr>
                         <tr>
-                            <th>Rendez-vous </th>
+                            <th>Total Rendez-vous </th>
                             <td><span class="badge badge-primary">{{ $medecin->appointments->count() }}</span></td>
+                        </tr>
+                        <tr>
+                            <th>Rendez-vous passés</th>
+                            <td><span class="badge badge-primary">{{ $medecin->appointmentWherePassed()->count() }}</span></td>
+                        </tr>
+                        <tr>
+                            <th>Rendez-vous à venir</th>
+                            <td><span class="badge badge-primary">{{ $medecin->appointmentWherePassed(false)->count() }}</span></td>
                         </tr>
                     </tbody>
                 </table>
@@ -78,20 +86,22 @@
     <div class="card card-outline-primary">
         <div class="card-body">
             <h4 class="card-title">Calendrier des Rendez-vous</h4>
-            <table class="table">
+            <table class="table table-hover">
                 <thead>
                     <tr>
                         <th>Date</th>
                         <th>Type</th>
                         <th>Description</th>
+                        <th>Avec</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($appointments as $appointment)
                         <tr>
-                            <td>{{ $appointment->date->calendar() }}</td>
+                            <td>{{ $appointment->date->locale('fr_FR')->calendar() }}</td>
                             <td>{{ $appointment->type() }}</td>
                             <td>{{ $appointment->description }}</td>
+                            <td>{{ $appointment->patient->fullName }}</td>
                         </tr>
                     @endforeach
                 </tbody>

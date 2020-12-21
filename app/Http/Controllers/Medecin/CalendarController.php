@@ -9,6 +9,7 @@
 namespace App\Http\Controllers\Medecin;
 
 
+use App\Models\Medecin;
 use App\Http\Controllers\Controller;
 
 class CalendarController extends Controller
@@ -20,6 +21,23 @@ class CalendarController extends Controller
 
     public function index()
     {
+        $appointments = $this->medecin()->appointments;
+        $rvs = [];
+        foreach($appointments as $appointment){
+            $rvs[] = [
+                'id' => $appointment->id,
+                'start' => $appointment->date->format('Y-m-d H:i:s'),
+                'end' => $appointment->date->addHours(1)->format('Y-m-d H:i:s'),
+                'title' => $appointment->type() .': '. $appointment->description,
+            ];
+        }
+        dd($rvs);
+
         return view('medecin.calendar');
+    }
+
+    public function medecin(): Medecin
+    {
+        return auth('medecin')->user();
     }
 }

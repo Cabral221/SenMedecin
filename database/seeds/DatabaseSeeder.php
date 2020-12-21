@@ -1,6 +1,7 @@
 <?php
 
 // use Faker\Factory;
+use Carbon\Carbon;
 use App\Models\Info;
 use App\Models\Post;
 use App\Models\Admin;
@@ -24,7 +25,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(DataSeeder::class);
+        $this->call(DataSeeder::class);
         // $faker = Factory::create('fr_FR');
 
         Admin::create([
@@ -110,7 +111,7 @@ class DatabaseSeeder extends Seeder
         $patient = Patient::create([
             'first_name' => 'Patient 1',
             'last_name' => 'pname',
-            'birthday' => now(),
+            'birthday' => Carbon::now()->subYear(20),
             'address' => '1603 dakar, no precis',
             'phone' => '770000000',
             'email' => 'patient@patient.com',
@@ -125,7 +126,7 @@ class DatabaseSeeder extends Seeder
         $patient2 = Patient::create([
             'first_name' => 'Patient 2',
             'last_name' => 'pname',
-            'birthday' => now(),
+            'birthday' => Carbon::now()->subYear(30),
             'address' => '1603 dakar, no precis',
             'phone' => '770000001',
             'email' => 'patient2@patient.com',
@@ -140,7 +141,7 @@ class DatabaseSeeder extends Seeder
         $patient->childrens()->create([
             'first_name' => 'children un',
             'last_name' => 'child',
-            'birthday' => Carbon\Carbon::now()->subMonth(),
+            'birthday' => Carbon::now()->subMonth(),
             'genre' => 'Masculin',
         ]);
 

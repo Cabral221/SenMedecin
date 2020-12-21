@@ -47,8 +47,8 @@ class Patient extends Authenticatable
 
     protected static function booted()
     {
-        $now = Carbon::now();
-        static::created(function (Patient $patient) use($now) {
+        static::created(function (Patient $patient) {
+            $now = Carbon::now();
             $patient->referential = $now->year.$now->month.'-'.$patient->medecin->id.'-'.$patient->id;
             $patient->save();
 

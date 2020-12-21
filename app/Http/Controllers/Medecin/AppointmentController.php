@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by IntelliJ IDEA.
- * User: EMPRO£
+ * User: Cabral221
  * Date: 19/12/2020
  * Time: 13:49
  */
@@ -9,10 +9,10 @@
 namespace App\Http\Controllers\Medecin;
 
 
-use App\Http\Controllers\Controller;
-use App\Models\Medecin;
-use App\Services\Appointment\Appointment;
 use Carbon\Carbon;
+use App\Models\Medecin;
+use App\Http\Controllers\Controller;
+use App\Services\Appointment\Appointment;
 
 class AppointmentController extends Controller
 {
@@ -56,8 +56,8 @@ class AppointmentController extends Controller
     {
         return auth('medecin')->user();
     }
-
-    private function appointmentsWherePassed(bool $bool)
+    
+    private function appointmentsWherePassed(bool $bool = true)
     {
         return $this->medecin()->appointments()->where('passed', $bool)->orderBy('date','ASC')->get();
     }

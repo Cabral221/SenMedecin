@@ -66,6 +66,11 @@ class Medecin extends Authenticatable
         return $this->hasMany(Appointment::class);
     }
 
+    public function appointmentWherePassed(bool $bool = true)
+    {
+        return $this->appointments()->where('passed', $bool)->orderBy('date','ASC')->get();
+    }
+
     public function partOfPatient(): int
     {
         // recuperer tout les patient du responsable
@@ -80,7 +85,7 @@ class Medecin extends Authenticatable
         return $myPatients * 100 / $allPatient;
     }
 
-    public function lastAppointment() : Appointment
+    public function lastAppointment() : ?Appointment
     {
         return $this->appointments()->where('passed', false)->first();
     }

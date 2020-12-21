@@ -1,9 +1,5 @@
 @extends('layouts.admin.app')
 
-@section('css')
-
-@endsection
-
 @section('content')
     <div class="page-header">
         <h3 class="page-title">
