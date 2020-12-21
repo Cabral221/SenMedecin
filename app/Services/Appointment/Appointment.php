@@ -42,4 +42,13 @@ class Appointment extends Model
         return $this->belongsTo(Children::class);
     }
 
+    /**
+     * check if appointment is for children
+     *
+     * @return Children|null
+     */
+    public function isForChild() : ?Children
+    {
+        return $this->children ?? null;
+    }
 }
