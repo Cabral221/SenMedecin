@@ -743,11 +743,15 @@ section .profile-right .grossesse .profil_form_3  .password_center{
 section .delete_compte{
     margin-top: -1.5em;
     margin-bottom: 5em;
+    border: 1px solid red;
+    padding: 10px;
+    padding-bottom: 30px;
+    border-radius: 5px;
 }
 
 section .delete_compte p{
     margin-top: -1.3px;
-    color:rgba(255, 102, 171, 0.867);
+    color:red;
     font-weight: 700;
     font-size: 20px;
 }
@@ -757,6 +761,7 @@ section .delete_compte span a{
   width: 200px;
   color: #fff;
   border-radius: 7px;
+  margin-bottom: 15px;
 }
 /* Fin de la partie de la grossesse */
 

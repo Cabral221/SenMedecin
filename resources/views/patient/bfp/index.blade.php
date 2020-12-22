@@ -1,61 +1,6 @@
 @extends('user.layouts.app')
 @section('headsection')
-<style>
-.menu ul{
-	margin:0px;
-	padding:0px 5px;
-	list-style:none;
-	border-radius:5px;
-}
-.menu ul li{
-	padding:15px;
-	position:relative;
-	width:220px;
-	background-color:#34495E;
-	border-right:1px solid #f1c40f;
-	border-top:1px solid silver;
-	vertical-align:middle;
-	cursor:pointer;
-	-webkit-transition:all 0.3s;
-	-o-transition:all 0.3s;
-	transition:all 0.3s;
-} 
-.menu ul li:hover{
-	background-color:#2ecc71;
-}
-.menu > ul > li{
-	border-right:1px solid #f1c40f;
-}
-.menu ul ul{
-	transition:all 0.3s;
-	opacity:0;
-	position:absolute;
-	visibility:hidden;
-	left:101%;
-	top:-2%;
-	border-left:1px solid #f1c40f; 	
-}
 
-
-.menu ul li:hover > ul{
-	opacity:1;
-	visibility:visible;  
-}
-.menu ul li a{
-	color:#fff;
-	text-decoration:none;
-}
-.menu span{
-	margin-right:15px;
-}
-/* .menu > ul > li:nth-off-type(2)::after{
-	content:"+";
-	position:absolute;
-	margin-left:5%;
-	color:#fff;
-	font-size:20px;
-} */
-</style>
 @endsection
 @section('main-content')
 
@@ -64,30 +9,7 @@
 
 <!-- Premiere section -->
    <section>
-	   <div class="profile-left">
-			<div class="menu">
-			<ul>
-				<li><a href=""> <span>O</span> Identifiant</a></li>
-				<li><a href=""> <span>O</span> Antecedent</a></li>
-				<li><a href=""> <span>O</span> Grossesses <span> > </span></a>
-					<ul>
-						<li><a href=""> <span>O</span> Grossesse 1</a></li>
-						<li><a href=""> <span>O</span> Grossesse 2</a></li>
-						<li><a href=""> <span>O</span> Grossesse 3</a></li>
-					</ul>
-				</li>
-				<li><a href=""> <span>O</span> Naissances <span> > </span></a>
-					<ul>
-						<li><a href=""> <span>O</span> Naissance 1</a></li>
-						<li><a href=""> <span>O</span> Naissance 2</a></li>
-						<li><a href=""> <span>O</span> Naissance 3</a></li>
-					</ul>
-				</li>
-				<li><a href=""> <span>O</span> Urgence</a></li>
-				<li><a href=""> <span>O</span> BFP</a></li>
-			</ul>
-			</div>
-	   </div>
+	@include('patient.sidebare.sidebare')
 	   <div class="profile-right">
 		   <!-- La Partie de l'identification -->
 				<h3>IDENTIFICATION</h3>
