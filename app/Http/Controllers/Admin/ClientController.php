@@ -15,7 +15,7 @@ class ClientController extends Controller
 
     public function index()
     {
-        $patients = Patient::all();
+        $patients = Patient::paginate(25);
         $patientsActive = Patient::active();
         $patientsNotActive = Patient::notActive();
         // dd($patientsNotActive);

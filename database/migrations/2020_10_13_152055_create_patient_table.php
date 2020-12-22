@@ -24,7 +24,7 @@ class CreatePatientTable extends Migration
             $table->string('password');
             $table->string('referential')->nullable()->unique();
             $table->bigInteger('medecin_id')->unsigned()->index();
-            $table->bigInteger('carnet_id')->unsigned()->index();
+            $table->bigInteger('carnet_id')->unsigned()->index()->nullable();
             $table->boolean('is_active')->default(false);
             $table->boolean('is_pregnancy')->default(false);
             $table->rememberToken();

@@ -109,7 +109,11 @@ class Patient extends Authenticatable
         return $this->hasMany(Pregnancy::class);
     }
 
-    public function pregnancy()
+    /**
+     * Get current pregnancy
+     * @return Pregnancy
+     */
+    public function pregnancy() : Pregnancy
     {
         return $this->pregnancies()->where('accouchement', '<', Carbon::now())->first();
     }

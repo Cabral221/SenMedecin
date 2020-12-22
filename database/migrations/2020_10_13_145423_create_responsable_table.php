@@ -17,11 +17,9 @@ class CreateResponsableTable extends Migration
             $table->id();
             $table->string('first_name');
             $table->string('last_name');
-            // $table->string('address');
             $table->string('phone')->unique();
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('gen_password');
             $table->bigInteger('partener_id')->unsigned()->index();
             $table->rememberToken();
             $table->timestamps();

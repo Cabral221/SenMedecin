@@ -17,11 +17,9 @@ class CreateMedecinTable extends Migration
             $table->id();
             $table->string('first_name');
             $table->string('last_name');
-            // $table->string('address');
             $table->string('phone')->unique();
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('gen_password');
             $table->bigInteger('service_id')->unsigned()->index()->default(0);
             $table->bigInteger('responsable_id')->unsigned()->index()->default(0);
             $table->boolean('is_active')->default(true);

@@ -10,7 +10,6 @@ use App\Models\Medecin;
 use App\Models\Patient;
 use App\Models\Service;
 use App\Models\Partener;
-use App\Models\Responsable;
 use Illuminate\Support\Str;
 use App\Models\TypeAppointment;
 use Illuminate\Database\Seeder;
@@ -49,8 +48,8 @@ class DatabaseSeeder extends Seeder
 
         Info::create([
             'address' => 'Siege social no 1234, Dakar Sénégal',
-            'phone' => '+33 987 98 90',
-            'email' => 'contact@axxundurel.com',
+            'phone' => '+33 824 29 10',
+            'email' => 'contact@axxunjurel.com',
         ]);
 
         TypeAppointment::create(['libele' => 'CPN']);
@@ -70,18 +69,17 @@ class DatabaseSeeder extends Seeder
             'image' => 'image.jpg',
         ]);
 
-        $responsable = Responsable::create([
+        $responsable = $partener->responsable()->create([
             'first_name' => 'Responsable 1',
             'last_name' => 'Rname',
             'phone' => '779999999',
             'email' => 'responsable@responsable.com',
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'gen_password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'partener_id' => $partener->id,
+//            'partener_id' => $partener->id,
         ]);
 
         // dd($services->id);
-        $partener_service = Partener_service::create([
+        Partener_service::create([
             'partener_id' => $partener->id,
             'service_id' => $s1->id
         ]);
@@ -100,7 +98,6 @@ class DatabaseSeeder extends Seeder
             'phone' => '770000000',
             'email' => 'medecin@medecin.com',
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'gen_password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'service_id' => $s1->id,
             'responsable_id' => $responsable->id,
             'remember_token' => Str::random(10),
@@ -123,7 +120,7 @@ class DatabaseSeeder extends Seeder
             'is_active' => true,
         ]);
 
-        $patient2 = Patient::create([
+        Patient::create([
             'first_name' => 'Patient 2',
             'last_name' => 'pname',
             'birthday' => Carbon::now()->subYear(30),
@@ -131,7 +128,6 @@ class DatabaseSeeder extends Seeder
             'phone' => '770000001',
             'email' => 'patient2@patient.com',
             'medecin_id' => $medecin->id,
-            'carnet_id' => $carnet->id,
             // 'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
@@ -152,5 +148,7 @@ class DatabaseSeeder extends Seeder
             'content' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis sint asperiores voluptate eius dolorem? Delectus aliquid, quos omnis ipsa optio, iure commodi placeat, itaque cupiditate sit sed suscipit voluptatum? Rem!',
             'publish' => true,
         ]);
+
+        $this->call(FixtureSeeder::class);
     }
 }

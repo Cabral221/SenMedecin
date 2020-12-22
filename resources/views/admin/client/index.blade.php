@@ -19,7 +19,7 @@
             <div class="card-body">
                 <img src="{{ asset('backend/assets/images/dashboard/circle.svg') }}" class="card-img-absolute" alt="circle-image" />
                 <h4 class="font-weight-normal mb-3">Total Clients <i class="mdi mdi-chart-line mdi-24px float-right"></i></h4>
-                <h2 class="mb-5">{{ count($patients) }}</h2>
+                <h2 class="mb-5">{{ $patients->total() }}</h2>
             </div>
         </div>
     </div>
@@ -82,7 +82,7 @@
                                     @method('POST')
                                 </form>
                             @endif
-
+                            <br>
                             <a href="#" class="btn btn-xs btn-outline-danger" onclick="event.preventDefault();if(confirm('Êtes vous sûr de vouloir supprimer ce client ?')){document.getElementById('form-delete-client-{{$patient->id}}').submit();}"><i class="mdi mdi-delete"></i></a>
                             <form action="{{ route('admin.clients.destroy', $patient) }}" method="post" class="d-none" id="form-delete-client-{{$patient->id}}">
                                 @csrf
@@ -91,11 +91,10 @@
                         </td>
                     </tr>
                 @endforeach
-                <tr>
-                    <td></td>
-                </tr>
+
             </tbody>
         </table>
+        {{ $patients->links() }}
     </div>
 </div>
 @endsection

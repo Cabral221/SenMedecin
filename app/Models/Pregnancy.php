@@ -9,6 +9,11 @@ class Pregnancy extends Model
 {
     public $fillable = ['date', 'accouchement'];
 
+    public $casts = [
+        'date' => 'date',
+        'accouchement' =>'date',
+    ];
+
     public function patient()
     {
         return $this->belongsTo(Patient::class);
