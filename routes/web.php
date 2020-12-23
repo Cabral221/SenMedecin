@@ -122,6 +122,9 @@ Route::prefix('/partener')->namespace('Responsable')->name('responsable.')->grou
 Route::prefix('/admin')->namespace('Admin')->name('admin.')->group(function(){
     Route::get('/', 'AdminController@index')->name('home');
 
+    Route::get('/calendar', 'CalendarController@index')->name('calendar.index');
+    Route::resource('/contacts', 'ContactController')->only(['index']);
+
     Route::post('/clients/{patient}/active', 'ClientController@active')->name('clients.active');
     Route::post('/clients/{patient}/deactive', 'ClientController@deactive')->name('clients.deactive');
     Route::resource('/clients', 'ClientController')->only(['index','destroy']);

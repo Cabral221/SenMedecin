@@ -1,14 +1,13 @@
-@extends('layouts.app', ['title' => 'Blog | Admin'])
+@extends('layouts.admin.app', ['title' => 'Blog | Admin'])
 
 @section('content')
     <div class="container">
         <div class="text-center">
-            <h1>Admin Blog Index</h1>
             <a href="{{ route('admin.posts.create') }}" class="btn btn-outline-primary">Créér un Article</a>
         </div>
         <div class="row">
             @foreach ($posts as $post)
-                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                     <div class="card">
                         <div class="card-header">
                             <h4>{{ $post->title }}</h4>

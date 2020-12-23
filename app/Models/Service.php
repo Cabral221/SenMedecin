@@ -28,10 +28,8 @@ class Service extends Model
     public function partOfParteners() : int
     {
         $nbParteners = Partener::where('is_active', true)->get()->count();
-
-        $result = $this->parteners->count() * 100 / $nbParteners;
-        return $result;
-
+        
+        return $this->parteners->count() * 100 / $nbParteners;
     }
 
     /**

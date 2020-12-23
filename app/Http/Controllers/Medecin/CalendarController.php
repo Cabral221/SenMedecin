@@ -28,7 +28,7 @@ class CalendarController extends Controller
                 'id' => $appointment->id,
                 'start' => $appointment->date->format('Y-m-d H:i:s'),
                 'end' => $appointment->date->addHours(1)->format('Y-m-d H:i:s'),
-                'title' => $appointment->type() .': '. $appointment->description,
+                'title' => $appointment->type() .': ('.$appointment->patient->fullName.') '. $appointment->description,
             ];
         }
 

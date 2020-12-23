@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => $titlePage])
+@extends('layouts.admin.app', ['title' => $titlePage])
 
 @section('content')
     <div class="container">
