@@ -37,7 +37,7 @@ class FixtureSeeder extends Seeder
                 'email' => $i.$faker->email,
                 'address' => $faker->address,
                 'phone' => $faker->phoneNumber,
-                'image' => $faker->imageUrl(640, 480),
+                'image' => 'https://picsum.photos/640/480',
                 'is_active' => true,
             ]);
 
@@ -63,7 +63,7 @@ class FixtureSeeder extends Seeder
                'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
            ]);
 
-            for ($j = 0; $j <  rand(5,10); $j++){
+            for ($j = 0; $j <  rand(4,8); $j++){
 
                 /** @var Medecin $medecin */
                 $medecin = $responsable->medecins()->create([
@@ -77,7 +77,7 @@ class FixtureSeeder extends Seeder
                 ]);
 
 
-                for($m = 0; $m < rand(10, 20); $m++){
+                for($m = 0; $m < rand(10, 15); $m++){
 
                     /** @var Patient $patient */
                     $patient = $medecin->patients()->create([
