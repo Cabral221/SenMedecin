@@ -1,14 +1,15 @@
 <?php
 
-use App\Models\Medecin;
-use App\Models\Partener;
-use App\Models\Patient;
-use App\Models\Responsable;
-use App\Models\TypeAppointment;
 use Carbon\Carbon;
 use Faker\Factory;
-use Illuminate\Database\Seeder;
+use App\Models\Medecin;
+use App\Models\Patient;
+use App\Models\Partener;
+use App\Models\Responsable;
 use Illuminate\Support\Str;
+use App\Models\TypeAppointment;
+use Illuminate\Database\Seeder;
+use App\Models\Partener_service;
 
 /**
  * Created by IntelliJ IDEA.
@@ -28,7 +29,7 @@ class FixtureSeeder extends Seeder
         /** @var Faker\Provider\fr_FR\ $faker */
         $faker = Factory::create('fr_FR');
 
-        for ($i = 0;$i < 20;$i++ ){
+        for ($i = 0;$i < 10;$i++ ){
 
             /** @var Partener $partener */
             $partener = Partener::create([
@@ -37,6 +38,20 @@ class FixtureSeeder extends Seeder
                 'address' => $faker->address,
                 'phone' => $faker->phoneNumber,
                 'image' => $faker->imageUrl(640, 480),
+                'is_active' => true,
+            ]);
+
+            Partener_service::create([
+                'partener_id' => $partener->id,
+                'service_id' => 1
+            ]);
+            Partener_service::create([
+                'partener_id' => $partener->id,
+                'service_id' => 2
+            ]);
+            Partener_service::create([
+                'partener_id' => $partener->id,
+                'service_id' => 3
             ]);
 
             /** @var Responsable $responsable */
@@ -48,7 +63,7 @@ class FixtureSeeder extends Seeder
                'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
            ]);
 
-            for ($j = 0; $j <  rand(10,15); $j++){
+            for ($j = 0; $j <  rand(5,10); $j++){
 
                 /** @var Medecin $medecin */
                 $medecin = $responsable->medecins()->create([
@@ -62,7 +77,7 @@ class FixtureSeeder extends Seeder
                 ]);
 
 
-                for($m = 0; $m < rand(20, 40); $m++){
+                for($m = 0; $m < rand(10, 20); $m++){
 
                     /** @var Patient $patient */
                     $patient = $medecin->patients()->create([
