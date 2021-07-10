@@ -14,14 +14,14 @@ body{
     color: rgb(10, 10, 10);
     margin: 0;
     padding: 0;
-    background-color:#fff;
+    background-color:#ffffff;
     font-size: 16px;
     background-image:url('/user/img/axxu_rose.svg');
     background-attachment:fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: 50%;
-  
+    
 }
 
 h1{font-size: 5rem;font-family: "hanamontana";color: black;font-weight: 700;color: rgba(255, 102, 171, 0.867);}
@@ -92,22 +92,22 @@ h1 .section-title{
     margin-left: auto;
     margin-right: auto;
     
-
+    
 }
 a {transition: all 0.3s ease 0s;text-decoration:none;
 }
 
 a:visited, a:link, a:active {
-  text-decoration: none;
+    text-decoration: none;
 }
 a:active, a:hover {
-  outline: 0 none;
+    outline: 0 none;
 }
 
 nav ul{
-list-style: outside none none;
-margin: 0;
-padding:0;
+    list-style: outside none none;
+    margin: 0;
+    padding:0;
 }
 nav ul .li-home{
     margin-left: 0px;
@@ -164,9 +164,9 @@ nav ul .li-connecter ul li:last-child{
 }
 nav ul .li-connecter ul li a{
     color: #fff;
-  }
+}
 nav ul .li-connecter ul li a:hover{
-  color: #000;
+    color: #000;
 }
 nav ul .li-connecter ul{
     display: block;
@@ -194,7 +194,7 @@ section{
     display: flex;
     text-align: justify;
     padding: 20px;
-
+    
 }
 .section-index{
     margin-top:-1em;
@@ -218,11 +218,11 @@ section .card-left .card-body p{
 section .card-right {
     width: 35%;
     /* border: 1px solid red; */
-
+    
 }
 section .card-right .logo{
-   width: 100% auto;
-   margin-top: -25px;
+    width: 100% auto;
+    margin-top: -25px;
 }
 section .card-right .logo img{
     width:100%;
@@ -283,7 +283,7 @@ section .card-right-section3 .logo img{
 section .card-left-section3 {
     width: 50%;
     padding: 10px;
-   
+    
 }
 section .card-left-section3 h5{
     margin-top:-13px;
@@ -379,13 +379,13 @@ footer .footer_left h6 img{
 
 .bottom_border { border-bottom:1px solid #323f45; padding-bottom:20px;}
 .foote_bottom_ul_amrc {
-	list-style-type:none;
-	padding:0px;
-	display:table;
-	margin-top: 10px;
-	margin-right: auto;
-	margin-bottom: 10px;
-	margin-left: auto;
+    list-style-type:none;
+    padding:0px;
+    display:table;
+    margin-top: 10px;
+    margin-right: auto;
+    margin-bottom: 10px;
+    margin-left: auto;
 }
 .foote_bottom_ul_amrc li { display:inline;}
 .foote_bottom_ul_amrc li a { color:#999; margin:0 12px;}
@@ -404,7 +404,7 @@ footer .footer_left h6 img{
 .footer_footer p a{
     color: rgba(255, 102, 171, 0.867);
     text-align: center;
-  
+    
 }
 
 /* Fin de la partie stylisation du footer */
@@ -440,10 +440,10 @@ section .login-body .login-header img{
 
 section .login-body .form-group .box{
     width: 100% auto;
-  }
+}
 
 
-  section .login-body .form-group .box input[type="email"] ,.box input[type="password"]{
+section .login-body .form-group .box input[type="email"] ,.box input[type="password"]{
     border:1px solid rgba(255, 102, 171, 0.867);
     padding: 10px 10px;
     width: 70%;
@@ -455,25 +455,25 @@ section .login-body .form-group .box{
     font-size: 15px;
     margin-left: -11px;
     border-radius: 0px 5px 5px 0px;
-  }
+}
 
-  section .login-body .form-group .box input[type="email"]:focus ,.box input[type="password"]:focus{
+section .login-body .form-group .box input[type="email"]:focus ,.box input[type="password"]:focus{
     width: 70%;
     border-color: rgba(255, 102, 171, 0.867);
-  }
-  section .login-body .form-group .box .contour_input{
-      display: flex;
-      width: 100%;
-  }
-  section .login-body .form-group .box .contour_input .icon{
-      width:11%;
-      padding:10px 10px;
-      background-color: rgba(255, 102, 171, 0.867);
-      color: #fff;
-      border-radius: 5px 0px 0px 5px;
-  }
-  /* section .login-body .form-group .box input[type="email"]{
-  
+}
+section .login-body .form-group .box .contour_input{
+    display: flex;
+    width: 100%;
+}
+section .login-body .form-group .box .contour_input .icon{
+    width:11%;
+    padding:10px 10px;
+    background-color: rgba(255, 102, 171, 0.867);
+    color: #fff;
+    border-radius: 5px 0px 0px 5px;
+}
+/* section .login-body .form-group .box input[type="email"]{
+    
 } */
 
 
@@ -523,16 +523,16 @@ section .login-body .form-group .box input[type="submit"]{
     font-size: 15px;
     font-weight: 700;
     width: 78%;
-  }
-  section .login-body .form-group .box .forgot_password{
-      margin-left: 80px;
-      text-decoration: underline;
-  }
-  section .login-body .form-group .box input[type="submit"]:hover{
+}
+section .login-body .form-group .box .forgot_password{
+    margin-left: 80px;
+    text-decoration: underline;
+}
+section .login-body .form-group .box input[type="submit"]:hover{
     background: transparent;
     color: rgba(255, 102, 171, 0.867);;
-   
-  }
+    
+}
 
 /* Fin de la partie du login */
 
@@ -542,7 +542,7 @@ section .login-body .form-group .box input[type="submit"]{
     margin-left: 80px;
     padding: 5px;
     display: flex;
-
+    
 }
 .li-header{
     padding: 5px 15px;
@@ -574,19 +574,19 @@ section .profile-right .identification ,.antecedent,.calandirier-cpn,.cpn1,.gros
     border-radius: 5px;
     padding: 20px;
     margin-bottom: 10px;
-  
+    
 }
 /* La partie de la grossesse */
 
- section .profile-right .grossesse .info_grossesse{
+section .profile-right .grossesse .info_grossesse{
     display: flex;
     justify-content: space-between;
 }
- section .profile-right .grossesse .info_grossesse .patient_info{
+section .profile-right .grossesse .info_grossesse .patient_info{
     border-right: 1px solid black;
     margin-right: 20px;
 }
- section .profile-right .grossesse .info_grossesse .patient_info,.grossess_info{
+section .profile-right .grossesse .info_grossesse .patient_info,.grossess_info{
     /* border:1px solid red; */
     width: 50%;
 }
@@ -756,21 +756,21 @@ section .delete_compte p{
     font-size: 20px;
 }
 section .delete_compte span a{
-  padding: 20px;
-  background-color: rgb(245, 0, 0);
-  width: 200px;
-  color: #fff;
-  border-radius: 7px;
-  margin-bottom: 15px;
+    padding: 20px;
+    background-color: rgb(245, 0, 0);
+    width: 200px;
+    color: #fff;
+    border-radius: 7px;
+    margin-bottom: 15px;
 }
 /* Fin de la partie de la grossesse */
 
 /* La partie des rendez-vous */
- section .profile-right .grossesse .apointman{
+section .profile-right .grossesse .apointman{
     display: flex;
     justify-content: space-between;
 }
- section .profile-right .grossesse .apointman .apointman_left,.apointman_right{
+section .profile-right .grossesse .apointman .apointman_left,.apointman_right{
     width:50%;
 }
 /* Fin de la partie des rendez-vous */
@@ -829,7 +829,7 @@ section .profile-left .menu{
     width: 100%;
 }
 section .profile-left .menu ul{
-	list-style:none;
+    list-style:none;
     border-radius:5px;
     width: 100%;
     margin-top: 0;
@@ -837,50 +837,50 @@ section .profile-left .menu ul{
 }
 section .profile-left .menu ul li{
     padding:15px;
-	position:relative;
-	width:100%;
-	background-color:#fff;
+    position:relative;
+    width:100%;
+    background-color:#fff;
     color: black;
-	border:1px solid silver;
-	vertical-align:middle;
-	cursor:pointer;
-	-webkit-transition:all 0.3s;
-	-o-transition:all 0.3s;
+    border:1px solid silver;
+    vertical-align:middle;
+    cursor:pointer;
+    -webkit-transition:all 0.3s;
+    -o-transition:all 0.3s;
     transition:all 0.3s;
 } 
 section .profile-left .menu ul li:hover{
-	background-color:rgba(255, 102, 171, 0.867);
+    background-color:rgba(255, 102, 171, 0.867);
 }
 section .profile-left .menu > ul > li{
-	border:1px solid silver;
+    border:1px solid silver;
 }
 section .profile-left .menu ul ul{
-	transition:all 0.3s;
-	opacity:0;
-	position:absolute;
-	visibility:hidden;
-	left:101%;
-	top:-2%;
+    transition:all 0.3s;
+    opacity:0;
+    position:absolute;
+    visibility:hidden;
+    left:101%;
+    top:-2%;
 }
 
 
 section .profile-left .menu ul li:hover > ul{
-	opacity:1;
-	visibility:visible;  
+    opacity:1;
+    visibility:visible;  
 }
 section .profile-left .menu ul li a{
-	color:#000;
-	text-decoration:none;
+    color:#000;
+    text-decoration:none;
 }
 section .profile-left .menu span{
-	margin-right:15px;
+    margin-right:15px;
 }
 /* section .profile-left .menu > ul > li:nth-off-type(2)::after{
-	content:"+";
-	position:absolute;
-	margin-left:5%;
-	color:#fff;
-	font-size:20px;
+    content:"+";
+    position:absolute;
+    margin-left:5%;
+    color:#fff;
+    font-size:20px;
 } */
 
 /* fin de la partie de la maman */
@@ -889,7 +889,7 @@ section .profile-left .menu span{
 .rv-enfant{
     margin: 60px 90px;
     display: flex;
-   
+    
 }
 .enfant-right,.enfant-left{
     width: 50%;
@@ -1027,7 +1027,7 @@ section .profile-left .menu span{
 section .contact_form{
     display: flex;
     width: 100%;
-  
+    
 }
 section .contact_form .form_left,.form_right{
     width: 50%;
@@ -1112,7 +1112,7 @@ section .about_right{
     width: 90%;
     margin-left: 10px;
     padding-top:15px ;
-
+    
 }
 
 section .about_right h2{
@@ -1267,19 +1267,19 @@ section .sens_left .sens_left_content .image .btn-primary{
     font-size: 15px;
     font-weight: 700;
     width: 100%;
-  }
-  section .sens_left .sens_left_content .image .btn-primary:hover{
+}
+section .sens_left .sens_left_content .image .btn-primary:hover{
     background: transparent;
     color: rgba(255, 102, 171, 0.867);;
-   
-  }
+    
+}
 
-  /* Partie de l'affichage du blog */
+/* Partie de l'affichage du blog */
 .sens_top .blog_show_title{
     padding-left: 20px;
-      margin-left: -1px;
-  }
-  section .sens_left .blog{
+    margin-left: -1px;
+}
+section .sens_left .blog{
     display: flex;
     flex-direction: space-between;
     width: 100%;
@@ -1343,77 +1343,77 @@ section .sens_left .blog .blog_right .text{
     text-align: justify;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
-  /* Fin de l'affichage du blog */
+/* Fin de l'affichage du blog */
 
-  /* Partie du commentaire du blog */
-    .post_comment{
-        padding:28px ;
-        background-color: #fff;
-        border: 1px solid rgba(0, 0, 0, 0.171);
-        margin-right: 23px;
-    }
-    .post_comment .comment_content{
-        display: block;
-        margin-bottom:20px;
-    }
-    .post_comment .comment_content .user_name{
-        font-size: 18px;
-        font-weight: 700;
-    }
-    .post_comment .comment_content .comment_date{
-        font-size: 13px;
-        padding: 3px 0 10px 0;
-        color: rgba(0, 0, 0, 0.404);
-        font-weight: 700;
-    }
-    .post_comment .comment_content .content{
-        color: rgba(0, 0, 0, 0.671);
-        font-weight: 700;
-    }
-    .comment{
-        padding:28px ;
-        margin-right: 23px;
-        background-color: #fff;
-        border: 1px solid rgba(0, 0, 0, 0.171);
-        margin-top: 3em;
-    }
-   
-    .comment .comment_form{
-        display: block;
-    }
-    .comment .comment_form .comment_input{
-        display: flex;
-        flex-direction: space-between;
-    }
-    .comment .comment_form .comment_input p{
-        display:block;
-        width: 50%;
-    }
-    .comment .comment_form .comment_input p input{
-        padding: 15px;
-        width: 100%;
-        outline: none;
-        border: 1px solid rgba(0, 0, 0, 0.199);
-        border-radius:7px;
-        cursor: pointer;
-        color:#000;
-    }
-    .comment .comment_form .comment_input p:last-child{
-        margin-left: 15px;
-    }
-    .comment .comment_form input[type="text"]:focus{
-        border: 1px solid rgba(255, 102, 171, 0.867);
-    }
-    .comment .comment_form input[type="email"]:focus{
-        border: 1px solid rgba(255, 102, 171, 0.867);
-    }
-    .comment .comment_form textarea:focus{
-        border: 1px solid rgba(255, 102, 171, 0.867);
-    }
-    .comment .comment_form p{
-        display:block;
-    }
-  /* Fin de la partie du commentaire du blog */
+/* Partie du commentaire du blog */
+.post_comment{
+    padding:28px ;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.171);
+    margin-right: 23px;
+}
+.post_comment .comment_content{
+    display: block;
+    margin-bottom:20px;
+}
+.post_comment .comment_content .user_name{
+    font-size: 18px;
+    font-weight: 700;
+}
+.post_comment .comment_content .comment_date{
+    font-size: 13px;
+    padding: 3px 0 10px 0;
+    color: rgba(0, 0, 0, 0.404);
+    font-weight: 700;
+}
+.post_comment .comment_content .content{
+    color: rgba(0, 0, 0, 0.671);
+    font-weight: 700;
+}
+.comment{
+    padding:28px ;
+    margin-right: 23px;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.171);
+    margin-top: 3em;
+}
+
+.comment .comment_form{
+    display: block;
+}
+.comment .comment_form .comment_input{
+    display: flex;
+    flex-direction: space-between;
+}
+.comment .comment_form .comment_input p{
+    display:block;
+    width: 50%;
+}
+.comment .comment_form .comment_input p input{
+    padding: 15px;
+    width: 100%;
+    outline: none;
+    border: 1px solid rgba(0, 0, 0, 0.199);
+    border-radius:7px;
+    cursor: pointer;
+    color:#000;
+}
+.comment .comment_form .comment_input p:last-child{
+    margin-left: 15px;
+}
+.comment .comment_form input[type="text"]:focus{
+    border: 1px solid rgba(255, 102, 171, 0.867);
+}
+.comment .comment_form input[type="email"]:focus{
+    border: 1px solid rgba(255, 102, 171, 0.867);
+}
+.comment .comment_form textarea:focus{
+    border: 1px solid rgba(255, 102, 171, 0.867);
+}
+.comment .comment_form p{
+    display:block;
+}
+/* Fin de la partie du commentaire du blog */
 
 section .sens_right{
     width: 30%;
@@ -1422,7 +1422,7 @@ section .sens_right{
     border: 1px solid rgba(221, 220, 220, 0.486);
     padding: 20px;
     background-color: transparent;
-
+    
 }
 section .sens_right .article_populaire{
     margin-top: -0.2px;
@@ -1478,7 +1478,7 @@ section .sens_right .sens-body-card .card-text .title_article{
 .partener_slider{
     background-color: #fff;
     margin: 7em 5em -3em  5em;
-
+    
 }
 .partener_slider .owl-carousel{
     padding-left: 6.6em;
