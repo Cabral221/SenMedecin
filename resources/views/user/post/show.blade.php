@@ -1,14 +1,12 @@
 @extends('user.layouts.app')
-@section('headsection')
-   
-@endsection
+
 @section('main-content')
 <!-- Premiere section -->
 
- <div class="section-index box-shadow container sens_top">
-	 <h4 class="blog_show_title">Un chevalier conduisant son cheval </h4>
-	 <section class=" container sens">
-		 <div class="sens_left">
+<div class="section-index box-shadow container sens_top">
+	<h4 class="blog_show_title">Un chevalier conduisant son cheval </h4>
+	<section class=" container sens">
+		<div class="sens_left">
 			<p>
 				<img src="{{ asset('user/img/article2.jpg') }}" alt="">
 			</p>
@@ -34,7 +32,7 @@
 				<div class="blog_right">
 					<div class="body_header">
 						<p class="article_title">Un chevalier conduisant son cheval  </p>
-					
+						
 					</div>
 					<p class="text">
 						Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima nemo quos corporis quae porro doloribus
@@ -49,14 +47,14 @@
 					
 				</div>
 			</div>
-
+			
 			<div class="post_comment">
 				<div class="comment_content">
 					<div class="user_name">Ousmane Diallo</div>
 					<div class="comment_date"> Decembre 4, 2017 a 3:12 pm </div>
 					<div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, doloribus!</div>
 				</div>
-<hr>
+				<hr>
 				<div class="comment_content">
 					<div class="user_name">Ousmane Diallo</div>
 					<div class="comment_date"> Decembre 4, 2017 a 3:12 pm </div>
@@ -65,54 +63,54 @@
 			</div>
 			
 			<!-- Partie pour la partie du commentaire -->
-				<div class="comment">
-					<form action="{{ route('comment.store') }}" method="post" class="comment_form">
-						@csrf
-						<div class="comment_input">
-							<p>
-								<input type="text" class="form-control @error('full_name') is-invalid @enderror" name="full_name" value="{{ old('full_name') }}"  autocomplete="full_name"  id="full_name" placeholder="Votre Prenom et Nom">
-								<span class="text-primary">
-									@error('full_name')
-										<span class="invalid-feedback" role="alert">
-											<strong class="message_error">{{ $message }}</strong>
-										</span>
-									@enderror
+			<div class="comment">
+				<form action="{{ route('comment.store') }}" method="post" class="comment_form">
+					@csrf
+					<div class="comment_input">
+						<p>
+							<input type="text" class="form-control @error('full_name') is-invalid @enderror" name="full_name" value="{{ old('full_name') }}"  autocomplete="full_name"  id="full_name" placeholder="Votre Prenom et Nom">
+							<span class="text-primary">
+								@error('full_name')
+								<span class="invalid-feedback" role="alert">
+									<strong class="message_error">{{ $message }}</strong>
 								</span>
-							</p>
-
-							<p>
-								<input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"  autocomplete="email"  id="email" placeholder="Votre Adresse E-mail">
-								<span class="text-primary">
-									@error('email')
-										<span class="invalid-feedback" role="alert">
-											<strong class="message_error">{{ $message }}</strong>
-										</span>
-									@enderror
-								</span>
-							</p>
-
-						</div>
-						
-						<div class="text">
-							<textarea class="form-control @error('comment') is-invalid @enderror" name="comment" value="{{ old('comment') }}"  autocomplete="comment"  id="comment" cols="20" rows="5" placeholder="Votre Commentaire"></textarea>
-							<div class="text-primary">
-								@error('comment')
-									<span class="invalid-feedback" role="alert">
-										<strong class="message_error">{{ $message }}</strong>
-									</span>
 								@enderror
-							</div>
-						</div>
-						<p class="button">
-							<input type="submit" class="btn-primary" value="Envoyer Votre Commentaire">
+							</span>
 						</p>
-					</form>
-				</div>
+						
+						<p>
+							<input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"  autocomplete="email"  id="email" placeholder="Votre Adresse E-mail">
+							<span class="text-primary">
+								@error('email')
+								<span class="invalid-feedback" role="alert">
+									<strong class="message_error">{{ $message }}</strong>
+								</span>
+								@enderror
+							</span>
+						</p>
+						
+					</div>
+					
+					<div class="text">
+						<textarea class="form-control @error('comment') is-invalid @enderror" name="comment" value="{{ old('comment') }}"  autocomplete="comment"  id="comment" cols="20" rows="5" placeholder="Votre Commentaire"></textarea>
+						<div class="text-primary">
+							@error('comment')
+							<span class="invalid-feedback" role="alert">
+								<strong class="message_error">{{ $message }}</strong>
+							</span>
+							@enderror
+						</div>
+					</div>
+					<p class="button">
+						<input type="submit" class="btn-primary" value="Envoyer Votre Commentaire">
+					</p>
+				</form>
+			</div>
 			<!-- Fin de la partie pour le commentaire -->
-	   </div>
-	   
-	   <div class="sens_right">
-	   <h5 class="article_populaire">Articles Populare</h5>
+		</div>
+		
+		<div class="sens_right">
+			<h5 class="article_populaire">Articles Populare</h5>
 			<div class="sens-body-card">
 				<div class="card-img">
 					<img src="{{ asset('user/img/article.jpg') }}" alt="" srcset="">
@@ -152,16 +150,8 @@
 					<p class="date_article">Publier le : 12/10/2020</p>
 				</div>
 			</div>
-	   </div>
-   </section>
- </div>
+		</div>
+	</section>
+</div>
 <!-- fin de la premier section -->
-
-
-
-
-
-
-
-
 @endsection

@@ -29,7 +29,7 @@ class FixtureSeeder extends Seeder
         /** @var Faker\Provider\fr_FR\ $faker */
         $faker = Factory::create('fr_FR');
 
-        for ($i = 0;$i < 10;$i++ ){
+        for ($i = 0;$i < 10;$i++ ) {
 
             /** @var Partener $partener */
             $partener = Partener::create([
@@ -61,7 +61,7 @@ class FixtureSeeder extends Seeder
                'phone' => 338240000+$i,
                'email' => $i.$faker->email,
                'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-           ]);
+            ]);
 
             for ($j = 0; $j <  rand(4,8); $j++){
 
@@ -85,8 +85,8 @@ class FixtureSeeder extends Seeder
                         'last_name' => $faker->lastName,
                         'birthday' => Carbon::now()->subYears(rand(17,35)),
                         'address' => $faker->address,
-                        'phone' =>  $faker->phoneNumber,
-                        'email' => $faker->email,
+                        'phone' =>  $faker->unique()->phoneNumber,
+                        'email' => $faker->unique()->safeEmail,
                         // 'carnet_id' => $carnet->id,
                         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
                         'remember_token' => Str::random(10),
@@ -102,7 +102,7 @@ class FixtureSeeder extends Seeder
                             'accouchement' => Carbon::now()->subYears($patient->birthday->age - 15)->addMonths(9),
                         ]);
 
-//                    Antecedent medical
+                        // Antecedent medical
                         $patient->antecedent()->create([
                             'father' => $faker->text,
                             'mother' => $faker->text,
@@ -110,7 +110,7 @@ class FixtureSeeder extends Seeder
                             'other_exam' => $faker->text,
                             'treating' => $faker->text,
                         ]);
-//                    rendez-vous cpn + acc
+                        // rendez-vous cpn + acc
                         $patient->appointments()->create([
                             'date' => $patient->pregnancy()->date->addMonth(1),
                             'description' => $cpn->libele . ' 1',
@@ -135,7 +135,7 @@ class FixtureSeeder extends Seeder
                             'type_appointment_id' => $cpn->id,
                             'medecin_id' => $patient->medecin->id
                         ]);
-
+                        
                         $patient->appointments()->create([
                             'date' => $patient->pregnancy()->date->addMonth(7),
                             'description' => $acc->libele,
@@ -143,21 +143,20 @@ class FixtureSeeder extends Seeder
                             'medecin_id' => $patient->medecin->id
                         ]);
 
-//                    ajouter enfant
+                        // ajouter enfant
                         for ($k = 0; $k < rand(1, 5); $k++){
                             $patient->childrens()->create([
                                 'first_name' => $faker->firstName,
                                 'last_name' => $faker->lastName,
                                 'birthday' => Carbon::now()->subYears(($patient->birthday->age - 15) - $k),
                                 'genre' => $faker->randomElement(['Masculin','Féminin']),
-
+                                
                             ]);
                         }
 
                     }
 
                 }
-
 
             }
         }

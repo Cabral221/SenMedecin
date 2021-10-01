@@ -2,17 +2,16 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class ExampleTest extends TestCase
+class SchedulerTwoDaysBeforeTest extends TestCase
 {
     /**
-     * A basic test example.
+     * @test
      *
      * @return void
      */
-    public function testBasicTest()
+    public function basicTest()
     {
         $response = $this->get('/');
 
