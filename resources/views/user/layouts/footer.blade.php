@@ -87,9 +87,3 @@
 	</div>
 
 </footer>
-
-
-@section('footersection')
-@section('footersection')
-
-@show

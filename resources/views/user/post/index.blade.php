@@ -1,7 +1,5 @@
 @extends('user.layouts.app')
-@section('headsection')
-   
-@endsection
+
 @section('main-content')
 <!-- Premiere section -->
 
@@ -121,12 +119,4 @@
    </section>
  </div>
 <!-- fin de la premier section -->
-
-
-
-
-
-
-
-
 @endsection

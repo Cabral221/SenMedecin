@@ -1,7 +1,5 @@
 @extends('user.layouts.app')
-@section('headsection')
-   
-@endsection
+
 @section('main-content')
 <!-- Premiere section -->
 <section class=" container section-login">
@@ -32,6 +30,4 @@
 	</div>
    </section>
 <!-- fin de la premier section -->
-
-
 @endsection
