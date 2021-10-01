@@ -6,28 +6,13 @@ use Tests\TestCase;
 use App\Models\Post;
 use App\Models\Attachment;
 use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\Storage;
 
 class AttachmentsTest extends TestCase
 {
-    public function setUp() : void
-    {
-        parent::setUp();
-        Artisan::call('migrate');
-        $this->cleanDirectories();
-    }
-
     public function tearDown() : void
     {
         parent::tearDown();
         $this->cleanDirectories();
-
-    }
-
-    public function cleanDirectories()
-    {
-        Storage::disk('public')->deleteDirectory('uploads');
     }
 
     private function getFileForAttachment($attachment)

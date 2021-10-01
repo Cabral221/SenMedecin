@@ -10,6 +10,7 @@ trait AttachableConcern {
     public static function bootAttachableConcern()
     {
         self::deleted(function ($subject){
+            // dd($subject->attachments()->get());
             foreach ($subject->attachments()->get() as $attachment) {
                 $attachment->deleteFile();
             }
