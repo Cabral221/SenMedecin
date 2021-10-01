@@ -4,7 +4,7 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 
-class schedulerTwoDaysBeforeTest extends TestCase
+class SchedulerTwoDaysBeforeTest extends TestCase
 {
     /**
      * @test
