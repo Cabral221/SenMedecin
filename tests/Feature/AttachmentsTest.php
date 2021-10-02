@@ -69,7 +69,7 @@ class AttachmentsTest extends TestCase
         $attachment = $response->json();
         $this->assertFileExists($this->getFileForAttachment($attachment));
         Attachment::find($attachment['id'])->delete();
-        $this->assertFileNotExists($this->getFileForAttachment($attachment));
+        $this->assertFileDoesNotExist($this->getFileForAttachment($attachment));
     }
 
     public function testDeletePostDeleteAllAttachments()
@@ -80,7 +80,7 @@ class AttachmentsTest extends TestCase
         $this->assertFileExists($this->getFileForAttachment($attachment));
         $this->assertEquals(4,Attachment::count());
         Post::first()->delete();
-        $this->assertFileNotExists($this->getFileForAttachment($attachment));
+        $this->assertFileDoesNotExist($this->getFileForAttachment($attachment));
         $this->assertEquals(3,Attachment::count());
     }
 
@@ -98,7 +98,7 @@ class AttachmentsTest extends TestCase
         $post->content = "";
         $post->save();
         $this->assertEquals(3,Attachment::count());
-        $this->assertFileNotExists($this->getFileForAttachment($attachment));
+        $this->assertFileDoesNotExist($this->getFileForAttachment($attachment));
     }
 
     public function testChangePostContentAttachmentAreDeletedIfImageChange()
@@ -115,6 +115,6 @@ class AttachmentsTest extends TestCase
         $post->content = "<img src=\"azeaze/aeazeaze/azeaze.jpg\"/>";
         $post->save();
         $this->assertEquals(3,Attachment::count());
-        $this->assertFileNotExists($this->getFileForAttachment($attachment));
+        $this->assertFileDoesNotExist($this->getFileForAttachment($attachment));
     }
 }
