@@ -51,9 +51,9 @@ jobs:
         run: php artisan config:clear
 
       - name: Install NPM Dependencies
-          run: npm install
+        run: npm install
       - name: Compile Assets
-          run: npm run production
+        run: npm run production
 
       # - name: Run Migration
         # run: php artisan migrate -v
