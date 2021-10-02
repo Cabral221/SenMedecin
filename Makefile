@@ -13,3 +13,7 @@ migration:
 .PHONY: test
 test:
 	php artisan test
+
+.PHONY: stan
+stan:
+	./vendor/bin/phpstan analyse --memory-limit=2G --xdebug
