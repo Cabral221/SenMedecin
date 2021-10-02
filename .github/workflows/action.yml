@@ -45,13 +45,18 @@ jobs:
 
       - name: Prepare the application
         run: |
-          php -r "copy('.env.testing', '.env');"
+          php -r "file_exists('.env') || copy('.env.example', '.env');"
           php artisan key:generate
       - name: Clear Config
         run: php artisan config:clear
 
-      - name: Run Migration
-        run: php artisan migrate -v
+      - name: Install NPM Dependencies
+          run: npm install
+      - name: Compile Assets
+          run: npm run production
+
+      # - name: Run Migration
+        # run: php artisan migrate -v
 
       - name: Test with phpunit
         run: vendor/bin/phpunit --coverage-text
