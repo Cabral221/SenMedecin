@@ -127,6 +127,7 @@ class SchedulerTwoDaysBeforeTest extends TestCase
         // Alors un evenement doit etre declancher pour envoyer un sms PAR UN CANNAL "QUEU"
         ->assertExitCode(0);
         Queue::assertPushed(SendPrerappelSms::class);
+        Queue::assertPushedOn('sms', SendPrerappelSms::class);
     }
     
 }
