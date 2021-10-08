@@ -33,7 +33,7 @@ class SendSms extends Notification
     */
     public function via($notifiable)
     {
-        return ['nexmo', 'array'];
+        return ['nexmo', 'database'];
     }
     
     /**
@@ -57,6 +57,22 @@ class SendSms extends Notification
     * @return array
     */
     public function toArray($notifiable)
+    {
+        return [
+            'patient_id' => $notifiable->id,
+            'appointment' => $this->appointment->id,
+            'type' => 'PRERAPPEL',
+            'read' => true
+        ];
+    }
+
+    /**
+    * Get the array representation of the notification.
+    *
+    * @param  mixed  $notifiable
+    * @return array
+    */
+    public function toDatabase($notifiable)
     {
         return [
             'patient_id' => $notifiable->id,
