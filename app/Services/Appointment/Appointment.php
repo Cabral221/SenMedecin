@@ -13,7 +13,7 @@ class Appointment extends Model
     public $fillable = ['type_appointment_id','description','medecin_id','date', 'passed', 'children_id'];
     
     public $casts = [
-        'date' => 'date',
+        'date' => 'datetime',
         'passed' => 'boolean',
     ];
 
