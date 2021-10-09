@@ -19,9 +19,12 @@ class PatientController extends Controller
         return view('patient.index');
     }
 
-    public function profile($id){
+    public function profile($id)
+    {
         $patient = Patient::where('id',Auth::guard('patient')->user()->id)->first();
-        return view('patient.profile.update',compact(Auth::guard('patient')->user()->id));
+        $id = Auth::guard('patient')->user()->id;
+
+        return view('patient.profile.update',compact('id'));
     }
 
     public function update( Request $request, $id){

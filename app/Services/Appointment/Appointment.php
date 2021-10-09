@@ -8,12 +8,20 @@ use App\Models\Children;
 use App\Models\TypeAppointment;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Appointment Model
+ * 
+ * @property TypeAppointment $type_appointment
+ * @property Medecin $medecin
+ * @property Children $children
+ * @property Patient $patient
+ */
 class Appointment extends Model
 {
     public $fillable = ['type_appointment_id','description','medecin_id','date', 'passed', 'children_id'];
     
     public $casts = [
-        'date' => 'date',
+        'date' => 'datetime',
         'passed' => 'boolean',
     ];
 

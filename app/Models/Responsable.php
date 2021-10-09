@@ -3,11 +3,19 @@
 namespace App\Models;
 
 use App\Models\Medecin;
+use App\Models\Patient;
 use App\Models\Partener;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+/**
+ * Responsable Model class
+ * 
+ * @property Medecin[] $medecins
+ * @property Patient[] $patients
+ */
 class Responsable extends Authenticatable
 {
     use Notifiable;
@@ -43,17 +51,17 @@ class Responsable extends Authenticatable
     {
         $nbPatient = 0;
         foreach ($this->medecins as $medecin) {
-            $nbPatient += $medecin->patients->count();
+            $nbPatient += count($medecin->patients);
         }
         return $nbPatient;
     }
 
-    public function partener()
+    public function partener() : BelongsTo
     {
         return $this->belongsTo(Partener::class);
     }
 
-    public function medecins()
+    public function medecins() : HasMany
     {
         return $this->hasMany(Medecin::class);
     }

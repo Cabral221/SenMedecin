@@ -7,6 +7,12 @@ use App\Models\Patient;
 use Illuminate\Database\Eloquent\Model;
 use App\Services\Appointment\Appointment;
 
+
+/**
+ * Children Model Class
+ * 
+ * @property Patient $mom
+ */
 class Children extends Model
 {
     public $guarded = [];
@@ -22,7 +28,7 @@ class Children extends Model
             $allPev = Pev::all();
             $type = TypeAppointment::where('libele', 'Vaccinal')->first();
             foreach ($allPev as $pev) {
-                $date = $children->birthday->addMonth($pev->period_month);
+                $date = $children->birthday->addMonths($pev->period_month);
                 $children->mom->appointments()->create([
                     'children_id' => $children->id,
                     'date' => $date,

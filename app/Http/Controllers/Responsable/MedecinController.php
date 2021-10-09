@@ -6,6 +6,7 @@ use App\Models\Medecin;
 use App\Models\Responsable;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\View\View;
 use Illuminate\Support\Facades\Hash;
 
 class MedecinController extends Controller
@@ -17,7 +18,7 @@ class MedecinController extends Controller
         $this->middleware('auth:responsable');
     }
 
-    public function index()
+    public function index() : View
     {
         $medecins = [];
         $allMedecins = $this->responsable()->medecins()->orderBy('id','DESC')->get();
@@ -63,7 +64,7 @@ class MedecinController extends Controller
             'phone' => $request->medecin_phone,
             'email' => $request->medecin_email,
             'password' => Hash::make($request->medecin_password),
-            'gen_password' => Hash::make($request->medecin_gen_password),
+            // 'gen_password' => Hash::make($request->medecin_gen_password),
             'service_id' => $request->medecin_service,
         ]);
 

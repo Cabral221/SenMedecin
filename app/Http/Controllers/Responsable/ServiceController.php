@@ -4,15 +4,17 @@ namespace App\Http\Controllers\Responsable;
 
 use App\Models\Responsable;
 use App\Http\Controllers\Controller;
+use Illuminate\View\View;
 
 class ServiceController extends Controller
 {
 
-    public function __construct() {
+    public function __construct() 
+    {
         $this->middleware('auth:responsable');
     }
 
-    public function index()
+    public function index() : View
     {
         $services = $this->responsable()->partener->services;
         

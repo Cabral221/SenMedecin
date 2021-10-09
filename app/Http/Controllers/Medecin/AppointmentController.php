@@ -13,6 +13,7 @@ use Carbon\Carbon;
 use App\Models\Medecin;
 use App\Http\Controllers\Controller;
 use App\Services\Appointment\Appointment;
+use Illuminate\View\View;
 
 class AppointmentController extends Controller
 {
@@ -46,9 +47,8 @@ class AppointmentController extends Controller
         return view('medecin.appointment.histories', compact('appointments'));
     }
 
-    public function show(Appointment $appointment)
+    public function show(Appointment $appointment) : View
     {
-        dd($appointment);
         return view('medecin.appointment.show', compact('appointment'));
     }
 
