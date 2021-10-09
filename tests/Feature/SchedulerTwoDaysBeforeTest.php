@@ -4,14 +4,11 @@ namespace Tests\Feature;
 
 use App\Jobs\SendPrerappelSms;
 use Carbon\Carbon;
-use Faker\Factory;
 use Tests\TestCase;
 use App\Models\Medecin;
 use App\Models\Patient;
-use App\Models\Service;
 use App\Models\Partener;
 use App\Models\Responsable;
-use Illuminate\Support\Str;
 use App\Notifications\SendSms;
 use App\Models\TypeAppointment;
 use Illuminate\Support\Facades\Queue;
@@ -25,7 +22,6 @@ class SchedulerTwoDaysBeforeTest extends TestCase
     public function __construct()
     {
         parent::__construct();
-        $this->faker = Factory::create('fr_FR');
     }
 
     public function loadFixtures() : Patient

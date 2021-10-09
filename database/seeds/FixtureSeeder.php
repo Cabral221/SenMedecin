@@ -2,6 +2,7 @@
 
 use Carbon\Carbon;
 use Faker\Factory;
+use Faker\Generator;
 use App\Models\Medecin;
 use App\Models\Patient;
 use App\Models\Partener;
@@ -26,7 +27,7 @@ class FixtureSeeder extends Seeder
      */
     public function run(){
 
-        /** @var Faker\Provider\fr_FR\ $faker */
+        /** @var Generator $faker */
         $faker = Factory::create('fr_FR');
 
         for ($i = 0;$i < 10;$i++ ) {
@@ -112,32 +113,32 @@ class FixtureSeeder extends Seeder
                         ]);
                         // rendez-vous cpn + acc
                         $patient->appointments()->create([
-                            'date' => $patient->pregnancy()->date->addMonth(1),
+                            'date' => $patient->pregnancy()->date->addMonth(),
                             'description' => $cpn->libele . ' 1',
                             'type_appointment_id' => $cpn->id,
                             'medecin_id' => $patient->medecin->id
                         ]);
                         $patient->appointments()->create([
-                            'date' => $patient->pregnancy()->date->addMonth(3),
+                            'date' => $patient->pregnancy()->date->addMonths(3),
                             'description' => $cpn->libele . ' 2',
                             'type_appointment_id' => $cpn->id,
                             'medecin_id' => $patient->medecin->id
                         ]);
                         $patient->appointments()->create([
-                            'date' => $patient->pregnancy()->date->addMonth(5),
+                            'date' => $patient->pregnancy()->date->addMonths(5),
                             'description' => $cpn->libele . ' 3',
                             'type_appointment_id' => $cpn->id,
                             'medecin_id' => $patient->medecin->id
                         ]);
                         $patient->appointments()->create([
-                            'date' => $patient->pregnancy()->date->addMonth(7),
+                            'date' => $patient->pregnancy()->date->addMonths(7),
                             'description' => $cpn->libele . ' 4',
                             'type_appointment_id' => $cpn->id,
                             'medecin_id' => $patient->medecin->id
                         ]);
                         
                         $patient->appointments()->create([
-                            'date' => $patient->pregnancy()->date->addMonth(7),
+                            'date' => $patient->pregnancy()->date->addMonths(7),
                             'description' => $acc->libele,
                             'type_appointment_id' => $acc->id,
                             'medecin_id' => $patient->medecin->id

@@ -19,10 +19,6 @@ Route::resource('/contact','User\ContactController')->only(['index','store']);
 Route::resource('/comment','User\CommentController')->only(['store','delete']);
 Route::resource('/posts','User\PostController')->only(['index','show']);
 Route::get('/about','User\AboutController@index')->name('user.about');
-
-
-// Route::get('/about', 'AppController@about')->name('about');
-// Route::get('/contact', 'AppController@contact')->name('contact');
 // Route::resource('/posts', 'PostController')->only(['index', 'show']);
 
 // Routes for client patient

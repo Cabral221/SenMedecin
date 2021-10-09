@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Responsable\Auth;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\VerifiesEmails;
 
 class VerificationController extends Controller

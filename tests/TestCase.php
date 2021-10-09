@@ -3,6 +3,7 @@
 namespace Tests;
 
 use Carbon\Carbon;
+use Faker\Factory;
 use App\Models\Medecin;
 use App\Models\Patient;
 use App\Models\Service;
@@ -19,11 +20,14 @@ abstract class TestCase extends BaseTestCase
 {
     use CreatesApplication, RefreshDatabase;
 
+    private $faker;
+
     public function setUp() : void
     {
         parent::setUp();
         Artisan::call('migrate');
         $this->cleanDirectories();
+        $this->faker = Factory::create('fr_FR');
     }
 
     public function cleanDirectories()
@@ -61,32 +65,32 @@ abstract class TestCase extends BaseTestCase
         ]);
         // rendez-vous cpn + acc
         $patient->appointments()->create([
-            'date' => $patient->pregnancy()->date->addMonth(1),
+            'date' => $patient->pregnancy()->date->addMonth(),
             'description' => $cpn->libele . ' 1',
             'type_appointment_id' => $cpn->id,
             'medecin_id' => $patient->medecin->id
         ]);
         $patient->appointments()->create([
-            'date' => $patient->pregnancy()->date->addMonth(3),
+            'date' => $patient->pregnancy()->date->addMonths(3),
             'description' => $cpn->libele . ' 2',
             'type_appointment_id' => $cpn->id,
             'medecin_id' => $patient->medecin->id
         ]);
         $patient->appointments()->create([
-            'date' => $patient->pregnancy()->date->addMonth(5),
+            'date' => $patient->pregnancy()->date->addMonths(5),
             'description' => $cpn->libele . ' 3',
             'type_appointment_id' => $cpn->id,
             'medecin_id' => $patient->medecin->id
         ]);
         $patient->appointments()->create([
-            'date' => $patient->pregnancy()->date->addMonth(7),
+            'date' => $patient->pregnancy()->date->addMonths(7),
             'description' => $cpn->libele . ' 4',
             'type_appointment_id' => $cpn->id,
             'medecin_id' => $patient->medecin->id
         ]);
         
         $patient->appointments()->create([
-            'date' => $patient->pregnancy()->date->addMonth(7),
+            'date' => $patient->pregnancy()->date->addMonths(7),
             'description' => $acc->libele,
             'type_appointment_id' => $acc->id,
             'medecin_id' => $patient->medecin->id

@@ -4,12 +4,18 @@ namespace App\Models;
 
 use App\Models\Patient;
 use App\Models\Responsable;
-use App\Models\Partener_service;
 use Illuminate\Notifications\Notifiable;
 use App\Services\Appointment\Appointment;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+/**
+ * Medecin Model class
+ * 
+ * @property Responsable $responsable
+ * @property Service $service
+ * @property Patient[] $patients
+ * @property Appointment[] $appointments
+ */
 class Medecin extends Authenticatable
 {
     use Notifiable;
@@ -77,10 +83,10 @@ class Medecin extends Authenticatable
         $allPatient = 0;
         $allMedecin = $this->responsable->medecins;
         foreach ($allMedecin as $med) {
-            $allPatient += $med->patients->count();
+            $allPatient += count($med->patients);
         }
 
-        $myPatients = $this->patients->count();
+        $myPatients = count($this->patients);
 
         return $myPatients * 100 / $allPatient;
     }

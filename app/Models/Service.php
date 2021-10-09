@@ -5,12 +5,19 @@ namespace App\Models;
 use App\Models\Medecin;
 use App\Models\Partener;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
+/**
+ * Service Model Class
+ * 
+ * @property Partener[] $parteners
+ */
 class Service extends Model
 {
     public $guarded = [];
 
-    public function parteners(){
+    public function parteners() : BelongsToMany
+    {
         return $this->belongsToMany(Partener::class, 'partener_services')
                     ->withTimestamps();
     }
@@ -27,9 +34,10 @@ class Service extends Model
      */
     public function partOfParteners() : int
     {
-        $nbParteners = Partener::where('is_active', true)->get()->count();
+        /** @var Partener[] $parteners */
+        $parteners = Partener::where('is_active', true)->get();
         
-        return $this->parteners->count() * 100 / $nbParteners;
+        return count($this->parteners) * 100 / count($parteners);;
     }
 
     /**
@@ -58,7 +66,7 @@ class Service extends Model
             if($med->service->id == $this->id) $nbmed += 1;
         }
 
-        return $nbmed * 100 / $meds->count();
+        return $nbmed * 100 / count($meds);
 
     }
 }

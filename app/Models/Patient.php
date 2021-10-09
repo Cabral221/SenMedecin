@@ -9,9 +9,14 @@ use App\Models\Antecedent;
 use App\Models\TypeAppointment;
 use Illuminate\Notifications\Notifiable;
 use App\Services\Appointment\Appointment;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+/**
+ * Patient Model Classe
+ * 
+ * @property Medecin $medecin
+ * @property Antecedent $antecedent
+ */
 class Patient extends Authenticatable
 {
     use Notifiable;
@@ -63,7 +68,7 @@ class Patient extends Authenticatable
                 }
 
                 $data = array_merge([
-                    'date' => $now->addMonth($vat->period_month),
+                    'date' => $now->addMonths($vat->period_month),
                     'description' => $vat->vaccin,
                     'type_appointment_id' => $type->id,
                     'medecin_id' => $patient->medecin->id,
@@ -74,12 +79,12 @@ class Patient extends Authenticatable
         });
     }
 
-    protected static function active()
+    public static function active()
     {
         return static::where('is_active', true)->get();
     }
 
-    protected static function notActive()
+    public static function notActive()
     {
         return static::where('is_active', false)->get();
     }
@@ -111,6 +116,7 @@ class Patient extends Authenticatable
 
     /**
      * Get current pregnancy
+     * 
      * @return Pregnancy
      */
     public function pregnancy() : Pregnancy

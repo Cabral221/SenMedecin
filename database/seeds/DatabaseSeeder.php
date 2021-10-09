@@ -108,7 +108,7 @@ class DatabaseSeeder extends Seeder
         $patient = Patient::create([
             'first_name' => 'Patient 1',
             'last_name' => 'pname',
-            'birthday' => Carbon::now()->subYear(20),
+            'birthday' => Carbon::now()->subYears(20),
             'address' => '1603 dakar, no precis',
             'phone' => '770000000',
             'email' => 'patient@patient.com',
@@ -123,7 +123,7 @@ class DatabaseSeeder extends Seeder
         Patient::create([
             'first_name' => 'Patient 2',
             'last_name' => 'pname',
-            'birthday' => Carbon::now()->subYear(30),
+            'birthday' => Carbon::now()->subYears(30),
             'address' => '1603 dakar, no precis',
             'phone' => '770000001',
             'email' => 'patient2@patient.com',

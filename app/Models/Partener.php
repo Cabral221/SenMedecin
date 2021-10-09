@@ -8,6 +8,12 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 
+/**
+ * Partener Model Classe
+ * 
+ * @property Service[] $services
+ * @property Responsable $responsable
+ */
 class Partener extends Model
 {
     protected $fillable = ['name', 'email', 'address', 'phone', 'image'];
