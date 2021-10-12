@@ -3,14 +3,14 @@
 namespace App\Jobs;
 
 use Illuminate\Bus\Queueable;
-use App\Notifications\SendSmsPrerappel;
+use App\Notifications\SendSmsRappel;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use App\Services\Appointment\Appointment;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 
-class SendPrerappelSms implements ShouldQueue
+class SendRappelSms implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -41,6 +41,7 @@ class SendPrerappelSms implements ShouldQueue
     public function handle()
     {
         $patient = $this->appointment->patient;
-        $patient->notify(new SendSmsPrerappel($this->appointment));
+        
+        $patient->notify(new SendSmsRappel($this->appointment));
     }
 }

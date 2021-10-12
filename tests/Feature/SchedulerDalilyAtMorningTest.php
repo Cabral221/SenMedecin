@@ -2,21 +2,21 @@
 
 namespace Tests\Feature;
 
-use App\Jobs\SendPrerappelSms;
 use Carbon\Carbon;
 use Tests\TestCase;
 use App\Models\Medecin;
 use App\Models\Patient;
 use App\Models\Partener;
+use App\Jobs\SendRappelSms;
 use App\Models\Responsable;
 use App\Models\TypeAppointment;
-use App\Notifications\SendSmsPrerappel;
+use App\Notifications\SendSmsRappel;
 use Illuminate\Support\Facades\Queue;
 use Illuminate\Support\Facades\Notification;
 
-class SchedulerTwoDaysBeforeTest extends TestCase
+class SchedulerDalilyAtMorningTest extends TestCase
 {
-    
+
     public function loadFixtures() : Patient
     {
         /** @var Partener $partener */
@@ -34,26 +34,27 @@ class SchedulerTwoDaysBeforeTest extends TestCase
     * @test
     * @return void
     */
-    public function excuteCommandToSendRappelBeforeTwoDays() : void
+    public function excuteCommandToSendRappelAt7h40() : void
     {
-        // Etant donné qu'il y a un RV DANS L'INTERVALLE  [+48h , -58h]
+        // Etant donné qu'il y a un RV aujourd'hui
         $patient = $this->loadFixtures();
         $firstType = TypeAppointment::where(['libele' => 'CPN'])->first();
-
+        
+        
         $patient->appointments()->create([
-            'date' => Carbon::today()->addDays(2),
+            'date' => Carbon::now(),
             'description' => 'CPN X',
             'type_appointment_id' => $firstType->id,
             'medecin_id' => $patient->medecin->id
         ]);
 
-        // DUAND j"execute la commande send:prerappel
+        // DUAND j"execute la commande send:rappel
         Notification::fake();
-        $this->artisan('send:prerappel')
+        $this->artisan('send:rappel')
         
         // Alors un evenement doit etre declancher pour envoyer un sms
         ->assertExitCode(0);
-        Notification::assertSentTo([$patient], SendSmsPrerappel::class);
+        Notification::assertSentTo($patient, SendSmsRappel::class);
     }
 
     /**
@@ -61,62 +62,62 @@ class SchedulerTwoDaysBeforeTest extends TestCase
      *
      * @return void
      */
-    public function doesNotNotifyIfAppointmentIsOverThanInterval() : void
+    public function doesNotNotifyIfAppointmentIsOverThanToday() : void
     {
-        // Etant donné qu'il n'y a pas un RV DANS deux jours
+        // Etant donné qu'il n'y a pas un RV aujourd'hui
         $patient = $this->loadFixtures();
         $firstType = TypeAppointment::where(['libele' => 'CPN'])->first();
 
+        $patient->appointments()->create([
+            'date' => Carbon::today()->subHour(),
+            'description' => 'CPN X',
+            'type_appointment_id' => $firstType->id,
+            'medecin_id' => $patient->medecin->id
+        ]);
         $patient->appointments()->create([
             'date' => Carbon::today()->addDay(),
             'description' => 'CPN X',
             'type_appointment_id' => $firstType->id,
             'medecin_id' => $patient->medecin->id
         ]);
-        $patient->appointments()->create([
-            'date' => Carbon::now()->addDays(3),
-            'description' => 'CPN X',
-            'type_appointment_id' => $firstType->id,
-            'medecin_id' => $patient->medecin->id
-        ]);
 
-        // DUAND j"execute la commande send:prerappel
+        // DUAND j"execute la commande send:rappel
         Notification::fake();
-        $this->artisan('send:prerappel')
+        $this->artisan('send:rappel')
         
         // Alors la notification sms ne doit pas etre envoyé
         ->assertExitCode(0);
-        Notification::assertNotSentTo([$patient], SendSmsPrerappel::class);
+        Notification::assertNotSentTo([$patient], SendSmsRappel::class);
     }
 
     
     /**
      * Tester si les notifs rentre bien dans le queue
      * 
-     * @test
+     * @t
      * @return void
     */
     public function notificationDispathFromQueueBeforeTwoDays() : void
     {
-        // Etant donné qu'il y a un RV DANS L'INTERVALLE  [+48h , -58h]
+        // Etant donné qu'il y a un RV aujourd'hui
         $patient = $this->loadFixtures();
         $firstType = TypeAppointment::where(['libele' => 'CPN'])->first();
 
         $patient->appointments()->create([
-            'date' => Carbon::today()->addDays(2),
+            'date' => Carbon::today(),
             'description' => 'CPN X',
             'type_appointment_id' => $firstType->id,
             'medecin_id' => $patient->medecin->id,
         ]);
 
-        // DUAND j"execute la commande send:prerappel
+        // DUAND j"execute la commande send:rappel
         Queue::fake();
         $this->artisan('send:prerappel')
         
         // Alors un evenement doit etre declancher pour envoyer un sms PAR UN CANNAL "QUEU"
         ->assertExitCode(0);
-        Queue::assertPushed(SendPrerappelSms::class);
-        Queue::assertPushedOn('sms', SendPrerappelSms::class);
+        Queue::assertPushed(SendRappelSms::class);
+        Queue::assertPushedOn('sms', SendRappelSms::class);
     }
     
 }
