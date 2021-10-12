@@ -13,7 +13,7 @@ class SendSmsPrerappel extends Notification
 {
     use Queueable;
 
-    private $appointment;
+    private Appointment $appointment;
     
     /**
     * Create a new notification instance.

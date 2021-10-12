@@ -6,6 +6,9 @@ use App\Models\Patient;
 use App\Models\Responsable;
 use Illuminate\Notifications\Notifiable;
 use App\Services\Appointment\Appointment;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
@@ -23,7 +26,7 @@ class Medecin extends Authenticatable
     /**
      * The attributes that are mass assignable.
      *
-     * @var array
+     * @var array<string>
      */
     protected $fillable = [
         'first_name', 'last_name', 'phone', 'gen_password', 'email', 'password','service_id','responsable_id','is_active'
@@ -32,7 +35,7 @@ class Medecin extends Authenticatable
     /**
      * The attributes that should be hidden for arrays.
      *
-     * @var array
+     * @var array<string>
      */
     protected $hidden = [
         'password', 'remember_token',
@@ -41,38 +44,38 @@ class Medecin extends Authenticatable
     /**
      * The attributes that should be cast to native types.
      *
-     * @var array
+     * @var array<string>
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
 
-    public function getFullNameAttribute()
+    public function getFullNameAttribute() : string
     {
         return "{$this->first_name} {$this->last_name}";
     }
 
-    public function service()
+    public function service() : BelongsTo
     {
         return $this->belongsTo(Service::class, 'service_id');
     }
 
-    public function responsable()
+    public function responsable() : BelongsTo
     {
         return $this->belongsTo(Responsable::class);
     }
 
-    public function patients()
+    public function patients() : HasMany
     {
         return $this->hasMany(Patient::class);
     }
 
-    public function appointments()
+    public function appointments() : HasMany
     {
         return $this->hasMany(Appointment::class);
     }
 
-    public function appointmentWherePassed(bool $bool = true)
+    public function appointmentWherePassed(bool $bool = true) : Collection
     {
         return $this->appointments()->where('passed', $bool)->orderBy('date','ASC')->get();
     }
