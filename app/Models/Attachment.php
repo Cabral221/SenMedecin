@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Facades\Storage;
 
+/**
+ * Attachment Model Class
+ * 
+ * @method bool delete()
+ */
 class Attachment extends Model
 {
     protected $guarded = [];
@@ -28,8 +33,9 @@ class Attachment extends Model
 
     public function upLoadFile(UploadedFile $file) : Attachment
     {
-        $file =$file->storePublicly('uploads',['disk' => 'public']);
-        $this->name = basename($file);
+        /** @var string $fileName */
+        $fileName =$file->storePublicly('uploads',['disk' => 'public']);
+        $this->name = basename($fileName);
         return $this;
     }
 

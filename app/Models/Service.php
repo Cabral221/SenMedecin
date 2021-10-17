@@ -30,9 +30,9 @@ class Service extends Model
     /**
      * Calcule et retourne le pourcentage des partenaires utilisant ce service
      *
-     * @return int
+     * @return float
      */
-    public function partOfParteners() : int
+    public function partOfParteners() : float
     {
         /** @var Partener[] $parteners */
         $parteners = Partener::where('is_active', true)->get();

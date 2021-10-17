@@ -76,7 +76,7 @@ class AttachmentsTest extends TestCase
         $response = $this->callController();
         $attachment = $response->json();
         $this->assertFileExists($this->getFileForAttachment($attachment));
-        Attachment::find($attachment['id'])->delete();
+        Attachment::find($attachment['id'])->first()->delete();
         $this->assertFileDoesNotExist($this->getFileForAttachment($attachment));
     }
 

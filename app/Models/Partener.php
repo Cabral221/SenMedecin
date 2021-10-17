@@ -42,8 +42,9 @@ class Partener extends Model
      */
     public function upLoadFile(UploadedFile $file) : Partener
     {
-        $file = $file->storePublicly('uploads/parteners',['disk' => 'public']);
-        $this->image = basename($file);
+        /** @var string $fileName */
+        $fileName = $file->storePublicly('uploads/parteners',['disk' => 'public']);
+        $this->image = basename($fileName);
         return $this;
     }
 

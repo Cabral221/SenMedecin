@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Patient\Auth;
 
-use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
@@ -42,7 +41,11 @@ class VerificationController extends Controller
         $this->middleware('throttle:6,1')->only('verify', 'resend');
     }
 
-    public function show(Request $request) : View
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
+    public function show(Request $request) : object
     {
         return $request->user()->hasVerifiedEmail()
                         ? redirect($this->redirectPath())

@@ -50,10 +50,9 @@ class SchedulerDalilyAtMorningTest extends TestCase
 
         // DUAND j"execute la commande send:rappel
         Notification::fake();
-        $this->artisan('send:rappel')
+        $this->artisan('send:rappel');
         
         // Alors un evenement doit etre declancher pour envoyer un sms
-        ->assertExitCode(0);
         Notification::assertSentTo($patient, SendSmsRappel::class);
     }
 
@@ -83,10 +82,9 @@ class SchedulerDalilyAtMorningTest extends TestCase
 
         // DUAND j"execute la commande send:rappel
         Notification::fake();
-        $this->artisan('send:rappel')
+        $this->artisan('send:rappel');
         
         // Alors la notification sms ne doit pas etre envoyé
-        ->assertExitCode(0);
         Notification::assertNotSentTo([$patient], SendSmsRappel::class);
     }
 
