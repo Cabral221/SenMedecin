@@ -6,6 +6,8 @@ use App\Models\Patient;
 use App\Models\Children;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 class ChildController extends Controller {
 
@@ -14,22 +16,22 @@ class ChildController extends Controller {
         $this->middleware('auth:medecin');
     }
 
-    public function index(Patient $patient)
+    public function index(Patient $patient) : View
     {
         return view('medecin.patient.child', compact('patient'));
     }
 
-    public function show(Patient $patient, Children $children)
+    public function show(Patient $patient, Children $children) : View
     {
         return view('medecin.patient.childShow', compact('patient','children'));
     }
 
-    public function create(Patient $patient)
+    public function create(Patient $patient) : View
     {
         return view('medecin.patient.childCreate', compact('patient'));
     }
 
-    public function store(Request $request, Patient $patient)
+    public function store(Request $request, Patient $patient) : RedirectResponse
     {
         $this->validate($request, [
             'children_first_name' => 'required|min:2',
@@ -49,7 +51,7 @@ class ChildController extends Controller {
         return redirect()->route('medecin.patients.childs', $patient);
     }
 
-    public function update(Request $request, Patient $patient, Children $children)
+    public function update(Request $request, Patient $patient, Children $children) : RedirectResponse
     {
         $this->validate($request, [
             'children_first_name' => 'required|min:2',
@@ -67,7 +69,7 @@ class ChildController extends Controller {
         return redirect()->route('medecin.patients.childs', $patient);
     }
 
-    public function destroy(Request $request, Patient $patient, Children $children)
+    public function destroy(Request $request, Patient $patient, Children $children) : RedirectResponse
     {
         $children->delete();
 

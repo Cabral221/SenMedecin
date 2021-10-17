@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Medecin\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
+use Illuminate\View\View;
 
 class ForgotPasswordController extends Controller
 {
@@ -20,7 +21,7 @@ class ForgotPasswordController extends Controller
 
     use SendsPasswordResetEmails;
 
-    public function showLinkRequestForm()
+    public function showLinkRequestForm() : View
     {
         return view('medecin.auth.passwords.email');
     }

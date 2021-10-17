@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Responsable;
 
 use App\Http\Controllers\Controller;
+use Illuminate\View\View;
 
 class ResponsableController extends Controller
 {
@@ -12,7 +13,7 @@ class ResponsableController extends Controller
         $this->middleware('auth:responsable');
     }
 
-    public function index()
+    public function index() : View
     {
         return view('responsable.home');
     }

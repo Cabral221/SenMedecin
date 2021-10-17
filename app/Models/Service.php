@@ -22,7 +22,7 @@ class Service extends Model
                     ->withTimestamps();
     }
 
-    public function medecins()
+    public function medecins() : BelongsToMany
     {
         return $this->belongsToMany(Medecin::class);
     }
@@ -43,9 +43,9 @@ class Service extends Model
     /**
      * Calcule et return le pourcentage des medecins utilisant ce service
      *
-     * @return int
+     * @return float
      */
-    public function partOfMedecins() : int
+    public function partOfMedecins() : float
     {
         $allMedUsing = 0; 
         $allMedecins = Medecin::where('is_active', true)->get();
@@ -58,7 +58,7 @@ class Service extends Model
         return $result;
     }
 
-    public function partOfMedFor(): int
+    public function partOfMedFor() : float 
     {
         $meds = auth('responsable')->user()->medecins;
         $nbmed = 0;

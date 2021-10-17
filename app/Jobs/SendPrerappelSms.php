@@ -21,7 +21,7 @@ class SendPrerappelSms implements ShouldQueue
      */
     public $tries = 3;
 
-    private $appointment;
+    private Appointment $appointment;
 
     /**
      * Create a new job instance.

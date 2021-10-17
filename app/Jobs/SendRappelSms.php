@@ -21,7 +21,7 @@ class SendRappelSms implements ShouldQueue
      */
     public $tries = 3;
 
-    private $appointment;
+    private Appointment $appointment;
 
     /**
      * Create a new job instance.
@@ -38,7 +38,7 @@ class SendRappelSms implements ShouldQueue
      *
      * @return void
      */
-    public function handle()
+    public function handle() : void
     {
         $patient = $this->appointment->patient;
         

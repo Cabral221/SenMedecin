@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\Patient\PatientRequest;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 class PatientController extends Controller
 {
@@ -19,7 +21,7 @@ class PatientController extends Controller
         $this->middleware('auth:medecin');
     }
 
-    public function index()
+    public function index() : View
     {
         $patients = $this->medecin()->patients()->orderBy('id','DESC')->get();
         $patientActives = $this->medecin()->patients()->where('is_active',true)->get();
@@ -27,20 +29,20 @@ class PatientController extends Controller
         return view('medecin.patient.index', compact('medecin','patients','patientActives'));
     }
 
-    public function show(Patient $patient)
+    public function show(Patient $patient) : View
     {
         $lastRvs = $patient->appointments()->orderBy('date', 'ASC')->limit(5)->get();
         $antecedent = $patient->antecedent;
         return view('medecin.patient.show', compact('patient', 'lastRvs', 'antecedent'));
     }
 
-    public function create()
+    public function create() : View
     {
         $patient = new Patient;
         return view('medecin.patient.create', compact('patient'));
     }
 
-    public function store(PatientRequest $request)
+    public function store(PatientRequest $request) : RedirectResponse
     {
         $now = Carbon::now();
         // Create carnet for patient
@@ -63,12 +65,12 @@ class PatientController extends Controller
 
     }
 
-    public function edit(Patient $patient)
+    public function edit(Patient $patient) : View
     {
         return view('medecin.patient.edit', compact('patient'));
     }
 
-    public function update(Request $request, Patient $patient)
+    public function update(Request $request, Patient $patient) : RedirectResponse
     {
         $now = Carbon::now();
         $this->validate($request, [
@@ -89,7 +91,7 @@ class PatientController extends Controller
         return redirect()->route('medecin.patients.index');
     }
 
-    public function destroy(Patient $patient)
+    public function destroy(Patient $patient) : RedirectResponse
     {
         $patient->delete();
 
@@ -97,7 +99,7 @@ class PatientController extends Controller
         return redirect()->route('medecin.patients.index');
     }
 
-    public function calendar(Patient $patient)
+    public function calendar(Patient $patient) : View
     {
         $appointments = $patient->appointments()->orderBy('date', 'DESC')->paginate(30);
         return view('medecin.patient.calendar', compact('patient','appointments'));

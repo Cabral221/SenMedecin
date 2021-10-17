@@ -8,13 +8,14 @@ use App\Http\Requests\AttachmentRequest;
 
 class AttachmentController extends Controller
 {
-    public function store(AttachmentRequest $request)
+   
+    public function store(AttachmentRequest $request) : object
     {
         // verifier si attachable id sst bon
         $type = $request->get('attachable_type');
         $id = $request->get('attachable_id');
         $file = $request->file('image');
-        // dd($type);
+
         if(class_exists($type) && method_exists($type,'attachments')){
             $subject = call_user_func($type . '::find',$id);
             if($subject){

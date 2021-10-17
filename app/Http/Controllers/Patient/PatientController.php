@@ -4,8 +4,11 @@ namespace App\Http\Controllers\Patient;
 use App\Models\Patient;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\View\View;
+
 class PatientController extends Controller
 {
     
@@ -15,11 +18,12 @@ class PatientController extends Controller
         $this->middleware('auth:patient');
     }
 
-    public function index(){
+    public function index() : View
+    {
         return view('patient.index');
     }
 
-    public function profile($id)
+    public function profile(string $id) : View
     {
         $patient = Patient::where('id',Auth::guard('patient')->user()->id)->first();
         $id = Auth::guard('patient')->user()->id;
@@ -27,7 +31,8 @@ class PatientController extends Controller
         return view('patient.profile.update',compact('id'));
     }
 
-    public function update( Request $request, $id){
+    public function update( Request $request, string $id) : RedirectResponse
+    {
 
         $validator = $this->validate($request,[
             'first_name' => 'required|string',
@@ -47,8 +52,8 @@ class PatientController extends Controller
     }
 
 
-    public function email( Request $request, $id){
-
+    public function email(Request $request, string $id) : RedirectResponse
+    {
         $validator = $this->validate($request,[
             'email' => 'required|string',
         ]);
@@ -59,7 +64,8 @@ class PatientController extends Controller
     }
 
 
-    public function password( Request $request, $id){
+    public function password( Request $request, string $id) : RedirectResponse
+    {
         $validator = $this->validate($request,[
             'password' => 'required|string|confirmed',
             ]);
@@ -70,7 +76,8 @@ class PatientController extends Controller
         return back();
     }
 
-    public function destroy($id){
+    public function destroy(string $id) : RedirectResponse
+    {
         Patient::where('id',Auth::guard('patient')->user()->id)->delete();
         return redirect()->route('patient.home');
     }

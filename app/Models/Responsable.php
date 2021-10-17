@@ -15,6 +15,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * 
  * @property Medecin[] $medecins
  * @property Patient[] $patients
+ * @property string $gen_password
  */
 class Responsable extends Authenticatable
 {
@@ -23,7 +24,7 @@ class Responsable extends Authenticatable
     /**
      * The attributes that are mass assignable.
      *
-     * @var array
+     * @var array<string>
      */
     protected $fillable = [
         'first_name', 'last_name', 'phone', 'email', 'password','gen_password', 'partener_id',
@@ -32,7 +33,7 @@ class Responsable extends Authenticatable
     /**
      * The attributes that should be hidden for arrays.
      *
-     * @var array
+     * @var array<string>
      */
     protected $hidden = [
         'password', 'remember_token',
@@ -41,7 +42,7 @@ class Responsable extends Authenticatable
     /**
      * The attributes that should be cast to native types.
      *
-     * @var array
+     * @var array<string>
      */
     protected $casts = [
         'email_verified_at' => 'datetime',

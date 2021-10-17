@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Patient;
 
 use App\Models\Patient;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 
 class IdentifiantController extends Controller
 {
@@ -14,7 +14,8 @@ class IdentifiantController extends Controller
         $this->middleware('auth:patient');
     }
 
-    public function index($id){
+    public function index(string $id) : View
+    {
         $identifiant = Patient::where('id',Auth::guard('patient')->user()->id)->first();
         return view('patient.identifiant.index',compact('identifiant'));
     }

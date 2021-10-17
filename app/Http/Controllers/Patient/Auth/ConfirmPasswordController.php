@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Patient\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\ConfirmsPasswords;
+use Illuminate\View\View;
 
 class ConfirmPasswordController extends Controller
 {
@@ -38,7 +39,7 @@ class ConfirmPasswordController extends Controller
         $this->middleware('guest:patient');
     }
 
-    public function showConfirmForm()
+    public function showConfirmForm() : View
     {
         return view('patient.auth.passwords.confirm');
     }

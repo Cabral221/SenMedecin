@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Patient;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 class ClientController extends Controller
 {
@@ -13,7 +15,7 @@ class ClientController extends Controller
         $this->middleware('auth:admin');
     }
 
-    public function index()
+    public function index() : View
     {
         $patients = Patient::paginate(25);
         $patientsActive = Patient::active();
@@ -22,7 +24,7 @@ class ClientController extends Controller
         return view('admin.client.index', compact('patients', 'patientsActive', 'patientsNotActive'));
     }
 
-    public function destroy($id)
+    public function destroy(string $id) : RedirectResponse
     {
         $patient = Patient::find($id);
         if($patient != null){
@@ -36,7 +38,7 @@ class ClientController extends Controller
         return redirect()->route('admin.clients.index');
     }
 
-     public function active(Patient $patient)
+     public function active(Patient $patient) : RedirectResponse
      {
         $patient->is_active = true;
         $patient->save();
@@ -45,7 +47,7 @@ class ClientController extends Controller
         return redirect()->route('admin.clients.index');
      }
 
-     public function deactive(Patient $patient)
+     public function deactive(Patient $patient) : RedirectResponse
      {
         $patient->is_active = false;
         $patient->save();

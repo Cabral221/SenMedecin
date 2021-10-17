@@ -6,6 +6,8 @@ use App\Models\Patient;
 use App\Models\Antecedent;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 class AntecedentController extends Controller
 {
@@ -15,13 +17,13 @@ class AntecedentController extends Controller
         $this->middleware('auth:medecin');
     }
 
-    public function create(Patient $patient)
+    public function create(Patient $patient) : View
     {
         $antecedent = new Antecedent;
         return view('medecin.patient.createAntecedent', compact('patient','antecedent'));
     }
 
-    public function store(Request $request, Patient $patient)
+    public function store(Request $request, Patient $patient) : RedirectResponse
     {
         $this->validate($request, [
             'antecedent_father' => 'string|min:2',
@@ -43,12 +45,12 @@ class AntecedentController extends Controller
         return redirect()->route('medecin.patients.show', $patient);
     }
 
-    public function edit(Patient $patient, Antecedent $antecedent)
+    public function edit(Patient $patient, Antecedent $antecedent) : View
     {
         return view('medecin.patient.editAntecedent', compact('patient', 'antecedent'));
     }
 
-    public function update(Request $request, Patient $patient)
+    public function update(Request $request, Patient $patient) : RedirectResponse
     {
 
         $this->validate($request, [

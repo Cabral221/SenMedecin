@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use Illuminate\View\View;
 
 class ResetPasswordController extends Controller
 {
@@ -30,14 +32,14 @@ class ResetPasswordController extends Controller
      */
     protected $redirectTo = RouteServiceProvider::HOME;
 
-    public function showResetForm(Request $request, $token = null)
+    public function showResetForm(Request $request, string $token = null) : View
     {
         return view('patient.auth.passwords.reset')->with(
             ['token' => $token, 'email' => $request->email]
         );
     }
 
-    protected function guard()
+    protected function guard() : Guard
     {
         return Auth::guard('patient');
     }
