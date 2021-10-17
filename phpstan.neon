@@ -12,8 +12,8 @@ parameters:
         - routes
 
     # The level 8 is the highest level
-    level: 5
+    level: 7
 
-    checkMissingIterableValueType: true
+    checkMissingIterableValueType: false
 
     checkModelProperties: true

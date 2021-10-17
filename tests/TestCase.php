@@ -4,6 +4,7 @@ namespace Tests;
 
 use Carbon\Carbon;
 use Faker\Factory;
+use Faker\Generator;
 use App\Models\Medecin;
 use App\Models\Patient;
 use App\Models\Service;
@@ -20,7 +21,7 @@ abstract class TestCase extends BaseTestCase
 {
     use CreatesApplication, RefreshDatabase;
 
-    private $faker;
+    private Generator $faker;
 
     public function setUp() : void
     {
@@ -30,7 +31,7 @@ abstract class TestCase extends BaseTestCase
         $this->faker = Factory::create('fr_FR');
     }
 
-    public function cleanDirectories()
+    public function cleanDirectories() : void
     {
         Storage::disk('public')->deleteDirectory('uploads');
     }

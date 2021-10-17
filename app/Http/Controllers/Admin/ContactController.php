@@ -12,7 +12,7 @@ class ContactController extends Controller
         $this->middleware('auth:admin');
     }
 
-    public function index()
+    public function index() : void
     {
         dd('En développement...');
     }

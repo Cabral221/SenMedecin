@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Medecin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\View\View;
 
 class MedecinController extends Controller {
 
@@ -11,7 +12,7 @@ class MedecinController extends Controller {
         $this->middleware('auth:medecin');
     }
 
-    public function index()
+    public function index() : View
     {
         return view('medecin.home');
     }

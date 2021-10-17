@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Responsable\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use Illuminate\View\View;
 
 class ResetPasswordController extends Controller
 {
@@ -29,14 +31,14 @@ class ResetPasswordController extends Controller
      */
     protected $redirectTo = '/responsable/home';
 
-    public function showResetForm(Request $request, $token = null)
+    public function showResetForm(Request $request, string $token = null) : View
     {
         return view('responsable.auth.passwords.reset')->with(
             ['token' => $token, 'email' => $request->email]
         );
     }
 
-    protected function guard()
+    protected function guard() : Guard
     {
         return Auth::guard('responsable');
     }

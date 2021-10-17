@@ -5,18 +5,20 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\View\View;
 
 class ServiceController extends Controller
 {
     
-    public function index()
+    public function index() : View
     {
         $services = Service::all();
         return view('admin.service.index', compact('services'));
     }
 
-    public function store(Request $request)
+    public function store(Request $request) : RedirectResponse
     {
         $this->validate($request, [
             'service_libele' => 'required|string|min:2|unique:services,libele',
@@ -29,7 +31,7 @@ class ServiceController extends Controller
         return redirect()->route('admin.services.index');
     }
 
-    public function update(Request $request, Service $service)
+    public function update(Request $request, Service $service) : RedirectResponse
     {
         $this->validate($request, [
             'service_libele' => 'required|string|min:2|unique:services,libele',
@@ -45,7 +47,7 @@ class ServiceController extends Controller
         return redirect()->route('admin.services.index');
     }
 
-    public function destroy(Service $service)
+    public function destroy(Service $service) : RedirectResponse
     {
         // dd($service);
         $service->delete();

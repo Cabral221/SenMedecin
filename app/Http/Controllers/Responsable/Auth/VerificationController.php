@@ -40,7 +40,11 @@ class VerificationController extends Controller
         $this->middleware('throttle:6,1')->only('verify', 'resend');
     }
 
-    public function show(Request $request)
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
+    public function show(Request $request) : object
     {
         return $request->user()->hasVerifiedEmail()
                         ? redirect($this->redirectPath())

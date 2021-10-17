@@ -13,6 +13,7 @@ use Carbon\Carbon;
 use App\Models\Medecin;
 use App\Http\Controllers\Controller;
 use App\Services\Appointment\Appointment;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\View\View;
 
 class AppointmentController extends Controller
@@ -22,7 +23,7 @@ class AppointmentController extends Controller
         $this->middleware('auth:medecin');
     }
 
-    public function day()
+    public function day() : View
     {
         $now = Carbon::now();
         $appointments = [];
@@ -35,13 +36,13 @@ class AppointmentController extends Controller
         return view('medecin.appointment.day', compact('appointments'));
     }
 
-    public function come()
+    public function come() : View
     {
         $appointments = $this->appointmentsWherePassed(false);
         return view('medecin.appointment.come', compact('appointments'));
     }
 
-    public function histories()
+    public function histories() : View
     {
         $appointments = $this->appointmentsWherePassed(true);
         return view('medecin.appointment.histories', compact('appointments'));
@@ -57,7 +58,7 @@ class AppointmentController extends Controller
         return auth('medecin')->user();
     }
     
-    private function appointmentsWherePassed(bool $bool = true)
+    private function appointmentsWherePassed(bool $bool = true) : Collection
     {
         return $this->medecin()->appointments()->where('passed', $bool)->orderBy('date','ASC')->get();
     }

@@ -4,12 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Service;
 use App\Models\Partener;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\Partener\PartenerRequest;
 use App\Http\Requests\Partener\PartenerEditRequest;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 class PartenerController extends Controller
 {
@@ -18,13 +18,13 @@ class PartenerController extends Controller
         $this->middleware('auth:admin');
     }
 
-    public function index()
+    public function index() : View
     {
         $parteners = Partener::where('is_active', true)->get();
         return view('admin.partener.index', compact('parteners'));
     }
 
-    public function show(Partener $partener)
+    public function show(Partener $partener) : View
     {
         $responsable = $partener->responsable;
         $medecins = $responsable->medecins;
@@ -35,7 +35,7 @@ class PartenerController extends Controller
         return view('admin.partener.show', compact('partener', 'responsable', 'medecins', 'nbPatients'));
     }
 
-    public function create()
+    public function create() : View
     {
         $partener = new Partener;
         $responsable = $partener->responsable;
@@ -43,7 +43,7 @@ class PartenerController extends Controller
         return view('admin.partener.create', compact('partener', 'services'));
     }
 
-    public function store(PartenerRequest $request)
+    public function store(PartenerRequest $request) : RedirectResponse
     {
         $partener = new Partener();
 
@@ -79,13 +79,13 @@ class PartenerController extends Controller
         
     }
 
-    public function edit(Partener $partener)
+    public function edit(Partener $partener) : View
     {
         $services = Service::all();
         return view('admin.partener.edit', compact('partener', 'services'));
     }
 
-    public function update(PartenerEditRequest $request, Partener $partener)
+    public function update(PartenerEditRequest $request, Partener $partener) : RedirectResponse
     {
         // Validate Unique Email and Phone
         $UniqueEmail = Partener::where('id', '!=', $partener->id)->whereEmail($request->partener_email)->first();
@@ -132,7 +132,7 @@ class PartenerController extends Controller
         return redirect()->route('admin.parteners.show', $partener);
     }
     
-    public function destroy(Partener $partener)
+    public function destroy(Partener $partener) : RedirectResponse
     {
         $partener->delete();
 

@@ -6,7 +6,8 @@ use App\Models\Pev;
 use App\Models\Patient;
 use Illuminate\Database\Eloquent\Model;
 use App\Services\Appointment\Appointment;
-
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * Children Model Class
@@ -41,17 +42,17 @@ class Children extends Model
         });
     }
 
-    public function getFullNameAttribute()
+    public function getFullNameAttribute() : string
     {
         return "{$this->first_name} {$this->last_name}";
     }
 
-    public function mom()
+    public function mom() : BelongsTo
     {
         return $this->belongsTo(Patient::class, 'patient_id');
     }
 
-    public function appointments()
+    public function appointments() : HasMany
     {
         return $this->hasMany(Appointment::class);
     }

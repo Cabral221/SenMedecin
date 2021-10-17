@@ -2,29 +2,29 @@
 
 namespace App\Notifications;
 
-use App\Services\Appointment\Appointment;
 use Illuminate\Bus\Queueable;
+use App\Services\Appointment\Appointment;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Messages\NexmoMessage;
 
-class SendSms extends Notification
+class SendSmsRappel extends Notification
 {
     use Queueable;
 
-    private $appointment;
-    
+    private Appointment $appointment;
+
     /**
-    * Create a new notification instance.
-    *
-    * @return void
-    */
+     * Create a new notification instance.
+     *
+     * @return void
+     */
     public function __construct(Appointment $appointment)
     {
         $this->appointment = $appointment;
     }
-    
+
     /**
     * Get the notification's delivery channels.
     *
@@ -92,6 +92,6 @@ class SendSms extends Notification
     {
 
         return (new NexmoMessage)
-            ->content('Ceci est est message de test depuis axxunjurel.com');
+            ->content('Ceci est un message de test depuis axxunjurel.com : Rappel daily');
     }
 }

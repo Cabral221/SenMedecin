@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Carbon\Carbon;
 use Illuminate\Routing\Controller;
 use App\Services\Appointment\Appointment;
+use Illuminate\View\View;
 
 class CalendarController extends Controller
 {
@@ -12,7 +13,7 @@ class CalendarController extends Controller
         $this->middleware('auth:admin');
     }
 
-    public function index()
+    public function index() : View
     {
         $appointments = Appointment::where('date',Carbon::today())->limit(50)->get();
         // dd($appointments);

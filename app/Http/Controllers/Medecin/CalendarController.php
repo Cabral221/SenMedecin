@@ -11,6 +11,7 @@ namespace App\Http\Controllers\Medecin;
 
 use App\Models\Medecin;
 use App\Http\Controllers\Controller;
+use Illuminate\View\View;
 
 class CalendarController extends Controller
 {
@@ -19,7 +20,7 @@ class CalendarController extends Controller
         $this->middleware('auth:medecin');
     }
 
-    public function index()
+    public function index() : View
     {
         $appointments = $this->medecin()->appointments;
         $rvs = [];

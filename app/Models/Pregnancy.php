@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Patient;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Pregnancy extends Model
 {
@@ -14,7 +15,7 @@ class Pregnancy extends Model
         'accouchement' =>'date',
     ];
 
-    public function patient()
+    public function patient() : BelongsTo
     {
         return $this->belongsTo(Patient::class);
     }

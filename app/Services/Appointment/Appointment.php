@@ -7,6 +7,7 @@ use App\Models\Patient;
 use App\Models\Children;
 use App\Models\TypeAppointment;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * Appointment Model
@@ -18,34 +19,40 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Appointment extends Model
 {
+    /**
+     * @var array<string>
+     */
     public $fillable = ['type_appointment_id','description','medecin_id','date', 'passed', 'children_id'];
     
+    /**
+     * @var array<string>
+     */
     public $casts = [
         'date' => 'datetime',
         'passed' => 'boolean',
     ];
 
-    public function type_appointment()
+    public function type_appointment() : BelongsTo
     {
         return $this->belongsTo(TypeAppointment::class);
     }
 
-    public function type()
+    public function type() : string
     {
         return $this->type_appointment->libele;
     }
 
-    public function patient()
+    public function patient() : BelongsTo
     {
         return $this->belongsTo(Patient::class);
     }
 
-    public function medecin()
+    public function medecin() : BelongsTo
     {
         return $this->belongsTo(Medecin::class);
     }
 
-    public function children()
+    public function children() : BelongsTo
     {
         return $this->belongsTo(Children::class);
     }

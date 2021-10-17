@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\View\View;
 
 class LoginController extends Controller
 {
@@ -40,12 +42,12 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function showLoginForm()
+    public function showLoginForm() : View
     {
         return view('admin.auth.login');
     }
 
-    protected function guard()
+    protected function guard() : Guard
     {
         return Auth::guard('admin');
     }

@@ -9,6 +9,10 @@ use App\Models\Antecedent;
 use App\Models\TypeAppointment;
 use Illuminate\Notifications\Notifiable;
 use App\Services\Appointment\Appointment;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
@@ -24,7 +28,7 @@ class Patient extends Authenticatable
     /**
      * The attributes that are mass assignable.
      *
-     * @var array
+     * @var array<string>
      */
     protected $fillable = [
         'first_name', 'last_name', 'birthday', 'phone', 'address', 'referential', 'medecin_id', 'carnet_id', 'is_active', 'is_pregnancy', 'email', 'password',
@@ -33,7 +37,7 @@ class Patient extends Authenticatable
     /**
      * The attributes that should be hidden for arrays.
      *
-     * @var array
+     * @var array<string>
      */
     protected $hidden = [
         'password', 'remember_token',
@@ -42,7 +46,7 @@ class Patient extends Authenticatable
     /**
      * The attributes that should be cast to native types.
      *
-     * @var array
+     * @var array<string>
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
@@ -79,37 +83,37 @@ class Patient extends Authenticatable
         });
     }
 
-    public static function active()
+    public static function active() : Collection
     {
         return static::where('is_active', true)->get();
     }
 
-    public static function notActive()
+    public static function notActive() : Collection
     {
         return static::where('is_active', false)->get();
     }
 
-    public function getFullNameAttribute()
+    public function getFullNameAttribute() : string
     {
         return "{$this->first_name} {$this->last_name}";
     }
 
-    public function childrens()
+    public function childrens() : HasMany
     {
         return $this->hasMany(Children::class);
     }
 
-    public function medecin()
+    public function medecin() : BelongsTo
     {
         return $this->belongsTo(Medecin::class);
     }
 
-    public function carnet()
+    public function carnet() : HasOne
     {
         return $this->hasOne(Carnet::class);
     }
 
-    public function pregnancies()
+    public function pregnancies() : HasMany
     {
         return $this->hasMany(Pregnancy::class);
     }
@@ -124,12 +128,12 @@ class Patient extends Authenticatable
         return $this->pregnancies()->where('accouchement', '<', Carbon::now())->first();
     }
 
-    public function antecedent()
+    public function antecedent() : HasOne
     {
         return $this->hasOne(Antecedent::class);
     }
 
-    public function appointments()
+    public function appointments() : HasMany
     {
         return $this->hasMany(Appointment::class);
     }
@@ -143,11 +147,11 @@ class Patient extends Authenticatable
      * Route notifications for the Nexmo channel.
      *
      * @param  \Illuminate\Notifications\Notification  $notification
-     * @return string
+     * @return int
      */
-    public function routeNotificationForNexmo($notification)
+    public function routeNotificationForNexmo($notification) : int
     {
-        return $this->phone;
+        return (int) $this->phone;
     }
 
 }
