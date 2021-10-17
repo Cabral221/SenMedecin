@@ -4,9 +4,7 @@ namespace App\Http\Controllers\Admin\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\VerifiesEmails;
-use Illuminate\View\View;
 
 class VerificationController extends Controller
 {
@@ -42,7 +40,13 @@ class VerificationController extends Controller
         $this->middleware('throttle:6,1')->only('verify', 'resend');
     }
 
-    public function show(Request $request) : View
+    /**
+     * Undocumented function
+     *
+     * @param Request $request
+     * @return \Illuminate\View\View|\Illuminate\Http\RedirectResponse
+     */
+    public function show(Request $request) : object
     {
         return $request->user()->hasVerifiedEmail()
                         ? redirect($this->redirectPath())

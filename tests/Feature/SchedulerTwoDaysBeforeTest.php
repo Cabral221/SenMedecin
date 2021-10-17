@@ -49,10 +49,9 @@ class SchedulerTwoDaysBeforeTest extends TestCase
 
         // DUAND j"execute la commande send:prerappel
         Notification::fake();
-        $this->artisan('send:prerappel')
+        $this->artisan('send:prerappel');
         
         // Alors un evenement doit etre declancher pour envoyer un sms
-        ->assertExitCode(0);
         Notification::assertSentTo([$patient], SendSmsPrerappel::class);
     }
 
@@ -82,10 +81,9 @@ class SchedulerTwoDaysBeforeTest extends TestCase
 
         // DUAND j"execute la commande send:prerappel
         Notification::fake();
-        $this->artisan('send:prerappel')
+        $this->artisan('send:prerappel');
         
         // Alors la notification sms ne doit pas etre envoyé
-        ->assertExitCode(0);
         Notification::assertNotSentTo([$patient], SendSmsPrerappel::class);
     }
 
@@ -111,10 +109,9 @@ class SchedulerTwoDaysBeforeTest extends TestCase
 
         // DUAND j"execute la commande send:prerappel
         Queue::fake();
-        $this->artisan('send:prerappel')
+        $this->artisan('send:prerappel');
         
         // Alors un evenement doit etre declancher pour envoyer un sms PAR UN CANNAL "QUEU"
-        ->assertExitCode(0);
         Queue::assertPushed(SendPrerappelSms::class);
         Queue::assertPushedOn('sms', SendPrerappelSms::class);
     }

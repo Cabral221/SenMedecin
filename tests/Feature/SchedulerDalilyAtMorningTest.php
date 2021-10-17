@@ -34,7 +34,7 @@ class SchedulerDalilyAtMorningTest extends TestCase
     * @test
     * @return void
     */
-    public function excuteCommandToSendRappelAt7h40() : void
+    public function excuteCommandToSendRappelForPatientWhoHaveRv() : void
     {
         // Etant donné qu'il y a un RV aujourd'hui
         $patient = $this->loadFixtures();
@@ -94,17 +94,17 @@ class SchedulerDalilyAtMorningTest extends TestCase
     /**
      * Tester si les notifs rentre bien dans le queue
      * 
-     * @t
+     * @test
      * @return void
     */
-    public function notificationDispathFromQueueBeforeTwoDays() : void
+    public function notificationDispathFromQueueSmsDaily() : void
     {
         // Etant donné qu'il y a un RV aujourd'hui
         $patient = $this->loadFixtures();
         $firstType = TypeAppointment::where(['libele' => 'CPN'])->first();
 
         $patient->appointments()->create([
-            'date' => Carbon::today(),
+            'date' => Carbon::now(),
             'description' => 'CPN X',
             'type_appointment_id' => $firstType->id,
             'medecin_id' => $patient->medecin->id,
@@ -112,10 +112,9 @@ class SchedulerDalilyAtMorningTest extends TestCase
 
         // DUAND j"execute la commande send:rappel
         Queue::fake();
-        $this->artisan('send:prerappel')
+        $this->artisan('send:rappel');
         
         // Alors un evenement doit etre declancher pour envoyer un sms PAR UN CANNAL "QUEU"
-        ->assertExitCode(0);
         Queue::assertPushed(SendRappelSms::class);
         Queue::assertPushedOn('sms', SendRappelSms::class);
     }
