@@ -2,6 +2,8 @@
 
 use App\Models\Pev;
 use App\Models\Vat;
+use App\Models\Info;
+use App\Models\TypeAppointment;
 use Illuminate\Database\Seeder;
 
 class DataSeeder extends Seeder
@@ -13,6 +15,19 @@ class DataSeeder extends Seeder
      */
     public function run()
     {
+
+        Info::create([
+            'address' => 'Siege social no 1234, Dakar Sénégal',
+            'phone' => '+33 824 29 10',
+            'email' => 'contact@axxunjurel.com',
+        ]);
+
+        TypeAppointment::create(['libele' => 'CPN']);
+        TypeAppointment::create(['libele' => 'Suivis']);
+        TypeAppointment::create(['libele' => 'Accouchement']);
+        TypeAppointment::create(['libele' => 'Vaccinal']);
+
+        
         // VAT
         Vat::insert([
             ['vaccin' => 'VAT 1', 'period_month' => 0],
