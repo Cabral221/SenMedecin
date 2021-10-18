@@ -23,12 +23,17 @@ abstract class TestCase extends BaseTestCase
 
     private Generator $faker;
 
+    public function __construct()
+    {
+        parent::__construct();
+        $this->faker = Factory::create('fr_FR');
+    }
+
     public function setUp() : void
     {
         parent::setUp();
         Artisan::call('migrate');
         $this->cleanDirectories();
-        $this->faker = Factory::create('fr_FR');
     }
 
     public function cleanDirectories() : void
