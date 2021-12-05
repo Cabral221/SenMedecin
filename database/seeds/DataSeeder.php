@@ -28,7 +28,7 @@ class DataSeeder extends Seeder
         TypeAppointment::create(['libele' => 'Vaccinal']);
 
         
-        // VAT
+        // VAT : CPN
         Vat::insert([
             ['vaccin' => 'VAT 1', 'period_month' => 0],
             ['vaccin' => 'VAT 2', 'period_month' => 1],
@@ -37,7 +37,7 @@ class DataSeeder extends Seeder
             ['vaccin' => 'VAT 5', 'period_month' => 31],
         ]);
 
-        // PEV
+        // PEV : Vaccinal
         Pev::insert([
             ['vaccin' => 'BCG + Hépatite B1', 'period_month' => 0],
             ['vaccin' => 'Hépatite B2', 'period_month' => 1],

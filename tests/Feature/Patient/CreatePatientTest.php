@@ -4,8 +4,9 @@ namespace Tests\Feature\Patient;
 
 use Carbon\Carbon;
 use Tests\TestCase;
-use Faker\Generator;
 use Illuminate\Support\Str;
+use Illuminate\Testing\TestResponse;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class CreatePatientTest extends TestCase
@@ -36,6 +37,7 @@ class CreatePatientTest extends TestCase
     public function patient_email_needs_to_be_unique() : void
     {
         $medecin = $this->loginAsMedecin();
+        Notification::fake();
 
         $medecin->patients()->create([
             'first_name' => $this->faker->firstName,
@@ -54,5 +56,39 @@ class CreatePatientTest extends TestCase
         ]);
 
         $response->assertSessionHasErrors('patient_email');
+    }
+
+    // Patient phone needs to be unique
+    // ...
+
+    /** @test */
+    public function medecin_can_create_new_patient() : void
+    {
+        $this->loginAsMedecin();
+        Notification::fake();
+
+        /** @var TestResponse $response */
+        $response = $this->post('/medecin/patients', [
+            'patient_first_name' => 'John',
+            'patient_last_name' => 'Doe',
+            'patient_birthday' => Carbon::now()->subYears(rand(17,35)),
+            'patient_address' => $this->faker->address,
+            'patient_phone' =>  221778435052,
+            'patient_email' => 'test@test.com',
+            'patient_password' => 'password', 
+            'patient_password_confirmation' => 'password', 
+        ]);
+
+        $this->assertDatabaseHas(
+            'patients',
+            [
+                'first_name' => 'John',
+                'last_name' => 'Doe',
+                'email' => 'test@test.com',
+            ]
+        );
+
+        $response->assertSessionHas('success');
+        $response->assertRedirect('/medecin/patients');
     }
 }
