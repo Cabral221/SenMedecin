@@ -25,7 +25,6 @@ class PatientController extends Controller
 
     public function profile(string $id) : View
     {
-        $patient = Patient::where('id',Auth::guard('patient')->user()->id)->first();
         $id = Auth::guard('patient')->user()->id;
 
         return view('patient.profile.update',compact('id'));
@@ -51,7 +50,6 @@ class PatientController extends Controller
         return back();
     }
 
-
     public function email(Request $request, string $id) : RedirectResponse
     {
         $validator = $this->validate($request,[
@@ -62,7 +60,6 @@ class PatientController extends Controller
         $update_email->save();
         return back();
     }
-
 
     public function password( Request $request, string $id) : RedirectResponse
     {
@@ -79,6 +76,30 @@ class PatientController extends Controller
     public function destroy(string $id) : RedirectResponse
     {
         Patient::where('id',Auth::guard('patient')->user()->id)->delete();
+        return redirect()->route('patient.home');
+    }
+
+    public function confirmPhonePage() : View
+    {
+        return view('patient.tampon');
+    }
+
+    public function confirmPhone(Request $request) : RedirectResponse
+    {
+        $this->validate($request, [
+            'code' => ['required', 'numeric', 'digits:6'],
+        ]);
+        /** @var Patient $patient */
+        $patient = Auth::guard('patient')->user();
+        if($request->code !== $patient->phone_verification_token) {
+            return redirect()->back()
+                    ->withInput()
+                    ->withErrors(['code' => 'Désolé ! Le code saisi ne correspond pas.']);
+        }
+
+        $patient->update([
+            'phone_verification_token' => null,
+        ]);
         return redirect()->route('patient.home');
     }
 }

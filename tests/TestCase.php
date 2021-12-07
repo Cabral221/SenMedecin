@@ -4,7 +4,6 @@ namespace Tests;
 
 use Carbon\Carbon;
 use Faker\Factory;
-use Faker\Generator;
 use App\Models\Medecin;
 use App\Models\Patient;
 use App\Models\Service;
@@ -16,12 +15,13 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
+use Illuminate\Support\Facades\Notification;
 
 abstract class TestCase extends BaseTestCase
 {
     use CreatesApplication, RefreshDatabase;
 
-    public Generator $faker;
+    public \Faker\Generator $faker;
 
     public function __construct()
     {
@@ -134,6 +134,7 @@ abstract class TestCase extends BaseTestCase
 
     public function createPatient(Medecin $medecin) : Patient
     {
+        Notification::fake();
         return $medecin->patients()->create([
             'first_name' => $this->faker->firstName,
             'last_name' => $this->faker->lastName,
@@ -157,6 +158,19 @@ abstract class TestCase extends BaseTestCase
 
         $this->actingAs($medecin, 'medecin');
         return $medecin;
+    }
+
+    public function loginAsPatient(Patient $patient = null) : Patient
+    {   
+        if(!$patient) {
+            $partener = $this->createPartener();
+            $responsable = $this->createResponsable($partener);
+            $medecin = $this->createMedecin($responsable);
+            $patient = $this->createPatient($medecin);
+        }
+
+        $this->actingAs($patient, 'patient');
+        return $patient;
     }
 
 }

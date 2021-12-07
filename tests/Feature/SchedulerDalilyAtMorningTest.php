@@ -49,7 +49,6 @@ class SchedulerDalilyAtMorningTest extends TestCase
         ]);
 
         // DUAND j"execute la commande send:rappel
-        Notification::fake();
         $this->artisan('send:rappel');
         
         // Alors un evenement doit etre declancher pour envoyer un sms
@@ -81,7 +80,6 @@ class SchedulerDalilyAtMorningTest extends TestCase
         ]);
 
         // DUAND j"execute la commande send:rappel
-        Notification::fake();
         $this->artisan('send:rappel');
         
         // Alors la notification sms ne doit pas etre envoyé

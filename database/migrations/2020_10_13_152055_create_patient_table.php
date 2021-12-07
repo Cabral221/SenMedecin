@@ -20,6 +20,7 @@ class CreatePatientTable extends Migration
             $table->date('birthday');
             $table->string('address');
             $table->string('phone')->unique();
+            $table->bigInteger('phone_verification_token')->nullable();
             $table->string('email')->nullable()->unique();
             $table->string('password');
             $table->string('referential')->nullable()->unique();

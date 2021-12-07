@@ -22,6 +22,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        Notification::fake();
+        
         $this->call(DataSeeder::class);
         // $faker = Factory::create('fr_FR');
 
