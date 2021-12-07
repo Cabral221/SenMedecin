@@ -12,9 +12,32 @@ use Illuminate\Support\Facades\Storage;
 
 /**
  * Partener Model Classe
- * 
+ *
  * @property Service[] $services
  * @property Responsable $responsable
+ * @property int $id
+ * @property string $name
+ * @property string $email
+ * @property string $phone
+ * @property string $address
+ * @property string $image
+ * @property int $is_active
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read int|null $services_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Partener newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Partener newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Partener query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Partener whereAddress($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Partener whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Partener whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Partener whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Partener whereImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Partener whereIsActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Partener whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Partener wherePhone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Partener whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 class Partener extends Model
 {
