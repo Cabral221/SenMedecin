@@ -6,9 +6,9 @@
 			<h6 class="headin5_amrc col_white_amrc pt2"> <img style="width:100%;height:auto;" src="{{ asset('user/img/logo_horizontale.svg') }}" alt=""> </h6>
 			<!--headin5_amrc-->
 			<p class="mb10">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-			<p><i class="fa fa-map-marker-alt"> </i> {{ all_info()->address ?? '9878/25 sec 9 rohini 35 '}}</p>
-			<p><i class="fa fa-phone"> </i>  {{ all_info()->phone  ?? '+953 012 3654 896' }} </p>
-			<p><i class="fa fa-envelope"> </i> {{ all_info()->email ?? 'axxu@njurel.com'}}  </p>
+			<p><i class="fa fa-map-marker-alt"> </i> {{ all_info() ? all_info()->address : '9878/25 sec 9 rohini 35 '}}</p>
+			<p><i class="fa fa-phone"> </i>  {{ all_info()  ? all_info()->phone : '+953 012 3654 896' }} </p>
+			<p><i class="fa fa-envelope"> </i> {{ all_info() ? all_info()->email : 'axxu@njurel.com'}}  </p>
 		</div>
 
 
