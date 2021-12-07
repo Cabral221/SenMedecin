@@ -44,7 +44,6 @@ class PregnacyController extends Controller
 
         $cpn = TypeAppointment::where('libele', 'CPN')->first();
         $acc = TypeAppointment::where('libele', 'Accouchement')->first();
-        // dd($request->all(),$cpn, $patient);
         
         $patient->pregnancies()->create([
             'date' => $request->pregnacy_date,

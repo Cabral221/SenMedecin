@@ -13,11 +13,44 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
  * Medecin Model class
- * 
+ *
  * @property Responsable $responsable
  * @property Service $service
  * @property Patient[] $patients
  * @property Appointment[] $appointments
+ * @property int $id
+ * @property string $first_name
+ * @property string $last_name
+ * @property string $phone
+ * @property string $email
+ * @property string $password
+ * @property int $service_id
+ * @property int $responsable_id
+ * @property int $is_active
+ * @property string|null $remember_token
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read int|null $appointments_count
+ * @property-read string $full_name
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+ * @property-read int|null $notifications_count
+ * @property-read int|null $patients_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Medecin newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Medecin newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Medecin query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Medecin whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Medecin whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Medecin whereFirstName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Medecin whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Medecin whereIsActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Medecin whereLastName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Medecin wherePassword($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Medecin wherePhone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Medecin whereRememberToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Medecin whereResponsableId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Medecin whereServiceId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Medecin whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 class Medecin extends Authenticatable
 {

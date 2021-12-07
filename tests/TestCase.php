@@ -4,7 +4,6 @@ namespace Tests;
 
 use Carbon\Carbon;
 use Faker\Factory;
-use Faker\Generator;
 use App\Models\Medecin;
 use App\Models\Patient;
 use App\Models\Service;
@@ -16,19 +15,25 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
+use Illuminate\Support\Facades\Notification;
 
 abstract class TestCase extends BaseTestCase
 {
     use CreatesApplication, RefreshDatabase;
 
-    private Generator $faker;
+    public \Faker\Generator $faker;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->faker = Factory::create('fr_FR');
+    }
 
     public function setUp() : void
     {
         parent::setUp();
         Artisan::call('migrate');
         $this->cleanDirectories();
-        $this->faker = Factory::create('fr_FR');
     }
 
     public function cleanDirectories() : void
@@ -38,18 +43,8 @@ abstract class TestCase extends BaseTestCase
 
     public function getMinimalDataPatient(Medecin $medecin) : Patient
     {
-        /** @var Patient $patient */
-        $patient = $medecin->patients()->create([
-            'first_name' => $this->faker->firstName,
-            'last_name' => $this->faker->lastName,
-            'birthday' => Carbon::now()->subYears(rand(17,35)),
-            'address' => $this->faker->address,
-            'phone' =>  221778435052,
-            'email' => $this->faker->unique()->safeEmail,
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'remember_token' => Str::random(10),
-            'is_active' => true,
-        ]);
+        $patient = $this->createPatient($medecin);        
+
         $cpn = TypeAppointment::create(['libele' => 'CPN']);
         $acc = TypeAppointment::create(['libele' => 'Accouchement']);
         $patient->pregnancies()->create([
@@ -135,6 +130,47 @@ abstract class TestCase extends BaseTestCase
             'service_id' => $service->id,
             'remember_token' => Str::random(10),
         ]);
+    }
+
+    public function createPatient(Medecin $medecin) : Patient
+    {
+        Notification::fake();
+        return $medecin->patients()->create([
+            'first_name' => $this->faker->firstName,
+            'last_name' => $this->faker->lastName,
+            'birthday' => Carbon::now()->subYears(rand(17,35)),
+            'address' => $this->faker->address,
+            'phone' =>  221778435052,
+            'email' => $this->faker->unique()->safeEmail,
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'remember_token' => Str::random(10),
+            'is_active' => true,
+        ]);
+    }
+
+    public function loginAsMedecin(Medecin $medecin = null) : Medecin
+    {   
+        if(!$medecin) {
+            $partener = $this->createPartener();
+            $responsable = $this->createResponsable($partener);
+            $medecin = $this->createMedecin($responsable);
+        }
+
+        $this->actingAs($medecin, 'medecin');
+        return $medecin;
+    }
+
+    public function loginAsPatient(Patient $patient = null) : Patient
+    {   
+        if(!$patient) {
+            $partener = $this->createPartener();
+            $responsable = $this->createResponsable($partener);
+            $medecin = $this->createMedecin($responsable);
+            $patient = $this->createPatient($medecin);
+        }
+
+        $this->actingAs($patient, 'patient');
+        return $patient;
     }
 
 }

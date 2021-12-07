@@ -44,7 +44,6 @@ class PatientController extends Controller
 
     public function store(PatientRequest $request) : RedirectResponse
     {
-        $now = Carbon::now();
         // Create carnet for patient
         $carnet = Carnet::create();
 

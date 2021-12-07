@@ -2,7 +2,6 @@
 
 // use Faker\Factory;
 use Carbon\Carbon;
-use App\Models\Info;
 use App\Models\Post;
 use App\Models\Admin;
 use App\Models\Carnet;
@@ -11,7 +10,6 @@ use App\Models\Patient;
 use App\Models\Service;
 use App\Models\Partener;
 use Illuminate\Support\Str;
-use App\Models\TypeAppointment;
 use Illuminate\Database\Seeder;
 use App\Models\Partener_service;
 
@@ -24,6 +22,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        Notification::fake();
+        
         $this->call(DataSeeder::class);
         // $faker = Factory::create('fr_FR');
 
@@ -46,17 +46,6 @@ class DatabaseSeeder extends Seeder
             'status' => false,
         ]);
 
-        Info::create([
-            'address' => 'Siege social no 1234, Dakar Sénégal',
-            'phone' => '+33 824 29 10',
-            'email' => 'contact@axxunjurel.com',
-        ]);
-
-        TypeAppointment::create(['libele' => 'CPN']);
-        TypeAppointment::create(['libele' => 'Suivis']);
-        TypeAppointment::create(['libele' => 'Accouchement']);
-        TypeAppointment::create(['libele' => 'Vaccinal']);
-
         $s1 = Service::create(['libele' => 'Maternité']);
         $s2 = Service::create(['libele' => 'Pédiatrie']);
         $s3 = Service::create(['libele' => 'Gynécologie']);
@@ -75,10 +64,9 @@ class DatabaseSeeder extends Seeder
             'phone' => '779999999',
             'email' => 'responsable@responsable.com',
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-//            'partener_id' => $partener->id,
+            // 'partener_id' => $partener->id,
         ]);
 
-        // dd($services->id);
         Partener_service::create([
             'partener_id' => $partener->id,
             'service_id' => $s1->id

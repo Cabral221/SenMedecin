@@ -9,8 +9,23 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
  * Service Model Class
- * 
+ *
  * @property Partener[] $parteners
+ * @property int $id
+ * @property string $libele
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|Medecin[] $medecins
+ * @property-read int|null $medecins_count
+ * @property-read int|null $parteners_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Service newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Service newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Service query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Service whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Service whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Service whereLibele($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Service whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 class Service extends Model
 {
