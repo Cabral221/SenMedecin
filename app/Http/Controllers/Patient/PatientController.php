@@ -15,7 +15,7 @@ class PatientController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth:patient');
+        // $this->middleware('auth:patient');
     }
 
     public function index() : View
@@ -101,5 +101,10 @@ class PatientController extends Controller
             'phone_verification_token' => null,
         ]);
         return redirect()->route('patient.home');
+    }
+
+    public function testDashboard() : View
+    {
+        return view('test.dashboard');
     }
 }

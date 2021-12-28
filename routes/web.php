@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\ConfirmPhonePatient;
 use Illuminate\Support\Facades\Route;
 
@@ -13,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+// Routes for test
+Route::get('/test-dashboard', 'Patient\PatientController@testDashboard');
 
 // Routes For static pages
 Route::get('/','User\HomeController@index')->name('index');
@@ -29,7 +33,7 @@ Route::prefix('/patient')->namespace('Patient')->name('patient.')->group(functio
     Route::get('/confirm-phone', 'PatientController@confirmPhonePage')->name('confirm.tampon');
     Route::post('/confirm-phone', 'PatientController@confirmPhone')->name('confirm');
 
-    Route::middleware([ConfirmPhonePatient::class])->group(function() {
+    Route::middleware([Authenticate::class, ConfirmPhonePatient::class])->group(function() {
         Route::get('/home', 'PatientController@index')->name('home');
         Route::get('/profile/{id}', 'PatientController@profile')->name('profile');
         Route::put('/profile/{id}', 'PatientController@update')->name('update');
