@@ -35,7 +35,7 @@ Route::prefix('/patient')->namespace('Patient')->name('patient.')->group(functio
 
     Route::middleware([Authenticate::class, ConfirmPhonePatient::class])->group(function() {
         Route::get('/home', 'PatientController@index')->name('home');
-        Route::get('/profile/{id}', 'PatientController@profile')->name('profile');
+        Route::get('/profile', 'PatientController@profile')->name('profile');
         Route::put('/profile/{id}', 'PatientController@update')->name('update');
         Route::patch('/profile/{id}', 'PatientController@email')->name('email');
         Route::put('/profil/{id}', 'PatientController@password')->name('password');
