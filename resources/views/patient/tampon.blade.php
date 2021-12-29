@@ -1,5 +1,5 @@
-@extends('user.layouts.app')
+@extends('layouts.app')
 
 @section('main-content')
-tampon
+tampon pour la verification du numero
 @endsection

@@ -17,7 +17,7 @@ class ConfirmPhonePatient
     public function handle($request, Closure $next)
     {
         /** @var Patient $patient */
-        $patient = auth('patient')->user();
+        $patient = $request->user();
 
         if($patient->phone_verification_token != null) return redirect()->route('patient.confirm.tampon');
 

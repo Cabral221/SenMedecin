@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\ConfirmPhonePatient;
 use Illuminate\Support\Facades\Route;
 
@@ -29,9 +30,9 @@ Route::prefix('/patient')->namespace('Patient')->name('patient.')->group(functio
     Route::get('/confirm-phone', 'PatientController@confirmPhonePage')->name('confirm.tampon');
     Route::post('/confirm-phone', 'PatientController@confirmPhone')->name('confirm');
 
-    Route::middleware([ConfirmPhonePatient::class])->group(function() {
+    Route::middleware(['auth:patient', ConfirmPhonePatient::class])->group(function() {
         Route::get('/home', 'PatientController@index')->name('home');
-        Route::get('/profile/{id}', 'PatientController@profile')->name('profile');
+        Route::get('/profile', 'PatientController@profile')->name('profile');
         Route::put('/profile/{id}', 'PatientController@update')->name('update');
         Route::patch('/profile/{id}', 'PatientController@email')->name('email');
         Route::put('/profil/{id}', 'PatientController@password')->name('password');

@@ -150,7 +150,7 @@ class Patient extends Authenticatable
 
     public function getFullNameAttribute() : string
     {
-        return "{$this->first_name} {$this->last_name}";
+        return ucfirst($this->first_name) . " " . ucfirst($this->first_name);
     }
 
     public function childrens() : HasMany

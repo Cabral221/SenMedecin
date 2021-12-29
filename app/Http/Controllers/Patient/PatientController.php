@@ -11,21 +11,15 @@ use Illuminate\View\View;
 
 class PatientController extends Controller
 {
-    
-
-    public function __construct()
-    {
-        $this->middleware('auth:patient');
-    }
 
     public function index() : View
     {
         return view('patient.index');
     }
 
-    public function profile(string $id) : View
+    public function profile() : View
     {
-        $id = Auth::guard('patient')->user()->id;
+        $id = auth('patient')->user()->id;
 
         return view('patient.profile.update',compact('id'));
     }
@@ -66,7 +60,7 @@ class PatientController extends Controller
         $validator = $this->validate($request,[
             'password' => 'required|string|confirmed',
             ]);
-            // dd($request->password);
+        
         $update_password =Patient::where('id',Auth::guard('patient')->user()->id)->first();
         $update_password->password = Hash::make($request->password);
         $update_password->save();
