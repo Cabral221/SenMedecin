@@ -9,43 +9,44 @@
 	<meta name="Description" content="AxxuNjurel - restez avertit à l'approche de vos rendez-vous">
 	<meta name="Author" content="Abdourahmane Diop">
 	<meta name="Keywords"
-		content="#" />
+		content="axxu njurel, santé, sénégal" />
 
 	<!-- Title -->
-	<title> Dashfox - Laravel Admin & Dashboard Template </title>
+	<title> AxxuNjurel - restez avertit à l'approche de vos rendez-vous </title>
 
 	<!-- Favicon -->
-	<link rel="icon" href="{{ asset('assets/img/brand/favicon.png') }}" type="image/x-icon" />
+	<link rel="icon" href="{{ asset('assets/img/brand/favicon-axxunjurel.svg') }}" type="image/x-icon" />
 
-	@include('test.layouts.includes.base-css')
-
+	@include('layouts.includes.base-css')
+	@yield('own-css')
 </head>
 
-<body class="main-body light-theme app sidebar-mini active leftmenu-color">
+<body class="main-body light-theme app sidebar-mini active leftmenu-light">
     {{-- For Theme --}}
-	@include('test.layouts.includes.switcher')
+	{{-- @include('layouts.includes.switcher') --}}
 
     {{-- Loader --}}
-    @include('test.layouts.includes.loader')
+    @include('layouts.includes.loader')
 
     {{-- Main Sidebar left --}}
-    @include('test.layouts.sidebar')
+    @include('layouts.sidebar')
 	
     {{-- Main content --}}
-    @include('test.layouts.content')
+    @include('layouts.content')
 	{{-- End Main content --}}
 
     {{-- Main Sidebar Right for profile --}}
-    @include('test.layouts.includes.sidebar-right')
+    {{-- @include('layouts.includes.sidebar-right') --}}
 	
     {{-- Footer --}}
-    @include('test.layouts.footer')
+    @include('layouts.footer')
     
 	<!-- Back-to-top -->
 	<a href="#top" id="back-to-top"><i class="las la-angle-double-up"></i></a>
 
-    @include('test.layouts.includes.base-js')
-
+    @include('layouts.includes.base-js')
+	@yield('plugin-js')
+	@yield('own-js')
 </body>
 
 </html>

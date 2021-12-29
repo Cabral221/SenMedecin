@@ -1,66 +1,23 @@
-@extends('user.layouts.app')
-@section('headsection')
-<style>
-.menu ul{
-	margin:0px;
-	padding:0px 5px;
-	list-style:none;
-	border-radius:5px;
-}
-.menu ul li{
-	padding:15px;
-	position:relative;
-	width:220px;
-	background-color:#34495E;
-	border-right:1px solid #f1c40f;
-	border-top:1px solid silver;
-	vertical-align:middle;
-	cursor:pointer;
-	-webkit-transition:all 0.3s;
-	-o-transition:all 0.3s;
-	transition:all 0.3s;
-} 
-.menu ul li:hover{
-	background-color:#2ecc71;
-}
-.menu > ul > li{
-	border-right:1px solid #f1c40f;
-}
-.menu ul ul{
-	transition:all 0.3s;
-	opacity:0;
-	position:absolute;
-	visibility:hidden;
-	left:101%;
-	top:-2%;
-	border-left:1px solid #f1c40f; 	
-}
+@extends('layouts.app')
 
-
-.menu ul li:hover > ul{
-	opacity:1;
-	visibility:visible;  
-}
-.menu ul li a{
-	color:#fff;
-	text-decoration:none;
-}
-.menu span{
-	margin-right:15px;
-}
-/* .menu > ul > li:nth-off-type(2)::after{
-	content:"+";
-	position:absolute;
-	margin-left:5%;
-	color:#fff;
-	font-size:20px;
-} */
-</style>
+@section('breadcrumb')
+	<!-- breadcrumb -->
+	<div class="breadcrumb-header justify-content-between">
+		<div class="left-content">
+			<h4 class="content-title mb-2">Hi, welcome back!</h4>
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+					<li class="breadcrumb-item active" aria-current="page">Analytics &amp; Monitoring</li>
+				</ol>
+			</nav>
+		</div>
+	</div>
+	<!-- breadcrumb -->
 @endsection
+
+
 @section('main-content')
-
-
-
 
 <!-- Premiere section -->
    <section>
@@ -114,7 +71,7 @@
 				</div>
 
 				<div class="grossesse">
-					<h6 style="margin:-10px 0px;">Abbonnemnt</h6>
+					<h6 style="margin:-10px 0px;">Abonneemnt</h6>
 					<div class="abonement">
 						<p>Type d'abonnement : Mensuele </p>
 						<p>Votre compte est valide jusqu'au 10-07-2021</p>

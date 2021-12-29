@@ -3,14 +3,14 @@
 <aside class="app-sidebar">
 	<div class="main-sidebar-header active">
 			<a class="desktop-logo logo-light active" href="index.html">
-				<img src="assets/img/brand/logo.png" class="main-logo logo-color1" alt="logo">
-				<img src="assets/img/brand/logo2.png" class="main-logo logo-color2" alt="logo">
-				<img src="assets/img/brand/logo3.png" class="main-logo logo-color3" alt="logo">
-				<img src="assets/img/brand/logo4.png" class="main-logo logo-color4" alt="logo">
-				<img src="assets/img/brand/logo5.png" class="main-logo logo-color5" alt="logo">
-				<img src="assets/img/brand/logo6.png" class="main-logo logo-color6" alt="logo">
+				<img src="{{ asset('assets/img/brand/logo-axxunjurel-horizontal.svg') }}" class="main-logo logo-color1" alt="logo">
+				{{-- <img src="{{ asset('assets/img/brand/logo2.png') }}" class="main-logo logo-color2" alt="logo"> --}}
+				{{-- <img src="{{ asset('assets/img/brand/logo3.png') }}" class="main-logo logo-color3" alt="logo"> --}}
+				{{-- <img src="{{ asset('assets/img/brand/logo4.png') }}" class="main-logo logo-color4" alt="logo"> --}}
+				{{-- <img src="{{ asset('assets/img/brand/logo5.png') }}" class="main-logo logo-color5" alt="logo"> --}}
+				{{-- <img src="{{ asset('assets/img/brand/logo6.png') }}" class="main-logo logo-color6" alt="logo"> --}}
 			</a>
-			<a class="desktop-logo logo-dark active" href="index.html"><img src="assets/img/brand/logo-white.png"
+			<a class="desktop-logo logo-dark active" href="{{ route('patient.home') }}"><img src="{{ asset('assets/img/brand/logo-axxunjurel-horizontal.svg') }}"
 					class="main-logo dark-theme" alt="logo"></a>
 			<div class="app-sidebar__toggle" data-toggle="sidebar">
 				<a class="open-toggle" href="#"><i class="header-icon fe fe-chevron-left"></i></a>
@@ -33,7 +33,7 @@
 							<path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3zm5 15h-2v-6H9v6H7v-7.81l5-4.5 5 4.5V18z" />
 							<path d="M7 10.19V18h2v-6h6v6h2v-7.81l-5-4.5z" opacity=".3" />
 						</svg>
-						<span class="side-menu__label">Dashboard</span>
+						<span class="side-menu__label">Tableau de board</span>
 					</a>
 				</li>
 				<li class="slide">

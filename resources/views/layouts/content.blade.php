@@ -6,34 +6,20 @@
         <div class="container-fluid">
             <div class="main-header-left">
                 <div class="responsive-logo">
-                    <a href="index.html"><img src="assets/img/brand/logo.png" class="logo-1 logo-color1"
-                            alt="logo"></a>
-                    <a href="index.html"><img src="assets/img/brand/logo2.png" class="logo-1 logo-color2"
-                            alt="logo"></a>
-                    <a href="index.html"><img src="assets/img/brand/logo3.png" class="logo-1 logo-color3"
-                            alt="logo"></a>
-                    <a href="index.html"><img src="assets/img/brand/logo4.png" class="logo-1 logo-color4"
-                            alt="logo"></a>
-                    <a href="index.html"><img src="assets/img/brand/logo5.png" class="logo-1 logo-color5"
-                            alt="logo"></a>
-                    <a href="index.html"><img src="assets/img/brand/logo6.png" class="logo-1 logo-color6"
-                            alt="logo"></a>
-                    <a href="index.html"><img src="assets/img/brand/logo-white.png" class="dark-logo-1"
-                            alt="logo"></a>
-                    <a href="index.html"><img src="assets/img/brand/favicon.png" class="logo-2 logo-color1"
-                            alt="logo"></a>
-                    <a href="index.html"><img src="assets/img/brand/favicon2.png" class="logo-2 logo-color2"
-                            alt="logo"></a>
-                    <a href="index.html"><img src="assets/img/brand/favicon3.png" class="logo-2 logo-color3"
-                            alt="logo"></a>
-                    <a href="index.html"><img src="assets/img/brand/favicon4.png" class="logo-2 logo-color4"
-                            alt="logo"></a>
-                    <a href="index.html"><img src="assets/img/brand/favicon5.png" class="logo-2 logo-color5"
-                            alt="logo"></a>
-                    <a href="index.html"><img src="assets/img/brand/favicon6.png" class="logo-2 logo-color6"
-                            alt="logo"></a>
-                    <a href="index.html"><img src="assets/img/brand/favicon-white.png" class="dark-logo-2"
-                            alt="logo"></a>
+                    <a href="{{ route('index') }}"><img src="{{ asset('assets/img/brand/logo-axxunjurel-vertical.png') }}" class="logo-1 logo-color1" alt="logo"></a>
+                    {{-- <a href="index.html"><img src="{{ asset('assets/img/brand/logo2.png') }}" class="logo-1 logo-color2" alt="logo"></a> --}}
+                    {{-- <a href="index.html"><img src="{{ asset('assets/img/brand/logo3.png') }}" class="logo-1 logo-color3" alt="logo"></a> --}}
+                    {{-- <a href="index.html"><img src="{{ asset('assets/img/brand/logo4.png') }}" class="logo-1 logo-color4" alt="logo"></a> --}}
+                    {{-- <a href="index.html"><img src="{{ asset('assets/img/brand/logo5.png') }}" class="logo-1 logo-color5" alt="logo"></a> --}}
+                    {{-- <a href="index.html"><img src="{{ asset('assets/img/brand/logo6.png') }}" class="logo-1 logo-color6" alt="logo"></a> --}}
+                    <a href="{{ route('index') }}"><img src="{{ asset('assets/img/brand/logo-axxunjurel-white.png') }}" class="dark-logo-1" alt="logo"></a>
+                    <a href="{{ route('index') }}"><img src="{{ asset('assets/img/brand/favicon-axxunjurel.svg') }}" class="logo-2 logo-color1" alt="logo"></a>
+                    {{-- <a href="index.html"><img src="{{ asset('assets/img/brand/favicon2.png') }}" class="logo-2 logo-color2" alt="logo"></a> --}}
+                    {{-- <a href="index.html"><img src="{{ asset('assets/img/brand/favicon3.png') }}" class="logo-2 logo-color3" alt="logo"></a> --}}
+                    {{-- <a href="index.html"><img src="{{ asset('assets/img/brand/favicon4.png') }}" class="logo-2 logo-color4" alt="logo"></a> --}}
+                    {{-- <a href="index.html"><img src="{{ asset('assets/img/brand/favicon5.png') }}" class="logo-2 logo-color5" alt="logo"></a> --}}
+                    {{-- <a href="index.html"><img src="{{ asset('assets/img/brand/favicon6.png') }}" class="logo-2 logo-color6" alt="logo"></a> --}}
+                    <a href="{{ route('index') }}"><img src="{{ asset('assets/img/brand/favicon-axxunjurel-white.png') }}" class="dark-logo-2" alt="logo"></a>
                 </div>
                 <div class="app-sidebar__toggle d-md-none" data-toggle="sidebar">
                     <a class="open-toggle" href="#"><i class="header-icon fe fe-align-left"></i></a>
@@ -153,29 +139,29 @@
                         </div>
                     </div>
                     <div class="dropdown main-profile-menu nav nav-item nav-link">
-                        <a class="profile-user d-flex" href="#"><img alt="" src="assets/img/faces/6.jpg">
+                        <a class="profile-user d-flex" href="#"><img alt="" src="{{ asset('assets/img/faces/6.jpg') }}">
                             <div class="p-text d-none">
-                                <span class="p-name font-weight-bold">Mintrona Pechon</span>
+                                <span class="p-name font-weight-bold">{{ auth()->user()->fullName }}</span>
                                 <small class="p-sub-text">Premium Member</small>
                             </div>
                         </a>
                         <div class="dropdown-menu shadow">
                             <div class="main-header-profile header-img">
-                                <div class="main-img-user"><img alt="" src="assets/img/faces/6.jpg"></div>
-                                <h6>Mintrona Pechon</h6><span>Premium Member</span>
+                                <div class="main-img-user"><img alt="" src="{{ asset('assets/img/faces/6.jpg') }}"></div>
+                                <h6>{{ auth()->user()->fullName }}</h6><span>Premium Member</span>
                             </div>
-                            <a class="dropdown-item" href="#"><i class="far fa-user"></i> My Profile</a>
-                            <a class="dropdown-item" href="#"><i class="far fa-edit"></i> Edit Profile</a>
-                            <a class="dropdown-item" href="#"><i class="far fa-clock"></i> Activity Logs</a>
-                            <a class="dropdown-item" href="#"><i class="fas fa-sliders-h"></i> Account Settings</a>
-                            <a class="dropdown-item" href="signin.html"><i class="fas fa-sign-out-alt"></i> Sign
-                                Out</a>
+                            <a class="dropdown-item" href="{{ route('patient.home') }}"><i class="fas fa-tachometer-alt"></i> Tableau de board</a>
+                            <a class="dropdown-item" href="{{ route('patient.profile') }}"><i class="far fa-user"></i> Mon Profil</a>
+                            <a class="dropdown-item" href="#"><i class="far fa-edit"></i> Modifier mon profile</a>
+                            <a class="dropdown-item" href="#"><i class="fas fa-sliders-h"></i> Paramettres</a>
+                            <a class="dropdown-item" 
+                                href="{{ route('patient.logout') }}"
+                                onclick="event.preventDefault();document.getElementById('logout-form-patient').submit();">
+                                <i class="fas fa-sign-out-alt"></i> Sign Out</a>
+                                <form id="logout-form-patient" action="{{ route('patient.logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
                         </div>
-                    </div>
-                    <div class="dropdown main-header-message right-toggle">
-                        <a class="nav-link pr-0" data-toggle="sidebar-right" data-target=".sidebar-right">
-                            <i class="ion ion-md-menu tx-20 bg-transparent"></i>
-                        </a>
                     </div>
                 </div>
             </div>
@@ -188,8 +174,6 @@
         @yield('breadcrumb')
 
         @yield('main-content')
-        
-
 
     </div>
     <!-- Container closed -->

@@ -35,8 +35,8 @@
 <link href="{{ asset('assets/css/animate.css') }}" rel="stylesheet">
 
 <!---Switcher css-->
-<link href="{{ asset('assets/switcher/css/switcher.css') }}" rel="stylesheet">
+{{-- <link href="{{ asset('assets/switcher/css/switcher.css') }}" rel="stylesheet"> --}}
 
 
 {{-- probe demo css --}}
-<link href="{{ asset('assets/switcher/demo.css') }}" rel="stylesheet">
+{{-- <link href="{{ asset('assets/switcher/demo.css') }}" rel="stylesheet"> --}}

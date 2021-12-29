@@ -112,9 +112,9 @@
                                 <h4>Skin Modes</h4>
                                 <div class="skin-body light-pattern">
                                     <a class="" href="#"><img class="theme-image1 mb-3" id="myonoffswitchimg1"
-                                            src="assets/switcher/images/themes/1.jpg" alt="img"></a>
+                                            src="{{ asset('assets/switcher/images/themes/1.jpg') }}" alt="img"></a>
                                     <a class="" href="#"><img class="theme-image1 mb-3" id="myonoffswitchimg2"
-                                            src="assets/switcher/images/themes/2.jpg" alt="img"></a>
+                                            src="{{ asset('assets/switcher/images/themes/2.jpg') }}" alt="img"></a>
                                 </div>
                             </div>
                             <div class="swichermainleft">
@@ -122,10 +122,10 @@
                                 <div class="skin-body light-pattern">
                                     <p class="font-weight-semibold">Leftmenu Navigation</p>
                                     <a class="" href="vertical.html"><img class="theme-image1 mb-3"
-                                            src="assets/switcher/images/themes/3.jpg" alt="img"></a>
+                                            src="{{ asset('assets/switcher/images/themes/3.jpg') }}" alt="img"></a>
                                     <p class="font-weight-semibold mt-4">Horizontal Navigation</p>
                                     <a class="" href="horizontal.html"><img class="theme-image1 mb-3"
-                                            src="assets/switcher/images/themes/1.jpg" alt="img"></a>
+                                            src="{{ asset('assets/switcher/images/themes/1.jpg')}}" alt="img"></a>
                                 </div>
                             </div>
                         </div>

@@ -6,14 +6,14 @@
 <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
 
 <!-- Ionicons js-->
-<script src="{{ asset('assets/plugins/ionicons/ionicons.js') }}"></script>
+{{-- <script src="{{ asset('assets/plugins/ionicons/ionicons.js') }}"></script> --}}
 
 <!-- Moment js -->
 <script src="{{ asset('assets/plugins/moment/moment.js') }}"></script>
 
 <!-- P-scroll js -->
 <script src="{{ asset('assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
-<script src="assets/plugins/perfect-scrollbar/p-scroll.js"></script>
+<script src="{{ asset('assets/plugins/perfect-scrollbar/p-scroll.js') }}"></script>
 
 <!-- Sidebar js -->
 <script src="{{ asset('assets/plugins/side-menu/sidemenu.js') }}"></script>
@@ -62,11 +62,11 @@
 <script src="{{ asset('assets/plugins/echart/echart.js') }}"></script>
 
 <!--Internal  index js -->
-<script src="{{ asset('assets/plugins/apexcharts/apexcharts.js') }}"></script>
-<script src="{{ asset('assets/js/index.js') }}"></script>
+{{-- <script src="{{ asset('assets/plugins/apexcharts/apexcharts.js') }}"></script> --}}
+{{-- <script src="{{ asset('assets/js/index.js') }}"></script> --}}
 
 <!-- custom js -->
 <script src="{{ asset('assets/js/custom.js') }}"></script>
 
 <!-- Switcher js -->
-<script src="{{ asset('assets/switcher/js/switcher.js') }}"></script>
+{{-- <script src="{{ asset('assets/switcher/js/switcher.js') }}"></script> --}}

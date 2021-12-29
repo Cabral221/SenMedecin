@@ -11,12 +11,6 @@ use Illuminate\View\View;
 
 class PatientController extends Controller
 {
-    
-
-    public function __construct()
-    {
-        // $this->middleware('auth:patient');
-    }
 
     public function index() : View
     {
@@ -66,7 +60,7 @@ class PatientController extends Controller
         $validator = $this->validate($request,[
             'password' => 'required|string|confirmed',
             ]);
-            // dd($request->password);
+        
         $update_password =Patient::where('id',Auth::guard('patient')->user()->id)->first();
         $update_password->password = Hash::make($request->password);
         $update_password->save();
@@ -101,10 +95,5 @@ class PatientController extends Controller
             'phone_verification_token' => null,
         ]);
         return redirect()->route('patient.home');
-    }
-
-    public function testDashboard() : View
-    {
-        return view('test.dashboard');
     }
 }

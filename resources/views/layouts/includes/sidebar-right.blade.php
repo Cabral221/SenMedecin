@@ -23,20 +23,20 @@
                         <div class="dropdown user-pro-body">
                             <div class="">
                                 <img alt="user-img" class="avatar avatar-xl brround mx-auto text-center"
-                                    src="assets/img/faces/6.jpg"><span
+                                    src="{{ asset('assets/img/faces/6.jpg') }}"><span
                                     class="avatar-status profile-status bg-green"></span>
                             </div>
                             <div class="user-info mg-t-20">
-                                <h6 class="font-weight-semibold  mt-2 mb-0">Mintrona Pechon</h6>
+                                <h6 class="font-weight-semibold  mt-2 mb-0">{{ auth('patient')->user()->first_name .' '. auth('patient')->user()->last_name  }}</h6>
                                 <span class="mb-0 text-muted">Premium Member</span>
                             </div>
                         </div>
                     </div>
-                    <a class="dropdown-item d-flex pd-y-15 border-bottom border-top" href="#">
+                    <a class="dropdown-item d-flex pd-y-15 border-bottom border-top" href="{{ route('patient.profile') }}">
                         <div class="d-flex"><i class="far fa-user mr-3 tx-20 mg-t-5 text-muted"></i>
                             <div>
-                                <h6 class="mb-0">My Profile</h6>
-                                <p class="tx-12 mb-0 text-muted">Profile Personal information</p>
+                                <h6 class="mb-0">Mon Profil</h6>
+                                <p class="tx-12 mb-0 text-muted">Informations sur mon compte</p>
                             </div>
                         </div>
                         <div class="ml-auto mg-t-8"><i class="fe fe-chevron-right"></i></div>
@@ -44,7 +44,7 @@
                     <a class="dropdown-item d-flex pd-y-15 border-bottom" href="#">
                         <div class="d-flex"><i class="far fa-edit mr-3 tx-20 mg-t-5 text-muted"></i>
                             <div>
-                                <h6 class="mb-0">Edit Profile</h6>
+                                <h6 class="mb-0">Modifier mon Profil</h6>
                                 <p class="tx-12 mb-0 text-muted">Profile Edit information</p>
                             </div>
                         </div>
@@ -83,7 +83,7 @@
                         <div class="list-group-item d-flex  align-items-center">
                             <div class="mr-2">
                                 <span class="avatar avatar-md brround cover-image"
-                                    data-image-src="assets/img/faces/9.jpg"><span
+                                    data-image-src="{{ asset('assets/img/faces/9.jpg') }}"><span
                                         class="avatar-status bg-success"></span></span>
                             </div>
                             <div class="">
@@ -99,7 +99,7 @@
                         <div class="list-group-item d-flex  align-items-center">
                             <div class="mr-2">
                                 <span class="avatar avatar-md brround cover-image"
-                                    data-image-src="assets/img/faces/11.jpg"></span>
+                                    data-image-src="{{ asset('assets/img/faces/11.jpg')}}"></span>
                             </div>
                             <div class="">
                                 <div class="font-weight-semibold" data-toggle="modal" data-target="#chatmodel">
@@ -114,7 +114,7 @@
                         <div class="list-group-item d-flex  align-items-center">
                             <div class="mr-2">
                                 <span class="avatar avatar-md brround cover-image"
-                                    data-image-src="assets/img/faces/10.jpg"><span
+                                    data-image-src="{{ asset('assets/img/faces/10.jpg') }}"><span
                                         class="avatar-status bg-success"></span></span>
                             </div>
                             <div class="">
@@ -130,7 +130,7 @@
                         <div class="list-group-item d-flex  align-items-center">
                             <div class="mr-2">
                                 <span class="avatar avatar-md brround cover-image"
-                                    data-image-src="assets/img/faces/2.jpg"><span
+                                    data-image-src="{{ asset('assets/img/faces/2.jpg') }}"><span
                                         class="avatar-status bg-success"></span></span>
                             </div>
                             <div class="">
@@ -146,7 +146,7 @@
                         <div class="list-group-item d-flex  align-items-center">
                             <div class="mr-2">
                                 <span class="avatar avatar-md brround cover-image"
-                                    data-image-src="assets/img/faces/13.jpg"></span>
+                                    data-image-src="{{ asset('assets/img/faces/13.jpg') }}"></span>
                             </div>
                             <div class="">
                                 <div class="font-weight-semibold" data-toggle="modal" data-target="#chatmodel">
@@ -161,7 +161,7 @@
                         <div class="list-group-item d-flex  align-items-center">
                             <div class="mr-2">
                                 <span class="avatar avatar-md brround cover-image"
-                                    data-image-src="assets/img/faces/12.jpg"><span
+                                    data-image-src="{{ asset('assets/img/faces/12.jpg') }}"><span
                                         class="avatar-status bg-success"></span></span>
                             </div>
                             <div class="">
@@ -177,7 +177,7 @@
                         <div class="list-group-item d-flex  align-items-center">
                             <div class="mr-2">
                                 <span class="avatar avatar-md brround cover-image"
-                                    data-image-src="assets/img/faces/4.jpg"></span>
+                                    data-image-src="{{ asset('assets/img/faces/4.jpg') }}"></span>
                             </div>
                             <div class="">
                                 <div class="font-weight-semibold" data-toggle="modal" data-target="#chatmodel">
@@ -192,7 +192,7 @@
                         <div class="list-group-item d-flex  align-items-center">
                             <div class="mr-2">
                                 <span class="avatar avatar-md brround cover-image"
-                                    data-image-src="assets/img/faces/7.jpg"></span>
+                                    data-image-src="{{ asset('assets/img/faces/7.jpg') }}"></span>
                             </div>
                             <div class="">
                                 <div class="font-weight-semibold" data-toggle="modal" data-target="#chatmodel">Alina
@@ -207,7 +207,7 @@
                         <div class="list-group-item d-flex  align-items-center">
                             <div class="mr-2">
                                 <span class="avatar avatar-md brround cover-image"
-                                    data-image-src="assets/img/faces/2.jpg"></span>
+                                    data-image-src="{{ asset('assets/img/faces/2.jpg') }}"></span>
                             </div>
                             <div class="">
                                 <div class="font-weight-semibold" data-toggle="modal" data-target="#chatmodel">Zula
@@ -222,7 +222,7 @@
                         <div class="list-group-item d-flex  align-items-center">
                             <div class="mr-2">
                                 <span class="avatar avatar-md brround cover-image"
-                                    data-image-src="assets/img/faces/14.jpg"><span
+                                    data-image-src="{{ asset('assets/img/faces/14.jpg') }}"><span
                                         class="avatar-status bg-success"></span></span>
                             </div>
                             <div class="">
@@ -238,7 +238,7 @@
                         <div class="list-group-item d-flex  align-items-center">
                             <div class="mr-2">
                                 <span class="avatar avatar-md brround cover-image"
-                                    data-image-src="assets/img/faces/11.jpg"></span>
+                                    data-image-src="{{ asset('assets/img/faces/11.jpg') }}"></span>
                             </div>
                             <div class="">
                                 <div class="font-weight-semibold" data-toggle="modal" data-target="#chatmodel">
@@ -253,7 +253,7 @@
                         <div class="list-group-item d-flex  align-items-center">
                             <div class="mr-2">
                                 <span class="avatar avatar-md brround cover-image"
-                                    data-image-src="assets/img/faces/9.jpg"></span>
+                                    data-image-src="{{ asset('assets/img/faces/9.jpg')}}"></span>
                             </div>
                             <div class="">
                                 <div class="font-weight-semibold" data-toggle="modal" data-target="#chatmodel">Alina
@@ -268,7 +268,7 @@
                         <div class="list-group-item d-flex  align-items-center">
                             <div class="mr-2">
                                 <span class="avatar avatar-md brround cover-image"
-                                    data-image-src="assets/img/faces/15.jpg"><span
+                                    data-image-src="{{ asset('assets/img/faces/15.jpg') }}"><span
                                         class="avatar-status bg-success"></span></span>
                             </div>
                             <div class="">
@@ -284,7 +284,7 @@
                         <div class="list-group-item d-flex  align-items-center">
                             <div class="mr-2">
                                 <span class="avatar avatar-md brround cover-image"
-                                    data-image-src="assets/img/faces/4.jpg"></span>
+                                    data-image-src="{{ asset('assets/img/faces/4.jpg') }}"></span>
                             </div>
                             <div class="">
                                 <div class="font-weight-semibold" data-toggle="modal" data-target="#chatmodel">

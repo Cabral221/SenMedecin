@@ -98,7 +98,7 @@ class DatabaseSeeder extends Seeder
             'last_name' => 'pname',
             'birthday' => Carbon::now()->subYears(20),
             'address' => '1603 dakar, no precis',
-            'phone' => '770000000',
+            'phone' => '778435052',
             'email' => 'patient@patient.com',
             'medecin_id' => $medecin->id,
             'carnet_id' => $carnet->id,
@@ -107,6 +107,8 @@ class DatabaseSeeder extends Seeder
             'remember_token' => Str::random(10),
             'is_active' => true,
         ]);
+        $patient->phone_verification_token = null;
+        $patient->save();
 
         Patient::create([
             'first_name' => 'Patient 2',
