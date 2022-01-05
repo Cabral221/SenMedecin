@@ -25,20 +25,21 @@ Route::get('/about','User\AboutController@index')->name('user.about');
 
 // Routes for client patient
 Route::prefix('/patient')->namespace('Patient')->name('patient.')->group(function() {
-
-    // patient confirmation phone number
-    Route::get('/confirm-phone', 'PatientController@confirmPhonePage')->name('confirm.tampon');
-    Route::post('/confirm-phone', 'PatientController@confirmPhone')->name('confirm');
-
+-
     Route::middleware(['auth:patient', ConfirmPhonePatient::class])->group(function() {
+        
         Route::get('/home', 'PatientController@index')->name('home');
         Route::get('/profile', 'PatientController@profile')->name('profile');
         Route::put('/profile/{id}', 'PatientController@update')->name('update');
         Route::patch('/profile/{id}', 'PatientController@email')->name('email');
         Route::put('/profil/{id}', 'PatientController@password')->name('password');
         Route::delete('/profile/{id}', 'PatientController@destroy')->name('destroy');
-    
+        
         Route::get('/identifiant/{id}','IdentifiantController@index')->name('identifiant');
+        
+        // patient confirmation phone number
+        Route::get('/confirm-phone', 'PatientController@confirmPhonePage')->name('confirm.tampon');
+        Route::post('/confirm-phone', 'PatientController@confirmPhone')->name('confirm')->withoutMiddleware([ConfirmPhonePatient::class]);
     });
 
     // Authentification des

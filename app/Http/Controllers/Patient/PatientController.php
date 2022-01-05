@@ -84,7 +84,7 @@ class PatientController extends Controller
             'code' => ['required', 'numeric', 'digits:6'],
         ]);
         /** @var Patient $patient */
-        $patient = Auth::guard('patient')->user();
+        $patient = auth('patient')->user();
         if($request->code !== $patient->phone_verification_token) {
             return redirect()->back()
                     ->withInput()
