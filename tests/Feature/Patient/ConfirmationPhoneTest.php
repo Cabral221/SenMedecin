@@ -29,6 +29,7 @@ class ConfirmationPhoneTest extends TestCase
             'patient_email' => 'test@test.com',
             'patient_password' => 'password', 
             'patient_password_confirmation' => 'password',
+            'patient_is_pregnancy' => false,
         ]);
 
         $response->assertSessionHas('success');

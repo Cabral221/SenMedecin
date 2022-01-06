@@ -117,24 +117,8 @@ class Patient extends Authenticatable
             $patient->notify(new PhoneVerification($patient->fresh()->phone_verification_token));
 
             // Programmer le VAT
-            $type = TypeAppointment::where(['libele' => 'Vaccinal'])->first();
-            $vats = Vat::all();
-            foreach($vats as $vat){
-                $data = [];
-                
-                if($vat->period_month == 0){
-                    $data['passed'] = true;
-                }
+            $patient->preparePregnancyAppointment();
 
-                $data = array_merge([
-                    'date' => $now->addMonths($vat->period_month),
-                    'description' => $vat->vaccin,
-                    'type_appointment_id' => $type->id,
-                    'medecin_id' => $patient->medecin->id,
-                ], $data);
-
-                $patient->appointments()->create($data);
-            }
         });
     }
 
@@ -171,6 +155,32 @@ class Patient extends Authenticatable
     public function pregnancies() : HasMany
     {
         return $this->hasMany(Pregnancy::class);
+    }
+
+    public function preparePregnancyAppointment() : void
+    {
+        if ($this->is_pregnancy == true) {
+         
+            $type = TypeAppointment::where(['libele' => 'Vaccinal'])->first();
+            $vats = Vat::all();
+            foreach($vats as $vat){
+                $data = [];
+                
+                if($vat->period_month == 0){
+                    $data['passed'] = true;
+                }
+                
+                $data = array_merge([
+                    'date' => Carbon::now()->addMonths($vat->period_month),
+                    'description' => $vat->vaccin,
+                    'type_appointment_id' => $type->id,
+                    'medecin_id' => $this->medecin->id,
+                ], $data);
+                
+                $this->appointments()->create($data);
+            }
+        }
+        
     }
 
     /**

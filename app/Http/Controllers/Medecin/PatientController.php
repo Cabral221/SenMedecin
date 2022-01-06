@@ -57,6 +57,7 @@ class PatientController extends Controller
             'password' => Hash::make($request->patient_password),
             // Carnet
             'carnet_id' => $carnet->id,
+            'is_pregnancy' => $request->patient_is_pregnancy,
         ]);
 
         session()->flash('success', 'La patiente a été enregistée avec succés !');

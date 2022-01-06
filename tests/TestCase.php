@@ -32,8 +32,9 @@ abstract class TestCase extends BaseTestCase
     public function setUp() : void
     {
         parent::setUp();
-        Artisan::call('migrate');
         $this->cleanDirectories();
+        Artisan::call('migrate');
+        $this->seed('DataSeeder');
     }
 
     public function cleanDirectories() : void
@@ -45,8 +46,8 @@ abstract class TestCase extends BaseTestCase
     {
         $patient = $this->createPatient($medecin);        
 
-        $cpn = TypeAppointment::create(['libele' => 'CPN']);
-        $acc = TypeAppointment::create(['libele' => 'Accouchement']);
+        $cpn = TypeAppointment::where(['libele' => 'CPN'])->first();
+        $acc = TypeAppointment::where(['libele' => 'Accouchement'])->first();
         $patient->pregnancies()->create([
             'date' => Carbon::now()->subYears($patient->birthday->age - 15),
             'accouchement' => Carbon::now()->subYears($patient->birthday->age - 15)->addMonths(9),
@@ -107,8 +108,10 @@ abstract class TestCase extends BaseTestCase
         ]);
     }
     
-    public function createResponsable(Partener $partener) : Responsable
+    public function createResponsable(Partener $partener = null) : Responsable
     {
+        if($partener == null) $partener = $this->createPartener();
+
         return $partener->responsable()->create([
             'first_name' => $this->faker->firstName,
             'last_name' => $this->faker->lastName,
@@ -118,8 +121,10 @@ abstract class TestCase extends BaseTestCase
         ]);
     }
     
-    public function createMedecin(Responsable $responsable) : Medecin
+    public function createMedecin(Responsable $responsable = null) : Medecin
     {
+        if($responsable === null) $responsable = $this->createResponsable();
+
         $service = Service::create(['libele' => 'Maternité']);
         return $responsable->medecins()->create([
             'first_name' => $this->faker->firstName,
