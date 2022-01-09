@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Medecin;
 
-use App\Models\Patient;
+use App\Models\Carnet;
 use App\Services\Appointment\Appointment;
 use Carbon\Carbon;
 use Tests\TestCase;
@@ -183,5 +183,37 @@ class CreatePatientTest extends TestCase
         );
         $this->assertEquals(2, $medecin->patients()->count());
         $this->assertEquals(5, Appointment::count());
+    }
+
+    // Programmer une creaton de carnet 
+    /** @test */
+    public function attach_carnet_when_patient_was_created() : void
+    {
+        $this->loginAsMedecin();
+        Notification::fake();
+
+        $this->post('/medecin/patients', [
+            'patient_first_name' => 'John',
+            'patient_last_name' => 'Doe',
+            'patient_birthday' => Carbon::now()->subYears(rand(17,35)),
+            'patient_address' => $this->faker->address,
+            'patient_phone' =>  221778435052,
+            'patient_email' => 'test@test.com',
+            'patient_password' => 'password', 
+            'patient_password_confirmation' => 'password',
+            'patient_is_pregnancy' => true,
+        ]);
+        
+        $carnet = Carnet::first();
+        $this->assertDatabaseHas(
+            'patients',
+            [
+                'first_name' => 'John',
+                'last_name' => 'Doe',
+                'email' => 'test@test.com',
+                'is_pregnancy' => true,
+                'carnet_id' => $carnet->id,
+            ]
+        );
     }
 }

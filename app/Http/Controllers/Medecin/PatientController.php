@@ -44,9 +44,6 @@ class PatientController extends Controller
 
     public function store(PatientRequest $request) : RedirectResponse
     {
-        // Create carnet for patient
-        $carnet = Carnet::create();
-
         $this->medecin()->patients()->create([
             'first_name' => ucfirst($request->patient_first_name),
             'last_name' => ucfirst($request->patient_last_name),
@@ -55,14 +52,11 @@ class PatientController extends Controller
             'phone' => $request->patient_phone,
             'email' => $request->patient_email,
             'password' => Hash::make($request->patient_password),
-            // Carnet
-            'carnet_id' => $carnet->id,
             'is_pregnancy' => $request->patient_is_pregnancy,
         ]);
 
         session()->flash('success', 'La patiente a été enregistée avec succés !');
         return redirect()->route('medecin.patients.index');
-
     }
 
     public function edit(Patient $patient) : View

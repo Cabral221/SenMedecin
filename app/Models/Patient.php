@@ -111,6 +111,8 @@ class Patient extends Authenticatable
             $now = Carbon::now();
             $patient->referential = $now->year.$now->month.'-'.$patient->medecin->id.'-'.$patient->id;
             $patient->phone_verification_token = mt_rand(100000, 999999);
+            // Attacher un carnet
+            $patient->carnet_id = (Carnet::create())->id;
             $patient->save();
 
             // Verify phone notification
