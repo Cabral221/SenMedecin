@@ -80,7 +80,20 @@ class Patient extends Authenticatable
      * @var array<string>
      */
     protected $fillable = [
-        'first_name', 'last_name', 'birthday', 'phone', 'phone_verification_token', 'address', 'referential', 'medecin_id', 'carnet_id', 'is_active', 'is_pregnancy', 'email', 'password',
+        'first_name', 
+        'last_name', 
+        'birthday', 
+        'phone', 
+        'phone_verification_token', 
+        'address', 
+        'email', 
+        'password',
+        'remember_token', 
+        'referential', 
+        'medecin_id', 
+        'carnet_id', 
+        'is_active', 
+        'is_pregnancy', 
     ];
 
     /**
@@ -159,7 +172,7 @@ class Patient extends Authenticatable
         return $this->hasMany(Pregnancy::class);
     }
 
-    public function preparePregnancyAppointment() : void
+    public function preparePregnancyAppointment() : bool
     {
         if ($this->is_pregnancy == true) {
          
@@ -181,8 +194,10 @@ class Patient extends Authenticatable
                 
                 $this->appointments()->create($data);
             }
+            return true;
         }
-        
+
+        return false;
     }
 
     /**
