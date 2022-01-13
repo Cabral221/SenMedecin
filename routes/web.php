@@ -25,20 +25,21 @@ Route::get('/about','User\AboutController@index')->name('user.about');
 
 // Routes for client patient
 Route::prefix('/patient')->namespace('Patient')->name('patient.')->group(function() {
-
-    // patient confirmation phone number
-    Route::get('/confirm-phone', 'PatientController@confirmPhonePage')->name('confirm.tampon');
-    Route::post('/confirm-phone', 'PatientController@confirmPhone')->name('confirm');
-
+    
     Route::middleware(['auth:patient', ConfirmPhonePatient::class])->group(function() {
+        
         Route::get('/home', 'PatientController@index')->name('home');
         Route::get('/profile', 'PatientController@profile')->name('profile');
         Route::put('/profile/{id}', 'PatientController@update')->name('update');
         Route::patch('/profile/{id}', 'PatientController@email')->name('email');
         Route::put('/profil/{id}', 'PatientController@password')->name('password');
         Route::delete('/profile/{id}', 'PatientController@destroy')->name('destroy');
-    
+        
         Route::get('/identifiant/{id}','IdentifiantController@index')->name('identifiant');
+        
+        // patient confirmation phone number
+        Route::get('/confirm-phone', 'PatientController@confirmPhonePage')->name('confirm.tampon');
+        Route::post('/confirm-phone', 'PatientController@confirmPhone')->name('confirm')->withoutMiddleware([ConfirmPhonePatient::class]);
     });
 
     // Authentification des
@@ -67,13 +68,15 @@ Route::prefix('/medecin')->namespace('Medecin')->name('medecin.')->group(functio
     Route::get('/appointments/histories', 'AppointmentController@histories')->name('appointments.histories');
     Route::get('/appointments/{appointment}','AppointmentController@show')->name('appointments.show');
 
-    Route::get('/patients/{patient}/antecedents/create', 'AntecedentController@create')->name('patients.antecedent.create');
-    Route::post('/patients/{patient}/antecedents/store', 'AntecedentController@store')->name('patients.antecedent.store');
-    Route::get('/patients/{patient}/antecedents/{antecedent}/edit', 'AntecedentController@edit')->name('patients.antecedent.edit');
-    Route::put('/patients/{patient}/antecedents/{antecedent}/update', 'AntecedentController@update')->name('patients.antecedent.update');
-    
-    Route::get('/patients/{patient}/calendar', 'PatientController@calendar')->name('patients.calendar');
-    Route::resource('/patients', 'PatientController');
+    Route::prefix('/patients')->name('patients.')->group(function(){
+        Route::get('/{patient}/antecedents/create', 'AntecedentController@create')->name('antecedent.create');
+        Route::post('/{patient}/antecedents/store', 'AntecedentController@store')->name('antecedent.store');
+        Route::get('/{patient}/antecedents/{antecedent}/edit', 'AntecedentController@edit')->name('antecedent.edit');
+        Route::put('/{patient}/antecedents/{antecedent}/update', 'AntecedentController@update')->name('antecedent.update');
+        
+        Route::get('/{patient}/calendar', 'PatientController@calendar')->name('calendar');
+        Route::resource('/', 'PatientController');
+    });
 
     Route::delete('/child/{patient}/destroy/{children}', 'ChildController@destroy')->name('patients.childs.destroy');
     Route::put('/child/{patient}/update/{children}', 'ChildController@update')->name('patients.childs.update');

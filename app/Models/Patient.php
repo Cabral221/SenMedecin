@@ -80,7 +80,20 @@ class Patient extends Authenticatable
      * @var array<string>
      */
     protected $fillable = [
-        'first_name', 'last_name', 'birthday', 'phone', 'phone_verification_token', 'address', 'referential', 'medecin_id', 'carnet_id', 'is_active', 'is_pregnancy', 'email', 'password',
+        'first_name', 
+        'last_name', 
+        'birthday', 
+        'phone', 
+        'phone_verification_token', 
+        'address', 
+        'email', 
+        'password',
+        'remember_token', 
+        'referential', 
+        'medecin_id', 
+        'carnet_id', 
+        'is_active', 
+        'is_pregnancy', 
     ];
 
     /**
@@ -111,30 +124,16 @@ class Patient extends Authenticatable
             $now = Carbon::now();
             $patient->referential = $now->year.$now->month.'-'.$patient->medecin->id.'-'.$patient->id;
             $patient->phone_verification_token = mt_rand(100000, 999999);
+            // Attacher un carnet
+            $patient->carnet_id = (Carnet::create())->id;
             $patient->save();
 
             // Verify phone notification
             $patient->notify(new PhoneVerification($patient->fresh()->phone_verification_token));
 
             // Programmer le VAT
-            $type = TypeAppointment::where(['libele' => 'Vaccinal'])->first();
-            $vats = Vat::all();
-            foreach($vats as $vat){
-                $data = [];
-                
-                if($vat->period_month == 0){
-                    $data['passed'] = true;
-                }
+            $patient->preparePregnancyAppointment();
 
-                $data = array_merge([
-                    'date' => $now->addMonths($vat->period_month),
-                    'description' => $vat->vaccin,
-                    'type_appointment_id' => $type->id,
-                    'medecin_id' => $patient->medecin->id,
-                ], $data);
-
-                $patient->appointments()->create($data);
-            }
         });
     }
 
@@ -171,6 +170,34 @@ class Patient extends Authenticatable
     public function pregnancies() : HasMany
     {
         return $this->hasMany(Pregnancy::class);
+    }
+
+    public function preparePregnancyAppointment() : bool
+    {
+        if ($this->is_pregnancy == true) {
+         
+            $type = TypeAppointment::where(['libele' => 'Vaccinal'])->first();
+            $vats = Vat::all();
+            foreach($vats as $vat){
+                $data = [];
+                
+                if($vat->period_month == 0){
+                    $data['passed'] = true;
+                }
+                
+                $data = array_merge([
+                    'date' => Carbon::now()->addMonths($vat->period_month),
+                    'description' => $vat->vaccin,
+                    'type_appointment_id' => $type->id,
+                    'medecin_id' => $this->medecin->id,
+                ], $data);
+                
+                $this->appointments()->create($data);
+            }
+            return true;
+        }
+
+        return false;
     }
 
     /**

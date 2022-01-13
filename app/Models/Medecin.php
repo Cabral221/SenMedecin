@@ -62,7 +62,16 @@ class Medecin extends Authenticatable
      * @var array<string>
      */
     protected $fillable = [
-        'first_name', 'last_name', 'phone', 'gen_password', 'email', 'password','service_id','responsable_id','is_active'
+        'first_name', 
+        'last_name', 
+        'phone', 
+        'email', 
+        'password', 
+        'gen_password', 
+        'remember_token', 
+        'service_id', 
+        'responsable_id', 
+        'is_active'
     ];
 
     /**
