@@ -2,19 +2,24 @@
 
 namespace App\Models;
 
+use Storage;
 use Carbon\Carbon;
 use App\Models\Carnet;
 use App\Models\Medecin;
 use App\Models\Antecedent;
+use Illuminate\Http\Request;
 use App\Models\TypeAppointment;
+use Illuminate\Http\UploadedFile;
+use Intervention\Image\Facades\Image;
 use App\Notifications\PhoneVerification;
 use Illuminate\Notifications\Notifiable;
 use App\Services\Appointment\Appointment;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\File;
 
 /**
  * Patient Model Classe
@@ -69,47 +74,34 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @method static \Illuminate\Database\Eloquent\Builder|Patient whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Patient whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read string $avatar
+ * @method static \Illuminate\Database\Eloquent\Builder|Patient whereAvatar($value)
  */
 class Patient extends Authenticatable
 {
     use Notifiable;
-
+    
     /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<string>
-     */
-    protected $fillable = [
-        'first_name', 
-        'last_name', 
-        'birthday', 
-        'phone', 
-        'phone_verification_token', 
-        'address', 
-        'email', 
-        'password',
-        'remember_token', 
-        'referential', 
-        'medecin_id', 
-        'carnet_id', 
-        'is_active', 
-        'is_pregnancy', 
-    ];
-
+    * The attributes that are mass assignable.
+    *
+    * @var array<string>
+    */
+    protected $guarded = [];
+    
     /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array<string>
-     */
+    * The attributes that should be hidden for arrays.
+    *
+    * @var array<string>
+    */
     protected $hidden = [
         'password', 'remember_token',
     ];
-
+    
     /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array<string>
-     */
+    * The attributes that should be cast to native types.
+    *
+    * @var array<string>
+    */
     protected $casts = [
         'phone' => 'string',
         'email_verified_at' => 'datetime',
@@ -117,7 +109,7 @@ class Patient extends Authenticatable
         'is_active' => 'boolean',
         'is_pregnancy' => 'boolean',
     ];
-
+    
     protected static function booted()
     {
         static::created(function (Patient $patient) {
@@ -127,55 +119,60 @@ class Patient extends Authenticatable
             // Attacher un carnet
             $patient->carnet_id = (Carnet::create())->id;
             $patient->save();
-
+            
             // Verify phone notification
             $patient->notify(new PhoneVerification($patient->fresh()->phone_verification_token));
-
+            
             // Programmer le VAT
             $patient->preparePregnancyAppointment();
-
+            
         });
     }
-
+    
     public static function active() : Collection
     {
         return static::where('is_active', true)->get();
     }
-
+    
     public static function notActive() : Collection
     {
         return static::where('is_active', false)->get();
     }
-
+    
     public function getFullNameAttribute() : string
     {
         return ucfirst($this->first_name) . " " . ucfirst($this->first_name);
     }
-
+    
+    public function getAvatarAttribute(string $value = null) : string
+    {
+        return $value !== null ? $value : 'assets/img/brand/favicon-axxunjurel.svg';
+    }
+    
     public function childrens() : HasMany
     {
         return $this->hasMany(Children::class);
     }
-
+    
     public function medecin() : BelongsTo
     {
         return $this->belongsTo(Medecin::class);
     }
-
+    
     public function carnet() : HasOne
     {
         return $this->hasOne(Carnet::class);
     }
-
+    
     public function pregnancies() : HasMany
     {
         return $this->hasMany(Pregnancy::class);
     }
-
+    
     public function preparePregnancyAppointment() : bool
     {
         if ($this->is_pregnancy == true) {
-         
+            
             $type = TypeAppointment::where(['libele' => 'Vaccinal'])->first();
             $vats = Vat::all();
             foreach($vats as $vat){
@@ -196,44 +193,83 @@ class Patient extends Authenticatable
             }
             return true;
         }
-
+        
         return false;
     }
-
+    
     /**
-     * Get current pregnancy
-     * 
-     * @return Pregnancy
-     */
+    * Get current pregnancy
+    * 
+    * @return Pregnancy
+    */
     public function pregnancy() : Pregnancy
     {
         return $this->pregnancies()->where('accouchement', '<', Carbon::now())->first();
     }
-
+    
     public function antecedent() : HasOne
     {
         return $this->hasOne(Antecedent::class);
     }
-
+    
     public function appointments() : HasMany
     {
         return $this->hasMany(Appointment::class);
     }
-
+    
     public function come() : ?Appointment
     {
         return $this->appointments()->where('passed', false)->first();
     }
-
+    
     /**
-     * Route notifications for the Nexmo channel.
+     * Undocumented function
      *
-     * @param  \Illuminate\Notifications\Notification  $notification
-     * @return string
+     * @param Request $request
+     * @return boolean
+     * @throws \Exception
      */
+    public function prepareAvatar(Request $request) : bool
+    {
+        /** @var UploadedFile $file */
+        $file = $request->file('patient_avatar');
+        $this->upLoadFile($file);
+        // Resize avatar et Remplacer le precedant sauvegarder
+        try {
+            $img = Image::make(Storage::disk('public')->path($this->avatar));
+            $img->resize(128, 128, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save(Storage::disk('public')->path($this->avatar));
+            return true;
+        } catch (\Exception $th) {
+            // dd($th);
+            // TODO:...
+            abort(500);
+        }
+
+        // Resize with QUEU 'Image'
+        // TODO:...
+        
+    }
+    
+    public function upLoadFile(UploadedFile $file) : bool
+    {
+        /** @var string $fileName */
+        $fileName = $file->storePublicly('uploads/avatars',['disk' => 'public']);
+        return $this->update([
+            'avatar' => 'uploads/avatars/' . basename($fileName)
+        ]);
+    }
+    
+    /**
+    * Route notifications for the Nexmo channel.
+    *
+    * @param  \Illuminate\Notifications\Notification  $notification
+    * @return string
+    */
     public function routeNotificationForNexmo($notification) : string
     {
         return (string) $this->phone;
     }
-
+    
 }

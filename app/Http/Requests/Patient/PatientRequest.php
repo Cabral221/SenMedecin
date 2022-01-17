@@ -34,6 +34,7 @@ class PatientRequest extends FormRequest
             'patient_email' => 'required|email|unique:patients,email',
             'patient_password' => 'required|password|confirmed|min:8',
             'patient_password_confirmation' => 'required|min:8',
+            'patient_avatar' => ['image', 'mimes:jpg,jpeg,bmp,svg,png', 'max:5000'],
         ];
     }
 }

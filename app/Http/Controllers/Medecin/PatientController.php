@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Medecin;
 
 use Carbon\Carbon;
-use App\Models\Carnet;
 use App\Models\Medecin;
 use App\Models\Patient;
 use Illuminate\Http\Request;
@@ -44,7 +43,8 @@ class PatientController extends Controller
 
     public function store(PatientRequest $request) : RedirectResponse
     {
-        $this->medecin()->patients()->create([
+        /** @var Patient $patient */
+        $patient = $this->medecin()->patients()->create([
             'first_name' => ucfirst($request->patient_first_name),
             'last_name' => ucfirst($request->patient_last_name),
             'birthday' => $request->patient_birthday,
@@ -54,6 +54,8 @@ class PatientController extends Controller
             'password' => Hash::make($request->patient_password),
             'is_pregnancy' => $request->patient_is_pregnancy,
         ]);
+
+        if($request->hasFile('patient_avatar')) $patient->prepareAvatar($request);
 
         session()->flash('success', 'La patiente a été enregistée avec succés !');
         return redirect()->route('medecin.patients.index');

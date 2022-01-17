@@ -8,7 +8,7 @@ cc:
 
 .PHONY:	migration
 migration:
-	php artisan migrate:refresh && php artisan db:seed
+	php artisan migrate:fresh --seed
 
 .PHONY: test
 test:
