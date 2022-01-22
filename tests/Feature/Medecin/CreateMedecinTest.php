@@ -4,7 +4,9 @@ namespace Tests\Feature\Medecin;
 
 use Tests\TestCase;
 use App\Models\Service;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Testing\TestResponse;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class CreateMedecinTest extends TestCase
@@ -127,68 +129,67 @@ class CreateMedecinTest extends TestCase
         $response->assertRedirect('/partener/medecins');
     }
 
-    // /** @tes */
-    // public function medecin_avatar_upload() : void
-    // {
-    //     $medecin = $this->loginAsMedecin();
-    //     $service_id = Service::create(['libele' => 'Maternité'])->id;
+    /** @test */
+    public function medecin_avatar_upload() : void
+    {
+        $responsable = $this->loginAsResponsable();
+        $service_id = Service::create(['libele' => 'Maternité'])->id;
 
-    //     $file = new UploadedFile(
-    //         base_path('tests') . '/fixtures/demo.png', 
-    //         'demo.png','image/png',null,true
-    //     );
+        $file = new UploadedFile(
+            base_path('tests') . '/fixtures/demo.png', 
+            'demo.png','image/png',null,true
+        );
 
-    //     $this->post('/partener/medecins', [
-    //         'medecin_avatar' => $file,
-    //         'medecin_first_name' => 'John',
-    //         'medecin_last_name' => 'Doe',
-    //         'medecin_phone' =>  221778435052,
-    //         'medecin_email' => 'test@test.com',
-    //         'medecin_password' => 'password', 
-    //         'medecin_password_confirmation' => 'password', 
-    //         'medecin_service' => $service_id,
-    //     ])
+        $this->post('/partener/medecins', [
+            'medecin_avatar' => $file,
+            'medecin_first_name' => 'John',
+            'medecin_last_name' => 'Doe',
+            'medecin_phone' =>  221778435052,
+            'medecin_email' => 'test@test.com',
+            'medecin_password' => 'password', 
+            'medecin_password_confirmation' => 'password', 
+            'medecin_service' => $service_id,
+        ])
 
-    //     ->assertSessionHas('success')
-    //     ->assertStatus(302);
-    //     $patient = $medecin->patients()->first();
-    //     // Assert the file was stored...
-    //     $this->assertDatabaseHas('medecins', [
-    //         'first_name' => 'John',
-    //         'last_name' => 'Doe',
-    //         'email' => 'test@test.com',
-    //         'avatar' => $patient->avatar,
-    //     ]);
-    //     $this->assertFileExists(Storage::disk('public')->path($patient->avatar));
-    //     Storage::disk('public')->assertExists($patient->avatar);
-    // }
+        ->assertSessionHas('success')
+        ->assertStatus(302);
+        $medecin = $responsable->medecins()->first();
+        // Assert the file was stored...
+        $this->assertDatabaseHas('medecins', [
+            'first_name' => 'John',
+            'last_name' => 'Doe',
+            'email' => 'test@test.com',
+            'avatar' => $medecin->avatar,
+        ]);
+        $this->assertFileExists(Storage::disk('public')->path($medecin->avatar));
+        Storage::disk('public')->assertExists($medecin->avatar);
+    }
 
-    // /** @tes */
-    // public function patient_avatar_attribute_have_default_value() : void
-    // {
-    //     $medecin = $this->loginAsMedecin();
-    //     Notification::fake();
+    /** @test */
+    public function medecin_avatar_attribute_have_default_value() : void
+    {
+        $responsable = $this->loginAsResponsable();
+        $service_id = Service::create(['libele' => 'Maternité'])->id;
 
-    //     $this->post('/medecin/patients', [
-    //         'patient_first_name' => 'John',
-    //         'patient_last_name' => 'Doe',
-    //         'patient_birthday' => Carbon::now()->subYears(rand(17,35)),
-    //         'patient_address' => $this->faker->address,
-    //         'patient_phone' =>  221778435052,
-    //         'patient_email' => 'test@test.com',
-    //         'patient_password' => 'password', 
-    //         'patient_password_confirmation' => 'password',
-    //         'patient_is_pregnancy' => true,
-    //     ]);
+        $this->post('/partener/medecins', [
+            'medecin_avatar' => null,
+            'medecin_first_name' => 'John',
+            'medecin_last_name' => 'Doe',
+            'medecin_phone' =>  221778435052,
+            'medecin_email' => 'test@test.com',
+            'medecin_password' => 'password', 
+            'medecin_password_confirmation' => 'password', 
+            'medecin_service' => $service_id,
+        ]);
 
-    //     $this->assertDatabaseHas('patients', [
-    //         'first_name' => 'John',
-    //         'last_name' => 'Doe',
-    //         'email' => 'test@test.com',
-    //         'avatar' => null,
-    //     ]);
-    //     $patient = $medecin->patients()->first();
-    //     $this->assertEquals('assets/img/brand/favicon-axxunjurel.svg', $patient->avatar);
-    // }
+        $this->assertDatabaseHas('medecins', [
+            'first_name' => 'John',
+            'last_name' => 'Doe',
+            'email' => 'test@test.com',
+            'avatar' => null,
+        ]);
+        $medecin = $responsable->medecins()->first();
+        $this->assertEquals('assets/img/brand/favicon-axxunjurel.svg', $medecin->avatar);
+    }
 
 }

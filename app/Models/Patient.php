@@ -2,15 +2,13 @@
 
 namespace App\Models;
 
+use App\Concerns\AvatarConcern;
 use Storage;
 use Carbon\Carbon;
 use App\Models\Carnet;
 use App\Models\Medecin;
 use App\Models\Antecedent;
-use Illuminate\Http\Request;
 use App\Models\TypeAppointment;
-use Illuminate\Http\UploadedFile;
-use Intervention\Image\Facades\Image;
 use App\Notifications\PhoneVerification;
 use Illuminate\Notifications\Notifiable;
 use App\Services\Appointment\Appointment;
@@ -19,7 +17,6 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Support\Facades\File;
 
 /**
  * Patient Model Classe
@@ -79,7 +76,7 @@ use Illuminate\Support\Facades\File;
  */
 class Patient extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, AvatarConcern;
     
     /**
     * The attributes that are mass assignable.
@@ -142,11 +139,6 @@ class Patient extends Authenticatable
     public function getFullNameAttribute() : string
     {
         return ucfirst($this->first_name) . " " . ucfirst($this->first_name);
-    }
-    
-    public function getAvatarAttribute(string $value = null) : string
-    {
-        return $value !== null ? $value : 'assets/img/brand/favicon-axxunjurel.svg';
     }
     
     public function childrens() : HasMany
@@ -220,45 +212,6 @@ class Patient extends Authenticatable
     public function come() : ?Appointment
     {
         return $this->appointments()->where('passed', false)->first();
-    }
-    
-    /**
-     * Undocumented function
-     *
-     * @param Request $request
-     * @return boolean
-     * @throws \Exception
-     */
-    public function prepareAvatar(Request $request) : bool
-    {
-        /** @var UploadedFile $file */
-        $file = $request->file('patient_avatar');
-        $this->upLoadFile($file);
-        // Resize avatar et Remplacer le precedant sauvegarder
-        try {
-            $img = Image::make(Storage::disk('public')->path($this->avatar));
-            $img->resize(128, 128, function ($constraint) {
-                $constraint->aspectRatio();
-            })->save(Storage::disk('public')->path($this->avatar));
-            return true;
-        } catch (\Exception $th) {
-            // dd($th);
-            // TODO:...
-            abort(500);
-        }
-
-        // Resize with QUEU 'Image'
-        // TODO:...
-        
-    }
-    
-    public function upLoadFile(UploadedFile $file) : bool
-    {
-        /** @var string $fileName */
-        $fileName = $file->storePublicly('uploads/avatars',['disk' => 'public']);
-        return $this->update([
-            'avatar' => 'uploads/avatars/' . basename($fileName)
-        ]);
     }
     
     /**

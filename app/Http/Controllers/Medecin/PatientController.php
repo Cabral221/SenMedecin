@@ -5,12 +5,13 @@ namespace App\Http\Controllers\Medecin;
 use Carbon\Carbon;
 use App\Models\Medecin;
 use App\Models\Patient;
+use Illuminate\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
-use App\Http\Requests\Patient\PatientRequest;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\View\View;
+use App\Http\Requests\Patient\PatientRequest;
 
 class PatientController extends Controller
 {
@@ -55,8 +56,12 @@ class PatientController extends Controller
             'is_pregnancy' => $request->patient_is_pregnancy,
         ]);
 
-        if($request->hasFile('patient_avatar')) $patient->prepareAvatar($request);
-
+        if($request->hasFile('patient_avatar')) {
+            /** @var UploadedFile */
+            $file = $request->file('patient_avatar');
+            $patient->prepareAvatar($file);
+        }
+        
         session()->flash('success', 'La patiente a été enregistée avec succés !');
         return redirect()->route('medecin.patients.index');
     }
