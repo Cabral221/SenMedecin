@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Medecin;
+namespace Tests\Feature\Patient;
 
 use Carbon\Carbon;
 use Tests\TestCase;
