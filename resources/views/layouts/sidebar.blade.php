@@ -2,7 +2,7 @@
 <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
 <aside class="app-sidebar">
 	<div class="main-sidebar-header active">
-			<a class="desktop-logo logo-light active" href="index.html">
+			<a class="desktop-logo logo-light active" href="{{ route('index') }}">
 				<img src="{{ asset('assets/img/brand/logo-axxunjurel-horizontal.svg') }}" class="main-logo logo-color1" alt="logo">
 				{{-- <img src="{{ asset('assets/img/brand/logo2.png') }}" class="main-logo logo-color2" alt="logo"> --}}
 				{{-- <img src="{{ asset('assets/img/brand/logo3.png') }}" class="main-logo logo-color3" alt="logo"> --}}
@@ -377,7 +377,8 @@
 						<path
 							d="M11 16h2v2h-2zm1-14C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z" />
 					</svg> <span class="side-menu__label">Suport</span></a>
-				<a class="side-menu__item" href="#"><svg class="side-menu__icon" xmlns="http://www.w3.org/2000/svg"
+				<a class="side-menu__item" href="{{ route('patient.logout') }}"
+						onclick="event.preventDefault();document.getElementById('logout-form-patient').submit();"><svg class="side-menu__icon" xmlns="http://www.w3.org/2000/svg"
 						enable-background="new 0 0 24 24" height="24" viewBox="0 0 24 24" width="24">
 						<g>
 							<rect fill="none" height="24" width="24" />
@@ -387,6 +388,9 @@
 								d="M11,7L9.6,8.4l2.6,2.6H2v2h10.2l-2.6,2.6L11,17l5-5L11,7z M20,19h-8v2h8c1.1,0,2-0.9,2-2V5c0-1.1-0.9-2-2-2h-8v2h8V19z" />
 						</g>
 					</svg> <span class="side-menu__label">Logout</span></a>
+					<form id="logout-form-patient" action="{{ route('patient.logout') }}" method="POST" style="display: none;">
+						@csrf
+					</form>
 			</div>
 	</div>
 </aside>

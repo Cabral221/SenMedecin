@@ -158,9 +158,6 @@
                                 href="{{ route('patient.logout') }}"
                                 onclick="event.preventDefault();document.getElementById('logout-form-patient').submit();">
                                 <i class="fas fa-sign-out-alt"></i> Sign Out</a>
-                                <form id="logout-form-patient" action="{{ route('patient.logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
                         </div>
                     </div>
                 </div>
