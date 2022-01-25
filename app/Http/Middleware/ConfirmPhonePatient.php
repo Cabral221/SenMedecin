@@ -19,7 +19,7 @@ class ConfirmPhonePatient
         /** @var Patient $patient */
         $patient = $request->user();
 
-        if($patient->phone_verification_token != null) return redirect()->route('patient.confirm.tampon');
+        if(!$patient->hasValidPhone()) return redirect()->route('patient.confirm.tampon');
 
         return $next($request);
     }

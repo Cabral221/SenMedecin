@@ -19,61 +19,61 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
- * Patient Model Classe
- *
- * @property Medecin $medecin
- * @property Antecedent $antecedent
- * @property int $id
- * @property string $first_name
- * @property string $last_name
- * @property \Illuminate\Support\Carbon $birthday
- * @property string $address
- * @property string $phone
- * @property int|null $phone_verification_token
- * @property string|null $email
- * @property string $password
- * @property string|null $referential
- * @property int $medecin_id
- * @property int|null $carnet_id
- * @property bool $is_active
- * @property bool $is_pregnancy
- * @property string|null $remember_token
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read Collection|Appointment[] $appointments
- * @property-read int|null $appointments_count
- * @property-read Carnet|null $carnet
- * @property-read Collection|\App\Models\Children[] $childrens
- * @property-read int|null $childrens_count
- * @property-read string $full_name
- * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
- * @property-read int|null $notifications_count
- * @property-read Collection|\App\Models\Pregnancy[] $pregnancies
- * @property-read int|null $pregnancies_count
- * @method static \Illuminate\Database\Eloquent\Builder|Patient newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Patient newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Patient query()
- * @method static \Illuminate\Database\Eloquent\Builder|Patient whereAddress($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Patient whereBirthday($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Patient whereCarnetId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Patient whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Patient whereEmail($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Patient whereFirstName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Patient whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Patient whereIsActive($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Patient whereIsPregnancy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Patient whereLastName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Patient whereMedecinId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Patient wherePassword($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Patient wherePhone($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Patient wherePhoneVerificationToken($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Patient whereReferential($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Patient whereRememberToken($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Patient whereUpdatedAt($value)
- * @mixin \Eloquent
- * @property-read string $avatar
- * @method static \Illuminate\Database\Eloquent\Builder|Patient whereAvatar($value)
- */
+* Patient Model Classe
+*
+* @property Medecin $medecin
+* @property Antecedent $antecedent
+* @property int $id
+* @property string $first_name
+* @property string $last_name
+* @property \Illuminate\Support\Carbon $birthday
+* @property string $address
+* @property string $phone
+* @property int|null $phone_verification_token
+* @property string|null $email
+* @property string $password
+* @property string|null $referential
+* @property int $medecin_id
+* @property int|null $carnet_id
+* @property bool $is_active
+* @property bool $is_pregnancy
+* @property string|null $remember_token
+* @property \Illuminate\Support\Carbon|null $created_at
+* @property \Illuminate\Support\Carbon|null $updated_at
+* @property-read Collection|Appointment[] $appointments
+* @property-read int|null $appointments_count
+* @property-read Carnet|null $carnet
+* @property-read Collection|\App\Models\Children[] $childrens
+* @property-read int|null $childrens_count
+* @property-read string $full_name
+* @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+* @property-read int|null $notifications_count
+* @property-read Collection|\App\Models\Pregnancy[] $pregnancies
+* @property-read int|null $pregnancies_count
+* @method static \Illuminate\Database\Eloquent\Builder|Patient newModelQuery()
+* @method static \Illuminate\Database\Eloquent\Builder|Patient newQuery()
+* @method static \Illuminate\Database\Eloquent\Builder|Patient query()
+* @method static \Illuminate\Database\Eloquent\Builder|Patient whereAddress($value)
+* @method static \Illuminate\Database\Eloquent\Builder|Patient whereBirthday($value)
+* @method static \Illuminate\Database\Eloquent\Builder|Patient whereCarnetId($value)
+* @method static \Illuminate\Database\Eloquent\Builder|Patient whereCreatedAt($value)
+* @method static \Illuminate\Database\Eloquent\Builder|Patient whereEmail($value)
+* @method static \Illuminate\Database\Eloquent\Builder|Patient whereFirstName($value)
+* @method static \Illuminate\Database\Eloquent\Builder|Patient whereId($value)
+* @method static \Illuminate\Database\Eloquent\Builder|Patient whereIsActive($value)
+* @method static \Illuminate\Database\Eloquent\Builder|Patient whereIsPregnancy($value)
+* @method static \Illuminate\Database\Eloquent\Builder|Patient whereLastName($value)
+* @method static \Illuminate\Database\Eloquent\Builder|Patient whereMedecinId($value)
+* @method static \Illuminate\Database\Eloquent\Builder|Patient wherePassword($value)
+* @method static \Illuminate\Database\Eloquent\Builder|Patient wherePhone($value)
+* @method static \Illuminate\Database\Eloquent\Builder|Patient wherePhoneVerificationToken($value)
+* @method static \Illuminate\Database\Eloquent\Builder|Patient whereReferential($value)
+* @method static \Illuminate\Database\Eloquent\Builder|Patient whereRememberToken($value)
+* @method static \Illuminate\Database\Eloquent\Builder|Patient whereUpdatedAt($value)
+* @mixin \Eloquent
+* @property-read string $avatar
+* @method static \Illuminate\Database\Eloquent\Builder|Patient whereAvatar($value)
+*/
 class Patient extends Authenticatable
 {
     use Notifiable, AvatarConcern;
@@ -138,7 +138,23 @@ class Patient extends Authenticatable
     
     public function getFullNameAttribute() : string
     {
-        return ucfirst($this->first_name) . " " . ucfirst($this->first_name);
+        return ucfirst($this->first_name) . " " . ucfirst($this->last_name);
+    }
+    
+    /**
+    * Get if patient has validate phone number
+    *
+    * @return boolean
+    */
+    public function hasValidPhone() : bool
+    {
+        return $this->phone_verification_token == null;
+    }
+    
+    public function phoneHidden() : string
+    {
+        return str_repeat('*', strlen($this->phone) - 4) . substr($this->phone, -4);
+        
     }
     
     public function childrens() : HasMany
