@@ -13,7 +13,7 @@
 	<meta name="Description" content="AxxuNjurel - restez avertit à l'approche de vos rendez-vous">
 	<!-- Dynamic Title Page -->
 	<title>
-		{{ ($title) 
+		{{ isset($title) 
 		? $title . ' - '. config('app.name') 
 		: config('app.name') . ' - restez avertit à l\'approche de vos rendez-vous' }}
 	</title>

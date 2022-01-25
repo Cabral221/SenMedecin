@@ -38,8 +38,9 @@ Route::prefix('/patient')->namespace('Patient')->name('patient.')->group(functio
         Route::get('/identifiant/{id}','IdentifiantController@index')->name('identifiant');
         
         // patient confirmation phone number
-        Route::get('/confirm-phone', 'PatientController@confirmPhonePage')->name('confirm.tampon');
-        Route::post('/confirm-phone', 'PatientController@confirmPhone')->name('confirm')->withoutMiddleware([ConfirmPhonePatient::class]);
+        Route::get('/confirm-phone', 'PatientController@confirmPhonePage')->name('confirm.tampon')->withoutMiddleware([ConfirmPhonePatient::class]);
+        Route::get('/confirm-phone/resend', 'PatientController@resendPhoneToken')->name('confirm.resend')->withoutMiddleware([ConfirmPhonePatient::class]);
+        Route::get('/confirmphone/{code?}', 'PatientController@confirmPhone')->name('confirm')->withoutMiddleware([ConfirmPhonePatient::class]);
     });
 
     // Authentification des

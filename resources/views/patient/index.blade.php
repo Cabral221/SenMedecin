@@ -7,7 +7,7 @@
 			<h4 class="content-title mb-2">Salut, bienvenue!</h4>
 			<nav aria-label="breadcrumb">
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="#">Tableau de bord</a></li>
+					<li class="breadcrumb-item"><a href="{{ route('patient.home') }}">Tableau de bord</a></li>
 					<li class="breadcrumb-item active" aria-current="page">Analytics &amp; Monitoring</li>
 				</ol>
 			</nav>
