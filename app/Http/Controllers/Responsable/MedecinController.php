@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\Responsable;
 
 use App\Models\Medecin;
+use Illuminate\View\View;
 use App\Models\Responsable;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\View\View;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\RedirectResponse;
 
 class MedecinController extends Controller
 {
@@ -46,6 +47,7 @@ class MedecinController extends Controller
     public function store(Request $request) : RedirectResponse
     {
         $this->validate($request, [
+            'patient_avatar' => ['image', 'mimes:jpg,jpeg,bmp,svg,png', 'max:5000'],
             'medecin_first_name' => 'required|string|min:2',
             'medecin_last_name' => 'required|string|min:2',
             'medecin_phone' => 'required|numeric|unique:medecins,phone',
@@ -59,15 +61,20 @@ class MedecinController extends Controller
             return redirect()->back()->withInput()->withErrors(['medecin_service' => 'Veuillez assigner un service pour cet agent !']);
         }
 
-        $this->responsable()->medecins()->create([
+        $medecin = $this->responsable()->medecins()->create([
             'first_name' => $request->medecin_first_name,
             'last_name' => $request->medecin_last_name,
             'phone' => $request->medecin_phone,
             'email' => $request->medecin_email,
             'password' => Hash::make($request->medecin_password),
-            // 'gen_password' => Hash::make($request->medecin_gen_password),
             'service_id' => $request->medecin_service,
         ]);
+
+        if($request->hasFile('medecin_avatar')){
+            /** @var UploadedFile */
+            $file = $request->file('medecin_avatar');
+            $medecin->prepareAvatar($file);
+        } 
 
         session()->flash('success', 'L\'agent a été ajouté avec succés !');
         return redirect()->route('responsable.medecins.index');

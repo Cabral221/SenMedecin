@@ -1,13 +1,15 @@
 <?php
 
-namespace Tests\Feature\Medecin;
+namespace Tests\Feature\Patient;
 
-use App\Models\Carnet;
-use App\Services\Appointment\Appointment;
 use Carbon\Carbon;
 use Tests\TestCase;
+use App\Models\Carnet;
 use Illuminate\Support\Str;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Testing\TestResponse;
+use Illuminate\Support\Facades\Storage;
+use App\Services\Appointment\Appointment;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -54,7 +56,7 @@ class CreatePatientTest extends TestCase
         ]);
 
         $response = $this->post('/medecin/patients', [
-            'email' => 'test@test.com',
+            'patient_email' => 'test@test.com',
         ]);
 
         $response->assertSessionHasErrors('patient_email');
@@ -105,7 +107,7 @@ class CreatePatientTest extends TestCase
         $response->assertSessionHasErrors('patient_phone');
     }
 
-    /** @tes */
+    /** @test */
     public function medecin_can_create_new_patient() : void
     {
         $this->loginAsMedecin();
@@ -130,6 +132,7 @@ class CreatePatientTest extends TestCase
                 'first_name' => 'John',
                 'last_name' => 'Doe',
                 'email' => 'test@test.com',
+                'avatar' => null,
                 'is_pregnancy' => true,
             ]
         );
@@ -216,4 +219,70 @@ class CreatePatientTest extends TestCase
             ]
         );
     }
+
+    /** @test */
+    public function patient_avatar_upload() : void
+    {
+        $medecin = $this->loginAsMedecin();
+        Notification::fake();
+
+        $file = new UploadedFile(
+            base_path('tests') . '/fixtures/demo.png', 
+            'demo.png','image/png',null,true
+        );
+
+        $this->post('/medecin/patients', [
+            'patient_avatar' => $file,
+            'patient_first_name' => 'John',
+            'patient_last_name' => 'Doe',
+            'patient_birthday' => Carbon::now()->subYears(rand(17,35)),
+            'patient_address' => $this->faker->address,
+            'patient_phone' =>  221778435052,
+            'patient_email' => 'test@test.com',
+            'patient_password' => 'password', 
+            'patient_password_confirmation' => 'password',
+            'patient_is_pregnancy' => true,
+        ])
+        
+        ->assertStatus(302);
+        $patient = $medecin->patients()->first();
+        // Assert the file was stored...
+        $this->assertDatabaseHas('patients', [
+            'first_name' => 'John',
+            'last_name' => 'Doe',
+            'email' => 'test@test.com',
+            'avatar' => $patient->avatar,
+        ]);
+        $this->assertFileExists(Storage::disk('public')->path($patient->avatar));
+        Storage::disk('public')->assertExists($patient->avatar);
+    }
+
+    /** @test */
+    public function patient_avatar_attribute_have_default_value() : void
+    {
+        $medecin = $this->loginAsMedecin();
+        Notification::fake();
+
+        $this->post('/medecin/patients', [
+            'patient_first_name' => 'John',
+            'patient_last_name' => 'Doe',
+            'patient_birthday' => Carbon::now()->subYears(rand(17,35)),
+            'patient_address' => $this->faker->address,
+            'patient_phone' =>  221778435052,
+            'patient_email' => 'test@test.com',
+            'patient_password' => 'password', 
+            'patient_password_confirmation' => 'password',
+            'patient_is_pregnancy' => true,
+        ]);
+
+        $this->assertDatabaseHas('patients', [
+            'first_name' => 'John',
+            'last_name' => 'Doe',
+            'email' => 'test@test.com',
+            'avatar' => null,
+        ]);
+        $patient = $medecin->patients()->first();
+        $this->assertEquals('assets/img/brand/favicon-axxunjurel.svg', $patient->avatar);
+    }
+
 }

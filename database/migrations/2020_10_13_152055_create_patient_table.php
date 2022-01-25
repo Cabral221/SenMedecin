@@ -20,15 +20,19 @@ class CreatePatientTable extends Migration
             $table->date('birthday');
             $table->string('address');
             $table->string('phone')->unique();
+            $table->string('referential')->nullable()->unique();
+            $table->string('avatar')->nullable();
+
             $table->bigInteger('phone_verification_token')->nullable();
             $table->string('email')->nullable()->unique();
             $table->string('password');
-            $table->string('referential')->nullable()->unique();
+
             $table->bigInteger('medecin_id')->unsigned()->index();
             $table->bigInteger('carnet_id')->unsigned()->index()->nullable();
             $table->boolean('is_active')->default(false);
             $table->boolean('is_pregnancy')->default(false);
             $table->rememberToken();
+
             $table->timestamps();
 
             $table->foreign('medecin_id')->references('id')->on('medecins')->onDelete('cascade');

@@ -6,13 +6,17 @@
 	<meta charset="UTF-8">
 	<meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="Description" content="AxxuNjurel - restez avertit à l'approche de vos rendez-vous">
 	<meta name="Author" content="Abdourahmane Diop">
 	<meta name="Keywords"
-		content="axxu njurel, santé, sénégal" />
-
-	<!-- Title -->
-	<title> AxxuNjurel - restez avertit à l'approche de vos rendez-vous </title>
+	content="axxu njurel, santé, sénégal" />
+	{{-- Description dinamique de la page --}}
+	<meta name="Description" content="AxxuNjurel - restez avertit à l'approche de vos rendez-vous">
+	<!-- Dynamic Title Page -->
+	<title>
+		{{ isset($title) 
+		? $title . ' - '. config('app.name') 
+		: config('app.name') . ' - restez avertit à l\'approche de vos rendez-vous' }}
+	</title>
 
 	<!-- Favicon -->
 	<link rel="icon" href="{{ asset('assets/img/brand/favicon-axxunjurel.svg') }}" type="image/x-icon" />

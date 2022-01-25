@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Concerns\AvatarConcern;
 use App\Models\Patient;
 use App\Models\Responsable;
 use Illuminate\Notifications\Notifiable;
@@ -54,7 +55,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  */
 class Medecin extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, AvatarConcern;
 
     /**
      * The attributes that are mass assignable.
@@ -64,6 +65,7 @@ class Medecin extends Authenticatable
     protected $fillable = [
         'first_name', 
         'last_name', 
+        'avatar', 
         'phone', 
         'email', 
         'password', 

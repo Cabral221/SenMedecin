@@ -153,6 +153,17 @@ abstract class TestCase extends BaseTestCase
         ]);
     }
 
+    public function loginAsResponsable(Responsable $responsable = null) : Responsable
+    {   
+        if(!$responsable) {
+            $partener = $this->createPartener();
+            $responsable = $this->createResponsable($partener);
+        }
+
+        $this->actingAs($responsable, 'responsable');
+        return $responsable;
+    }
+
     public function loginAsMedecin(Medecin $medecin = null) : Medecin
     {   
         if(!$medecin) {

@@ -139,7 +139,7 @@
                         </div>
                     </div>
                     <div class="dropdown main-profile-menu nav nav-item nav-link">
-                        <a class="profile-user d-flex" href="#"><img alt="" src="{{ asset('assets/img/faces/6.jpg') }}">
+                        <a class="profile-user d-flex" href="#"><img alt="avatar" src="{{ asset(auth('patient')->user()->avatar) }}">
                             <div class="p-text d-none">
                                 <span class="p-name font-weight-bold">{{ auth()->user()->fullName }}</span>
                                 <small class="p-sub-text">Premium Member</small>
@@ -147,7 +147,7 @@
                         </a>
                         <div class="dropdown-menu shadow">
                             <div class="main-header-profile header-img">
-                                <div class="main-img-user"><img alt="" src="{{ asset('assets/img/faces/6.jpg') }}"></div>
+                                <div class="main-img-user"><img alt="avatar" src="{{ asset(auth('patient')->user()->avatar) }}"></div>
                                 <h6>{{ auth()->user()->fullName }}</h6><span>Premium Member</span>
                             </div>
                             <a class="dropdown-item" href="{{ route('patient.home') }}"><i class="fas fa-tachometer-alt"></i> Tableau de board</a>
@@ -158,9 +158,6 @@
                                 href="{{ route('patient.logout') }}"
                                 onclick="event.preventDefault();document.getElementById('logout-form-patient').submit();">
                                 <i class="fas fa-sign-out-alt"></i> Sign Out</a>
-                                <form id="logout-form-patient" action="{{ route('patient.logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
                         </div>
                     </div>
                 </div>

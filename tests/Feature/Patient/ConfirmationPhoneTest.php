@@ -20,7 +20,7 @@ class ConfirmationPhoneTest extends TestCase
 
         $this->loginAsMedecin();
 
-        $response = $this->post('/medecin/patients', [
+        $this->post('/medecin/patients', [
             'patient_first_name' => 'John',
             'patient_last_name' => 'Doe',
             'patient_birthday' => Carbon::now()->subYears(rand(17,35)),
@@ -30,9 +30,9 @@ class ConfirmationPhoneTest extends TestCase
             'patient_password' => 'password', 
             'patient_password_confirmation' => 'password',
             'patient_is_pregnancy' => false,
-        ]);
+        ])
 
-        $response->assertSessionHas('success');
+        ->assertSessionHas('success');
 
         $patient = Patient::where('email', 'test@test.com')->first();
 
@@ -58,8 +58,10 @@ class ConfirmationPhoneTest extends TestCase
             'phone_verification_token' => null
         ]);
 
-        $response = $this->get('/patient/home');
-        $response->assertOk();
+        $this->get('/patient/confirm-phone')
+
+        ->assertStatus(302)
+        ->assertRedirect('/patient/home');
     }
 
     /** @test */
@@ -67,11 +69,9 @@ class ConfirmationPhoneTest extends TestCase
     {
         $this->loginAsPatient();
 
-        $response = $this->post('/patient/confirm-phone', [
-            'code' => null,
-        ]);
-
-        $response->assertSessionHasErrors(['code']);
+        $this->get('/patient/confirmphone?code=')
+        
+        ->assertSessionHasErrors(['code']);
     }
 
     /** @test */
@@ -79,11 +79,9 @@ class ConfirmationPhoneTest extends TestCase
     {
         $this->loginAsPatient();
 
-        $response = $this->post('/patient/confirm-phone', [
-            'code' => 'azeaze',
-        ]);
-
-        $response->assertSessionHasErrors(['code']);
+        $this->get('/patient/confirmphone?code=azeaze')
+        
+        ->assertSessionHasErrors(['code']);
     }
 
     /** @test */
@@ -91,11 +89,9 @@ class ConfirmationPhoneTest extends TestCase
     {
         $this->loginAsPatient();
 
-        $response = $this->post('/patient/confirm-phone', [
-            'code' => 12345,
-        ]);
-
-        $response->assertSessionHasErrors(['code']);
+        $this->get('/patient/confirmphone?code=12345')
+        
+        ->assertSessionHasErrors(['code']);
     }
 
     /** @test */
@@ -106,11 +102,9 @@ class ConfirmationPhoneTest extends TestCase
             'phone_verification_token' => 123456,
         ]);
 
-        $response = $this->post('/patient/confirm-phone', [
-            'code' => $patient->phone_verification_token+1,
-        ]);
+        $this->get('/patient/confirmphone?code=' . ($patient->phone_verification_token+1))
 
-        $response->assertSessionHasErrors(['code' => 'Désolé ! Le code saisi ne correspond pas.']);
+        ->assertSessionHasErrors(['code' => 'Désolé ! Le code saisi ne correspond pas.']);
     }
 
     /** @test */
@@ -118,15 +112,46 @@ class ConfirmationPhoneTest extends TestCase
     {
         $patient = $this->loginAsPatient();
 
-        $response = $this->post('/patient/confirm-phone', [
-            'code' => $patient->phone_verification_token,
-        ]);
+        $this->get('/patient/confirmphone?code=' . $patient->phone_verification_token)
 
-        $response->assertSessionHasNoErrors();
-        $response->assertRedirect('/patient/home');
+        ->assertSessionHasNoErrors()
+        ->assertRedirect('/patient/home');
         $this->assertDatabaseHas('patients', [
             'phone' => $patient->phone,
             'phone_verification_token' => null
         ]);
+    }
+
+    /** @test */
+    public function patient_can_ask_new_phone_verif_token() : void
+    {
+        // Etant donné : que je suis inscrite sans valider mon code
+        Notification::fake();
+        $patient = $this->loginAsPatient();
+        $oldToken = $patient->phone_verification_token;
+
+        $this->assertDatabaseHas('patients', [
+            'first_name' => $patient->first_name,
+            'email' => $patient->email,
+            'phone' =>$patient->phone,
+            'phone_verification_token' => $patient->phone_verification_token,
+        ]);
+        // Quand je suis à la page de confirmation du numero de telephone
+        // Et que je demande un nouveau code
+        $this->from('/patient/confirm-phone')->get('/patient/confirm-phone/resend')
+
+        ->assertStatus(302)
+        ->assertRedirect('/patient/confirm-phone')
+        ->assertSessionHas('success');
+
+        // le code dois etre changer en base donne
+        $this->assertDatabaseMissing('patients', [
+            'first_name' => $patient->first_name,
+            'email' => $patient->email,
+            'phone' =>$patient->phone,
+            'phone_verification_token' => $oldToken
+        ]);
+        // et le notif sera envoye
+        Notification::assertSentTo($patient, PhoneVerification::class);
     }
 }

@@ -94,8 +94,8 @@ class DatabaseSeeder extends Seeder
         $carnet = Carnet::create();
 
         $patient = Patient::create([
-            'first_name' => 'Patient 1',
-            'last_name' => 'pname',
+            'first_name' => 'Astou',
+            'last_name' => 'Ndiaye',
             'birthday' => Carbon::now()->subYears(20),
             'address' => '1603 dakar, no precis',
             'phone' => '778435052',
@@ -115,7 +115,7 @@ class DatabaseSeeder extends Seeder
             'last_name' => 'pname',
             'birthday' => Carbon::now()->subYears(30),
             'address' => '1603 dakar, no precis',
-            'phone' => '770000001',
+            'phone' => '770005052',
             'email' => 'patient2@patient.com',
             'medecin_id' => $medecin->id,
             // 'email_verified_at' => now(),
