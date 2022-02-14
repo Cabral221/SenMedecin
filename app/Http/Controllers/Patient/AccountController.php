@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Patient;
 
 use App\Models\Patient;
 use Illuminate\View\View;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
 
 class AccountController extends Controller
 {
@@ -22,6 +24,19 @@ class AccountController extends Controller
     public function edit() : View
     {
         return view('patient.account.update', ['id' => $this->auth()->id]);
+    }
+
+    public function update(Request $request) : RedirectResponse
+    {
+        $this->validate($request, [
+            'first_name' => ['required' , 'min:2', 'string'],
+            'last_name' => ['required' , 'min:2', 'string'],
+            'birthday' => ['required', 'date'],
+            'address' => ['required', 'string'],
+        ]);
+
+        $this->auth()->update($request->all());
+        return redirect()->back()->with(['success' => 'Modifications réussies']);
     }
 
 }

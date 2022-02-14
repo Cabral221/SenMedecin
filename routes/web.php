@@ -33,6 +33,7 @@ Route::prefix('/patient')->namespace('Patient')->name('patient.')->group(functio
         Route::prefix('/account')->group(function() {
             Route::get('/', 'AccountController@index')->name('account');
             Route::get('/edit', 'AccountController@edit')->name('account.edit');
+            Route::patch('/update', 'AccountController@update')->name('account.update');
         });
         
         Route::put('/profile/{id}', 'PatientController@update')->name('update');

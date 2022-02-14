@@ -1,166 +1,328 @@
-@extends('user.layouts.app')
-@section('headsection')
+@extends('layouts.app', ['title' => 'Modification' . ' - Mon compte'])
 
+@section('breadcrumb')
+    <!-- breadcrumb -->
+	<div class="breadcrumb-header justify-content-between">
+		<div class="left-content">
+			<h4 class="content-title mb-2">Modifier mon compte</h4>
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="{{ route('patient.home') }}">Tableau de bord</a></li>
+					<li class="breadcrumb-item"><a href="{{ route('patient.account') }}">Mon Compte</a></li>
+					<li class="breadcrumb-item active" aria-current="page">Modification</li>
+				</ol>
+			</nav>
+		</div>
+	</div>
+	<!-- breadcrumb -->
 @endsection
+
 @section('main-content')
-<!-- Premiere section -->
-   <section>
-	@include('patient.sidebare.sidebare')
-	   <div class="profile-right">
-		   <!-- La Partie de l'grossesse -->
-		   <!-- <h6>ETAT</h6> -->
-		   <p style="margin:-5px 0px 8px;font-size:30px;" class="text-bold">Profile de {{ Auth::guard('patient')->user()->first_name .' '. Auth::guard('patient')->user()->last_name  }} </p>
-		   		<div class="grossesse update_profil">
-					<h6 style="margin:-10px 0px;">Modifier Toutes vos informations</h6>
-				
-						<form action="{{ route('patient.update',Auth::guard('patient')->user()->id) }}" class="profil_form" method="post">
-							<div class="form_content">
-								<div class="form_left">
-									@csrf
-									{{ method_field('PUT') }}
-									<p class="contour_input">
-										<i class="fa fa-user-tie icon"></i>
-										<input type="text" class="form-control @error('first_name') is-invalid @enderror" name="first_name" value="{{ old('first_name') ?? Auth::guard('patient')->user()->first_name }}" required autocomplete="first_name" autofocus id="first_name" placeholder="">
-										<div>
-											@error('first_name')
-												<span class="invalid-feedback" role="alert">
-													<strong>{{ $message }}</strong>
-												</span>
-											@enderror
-										</div>
-									</p>
-
-									<p class="contour_input">
-										<i class="fa fa-user-tag icon"></i>
-										<input  type="text" class="form-control @error('last_name') is-invalid @enderror" name="last_name" value="{{ old('last_name') ?? Auth::guard('patient')->user()->last_name }}" required autocomplete="last_name" autofocus id="last_name" placeholder="Votre Nom">
-										<div>
-											@error('last_name')
-												<span class="invalid-feedback" role="alert">
-													<strong>{{ $message }}</strong>
-												</span>
-											@enderror
-										</div>
-									</p>
-
-						
-									<p class="contour_input">
-										<i class="fa fa-stopwatch-20 icon"></i>
-										<input type="date" class="form-control @error('birthday') is-invalid @enderror" name="birthday" value="{{ old('birthday') ?? Auth::guard('patient')->user()->birthday }}" required autocomplete="birthday" autofocus id="birthday" placeholder="">
-										<div>
-											@error('birthday')
-												<span class="invalid-feedback" role="alert">
-													<strong>{{ $message }}</strong>
-												</span>
-											@enderror
-										</div>
-									</p>
-
-								</div>
-								<div class="form_right">
-									<p class="contour_input">
-										<i class="fa fa-map-marker-alt icon"></i>
-										<input type="text" class="form-control @error('address') is-invalid @enderror" name="address" id="address" value="{{ old('adsress') ?? Auth::guard('patient')->user()->address }}" required autocomplete="current-address" id="" placeholder="Votre Adresse Physique">
-										<div>
-											@error('address')
-												<span class="invalid-feedback" role="alert">
-													<strong>{{ $message }}</strong>
-												</span>
-											@enderror
-										</div>
-									</p>
-
-									<p class="contour_input">
-										<i class="fa fa-phone icon"></i>
-										<input type="number" class="form-control @error('phone') is-invalid @enderror" name="phone" id="phone" value="{{ old('phone') ?? Auth::guard('patient')->user()->phone }}" required autocomplete="current-phone" id="" placeholder="Votre Numero De Telephone">
-										<div>
-											@error('phone')
-												<span class="invalid-feedback" role="alert">
-													<strong>{{ $message }}</strong>
-												</span>
-											@enderror
-										</div>
-									</p>
-
-									<p>
-										<input class="btn-primary text-bold " type="submit" value="Enregistre les modification">
-									</p>
-								</div>
-							</div>
-							
-							
-						</form>
-				</div>
-
-				<div class="grossesse update_profil">
-					<h6 style="margin:-10px 0px;">Modifier Votre Adresse E-mail</h6>
-					<form action="{{ route('patient.update',Auth::guard('patient')->user()->id) }}" class="profil_form_2" method="post">
-					@csrf 
-					{{ method_field('PATCH') }}	
-					<p class="contour_input">
-							<i class="fa fa-envelope icon"></i>
-							<input  type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') ?? Auth::guard('patient')->user()->email }}" required autocomplete="email" autofocus id="email" placeholder="Votre Adresse E-mail">
+<!-- row -->
+<div class="row row-sm">
+	<!-- Col -->
+	<div class="col-lg-4 col-xl-3">
+		<div class="card mg-b-20">
+			<div class="card-body">
+				<div class="pl-0">
+					<div class="main-profile-overview">
+						<div class="main-img-user profile-user"><img alt="Profile" src="{{ asset(auth('patient')->user()->avatar) }}"><a href="JavaScript:void(0);" class="fas fa-camera profile-edit"></a></div>
+						<div class="d-flex justify-content-between mg-b-20">
 							<div>
-								@error('email')
-									<span class="invalid-feedback" role="alert">
-										<strong>{{ $message }}</strong>
-									</span>
+								<h5 class="main-profile-name">{{ auth('patient')->user()->fullName }}</h5>
+								<p class="main-profile-name-text">Patiente</p>
+							</div>
+						</div>
+					</div><!-- main-profile-overview -->
+				</div>
+			</div>
+		</div>
+		<div class="card mg-b-20">
+			<div class="card-body">
+				<div class="main-content-label tx-13 mg-b-25">
+					Conatct
+				</div>
+				<div class="main-profile-contact-list">
+					<div class="media">
+						<div class="media-icon bg-primary-transparent text-primary">
+							<i class="fa fa-phone"></i>
+						</div>
+						<div class="media-body">
+							<span>Téléphone</span>
+							<div>
+								{{ auth('patient')->user()->phone }}
+							</div>
+						</div>
+					</div>
+					<div class="media">
+						<div class="media-icon bg-success-transparent text-success">
+							<i class="fa fa-envelope"></i>
+						</div>
+						<div class="media-body">
+							<span>Email</span>
+							<div>
+								{{ auth('patient')->user()->email }}
+							</div>
+						</div>
+					</div>
+					<div class="media">
+						<div class="media-icon bg-info-transparent text-info">
+							<i class="fa fa-map-marker"></i>
+						</div>
+						<div class="media-body">
+							<span>Adresse</span>
+							<div>
+								{{ auth('patient')->user()->address }}
+							</div>
+						</div>
+					</div>
+				</div><!-- main-profile-contact-list -->
+			</div>
+		</div>
+	</div>
+	<!-- /Col -->
+
+	<!-- Col -->
+	<div class="col-lg-8 col-xl-9">
+		<div class="card">
+			<div class="card-body">
+				<div class="mb-4 main-content-label">Information personnelle</div>
+				<form class="form-horizontal" method="POST" action="{{ route('patient.account.update') }}">
+					@csrf
+					@method('PATCH')
+					<div class="form-group">
+						<div class="row">
+							<div class="col-md-3">
+								<label class="form-label">Prénom</label>
+							</div>
+							<div class="col-md-9">
+								<input type="text" class="form-control @error('first_name') is-invalid @enderror"  placeholder="Prénom" name="first_name" value="{{ old('first_name') ?? auth('patient')->user()->first_name }}">
+								@error('first_name')
+									<span class="invalid-feedback">{{ $message }}</span>
 								@enderror
 							</div>
-						</p>
-						<p>
-							<input class="btn-primary text-bold" type="submit" value="Enregistre les modification">
-						</p>
-					</form>
-				</div>
-
-				<div class="grossesse update_profil">
-					<h6 style="margin:-10px 0px;">Modifiez Votre Mot De Passe</h6>
-					<form action="{{ route('patient.password',Auth::guard('patient')->user()->id) }}" class="profil_form_3" method="post">
-					@csrf 
-					{{ method_field('PUT') }}		
-						<p class="contour_input">
-							<i class="fa fa-key icon"></i>
-							<input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password" required autocomplete="current-password" id="" placeholder="Votre Mot de passe">
-							<div>
-								@error('password')
-									<span class="invalid-feedback" role="alert">
-										<strong>{{ $message }}</strong>
-									</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-md-3">
+								<label class="form-label">last Name</label>
+							</div>
+							<div class="col-md-9">
+								<input type="text" class="form-control @error('last_name') is-invalid @enderror"  placeholder="Nom" name="last_name" value="{{  old('last_name') ?? auth('patient')->user()->last_name }}">
+								@error('last_name') 
+									<span class="invalid-feedback">{{ $message }}</span>
 								@enderror
 							</div>
-						</p>
-
-						<p class="contour_input password_center">
-							<i class="fa fa-lock icon"></i>
-							<input type="password" class="form-control @error('password') is-invalid @enderror" name="password_confirmation" id="password" required autocomplete="current-password" id="" placeholder="Confirmez VotreMot de passe">
-						</p>
-						<p>
-							<input class="btn-primary text-bold" type="submit" value="Enregistre les modification">
-						</p>
-					</form>
-				</div>
-
-				<div class="delete_compte">
-					<p>Zone Danger</p>
-					<br>
-					<form id="delete-compte" method="post" action="{{ route('patient.destroy',Auth::guard('patient')->user()->id) }}" style="display:none">
-						{{csrf_field()}}
-						{{method_field('delete')}}
-					</form>
-					<span class=""><a href="" class="text-center" 
-						onclick="
-							if(confirm('Etes Vous Sur De Supprimer Votre Compte ?')){
-								event.preventDefault();document.getElementById('delete-compte').submit();
-							}else{
-								event.preventDefault();
-							}
-						"><i class="fa fa-trash"> Vous Pouvez Supprimer Votre Compte</i>
-						</a>
-					</span>
-				</div>
-
-			<!-- Fin de la partie de l'grossesse -->
-	   </div>
-   </section>
-<!-- fin de la premier section -->
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-md-3">
+								<label class="form-label">Date de naissance</label>
+							</div>
+							<div class="col-md-9">
+								<input type="date" class="form-control @error('birthday') is-invalid @enderror"  placeholder="Date de naissance" name="birthday" value="{{ old('birthday') ?? auth('patient')->user()->birthday->toDateString() }}">
+								@error('birthday') 
+									<span class="invalid-feedback">{{ $mesaage }}</span>
+								@enderror
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-md-3">
+								<label class="form-label">Adresse</label>
+							</div>
+							<div class="col-md-9">
+								<textarea row="2" type="text" class="form-control @error('address') is-invalid @enderror"  placeholder="Adresse" name="address" value="Redashna">{{ old('address') ?? auth('patient')->user()->address }}</textarea>
+								@error('address')
+									<span class="invalid-feedback">{{ $message }}</span>
+								@enderror
+							</div>
+						</div>
+					</div>
+					<div class="form-group text-right">
+						<button type="submit" class="btn btn-primary"> <i class="fa fa-edit"></i> Enregister</button>
+					</div>
+				</form>
+				<form class="form-horizontal">
+					<div class="mb-4 main-content-label">Name</div>
+					<div class="form-group ">
+						<div class="row">
+							<div class="col-md-3">
+								<label class="form-label">User Name</label>
+							</div>
+							<div class="col-md-9">
+								<input type="text" class="form-control"  placeholder="User Name" value="Redashna">
+							</div>
+						</div>
+					</div>
+					<div class="form-group ">
+						<div class="row">
+							<div class="col-md-3">
+								<label class="form-label">First Name</label>
+							</div>
+							<div class="col-md-9">
+								<input type="text" class="form-control"  placeholder="First Name" value="Redashna">
+							</div>
+						</div>
+					</div>
+					<div class="form-group ">
+						<div class="row">
+							<div class="col-md-3">
+								<label class="form-label">last Name</label>
+							</div>
+							<div class="col-md-9">
+								<input type="text" class="form-control"  placeholder="Last Name" value="Redashna">
+							</div>
+						</div>
+					</div>
+					<div class="form-group ">
+						<div class="row">
+							<div class="col-md-3">
+								<label class="form-label">Nick Name</label>
+							</div>
+							<div class="col-md-9">
+								<input type="text" class="form-control"  placeholder="Nick Name" value="Redash">
+							</div>
+						</div>
+					</div>
+					<div class="form-group ">
+						<div class="row">
+							<div class="col-md-3">
+								<label class="form-label">Designation</label>
+							</div>
+							<div class="col-md-9">
+								<input type="text" class="form-control"  placeholder="Designation" value="Web Designer">
+							</div>
+						</div>
+					</div>
+					<div class="mb-4 main-content-label">Contact Info</div>
+					<div class="form-group ">
+						<div class="row">
+							<div class="col-md-3">
+								<label class="form-label">Email<i>(required)</i></label>
+							</div>
+							<div class="col-md-9">
+								<input type="text" class="form-control"  placeholder="Email" value="info@redash.in">
+							</div>
+						</div>
+					</div>
+					<div class="form-group ">
+						<div class="row">
+							<div class="col-md-3">
+								<label class="form-label">Website</label>
+							</div>
+							<div class="col-md-9">
+								<input type="text" class="form-control"  placeholder="Website" value="@spruko.w">
+							</div>
+						</div>
+					</div>
+					<div class="form-group ">
+						<div class="row">
+							<div class="col-md-3">
+								<label class="form-label">Phone</label>
+							</div>
+							<div class="col-md-9">
+								<input type="text" class="form-control"  placeholder="phone number" value="+245 354 654">
+							</div>
+						</div>
+					</div>
+					<div class="form-group ">
+						<div class="row">
+							<div class="col-md-3">
+								<label class="form-label">Address</label>
+							</div>
+							<div class="col-md-9">
+								<textarea class="form-control" name="example-textarea-input" rows="2"  placeholder="Address">San Francisco, CA</textarea>
+							</div>
+						</div>
+					</div>
+					<div class="mb-4 main-content-label">Social Info</div>
+					<div class="form-group ">
+						<div class="row">
+							<div class="col-md-3">
+								<label class="form-label">Twitter</label>
+							</div>
+							<div class="col-md-9">
+								<input type="text" class="form-control"  placeholder="twitter" value="twitter.com/spruko.html">
+							</div>
+						</div>
+					</div>
+					<div class="form-group ">
+						<div class="row">
+							<div class="col-md-3">
+								<label class="form-label">Facebook</label>
+							</div>
+							<div class="col-md-9">
+								<input type="text" class="form-control"  placeholder="facebook" value="https://www.facebook.com/Redash">
+							</div>
+						</div>
+					</div>
+					<div class="form-group ">
+						<div class="row">
+							<div class="col-md-3">
+								<label class="form-label">Google+</label>
+							</div>
+							<div class="col-md-9">
+								<input type="text" class="form-control"  placeholder="google" value="spruko.com">
+							</div>
+						</div>
+					</div>
+					<div class="form-group ">
+						<div class="row">
+							<div class="col-md-3">
+								<label class="form-label">Linked in</label>
+							</div>
+							<div class="col-md-9">
+								<input type="text" class="form-control"  placeholder="linkedin" value="linkedin.com/in/spruko">
+							</div>
+						</div>
+					</div>
+					<div class="form-group ">
+						<div class="row">
+							<div class="col-md-3">
+								<label class="form-label">Github</label>
+							</div>
+							<div class="col-md-9">
+								<input type="text" class="form-control" placeholder="github" value="github.com/sprukos">
+							</div>
+						</div>
+					</div>
+					<div class="mb-4 main-content-label">About Yourself</div>
+					<div class="form-group ">
+						<div class="row">
+							<div class="col-md-3">
+								<label class="form-label">Biographical Info</label>
+							</div>
+							<div class="col-md-9">
+								<textarea class="form-control" name="example-textarea-input" rows="4" placeholder="">pleasure rationally encounter but because pursue consequences that are extremely painful.occur in which toil and pain can procure him some great pleasure..</textarea>
+							</div>
+						</div>
+					</div>
+					<div class="mb-4 main-content-label">Email Preferences</div>
+					<div class="form-group mb-0">
+						<div class="row">
+							<div class="col-md-3">
+								<label class="form-label">Verified User</label>
+							</div>
+							<div class="col-md-9">
+								<div class="custom-controls-stacked">
+									<label class="ckbox mg-b-10"><input checked="" type="checkbox"><span> Accept to receive post or page notification emails</span></label>
+									<label class="ckbox"><input checked="" type="checkbox"><span> Accept to receive email sent to multiple recipients</span></label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="card-footer">
+				<button type="submit" class="btn btn-primary waves-effect waves-light">Update Profile</button>
+			</div>
+		</div>
+	</div>
+	<!-- /Col -->
+</div>
+<!-- row closed -->
 @endsection

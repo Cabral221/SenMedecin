@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Patient;
 
+use Carbon\Carbon;
 use Tests\TestCase;
 
 class AccountPatientTest extends TestCase
@@ -28,6 +29,57 @@ class AccountPatientTest extends TestCase
         $this->get('/patient/account')
 
         ->assertOk();
+    }
+
+    /** @test */
+    public function patient_can_access_to_edit_profil() : void
+    {
+        $patient = $this->loginAsPatient();
+        // vALIDATE PHONE NUMBER FOR PAIENT ACCESS
+        $patient->update(['phone_verification_token' => null]);
+
+        $this->get('/patient/account/edit')
+        ->assertOk();
+    }
+
+    /** @test */
+    public function patient_update_validation_requires() : void
+    {
+        $patient = $this->loginAsPatient();
+        // vALIDATE PHONE NUMBER FOR PAIENT ACCESS
+        $patient->update(['phone_verification_token' => null]);
+
+        $this->patch('/patient/account/update', [
+            'first_name' => '',
+            'last_name' => '',
+            'birthday' => '',
+            'address' => '',
+        ])
+        
+        ->assertStatus(302)
+        ->assertSessionHasErrors(['first_name', 'last_name', 'birthday', 'address']);
+    }
+
+    /** @test */
+    public function patient_can_update_personal_info() : void
+    {
+        $patient = $this->loginAsPatient();
+        $patient->update(['phone_verification_token' => null]);
+
+        $this->patch('/patient/account/update', [
+            'first_name' => 'Fatou',
+            'last_name' => 'Mbaye',
+            'birthday' => Carbon::now()->subYears(18)->toDateString(),
+            'address' => 'XXX angle Y, Movistar',
+        ])
+        
+        ->assertSessionHasNoErrors()
+        ->assertSessionHas('success');
+        $this->assertDatabaseHas('patients', [
+            'first_name' => 'Fatou',
+            'last_name' => 'Mbaye',
+            'address' => 'XXX angle Y, Movistar',
+        ]);
     }
 
 }
