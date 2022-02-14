@@ -146,38 +146,31 @@
 						<button type="submit" class="btn btn-primary"> <i class="fa fa-edit"></i> Enregister</button>
 					</div>
 				</form>
+
+				<div class="mb-4 main-content-label">Email</div>
+				<form class="form-horizontal" method="POST" action="{{ route('patient.account.email') }}">
+					@csrf
+					@method('PATCH')
+					<div class="form-group">
+						<div class="row">
+							<div class="col-md-3">
+								<label class="form-label">Email</label>
+							</div>
+							<div class="col-md-9">
+								<input type="email" class="form-control @error('email') is-invalid @enderror"  placeholder="Email" name="email" value="{{ old('email') ?? auth('patient')->user()->email }}">
+								@error('email')
+									<span class="invalid-feedback">{{ $message }}</span>
+								@enderror
+							</div>
+						</div>
+					</div>
+					<div class="form-group text-right">
+						<button type="submit" class="btn btn-primary"><i class="fa fa-edit"> Modifier l'Email</i></button>
+					</div>
+				</form>
+
 				<form class="form-horizontal">
-					<div class="mb-4 main-content-label">Name</div>
-					<div class="form-group ">
-						<div class="row">
-							<div class="col-md-3">
-								<label class="form-label">User Name</label>
-							</div>
-							<div class="col-md-9">
-								<input type="text" class="form-control"  placeholder="User Name" value="Redashna">
-							</div>
-						</div>
-					</div>
-					<div class="form-group ">
-						<div class="row">
-							<div class="col-md-3">
-								<label class="form-label">First Name</label>
-							</div>
-							<div class="col-md-9">
-								<input type="text" class="form-control"  placeholder="First Name" value="Redashna">
-							</div>
-						</div>
-					</div>
-					<div class="form-group ">
-						<div class="row">
-							<div class="col-md-3">
-								<label class="form-label">last Name</label>
-							</div>
-							<div class="col-md-9">
-								<input type="text" class="form-control"  placeholder="Last Name" value="Redashna">
-							</div>
-						</div>
-					</div>
+					
 					<div class="form-group ">
 						<div class="row">
 							<div class="col-md-3">

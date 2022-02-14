@@ -36,7 +36,17 @@ class AccountController extends Controller
         ]);
 
         $this->auth()->update($request->all());
-        return redirect()->back()->with(['success' => 'Modifications réussies']);
+        return redirect()->back()->with(['success' => 'Modifications réussies!']);
+    }
+
+    public function updateEmail(Request $request) : RedirectResponse
+    {
+        $this->validate($request, [
+            'email' => ['required', 'email', 'unique:patients,email,' . $this->auth()->id]
+        ]);
+
+        $this->auth()->update(['email' => $request->email]);
+        return redirect()->back()->with(['success' => 'Email enregistré!']);
     }
 
 }

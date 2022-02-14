@@ -115,7 +115,7 @@ abstract class TestCase extends BaseTestCase
         return $partener->responsable()->create([
             'first_name' => $this->faker->firstName,
             'last_name' => $this->faker->lastName,
-            'phone' => 338240000,
+            'phone' => rand(331000000, 339999999),
             'email' => $this->faker->unique()->safeEmail,
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         ]);
@@ -125,7 +125,7 @@ abstract class TestCase extends BaseTestCase
     {
         if($responsable === null) $responsable = $this->createResponsable();
 
-        $service = Service::create(['libele' => 'Maternité']);
+        $service = Service::firstOrCreate(['libele' => 'Service X']);
         return $responsable->medecins()->create([
             'first_name' => $this->faker->firstName,
             'last_name' => $this->faker->lastName,
@@ -145,7 +145,7 @@ abstract class TestCase extends BaseTestCase
             'last_name' => $this->faker->lastName,
             'birthday' => Carbon::now()->subYears(rand(17,35)),
             'address' => $this->faker->address,
-            'phone' =>  778435052,
+            'phone' =>  rand(771000000, 789999999),
             'email' => $this->faker->unique()->safeEmail,
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),

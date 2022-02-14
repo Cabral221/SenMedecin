@@ -82,4 +82,55 @@ class AccountPatientTest extends TestCase
         ]);
     }
 
+    /** @test */
+    public function patient_validation_email_on_update() : void
+    {
+        $patient = $this->loginAsPatient();
+        // vALIDATE PHONE NUMBER FOR PAIENT ACCESS
+        $patient->update(['phone_verification_token' => null]);
+
+        $this->patch('/patient/account/email', [
+            'email' => '',
+        ])
+        
+        ->assertStatus(302)
+        ->assertSessionHasErrors(['email']);
+    }
+
+    /** @test */
+    public function patient_validate_unique_email_on_update() : void
+    {
+        $patient = $this->loginAsPatient();
+        // vALIDATE PHONE NUMBER FOR PAIENT ACCESS
+        $patient->update(['phone_verification_token' => null]);
+
+        $patient_2 = $this->createPatient($this->createMedecin());
+        $patient_2->update(['email' => 'test@test.com']);
+
+        $this->patch('/patient/account/email', [
+            'email' => 'test@test.com',
+        ])
+        
+        ->assertStatus(302)
+        ->assertSessionHasErrors(['email']);
+    }
+
+    /** @test */
+    public function patient_can_update_email() : void
+    {
+        $patient = $this->loginAsPatient();
+        // vALIDATE PHONE NUMBER FOR PAIENT ACCESS
+        $patient->update(['phone_verification_token' => null]);
+
+        $this->patch('/patient/account/email', [
+            'email' => 'test@test.com',
+        ])
+        
+        ->assertStatus(302)
+        ->assertSessionHas('success');
+        $this->assertDatabaseHas('patients', [
+            'email' => 'test@test.com'
+        ]);
+    }
+
 }
