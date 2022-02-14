@@ -14,7 +14,7 @@ class PatientController extends Controller
 
     public function auth() : Patient
     {
-       return auth('patient')->user();
+        return auth('patient')->user();
     }
     
     public function index() : View
@@ -22,55 +22,62 @@ class PatientController extends Controller
         return view('patient.index');
     }
     
-    public function profile() : View
-    {
-        return view('patient.profile.update',['id' => $this->auth()->id]);
-    }
-    
     public function update( Request $request, string $id) : RedirectResponse
     {
         
-        $this->validate($request,[
+        $this->validate(
+            $request, [
             'first_name' => 'required|string',
             'last_name' => 'required|string',
             'phone' => 'required|string',
             'birthday' => 'required|string',
             'address' => 'required|string',
-        ]);
+            ]
+        );
         
-        $this->auth()->update([
+        $this->auth()->update(
+            [
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'phone' => $request->phone,
             'birthday' => $request->birthday,
             'address' => $request->address,
-        ]);
+            ]
+        );
 
         return back();
     }
     
     public function email(Request $request, string $id) : RedirectResponse
     {
-        $this->validate($request,[
+        $this->validate(
+            $request, [
             'email' => 'required|string',
-        ]);
+            ]
+        );
 
-        $this->auth()->update([
+        $this->auth()->update(
+            [
             'email' => $request->email,
-        ]);
+            ]
+        );
 
         return back();
     }
     
     public function password( Request $request, string $id) : RedirectResponse
     {
-        $this->validate($request,[
+        $this->validate(
+            $request, [
             'password' => 'required|string|confirmed',
-        ]);
+            ]
+        );
         
-        $this->auth()->update([
+        $this->auth()->update(
+            [
             'password' => Hash::make($request->password),
-        ]);
+            ]
+        );
 
         return back();
     }
@@ -83,10 +90,10 @@ class PatientController extends Controller
     }
     
     /**
-    * get the page of confirm phone form
-    *
-    * @return View|RedirectResponse
-    */
+     * get the page of confirm phone form
+     *
+     * @return View|RedirectResponse
+     */
     public function confirmPhonePage()
     {
         if($this->auth()->hasValidPhone()) return redirect()->route('patient.home');
@@ -95,28 +102,34 @@ class PatientController extends Controller
     
     public function confirmPhone(Request $request) : RedirectResponse
     {
-        $this->validate($request, [
+        $this->validate(
+            $request, [
             'code' => ['required', 'numeric', 'digits:6'],
-        ]);
+            ]
+        );
         
         if($request->code != $this->auth()->phone_verification_token) {
             return redirect()->back()
-            ->withInput()
-            ->withErrors(['code' => 'Désolé ! Le code saisi ne correspond pas.']);
+                ->withInput()
+                ->withErrors(['code' => 'Désolé ! Le code saisi ne correspond pas.']);
         }
         
-        $this->auth()->update([
+        $this->auth()->update(
+            [
             'phone_verification_token' => null,
-        ]);
+            ]
+        );
 
         return redirect()->route('patient.home');
     }
 
     public function resendPhoneToken() : RedirectResponse
     {
-        $this->auth()->update([
+        $this->auth()->update(
+            [
             'phone_verification_token' => mt_rand(100000, 999999),
-        ]);
+            ]
+        );
 
         // Verify phone notification
         $this->auth()->notify(new PhoneVerification($this->auth()->phone_verification_token));

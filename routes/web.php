@@ -29,7 +29,12 @@ Route::prefix('/patient')->namespace('Patient')->name('patient.')->group(functio
     Route::middleware(['auth:patient', ConfirmPhonePatient::class])->group(function() {
         
         Route::get('/home', 'PatientController@index')->name('home');
-        Route::get('/profile', 'PatientController@profile')->name('profile');
+        // Account Patient Route
+        Route::prefix('/account')->group(function() {
+            Route::get('/', 'AccountController@index')->name('account');
+            Route::get('/edit', 'AccountController@edit')->name('account.edit');
+        });
+        
         Route::put('/profile/{id}', 'PatientController@update')->name('update');
         Route::patch('/profile/{id}', 'PatientController@email')->name('email');
         Route::put('/profil/{id}', 'PatientController@password')->name('password');

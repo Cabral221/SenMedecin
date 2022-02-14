@@ -145,7 +145,7 @@ abstract class TestCase extends BaseTestCase
             'last_name' => $this->faker->lastName,
             'birthday' => Carbon::now()->subYears(rand(17,35)),
             'address' => $this->faker->address,
-            'phone' =>  221778435052,
+            'phone' =>  778435052,
             'email' => $this->faker->unique()->safeEmail,
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),

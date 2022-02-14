@@ -117,7 +117,7 @@ class ConfirmationPhoneTest extends TestCase
         ->assertSessionHasNoErrors()
         ->assertRedirect('/patient/home');
         $this->assertDatabaseHas('patients', [
-            'phone' => $patient->phone,
+            'phone' => $patient->getRawOriginal('phone'),
             'phone_verification_token' => null
         ]);
     }
@@ -133,7 +133,7 @@ class ConfirmationPhoneTest extends TestCase
         $this->assertDatabaseHas('patients', [
             'first_name' => $patient->first_name,
             'email' => $patient->email,
-            'phone' =>$patient->phone,
+            'phone' =>$patient->getRawOriginal('phone'),
             'phone_verification_token' => $patient->phone_verification_token,
         ]);
         // Quand je suis à la page de confirmation du numero de telephone
@@ -148,7 +148,7 @@ class ConfirmationPhoneTest extends TestCase
         $this->assertDatabaseMissing('patients', [
             'first_name' => $patient->first_name,
             'email' => $patient->email,
-            'phone' =>$patient->phone,
+            'phone' =>$patient->getRawOriginal('phone'),
             'phone_verification_token' => $oldToken
         ]);
         // et le notif sera envoye

@@ -142,22 +142,21 @@
                         <a class="profile-user d-flex" href="#"><img alt="avatar" src="{{ asset(auth('patient')->user()->avatar) }}">
                             <div class="p-text d-none">
                                 <span class="p-name font-weight-bold">{{ auth()->user()->fullName }}</span>
-                                <small class="p-sub-text">Premium Member</small>
+                                <small class="p-sub-text">Patiente</small>
                             </div>
                         </a>
                         <div class="dropdown-menu shadow">
                             <div class="main-header-profile header-img">
                                 <div class="main-img-user"><img alt="avatar" src="{{ asset(auth('patient')->user()->avatar) }}"></div>
-                                <h6>{{ auth()->user()->fullName }}</h6><span>Premium Member</span>
+                                <h6>{{ auth()->user()->fullName }}</h6><span>Patiente</span>
                             </div>
                             <a class="dropdown-item" href="{{ route('patient.home') }}"><i class="fas fa-tachometer-alt"></i> Tableau de board</a>
-                            <a class="dropdown-item" href="{{ route('patient.profile') }}"><i class="far fa-user"></i> Mon Profil</a>
-                            <a class="dropdown-item" href="#"><i class="far fa-edit"></i> Modifier mon profile</a>
+                            <a class="dropdown-item" href="{{ route('patient.account') }}"><i class="far fa-user"></i> Mon compte</a>
                             <a class="dropdown-item" href="#"><i class="fas fa-sliders-h"></i> Paramettres</a>
                             <a class="dropdown-item" 
                                 href="{{ route('patient.logout') }}"
                                 onclick="event.preventDefault();document.getElementById('logout-form-patient').submit();">
-                                <i class="fas fa-sign-out-alt"></i> Sign Out</a>
+                                <i class="fas fa-sign-out-alt"></i> Déconnexion</a>
                         </div>
                     </div>
                 </div>

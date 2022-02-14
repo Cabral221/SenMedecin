@@ -3,10 +3,6 @@
 
 @endsection
 @section('main-content')
-
-
-
-
 <!-- Premiere section -->
    <section>
 	@include('patient.sidebare.sidebare')
@@ -148,31 +144,23 @@
 					<p>Zone Danger</p>
 					<br>
 					<form id="delete-compte" method="post" action="{{ route('patient.destroy',Auth::guard('patient')->user()->id) }}" style="display:none">
-					{{csrf_field()}}
-					{{method_field('delete')}}
+						{{csrf_field()}}
+						{{method_field('delete')}}
 					</form>
 					<span class=""><a href="" class="text-center" 
-					onclick="
-					if(confirm('Etes Vous Sur De Supprimer Votre Compte ?')){
-
-					event.preventDefault();document.getElementById('delete-compte').submit();
-
-					}else{
-
-					event.preventDefault();
-
-					}
-					
-					"><i class="fa fa-trash"> Vous Pouvez Supprimer Votre Compte</i></a></span>
+						onclick="
+							if(confirm('Etes Vous Sur De Supprimer Votre Compte ?')){
+								event.preventDefault();document.getElementById('delete-compte').submit();
+							}else{
+								event.preventDefault();
+							}
+						"><i class="fa fa-trash"> Vous Pouvez Supprimer Votre Compte</i>
+						</a>
+					</span>
 				</div>
 
 			<!-- Fin de la partie de l'grossesse -->
 	   </div>
    </section>
 <!-- fin de la premier section -->
-
-
-
-
-
 @endsection

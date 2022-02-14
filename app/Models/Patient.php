@@ -109,6 +109,11 @@ class Patient extends Authenticatable
     
     protected static function booted()
     {
+        static::creating(function($patient){
+            $patient->first_name = ucfirst($patient->first_name);
+            $patient->last_name = ucfirst($patient->last_name);
+        });
+
         static::created(function (Patient $patient) {
             $now = Carbon::now();
             $patient->referential = $now->year.$now->month.'-'.$patient->medecin->id.'-'.$patient->id;
@@ -139,6 +144,11 @@ class Patient extends Authenticatable
     public function getFullNameAttribute() : string
     {
         return ucfirst($this->first_name) . " " . ucfirst($this->last_name);
+    }
+
+    public function getPhoneAttribute(string $phone) : string
+    {
+        return '+221 ' . $phone;
     }
     
     /**
@@ -238,7 +248,7 @@ class Patient extends Authenticatable
     */
     public function routeNotificationForNexmo($notification) : string
     {
-        return (string) $this->phone;
+        return (string) $this->getRawOriginal('phone');
     }
     
 }
