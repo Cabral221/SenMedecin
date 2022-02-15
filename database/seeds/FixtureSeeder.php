@@ -70,7 +70,7 @@ class FixtureSeeder extends Seeder
                 $medecin = $responsable->medecins()->create([
                     'first_name' => $faker->firstName,
                     'last_name' => $faker->lastName,
-                    'phone' => $faker->phoneNumber,
+                    'phone' => $faker->unique()->phoneNumber,
                     'email' => $i.$j.$faker->email,
                     'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
                     'service_id' => rand(1,3),

@@ -83,7 +83,7 @@ class DatabaseSeeder extends Seeder
         $medecin = Medecin::create([
             'first_name' => 'Medecin 1',
             'last_name' => 'Mname',
-            'phone' => '770000000',
+            'phone' => '778435052',
             'email' => 'medecin@medecin.com',
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'service_id' => $s1->id,
