@@ -165,7 +165,34 @@
 						</div>
 					</div>
 					<div class="form-group text-right">
-						<button type="submit" class="btn btn-primary"><i class="fa fa-edit"> Modifier l'Email</i></button>
+						<button type="submit" class="btn btn-primary"><i class="fa fa-edit"></i> Modifier l'Email</button>
+					</div>
+				</form>
+
+				<div class="mb-4 main-content-label">Numéro de téléphone</div>
+				<form class="form-horizontal" method="POST" action="{{ route('patient.account.phone') }}">
+					@csrf
+					@method('PATCH')
+					<div class="form-group">
+						<div class="row">
+							<div class="col-md-3">
+								<label class="form-label">Téléphone</label>
+							</div>
+							<div class="col-md-9">
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<span class="input-group-text bg-primary" id="input-phone">+221</span>
+									</div>
+									<input type="number" class="form-control @error('phone') is-invalid @enderror" aria-describedby="input-phone"  placeholder="Téléphone" name="phone" value="{{ old('phone') ?? auth('patient')->user()->getRawOriginal('phone') }}">
+									@error('phone')
+										<span class="invalid-feedback">{{ $message }}</span>
+									@enderror
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="form-group text-right">
+						<button type="submit" class="btn btn-primary"><i class="fa fa-edit"></i> Modifier le numéro</button>
 					</div>
 				</form>
 

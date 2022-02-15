@@ -49,4 +49,14 @@ class AccountController extends Controller
         return redirect()->back()->with(['success' => 'Email enregistré!']);
     }
 
+    public function updatePhone(Request $request) : RedirectResponse
+    {
+        $this->validate($request, [
+            'phone' => ['required', 'numeric', 'unique:patients,phone,' . $this->auth()->id],
+        ]);
+
+        $this->auth()->update(['phone' => $request->phone]);
+        return redirect()->back()->with(['success' => 'Numéro de téléphone enregistré!']);
+    }
+
 }

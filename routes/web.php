@@ -35,6 +35,7 @@ Route::prefix('/patient')->namespace('Patient')->name('patient.')->group(functio
             Route::get('/edit', 'AccountController@edit')->name('account.edit');
             Route::patch('/update', 'AccountController@update')->name('account.update');
             Route::patch('/email', 'AccountController@updateEmail')->name('account.email');
+            Route::patch('/phone', 'AccountController@updatePhone')->name('account.phone');
         });
         
         Route::put('/profile/{id}', 'PatientController@update')->name('update');

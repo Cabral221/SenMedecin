@@ -133,4 +133,55 @@ class AccountPatientTest extends TestCase
         ]);
     }
 
+    /** @test */
+    public function patient_validation_phone_on_update() : void
+    {
+        $patient = $this->loginAsPatient();
+        // vALIDATE PHONE NUMBER FOR PAIENT ACCESS
+        $patient->update(['phone_verification_token' => null]);
+
+        $this->patch('/patient/account/phone', [
+            'phone' => '',
+        ])
+        
+        ->assertStatus(302)
+        ->assertSessionHasErrors(['phone']);
+    }
+
+    /** @test */
+    public function patient_validate_unique_phone_on_update() : void
+    {
+        $patient = $this->loginAsPatient();
+        // vALIDATE PHONE NUMBER FOR PAIENT ACCESS
+        $patient->update(['phone_verification_token' => null]);
+
+        $patient_2 = $this->createPatient($this->createMedecin());
+        $patient_2->update(['phone' => 778435053]);
+
+        $this->patch('/patient/account/phone', [
+            'phone' => 778435053,
+        ])
+        
+        ->assertStatus(302)
+        ->assertSessionHasErrors(['phone']);
+    }
+
+    /** @test */
+    public function patient_can_update_phone() : void
+    {
+        $patient = $this->loginAsPatient();
+        // vALIDATE PHONE NUMBER FOR PAIENT ACCESS
+        $patient->update(['phone_verification_token' => null]);
+
+        $this->patch('/patient/account/phone', [
+            'phone' => 778435053,
+        ])
+        
+        ->assertStatus(302)
+        ->assertSessionHas('success');
+        $this->assertDatabaseHas('patients', [
+            'phone' => 778435053
+        ]);
+    }
+
 }
