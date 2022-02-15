@@ -96,7 +96,7 @@
 								<label class="form-label">Prénom</label>
 							</div>
 							<div class="col-md-9">
-								<input type="text" class="form-control @error('first_name') is-invalid @enderror"  placeholder="Prénom" name="first_name" value="{{ old('first_name') ?? auth('patient')->user()->first_name }}">
+								<input type="text" class="form-control @error('first_name') is-invalid @enderror"  placeholder="Prénom" name="first_name" value="{{ old('first_name') ?? auth('patient')->user()->first_name }}" required autocomplete="first_name" minlength="2">
 								@error('first_name')
 									<span class="invalid-feedback">{{ $message }}</span>
 								@enderror
@@ -109,7 +109,7 @@
 								<label class="form-label">last Name</label>
 							</div>
 							<div class="col-md-9">
-								<input type="text" class="form-control @error('last_name') is-invalid @enderror"  placeholder="Nom" name="last_name" value="{{  old('last_name') ?? auth('patient')->user()->last_name }}">
+								<input type="text" class="form-control @error('last_name') is-invalid @enderror"  placeholder="Nom" name="last_name" value="{{  old('last_name') ?? auth('patient')->user()->last_name }}" required autocomplete="last_name" minlength="2">
 								@error('last_name') 
 									<span class="invalid-feedback">{{ $message }}</span>
 								@enderror
@@ -122,7 +122,7 @@
 								<label class="form-label">Date de naissance</label>
 							</div>
 							<div class="col-md-9">
-								<input type="date" class="form-control @error('birthday') is-invalid @enderror"  placeholder="Date de naissance" name="birthday" value="{{ old('birthday') ?? auth('patient')->user()->birthday->toDateString() }}">
+								<input type="date" class="form-control @error('birthday') is-invalid @enderror"  placeholder="Date de naissance" name="birthday" value="{{ old('birthday') ?? auth('patient')->user()->birthday->toDateString() }}" required>
 								@error('birthday') 
 									<span class="invalid-feedback">{{ $mesaage }}</span>
 								@enderror
@@ -135,7 +135,7 @@
 								<label class="form-label">Adresse</label>
 							</div>
 							<div class="col-md-9">
-								<textarea row="2" type="text" class="form-control @error('address') is-invalid @enderror"  placeholder="Adresse" name="address" value="Redashna">{{ old('address') ?? auth('patient')->user()->address }}</textarea>
+								<textarea row="2" type="text" class="form-control @error('address') is-invalid @enderror"  placeholder="Adresse" name="address" value="Redashna" required minlength="2">{{ old('address') ?? auth('patient')->user()->address }}</textarea>
 								@error('address')
 									<span class="invalid-feedback">{{ $message }}</span>
 								@enderror
@@ -157,7 +157,7 @@
 								<label class="form-label">Email</label>
 							</div>
 							<div class="col-md-9">
-								<input type="email" class="form-control @error('email') is-invalid @enderror"  placeholder="Email" name="email" value="{{ old('email') ?? auth('patient')->user()->email }}">
+								<input type="email" class="form-control @error('email') is-invalid @enderror"  placeholder="Email" name="email" value="{{ old('email') ?? auth('patient')->user()->email }}" required autocomplete="email">
 								@error('email')
 									<span class="invalid-feedback">{{ $message }}</span>
 								@enderror
@@ -183,7 +183,7 @@
 									<div class="input-group-prepend">
 										<span class="input-group-text bg-primary" id="input-phone">+221</span>
 									</div>
-									<input type="number" class="form-control @error('phone') is-invalid @enderror" aria-describedby="input-phone"  placeholder="Téléphone" name="phone" value="{{ old('phone') ?? auth('patient')->user()->getRawOriginal('phone') }}">
+									<input type="number" class="form-control @error('phone') is-invalid @enderror" aria-describedby="input-phone"  placeholder="Téléphone" name="phone" value="{{ old('phone') ?? auth('patient')->user()->getRawOriginal('phone') }}" required min="760000000" max="789999999">
 									@error('phone')
 										<span class="invalid-feedback">{{ $message }}</span>
 									@enderror
@@ -210,7 +210,7 @@
 								<label for="input-pw-actual" class="form-label">Mot de passe actuel</label>
 							</div>
 							<div class="col-md-9">
-								<input type="password" name="current_password" id="input-pw-actual" class="form-control @error('current_password') is-invalid @enderror" placeholder="Mot de pass actuel" value="{{ old('current_password') }}">
+								<input type="password" name="current_password" id="input-pw-actual" class="form-control @error('current_password') is-invalid @enderror" placeholder="Mot de pass actuel" value="{{ old('current_password') }}" required minlength="6">
 								@error('current_password')
 									<span class="invalid-feedback">{{ $message }}</span>
 								@enderror
@@ -223,7 +223,7 @@
 								<label for="input-pw" class="form-label">Nouveau mot de passe</label>
 							</div>
 							<div class="col-md-9">
-								<input type="password" name="password" id="input-pw" class="form-control @error('password') is-invalid @enderror" placeholder="Nouveau mot de pass" value="{{ old('password') }}">
+								<input type="password" name="password" id="input-pw" class="form-control @error('password') is-invalid @enderror" placeholder="Nouveau mot de pass" value="{{ old('password') }}" required minlength="6">
 								@error('password')
 									<span class="invalid-feedback">{{ $message }}</span>
 								@enderror
@@ -236,7 +236,7 @@
 								<label for="input-pw-confirm" class="form-label">Confirmer mot de passe</label>
 							</div>
 							<div class="col-md-9">
-								<input type="password" name="password_confirmation" id="input-pw-confirm" class="form-control @error('password_confirmation') is-invalid @enderror" placeholder="Nouveau mot de passe" value="{{ old('password_confirmation') }}">
+								<input type="password" name="password_confirmation" id="input-pw-confirm" class="form-control @error('password_confirmation') is-invalid @enderror" placeholder="Nouveau mot de passe" value="{{ old('password_confirmation') }}" required minlength="6">
 								@error('password_confirmation')
 								<span class="invalid-feedback">{{ $message }}</span>
 								@enderror
