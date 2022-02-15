@@ -251,6 +251,19 @@
 				</form>
 			</div>
 		</div>
+
+		<div class="card">
+			<div class="card-body">
+				<div class="mb-4 main-content-label text-danger">Suppression du compte</div>
+				<form action="{{ route('patient.account.delete') }}" method="POST">
+					@csrf
+					@method('DELETE')
+					<div class="form-group text-center">
+						<button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Supprimer mon compte</button>
+					</div>
+				</form>
+			</div>
+		</div>
 	</div>
 	<!-- /Col -->
 </div>

@@ -7,6 +7,7 @@ use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Rules\MatchOldPassword;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\RedirectResponse;
 
@@ -70,5 +71,13 @@ class AccountController extends Controller
 
         $this->auth()->update(['password' => Hash::make($request->password)]);
         return redirect()->back()->with(['success' => 'Nouveau mot de passe enregistré!']);
+    }
+
+    public function destroy(Request $request) : RedirectResponse
+    {
+        $this->auth()->update(['is_active' => false]);
+        Auth::guard('patient')->logout();
+
+        return redirect()->route('index')->with(['info' => 'Compte supprimé!']);
     }
 }

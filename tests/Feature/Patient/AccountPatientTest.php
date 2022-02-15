@@ -255,4 +255,19 @@ class AccountPatientTest extends TestCase
         $this->assertTrue(Hash::check('testpassword', $patient->refresh()->password));
     }
 
+    /** @test */
+    public function patient_can_delete_own_account() : void
+    {
+        $patient = $this->loginAsPatient();
+        // vALIDATE PHONE NUMBER FOR PAIENT ACCESS
+        $patient->update(['phone_verification_token' => null]);
+
+        $this->delete('/patient/account/delete')
+
+        ->assertStatus(302)
+        ->assertRedirect('/');
+        $this->assertFalse($patient->refresh()->is_active);
+        $this->assertGuest('patient');
+    }
+
 }
