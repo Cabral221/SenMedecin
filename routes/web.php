@@ -36,11 +36,9 @@ Route::prefix('/patient')->namespace('Patient')->name('patient.')->group(functio
             Route::patch('/update', 'AccountController@update')->name('account.update');
             Route::patch('/email', 'AccountController@updateEmail')->name('account.email');
             Route::patch('/phone', 'AccountController@updatePhone')->name('account.phone');
+            Route::patch('/password', 'AccountController@updatePassword')->name('account.password');
         });
         
-        Route::put('/profile/{id}', 'PatientController@update')->name('update');
-        Route::patch('/profile/{id}', 'PatientController@email')->name('email');
-        Route::put('/profil/{id}', 'PatientController@password')->name('password');
         Route::delete('/profile/{id}', 'PatientController@destroy')->name('destroy');
         
         Route::get('/identifiant/{id}','IdentifiantController@index')->name('identifiant');

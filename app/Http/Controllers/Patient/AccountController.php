@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Patient;
 use App\Models\Patient;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
+use App\Rules\MatchOldPassword;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\RedirectResponse;
 
 class AccountController extends Controller
@@ -59,4 +61,14 @@ class AccountController extends Controller
         return redirect()->back()->with(['success' => 'Numéro de téléphone enregistré!']);
     }
 
+    public function updatePassword(Request $request) : RedirectResponse
+    {
+        $this->validate($request, [
+            'current_password' => ['required', new MatchOldPassword],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+
+        $this->auth()->update(['password' => Hash::make($request->password)]);
+        return redirect()->back()->with(['success' => 'Nouveau mot de passe enregistré!']);
+    }
 }

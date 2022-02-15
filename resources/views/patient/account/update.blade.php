@@ -146,7 +146,7 @@
 						<button type="submit" class="btn btn-primary"> <i class="fa fa-edit"></i> Enregister</button>
 					</div>
 				</form>
-
+				<hr>
 				<div class="mb-4 main-content-label">Email</div>
 				<form class="form-horizontal" method="POST" action="{{ route('patient.account.email') }}">
 					@csrf
@@ -168,7 +168,7 @@
 						<button type="submit" class="btn btn-primary"><i class="fa fa-edit"></i> Modifier l'Email</button>
 					</div>
 				</form>
-
+				<hr>
 				<div class="mb-4 main-content-label">Numéro de téléphone</div>
 				<form class="form-horizontal" method="POST" action="{{ route('patient.account.phone') }}">
 					@csrf
@@ -195,150 +195,60 @@
 						<button type="submit" class="btn btn-primary"><i class="fa fa-edit"></i> Modifier le numéro</button>
 					</div>
 				</form>
+			</div>
+		</div>
 
-				<form class="form-horizontal">
-					
-					<div class="form-group ">
+		<div class="card">
+			<div class="card-body">
+				<div class="mb-4 main-content-label">Mot de passe</div>
+				<form action="{{ route('patient.account.password') }}" method="POST" class="form-horizontal">
+					@csrf
+					@method('PATCH')
+					<div class="form-group">
 						<div class="row">
 							<div class="col-md-3">
-								<label class="form-label">Nick Name</label>
+								<label for="input-pw-actual" class="form-label">Mot de passe actuel</label>
 							</div>
 							<div class="col-md-9">
-								<input type="text" class="form-control"  placeholder="Nick Name" value="Redash">
+								<input type="password" name="current_password" id="input-pw-actual" class="form-control @error('current_password') is-invalid @enderror" placeholder="Mot de pass actuel" value="{{ old('current_password') }}">
+								@error('current_password')
+									<span class="invalid-feedback">{{ $message }}</span>
+								@enderror
 							</div>
 						</div>
 					</div>
-					<div class="form-group ">
+					<div class="form-group">
 						<div class="row">
 							<div class="col-md-3">
-								<label class="form-label">Designation</label>
+								<label for="input-pw" class="form-label">Nouveau mot de passe</label>
 							</div>
 							<div class="col-md-9">
-								<input type="text" class="form-control"  placeholder="Designation" value="Web Designer">
+								<input type="password" name="password" id="input-pw" class="form-control @error('password') is-invalid @enderror" placeholder="Nouveau mot de pass" value="{{ old('password') }}">
+								@error('password')
+									<span class="invalid-feedback">{{ $message }}</span>
+								@enderror
 							</div>
 						</div>
 					</div>
-					<div class="mb-4 main-content-label">Contact Info</div>
-					<div class="form-group ">
+					<div class="form-group">
 						<div class="row">
 							<div class="col-md-3">
-								<label class="form-label">Email<i>(required)</i></label>
+								<label for="input-pw-confirm" class="form-label">Confirmer mot de passe</label>
 							</div>
 							<div class="col-md-9">
-								<input type="text" class="form-control"  placeholder="Email" value="info@redash.in">
+								<input type="password" name="password_confirmation" id="input-pw-confirm" class="form-control @error('password_confirmation') is-invalid @enderror" placeholder="Nouveau mot de passe" value="{{ old('password_confirmation') }}">
+								@error('password_confirmation')
+								<span class="invalid-feedback">{{ $message }}</span>
+								@enderror
 							</div>
 						</div>
 					</div>
-					<div class="form-group ">
-						<div class="row">
-							<div class="col-md-3">
-								<label class="form-label">Website</label>
-							</div>
-							<div class="col-md-9">
-								<input type="text" class="form-control"  placeholder="Website" value="@spruko.w">
-							</div>
-						</div>
-					</div>
-					<div class="form-group ">
-						<div class="row">
-							<div class="col-md-3">
-								<label class="form-label">Phone</label>
-							</div>
-							<div class="col-md-9">
-								<input type="text" class="form-control"  placeholder="phone number" value="+245 354 654">
-							</div>
-						</div>
-					</div>
-					<div class="form-group ">
-						<div class="row">
-							<div class="col-md-3">
-								<label class="form-label">Address</label>
-							</div>
-							<div class="col-md-9">
-								<textarea class="form-control" name="example-textarea-input" rows="2"  placeholder="Address">San Francisco, CA</textarea>
-							</div>
-						</div>
-					</div>
-					<div class="mb-4 main-content-label">Social Info</div>
-					<div class="form-group ">
-						<div class="row">
-							<div class="col-md-3">
-								<label class="form-label">Twitter</label>
-							</div>
-							<div class="col-md-9">
-								<input type="text" class="form-control"  placeholder="twitter" value="twitter.com/spruko.html">
-							</div>
-						</div>
-					</div>
-					<div class="form-group ">
-						<div class="row">
-							<div class="col-md-3">
-								<label class="form-label">Facebook</label>
-							</div>
-							<div class="col-md-9">
-								<input type="text" class="form-control"  placeholder="facebook" value="https://www.facebook.com/Redash">
-							</div>
-						</div>
-					</div>
-					<div class="form-group ">
-						<div class="row">
-							<div class="col-md-3">
-								<label class="form-label">Google+</label>
-							</div>
-							<div class="col-md-9">
-								<input type="text" class="form-control"  placeholder="google" value="spruko.com">
-							</div>
-						</div>
-					</div>
-					<div class="form-group ">
-						<div class="row">
-							<div class="col-md-3">
-								<label class="form-label">Linked in</label>
-							</div>
-							<div class="col-md-9">
-								<input type="text" class="form-control"  placeholder="linkedin" value="linkedin.com/in/spruko">
-							</div>
-						</div>
-					</div>
-					<div class="form-group ">
-						<div class="row">
-							<div class="col-md-3">
-								<label class="form-label">Github</label>
-							</div>
-							<div class="col-md-9">
-								<input type="text" class="form-control" placeholder="github" value="github.com/sprukos">
-							</div>
-						</div>
-					</div>
-					<div class="mb-4 main-content-label">About Yourself</div>
-					<div class="form-group ">
-						<div class="row">
-							<div class="col-md-3">
-								<label class="form-label">Biographical Info</label>
-							</div>
-							<div class="col-md-9">
-								<textarea class="form-control" name="example-textarea-input" rows="4" placeholder="">pleasure rationally encounter but because pursue consequences that are extremely painful.occur in which toil and pain can procure him some great pleasure..</textarea>
-							</div>
-						</div>
-					</div>
-					<div class="mb-4 main-content-label">Email Preferences</div>
-					<div class="form-group mb-0">
-						<div class="row">
-							<div class="col-md-3">
-								<label class="form-label">Verified User</label>
-							</div>
-							<div class="col-md-9">
-								<div class="custom-controls-stacked">
-									<label class="ckbox mg-b-10"><input checked="" type="checkbox"><span> Accept to receive post or page notification emails</span></label>
-									<label class="ckbox"><input checked="" type="checkbox"><span> Accept to receive email sent to multiple recipients</span></label>
-								</div>
-							</div>
-						</div>
+					<div class="form-group text-right">
+						<button type="submit" class="btn btn-primary">
+							<i class="fa fa-edit"></i> Modifier mot de passe
+						</button>
 					</div>
 				</form>
-			</div>
-			<div class="card-footer">
-				<button type="submit" class="btn btn-primary waves-effect waves-light">Update Profile</button>
 			</div>
 		</div>
 	</div>

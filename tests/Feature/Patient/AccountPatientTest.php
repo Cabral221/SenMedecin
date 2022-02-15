@@ -3,6 +3,7 @@
 namespace Tests\Feature\Patient;
 
 use Carbon\Carbon;
+use Hash;
 use Tests\TestCase;
 
 class AccountPatientTest extends TestCase
@@ -182,6 +183,76 @@ class AccountPatientTest extends TestCase
         $this->assertDatabaseHas('patients', [
             'phone' => 778435053
         ]);
+    }
+
+    /** @test */
+    public function patient_validation_password_on_update() : void
+    {
+        $patient = $this->loginAsPatient();
+        // vALIDATE PHONE NUMBER FOR PAIENT ACCESS
+        $patient->update(['phone_verification_token' => null]);
+
+        $this->patch('/patient/account/password', [
+            'current_password' => '',
+            'password' => '',
+            'password_confirmation' => '',
+        ])
+        
+        ->assertStatus(302)
+        ->assertSessionHasErrors(['current_password', 'password']);
+    }
+
+    /** @test */
+    public function patient_validate_current_password_on_update() : void
+    {
+        $patient = $this->loginAsPatient();
+        // vALIDATE PHONE NUMBER FOR PAIENT ACCESS
+        $patient->update(['phone_verification_token' => null]);
+
+        $this->patch('/patient/account/password', [
+            'current_password' => 'xxxxxxxx',
+            'password' => 'testpassword',
+            'password_confirmation' => 'testpassword',
+        ])
+
+        ->assertStatus(302)
+        ->assertSessionHasErrors(['current_password']);
+
+    }
+
+    /** @test */
+    public function patient_validate_confirm_password_on_update() : void
+    {
+        $patient = $this->loginAsPatient();
+        // vALIDATE PHONE NUMBER FOR PAIENT ACCESS
+        $patient->update(['phone_verification_token' => null]);
+
+        $this->patch('/patient/account/password', [
+            'current_password' => 'password',
+            'password' => 'testpassword-X',
+            'password_confirmation' => 'testpassword-Y',
+        ])
+
+        ->assertStatus(302)
+        ->assertSessionHasErrors(['password']);
+    }
+
+    /** @test */
+    public function patient_can_update_password() : void
+    {
+        $patient = $this->loginAsPatient();
+        // vALIDATE PHONE NUMBER FOR PAIENT ACCESS
+        $patient->update(['phone_verification_token' => null]);
+
+        $this->patch('/patient/account/password', [
+            'current_password' => 'password',
+            'password' => 'testpassword',
+            'password_confirmation' => 'testpassword',
+        ])
+        
+        ->assertStatus(302)
+        ->assertSessionHas('success');
+        $this->assertTrue(Hash::check('testpassword', $patient->refresh()->password));
     }
 
 }
