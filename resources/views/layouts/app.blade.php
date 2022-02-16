@@ -35,9 +35,28 @@
     {{-- Main Sidebar left --}}
     @include('layouts.sidebar')
 	
-    {{-- Main content --}}
-    @include('layouts.content')
-	{{-- End Main content --}}
+   
+	<!-- main-content -->
+	<div class="main-content app-content">
+
+		<!-- main-header -->
+		@include('layouts.header')
+		<!-- /main-header -->
+		
+		<!-- container -->
+		<div class="container-fluid mg-t-20">
+
+			@yield('breadcrumb')
+
+			@include('layouts.includes.alerts')
+
+			@yield('main-content')
+
+		</div>
+		<!-- Container closed -->
+
+	</div>
+	<!-- main-content closed -->
 
     {{-- Main Sidebar Right for profile --}}
     {{-- @include('layouts.includes.sidebar-right') --}}
