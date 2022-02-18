@@ -55,11 +55,11 @@
 <script src="{{ asset('assets/js/chart.flot.sampledata.js') }}"></script>
 
 <!-- Chart-circle js -->
-<script src="{{ asset('assets/plugins/circle-progress/circle-progress.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/chart-circle/chart-circle.js') }}"></script>
+{{-- <script src="{{ asset('assets/plugins/circle-progress/circle-progress.min.js') }}"></script> --}}
+{{-- <script src="{{ asset('assets/plugins/chart-circle/chart-circle.js') }}"></script> --}}
 
 <!-- ECharts js-->
-<script src="{{ asset('assets/plugins/echart/echart.js') }}"></script>
+{{-- <script src="{{ asset('assets/plugins/echart/echart.js') }}"></script> --}}
 
 <!--Internal  index js -->
 {{-- <script src="{{ asset('assets/plugins/apexcharts/apexcharts.js') }}"></script> --}}

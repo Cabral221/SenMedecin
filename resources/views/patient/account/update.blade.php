@@ -1,5 +1,9 @@
 @extends('layouts.app', ['title' => 'Modification' . ' - Mon compte'])
 
+@section('plugin-css')
+	<link href="{{ asset('assets/plugins/sweet-alert/sweetalert.css') }}" rel="stylesheet">
+@endsection
+
 @section('breadcrumb')
     <!-- breadcrumb -->
 	<div class="breadcrumb-header justify-content-between">
@@ -259,7 +263,7 @@
 					@csrf
 					@method('DELETE')
 					<div class="form-group text-center">
-						<button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Supprimer mon compte</button>
+						<button type="submit" id="btn-delete-account" class="btn btn-danger"><i class="fa fa-trash"></i> Supprimer mon compte</button>
 					</div>
 				</form>
 			</div>
@@ -268,4 +272,9 @@
 	<!-- /Col -->
 </div>
 <!-- row closed -->
+@endsection
+
+@section('plugin-js')
+	<script src="{{ asset('assets/plugins/sweet-alert/sweetalert.min.js') }}"></script>
+	<script src="{{ asset('assets/plugins/sweet-alert/jquery.sweet-alert.js') }}"></script>
 @endsection

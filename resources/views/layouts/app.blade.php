@@ -22,6 +22,7 @@
 	<link rel="icon" href="{{ asset('assets/img/brand/favicon-axxunjurel.svg') }}" type="image/x-icon" />
 
 	@include('layouts.includes.base-css')
+	@yield('plugin-css')
 	@yield('own-css')
 </head>
 
@@ -35,7 +36,6 @@
     {{-- Main Sidebar left --}}
     @include('layouts.sidebar')
 	
-   
 	<!-- main-content -->
 	<div class="main-content app-content">
 
