@@ -3,85 +3,20 @@ $(function(e) {
 	// Delete Account button
 	$('#btn-delete-account').on('click', function (e) {
 		e.preventDefault()
+
 		swal({
 			title: 'Suppression du compte',
 			text: 'Êtes-vous sûr de vouloir supprimer votre compte ?',
-			type: 'error',
-
+			type: 'warning',
 			showCancelButton: true,
 			cancelButtonText: "Non, annuler!",
-
 			confirmButtonText: "Oui, supprimer!",
-			// confirmButtonType: 'danger',
-			// button: "Oui, supprimer!",
-			// confirmButtonClass: "btn btn-danger",
-			// confirmButtonColor: '#d33',
-
 			closeOnConfirm: false,
-			showLoaderOnConfirm: true,
+			// showLoaderOnConfirm: true,
 		}, function(){
-			setTimeout(function () {
-				swal("Supprimer!", "Votre compte a ètè supprimé. Au revoir.", "success");
-				// swal("Ajax request finished!");
-			}, 2000);
-			// Supprimer le compte du serveur
-			// TODO ... ex : return fetch('URL)
+			e.target.form.submit()
 		})
 	});
-	
-	
-	
-	/**
-	
-	swal({
-		text: 'Search for a movie. e.g. "La La Land".',
-		content: "input",
-		button: {
-			text: "Search!",
-			closeModal: false,
-		},
-	})
-	.then(name => {
-		if (!name) throw null;
-		
-		return fetch(`https://itunes.apple.com/search?term=${name}&entity=movie`);
-	})
-	.then(results => {
-		return results.json();
-	})
-	.then(json => {
-		const movie = json.results[0];
-		
-		if (!movie) {
-			return swal("No movie was found!");
-		}
-		
-		const name = movie.trackName;
-		const imageURL = movie.artworkUrl100;
-		
-		swal({
-			title: "Top result:",
-			text: name,
-			icon: imageURL,
-		});
-	})
-	.catch(err => {
-		if (err) {
-			swal("Oh noes!", "The AJAX request failed!", "error");
-		} else {
-			swal.stopLoading();
-			swal.close();
-		}
-	});
-	
-	 */
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	//Basic
