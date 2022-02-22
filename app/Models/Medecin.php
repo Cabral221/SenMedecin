@@ -52,6 +52,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @method static \Illuminate\Database\Eloquent\Builder|Medecin whereServiceId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Medecin whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string $avatar
+ * @method static \Illuminate\Database\Eloquent\Builder|Medecin whereAvatar($value)
  */
 class Medecin extends Authenticatable
 {
