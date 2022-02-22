@@ -16,7 +16,7 @@ class CreateCarnetTable extends Migration
         Schema::create('carnets', function (Blueprint $table) {
             $table->id();
             $table->foreignId('patient_id');
-
+            
             $table->foreign('patient_id')->references('id')->on('patients')->onDelete('cascade');
             $table->timestamps();
         });

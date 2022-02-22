@@ -137,8 +137,10 @@ abstract class TestCase extends BaseTestCase
         ]);
     }
 
-    public function createPatient(Medecin $medecin) : Patient
+    public function createPatient(Medecin $medecin = null) : Patient
     {
+        if(!$medecin) $medecin = $this->createMedecin();
+        
         Notification::fake();
         return $medecin->patients()->create([
             'first_name' => $this->faker->firstName,
