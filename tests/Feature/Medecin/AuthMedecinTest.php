@@ -5,7 +5,7 @@ namespace Tests\Feature\Medecin;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class AuthhMedecinTest extends TestCase
+class AuthMedecinTest extends TestCase
 {
     use RefreshDatabase;
 

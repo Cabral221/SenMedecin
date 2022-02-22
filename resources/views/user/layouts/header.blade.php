@@ -25,7 +25,7 @@
 						<li> <a href="{{ route('contact.index') }}"> <span class="header-icon"><i class="fas fa-id-card-alt"></i></span> Contact</a></li>    					          		          
 						<li class="li-connecter"><a href=""> <span class="header-icon"><i class="fas fa-user"></i></span>{{ Auth::guard('patient')->user()->first_name .' '. Auth::guard('patient')->user()->last_name }} <span class="chevero-login"><i class="fas fa-chevron-down"></i></span></a>
 							<ul>
-								<li><a href="{{ route('patient.profile') }}"> <span class="header-icon"><i class="fas fa-user"></i></span> Profile</a></li>
+								<li><a href="{{ route('patient.account') }}"> <span class="header-icon"><i class="fas fa-user"></i></span> Profile</a></li>
 								<hr>
 								<li><a  href="{{ route('patient.logout') }}"
 									onclick="event.preventDefault();
