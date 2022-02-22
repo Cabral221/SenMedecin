@@ -266,8 +266,30 @@ class AccountPatientTest extends TestCase
 
         ->assertStatus(302)
         ->assertRedirect('/');
-        $this->assertFalse($patient->refresh()->is_active);
+
         $this->assertGuest('patient');
+        $this->assertDatabaseMissing('patients', [
+            'id' => $patient->id,
+            'phone' => $patient->getRawOriginal('phone')
+        ]);
+    }
+
+    /** @test */
+    public function patient_delete_on_cascade() : void
+    {
+        $patient = $this->loginAsPatient();
+        // vALIDATE PHONE NUMBER FOR PAIENT ACCESS
+        $patient->update(['phone_verification_token' => null]);
+
+        $this->assertDatabaseHas('carnets', [
+            'id' => $patient->carnet->id
+        ]);
+
+        $this->delete('/patient/account/delete');
+
+        $this->assertDatabaseMissing('carnets', [
+            'id' => $patient->carnet->id
+        ]);
     }
 
 }

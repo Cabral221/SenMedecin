@@ -23,7 +23,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  */
 class Carnet extends Model
 {
-    protected $fillable = ['type'];
+    protected $fillable = [];
 
     public function patient() : BelongsTo
     {

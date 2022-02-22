@@ -28,15 +28,13 @@ class CreatePatientTable extends Migration
             $table->string('password');
 
             $table->bigInteger('medecin_id')->unsigned()->index();
-            $table->bigInteger('carnet_id')->unsigned()->index()->nullable();
             $table->boolean('is_active')->default(false);
             $table->boolean('is_pregnancy')->default(false);
             $table->rememberToken();
 
             $table->timestamps();
 
-            $table->foreign('medecin_id')->references('id')->on('medecins')->onDelete('cascade');
-            $table->foreign('carnet_id')->references('id')->on('carnets')->onDelete('cascade');
+            $table->foreign('medecin_id')->references('id')->on('medecins');
         });
     }
 

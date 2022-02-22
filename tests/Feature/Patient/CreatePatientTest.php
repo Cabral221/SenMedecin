@@ -4,7 +4,7 @@ namespace Tests\Feature\Patient;
 
 use Carbon\Carbon;
 use Tests\TestCase;
-use App\Models\Carnet;
+use App\Models\Patient;
 use Illuminate\Support\Str;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Testing\TestResponse;
@@ -207,15 +207,12 @@ class CreatePatientTest extends TestCase
             'patient_is_pregnancy' => true,
         ]);
         
-        $carnet = Carnet::first();
+        // dd(Patient::where('email', 'test@test.com')->first()->getAttributes());
+        $patient = Patient::where('email', 'test@test.com')->first();
         $this->assertDatabaseHas(
-            'patients',
+            'carnets',
             [
-                'first_name' => 'John',
-                'last_name' => 'Doe',
-                'email' => 'test@test.com',
-                'is_pregnancy' => true,
-                'carnet_id' => $carnet->id,
+                'patient_id' => $patient->id,
             ]
         );
     }

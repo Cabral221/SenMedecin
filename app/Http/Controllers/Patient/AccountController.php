@@ -75,8 +75,10 @@ class AccountController extends Controller
 
     public function destroy(Request $request) : RedirectResponse
     {
-        $this->auth()->update(['is_active' => false]);
+        // Delete patient user on database
+        $patient = $this->auth();
         Auth::guard('patient')->logout();
+        $patient->delete();
 
         return redirect()->route('index')->with(['info' => 'Compte supprimé!']);
     }
