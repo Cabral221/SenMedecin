@@ -91,7 +91,7 @@ class Patient extends Authenticatable
     * @var array<string>
     */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'phone_verification_token'
     ];
     
     /**

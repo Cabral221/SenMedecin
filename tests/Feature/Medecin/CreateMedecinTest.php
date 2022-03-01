@@ -151,8 +151,8 @@ class CreateMedecinTest extends TestCase
             'medecin_service' => $service_id,
         ])
 
-        ->assertSessionHas('success')
-        ->assertStatus(302);
+        ->assertStatus(302)
+        ->assertSessionHas('success');
         $medecin = $responsable->medecins()->first();
         // Assert the file was stored...
         $this->assertDatabaseHas('medecins', [
