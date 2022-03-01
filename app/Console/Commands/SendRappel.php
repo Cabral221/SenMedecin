@@ -36,7 +36,7 @@ class SendRappel extends Command
     /**
      * Execute the console command.
      *
-     * @return int
+     * @return void
      */
     public function handle()
     {
@@ -49,6 +49,5 @@ class SendRappel extends Command
         foreach($appointments as $appointment) {
             SendRappelSms::dispatch($appointment)->onQueue('sms');
         }
-        return 0;
     }
 }

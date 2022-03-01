@@ -36,7 +36,7 @@ class SendPrerappel extends Command
     /**
     * Execute the console command.
     *
-    * @return int
+    * @return void
     */
     public function handle()
     {
@@ -49,7 +49,5 @@ class SendPrerappel extends Command
         foreach($appointments as $appointment) {
             SendPrerappelSms::dispatch($appointment)->onQueue('sms');
         }
-
-        return 0;
     }
 }

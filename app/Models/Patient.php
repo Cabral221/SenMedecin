@@ -91,7 +91,7 @@ class Patient extends Authenticatable
     * @var array<string>
     */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'phone_verification_token'
     ];
     
     /**
@@ -128,6 +128,12 @@ class Patient extends Authenticatable
             
             // Programmer le VAT
             $patient->preparePregnancyAppointment();
+        });
+
+        static::deleted(function($patient) {
+            if($patient->getRawOriginal('avatar') != null) {
+                $patient->deleteAvatarFile();
+            }
         });
     }
     

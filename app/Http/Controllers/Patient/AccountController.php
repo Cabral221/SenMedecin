@@ -6,6 +6,7 @@ use App\Models\Patient;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Rules\MatchOldPassword;
+use Illuminate\Http\UploadedFile;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -13,7 +14,7 @@ use Illuminate\Http\RedirectResponse;
 
 class AccountController extends Controller
 {
-
+    
     public function auth() : Patient
     {
         return auth('patient')->user();
@@ -23,12 +24,12 @@ class AccountController extends Controller
     {
         return view('patient.account.index');
     }
-
+    
     public function edit() : View
     {
         return view('patient.account.update', ['id' => $this->auth()->id]);
     }
-
+    
     public function update(Request $request) : RedirectResponse
     {
         $this->validate($request, [
@@ -37,49 +38,71 @@ class AccountController extends Controller
             'birthday' => ['required', 'date'],
             'address' => ['required', 'string'],
         ]);
-
+        
         $this->auth()->update($request->all());
         return redirect()->back()->with(['success' => 'Modifications réussies!']);
     }
+    
+    public function avatar(Request $request) : RedirectResponse
+    {
+        $this->validate($request, [
+            'avatar' => ['required', 'image', 'mimes:jpg,jpeg,bmp,svg,png', 'max:10000'],
+        ]);
+        
+        /** @var UploadedFile */
+        $file = $request->file('avatar');
+        $this->auth()->prepareAvatar($file);
+        
+        return redirect()->back()->with(['success' => 'Votre avatar a été enregisté avec succés !']);
+    }
 
+    public function deleteAvatar(Request $request) : RedirectResponse
+    {
+        $this->auth()->deleteAvatarFile();
+
+        $this->auth()->update(['avatar' => null]);
+
+        return redirect()->back()->with(['success' => 'Votre photo de profil a bien été supprimée!']);
+    }
+    
     public function updateEmail(Request $request) : RedirectResponse
     {
         $this->validate($request, [
             'email' => ['required', 'email', 'unique:patients,email,' . $this->auth()->id]
         ]);
-
+        
         $this->auth()->update(['email' => $request->email]);
         return redirect()->back()->with(['success' => 'Email enregistré!']);
     }
-
+    
     public function updatePhone(Request $request) : RedirectResponse
     {
         $this->validate($request, [
             'phone' => ['required', 'numeric', 'unique:patients,phone,' . $this->auth()->id],
         ]);
-
+        
         $this->auth()->update(['phone' => $request->phone]);
         return redirect()->back()->with(['success' => 'Numéro de téléphone enregistré!']);
     }
-
+    
     public function updatePassword(Request $request) : RedirectResponse
     {
         $this->validate($request, [
             'current_password' => ['required', new MatchOldPassword],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
-
+        
         $this->auth()->update(['password' => Hash::make($request->password)]);
         return redirect()->back()->with(['success' => 'Nouveau mot de passe enregistré!']);
     }
-
+    
     public function destroy(Request $request) : RedirectResponse
     {
         // Delete patient user on database
         $patient = $this->auth();
         Auth::guard('patient')->logout();
         $patient->delete();
-
+        
         return redirect()->route('index')->with(['info' => 'Compte supprimé!']);
     }
 }

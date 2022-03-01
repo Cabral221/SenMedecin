@@ -10,7 +10,7 @@
                         <img src="{{ asset('assets/img/brand/logo-axxunjurel-horizontal.svg') }}" class=" m-0 mb-4" alt="logo">
                         <h5 class="mb-4">Restez en alerte SMS à l'approche de vos rendez-vous</h5>
                         <p class="mb-5">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                        <a href="index.html" class="btn btn-danger">Page d'accueil</a>
+                        <a href="{{ route('index') }}" class="btn btn-danger">Page d'accueil</a>
                     </div>
                 </div>
             </div>

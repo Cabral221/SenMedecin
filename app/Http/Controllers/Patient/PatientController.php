@@ -5,7 +5,6 @@ use App\Models\Patient;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\RedirectResponse;
 use App\Notifications\PhoneVerification;
 
@@ -20,73 +19,6 @@ class PatientController extends Controller
     public function index() : View
     {
         return view('patient.index');
-    }
-    
-    public function update( Request $request, string $id) : RedirectResponse
-    {
-        
-        $this->validate(
-            $request, [
-            'first_name' => 'required|string',
-            'last_name' => 'required|string',
-            'phone' => 'required|string',
-            'birthday' => 'required|string',
-            'address' => 'required|string',
-            ]
-        );
-        
-        $this->auth()->update(
-            [
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'phone' => $request->phone,
-            'birthday' => $request->birthday,
-            'address' => $request->address,
-            ]
-        );
-
-        return back();
-    }
-    
-    public function email(Request $request, string $id) : RedirectResponse
-    {
-        $this->validate(
-            $request, [
-            'email' => 'required|string',
-            ]
-        );
-
-        $this->auth()->update(
-            [
-            'email' => $request->email,
-            ]
-        );
-
-        return back();
-    }
-    
-    public function password( Request $request, string $id) : RedirectResponse
-    {
-        $this->validate(
-            $request, [
-            'password' => 'required|string|confirmed',
-            ]
-        );
-        
-        $this->auth()->update(
-            [
-            'password' => Hash::make($request->password),
-            ]
-        );
-
-        return back();
-    }
-    
-    public function destroy(string $id) : RedirectResponse
-    {
-        $this->auth()->delete();
-
-        return redirect()->route('patient.home');
     }
     
     /**
