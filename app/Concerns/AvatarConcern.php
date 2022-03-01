@@ -2,8 +2,8 @@
 
 namespace App\Concerns;
 
+use App\Jobs\ProcessImage;
 use Illuminate\Http\UploadedFile;
-use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
 
 trait AvatarConcern {
@@ -12,10 +12,10 @@ trait AvatarConcern {
      * save avatar et prepare le retaille 128*128
      *
      * @param UploadedFile $file
-     * @return boolean
+     * @return void
      * @throws \Exception
      */
-    public function prepareAvatar($file) : bool
+    public function prepareAvatar($file) : void
     {
         // Delete Old avatar if exist
         if($this->getRawOriginal('avatar') != null) {
@@ -23,20 +23,9 @@ trait AvatarConcern {
         }
 
         $this->upLoadAvatarFile($file);
-        // Resize avatar et Remplacer le precedant sauvegarder
-        try {
-            $img = Image::make(Storage::disk('public')->path($this->avatar));
-            $img->resize(128, 128, function ($constraint) {
-                $constraint->aspectRatio();
-            })->save(Storage::disk('public')->path($this->avatar));
-            return true;
-        } catch (\Exception $th) {
-            // dd($th);
-            // TODO:...
-            abort(500);
-        }
-        // Resize with QUEU 'Image'
-        // TODO:...
+
+        // Resize OnQueue 'IMAGE' avatar et Remplacer le precedant sauvegarder
+        ProcessImage::dispatch($this->avatar)->onQueue('image');
         
     }
     
