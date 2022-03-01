@@ -17,7 +17,12 @@ trait AvatarConcern {
      */
     public function prepareAvatar($file) : bool
     {
-        $this->upLoadFile($file);
+        // Delete Old avatar if exist
+        if($this->getRawOriginal('avatar') != null) {
+            $this->deleteAvatarFile();
+        }
+
+        $this->upLoadAvatarFile($file);
         // Resize avatar et Remplacer le precedant sauvegarder
         try {
             $img = Image::make(Storage::disk('public')->path($this->avatar));
@@ -30,19 +35,23 @@ trait AvatarConcern {
             // TODO:...
             abort(500);
         }
-
         // Resize with QUEU 'Image'
         // TODO:...
         
     }
     
-    public function upLoadFile(UploadedFile $file) : bool
+    public function upLoadAvatarFile(UploadedFile $file) : bool
     {
         /** @var string $fileName */
         $fileName = $file->storePublicly('uploads/avatars',['disk' => 'public']);
         return $this->update([
             'avatar' => 'uploads/avatars/' . basename($fileName)
         ]);
+    }
+
+    public function deleteAvatarFile() : bool
+    {
+        return Storage::disk('public')->delete($this->avatar);
     }
     
     public function getAvatarAttribute(string $value = null) : string

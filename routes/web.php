@@ -30,14 +30,16 @@ Route::prefix('/patient')->namespace('Patient')->name('patient.')->group(functio
         
         Route::get('/home', 'PatientController@index')->name('home');
         // Account Patient Route
-        Route::prefix('/account')->group(function() {
-            Route::get('/', 'AccountController@index')->name('account');
-            Route::get('/edit', 'AccountController@edit')->name('account.edit');
-            Route::patch('/update', 'AccountController@update')->name('account.update');
-            Route::patch('/email', 'AccountController@updateEmail')->name('account.email');
-            Route::patch('/phone', 'AccountController@updatePhone')->name('account.phone');
-            Route::patch('/password', 'AccountController@updatePassword')->name('account.password');
-            Route::delete('/delete', 'AccountController@destroy')->name('account.delete');
+        Route::prefix('/account')->name('account')->group(function() {
+            Route::get('/', 'AccountController@index');
+            Route::get('/edit', 'AccountController@edit')->name('.edit');
+            Route::patch('/update', 'AccountController@update')->name('.update');
+            Route::patch('/avatar', 'AccountController@avatar')->name('.avatar');
+            Route::delete('/avatar', 'AccountController@deleteAvatar')->name('.avatar');
+            Route::patch('/email', 'AccountController@updateEmail')->name('.email');
+            Route::patch('/phone', 'AccountController@updatePhone')->name('.phone');
+            Route::patch('/password', 'AccountController@updatePassword')->name('.password');
+            Route::delete('/delete', 'AccountController@destroy')->name('.delete');
         });
         
         Route::get('/identifiant/{id}','IdentifiantController@index')->name('identifiant');

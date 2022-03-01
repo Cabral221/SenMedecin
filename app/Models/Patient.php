@@ -129,6 +129,12 @@ class Patient extends Authenticatable
             // Programmer le VAT
             $patient->preparePregnancyAppointment();
         });
+
+        static::deleted(function($patient) {
+            if($patient->getRawOriginal('avatar') != null) {
+                $patient->deleteAvatarFile();
+            }
+        });
     }
     
     public static function active() : Collection

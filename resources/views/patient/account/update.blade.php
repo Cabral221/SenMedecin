@@ -30,11 +30,29 @@
 			<div class="card-body">
 				<div class="pl-0">
 					<div class="main-profile-overview">
-						<div class="main-img-user profile-user"><img alt="Profile" src="{{ asset(auth('patient')->user()->avatar) }}"><a href="JavaScript:void(0);" class="fas fa-camera profile-edit"></a></div>
+						<div class="main-img-user profile-user">
+							<img alt="Profile" src="{{ asset(auth('patient')->user()->avatar) }}">
+							<a href="JavaScript:void(0);" class="fas fa-camera profile-edit"></a>
+							<form action="{{ route('patient.account.avatar') }}" method="post" class="d-none" id="form-edit-avatar" enctype="multipart/form-data">
+								@csrf
+								@method('PATCH')
+								<input type="file" name="avatar" id="input-avatar">
+							</form>
+						</div>
 						<div class="d-flex justify-content-between mg-b-20">
 							<div>
 								<h5 class="main-profile-name">{{ auth('patient')->user()->fullName }}</h5>
 								<p class="main-profile-name-text">Patiente</p>
+								@error('avatar')
+									<span class="text-danger small">{{ $message }}</span>
+								@enderror
+								@if (auth('patient')->user()->getRawOriginal('avatar'))
+									<button class="btn btn-danger btn-sm" onclick="event.preventDefault();document.getElementById('form-delete-avatar').submit();">Supprimer ma photo</button>
+									<form action="{{ route('patient.account.avatar') }}" method="POST" id="form-delete-avatar" class="d-none">
+										@csrf
+										@method('DELETE')
+									</form>
+								@endif
 							</div>
 						</div>
 					</div><!-- main-profile-overview -->
@@ -277,4 +295,23 @@
 @section('plugin-js')
 	<script src="{{ asset('assets/plugins/sweet-alert/sweetalert.min.js') }}"></script>
 	<script src="{{ asset('assets/plugins/sweet-alert/jquery.sweet-alert.js') }}"></script>
+@endsection
+
+@section('own-js')
+<script>
+	$(document).ready(function() {
+		$("a.profile-edit").click(function(e) {
+			e.preventDefault()
+			// Demarre loader
+			$("#global-loader").fadeIn("slow")
+
+			$("#input-avatar").click()
+		})
+		
+		$('#input-avatar').change(function (e) {
+			$("#global-loader").fadeOut("slow")
+			$("#form-edit-avatar").submit()
+		});
+	})
+</script>
 @endsection
