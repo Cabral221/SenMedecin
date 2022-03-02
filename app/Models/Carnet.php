@@ -20,6 +20,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder|Carnet whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Carnet whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property int $patient_id
+ * @method static \Illuminate\Database\Eloquent\Builder|Carnet wherePatientId($value)
  */
 class Carnet extends Model
 {

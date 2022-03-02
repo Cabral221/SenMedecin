@@ -1,4 +1,4 @@
-@extends('user.layouts.app')
+@extends('layouts.auth.app', ['title' => 'Confirmation de votre mot de pass'])
 
 @section('main-content')
 <div class="container" style="margin-top:10em;">
