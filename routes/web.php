@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\ConfirmPhonePatient;
 use Illuminate\Support\Facades\Route;
 
@@ -50,7 +49,7 @@ Route::prefix('/patient')->namespace('Patient')->name('patient.')->group(functio
         Route::get('/confirmphone/{code?}', 'PatientController@confirmPhone')->name('confirm')->withoutMiddleware([ConfirmPhonePatient::class]);
     });
 
-    // Authentification des
+    // Authentification des Patientes
     Route::namespace('Auth')->group(function(){
         Route::get('/login', 'LoginController@showLoginForm')->name('login');
         Route::post('/login', 'LoginController@login')->name('login');
