@@ -1,57 +1,51 @@
-@extends('user.layouts.app')
+@extends('layouts.auth.app', ['title' => 'Se connecter'])
 
 @section('main-content')
-<!-- Premiere section -->
-<section class="container">
-
-	<div class="login-body">
-			<div class="login-header">
-				<img src="{{ asset('user/img/patient.jpg') }}" alt="">	
-				<p>
-					<span class="text-bold text-primary"> Connexion Des Patientes </span>
-				</p>
+<div class="main-signin-wrapper error-wrapper">
+	<div class="main-card-signin d-md-flex wd-100p">
+		<div class="wd-md-50p login d-none d-md-block page-signin-style p-5 text-white">
+			<div class="my-auto authentication-pages">
+				<div>
+					<img src="{{ asset('assets/img/brand/logo-axxunjurel-horizontal.svg') }}" class=" m-0 mb-4" alt="logo">
+                    <h5 class="mb-4">Restez en alerte SMS à l'approche de vos rendez-vous</h5>
+                    <p class="mb-5">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                    <a href="{{ route('index') }}" class="btn btn-danger">Page d'accueil</a>
+				</div>
 			</div>
-			<div class="form-group">
-				<form action="{{ route('patient.login') }}" method="post" class="box">
+		</div>
+		<div class="p-5 wd-md-50p">
+			<div class="main-signin-header">
+				<h2>Section de Patientes</h2>
+				<h4>Veuillez vous connecter pour continuer</h4>
+				<form action="{{ route('patient.login') }}" method="POST">
 					@csrf
-					<p class="contour_input">
-						<i class="fa fa-envelope icon"></i>
-						<input class="form-control" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus id="email" placeholder="Votre Adresse E-mail">
-					<div>
-                        @error('email')
-                            <span class="invalid-feedback" role="alert">
-                                <strong class="message_error">{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-					</p>
-
-					<p class="contour_input">
-						<i class="fa fa-key icon"></i>
-						<input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password" required autocomplete="current-password" id="" placeholder="Mot de passe">
-					<div>
-                        @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong class="message_error">{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-					</p>
-
-					<p>  
-						<input name="remember" class="@error('remember') is-invalid @enderror" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }} id="remember" type="checkbox"> 
-						<label for="remember"> Se Souvenir de Moi </label>
-					</p>
-					<p>
-						<input type="submit" class="submit" value="Se Connecter">
-					</p>
-					<p class="forgot_password">	<span> <a href="{{ route('patient.password.request') }}"> J'ai oublie mon mot de passe </a> </span></p>
+					<div class="form-group">
+						<label for="email">Email</label>
+						<input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror" placeholder="Entrez votre email" value="{{ old('email') }}" autocomplete="email" autofocus required>
+						@error('email')
+							<span class="invalid-feedback">{{ $message }}</span>
+						@enderror
+					</div>
+					<div class="form-group">
+						<label for="password">Password</label>
+						<input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror" placeholder="Entrez votre mot de passe" required>
+						@error('password')
+							<span class="invalid-feedback">{{ $message }}</span>
+						@enderror
+					</div>
+					<div class="form-group">
+						<label class="ckbox">
+							<input type="checkbox" id="remember" name="remember" {{ old('remember') ? 'checked' : '' }}>
+							<span>Se Souvenir de Moi</span>
+						</label>
+					</div>
+					<button class="btn btn-main-primary btn-block">Se connecter</button>
 				</form>
 			</div>
-	
+			<div class="main-signin-footer mt-3 mg-t-5">
+				<p><a href="{{ route('patient.password.request') }}">J'ai oublié mon mot de passe?</a></p>
+			</div>
+		</div>
 	</div>
-</section>
-<!-- fin de la premier section -->
-
-
+</div>
 @endsection

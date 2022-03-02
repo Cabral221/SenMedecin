@@ -2,13 +2,13 @@
 
 namespace App\Models;
 
-use App\Concerns\AvatarConcern;
-use Storage;
 use Carbon\Carbon;
 use App\Models\Carnet;
 use App\Models\Medecin;
 use App\Models\Antecedent;
+use App\Concerns\AvatarConcern;
 use App\Models\TypeAppointment;
+use App\Notifications\ResetPassword;
 use App\Notifications\PhoneVerification;
 use Illuminate\Notifications\Notifiable;
 use App\Services\Appointment\Appointment;
@@ -255,6 +255,11 @@ class Patient extends Authenticatable
     public function routeNotificationForNexmo($notification) : string
     {
         return (string) $this->getRawOriginal('phone');
+    }
+
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ResetPassword($token));
     }
     
 }

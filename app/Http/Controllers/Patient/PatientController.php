@@ -29,16 +29,14 @@ class PatientController extends Controller
     public function confirmPhonePage()
     {
         if($this->auth()->hasValidPhone()) return redirect()->route('patient.home');
-        return view('patient.confirm-phone');
+        return view('patient.auth.confirm-phone');
     }
     
     public function confirmPhone(Request $request) : RedirectResponse
     {
-        $this->validate(
-            $request, [
+        $this->validate($request, [
             'code' => ['required', 'numeric', 'digits:6'],
-            ]
-        );
+        ]);
         
         if($request->code != $this->auth()->phone_verification_token) {
             return redirect()->back()
@@ -46,22 +44,14 @@ class PatientController extends Controller
                 ->withErrors(['code' => 'Désolé ! Le code saisi ne correspond pas.']);
         }
         
-        $this->auth()->update(
-            [
-            'phone_verification_token' => null,
-            ]
-        );
+        $this->auth()->update(['phone_verification_token' => null]);
 
         return redirect()->route('patient.home');
     }
 
     public function resendPhoneToken() : RedirectResponse
     {
-        $this->auth()->update(
-            [
-            'phone_verification_token' => mt_rand(100000, 999999),
-            ]
-        );
+        $this->auth()->update(['phone_verification_token' => mt_rand(100000, 999999)]);
 
         // Verify phone notification
         $this->auth()->notify(new PhoneVerification($this->auth()->phone_verification_token));

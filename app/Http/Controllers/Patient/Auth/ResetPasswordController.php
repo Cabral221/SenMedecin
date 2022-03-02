@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Patient\Auth;
 
+use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
-use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Support\Facades\Password;
 use Illuminate\Foundation\Auth\ResetsPasswords;
-use Illuminate\View\View;
 
 class ResetPasswordController extends Controller
 {
@@ -42,5 +43,15 @@ class ResetPasswordController extends Controller
     protected function guard() : Guard
     {
         return Auth::guard('patient');
+    }
+
+    /**
+     * Get the broker to be used during password reset.
+     *
+     * @return \Illuminate\Contracts\Auth\PasswordBroker
+     */
+    public function broker()
+    {
+        return Password::broker('patients');
     }
 }
