@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Middleware\Patient\PhoneConfirm;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\Patient\PhoneConfirm;
+use App\Http\Middleware\Patient\ActiveAccount;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +26,7 @@ Route::get('/about','User\AboutController@index')->name('user.about');
 // Routes for client patient
 Route::prefix('/patient')->namespace('Patient')->name('patient.')->group(function() {
     
-    Route::middleware(['auth:patient', PhoneConfirm::class])->group(function() {
+    Route::middleware(['auth:patient', PhoneConfirm::class, ActiveAccount::class])->group(function() {
         
         Route::get('/home', 'PatientController@index')->name('home');
         // Account Patient Route
