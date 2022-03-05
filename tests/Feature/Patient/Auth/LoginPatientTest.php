@@ -4,6 +4,7 @@ namespace Tests\Feature\Patient\Auth;
 
 use Hash;
 use Tests\TestCase;
+use Illuminate\Auth\SessionGuard;
 use Illuminate\Support\Facades\Auth;
 
 class LoginPatientTest extends TestCase
@@ -109,7 +110,9 @@ class LoginPatientTest extends TestCase
         
         $response->assertRedirect('/patient/home');
         // cookie assertion goes here
-        $response->assertCookie(Auth::guard('patient')->getRecallerName(), vsprintf('%s|%s|%s', [
+        /** @var SessionGuard */
+        $guard = Auth::guard('patient');
+        $response->assertCookie($guard->getRecallerName(), vsprintf('%s|%s|%s', [
             $patient->id,
             $patient->getRememberToken(),
             $patient->password,
