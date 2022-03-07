@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Middleware\ConfirmPhonePatient;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\Patient\PhoneConfirm;
+use App\Http\Middleware\Patient\ActiveAccount;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +26,7 @@ Route::get('/about','User\AboutController@index')->name('user.about');
 // Routes for client patient
 Route::prefix('/patient')->namespace('Patient')->name('patient.')->group(function() {
     
-    Route::middleware(['auth:patient', ConfirmPhonePatient::class])->group(function() {
+    Route::middleware(['auth:patient', PhoneConfirm::class, ActiveAccount::class])->group(function() {
         
         Route::get('/home', 'PatientController@index')->name('home');
         // Account Patient Route
@@ -44,9 +45,9 @@ Route::prefix('/patient')->namespace('Patient')->name('patient.')->group(functio
         Route::get('/identifiant/{id}','IdentifiantController@index')->name('identifiant');
         
         // patient confirmation phone number
-        Route::get('/confirm-phone', 'PatientController@confirmPhonePage')->name('confirm.tampon')->withoutMiddleware([ConfirmPhonePatient::class]);
-        Route::get('/confirm-phone/resend', 'PatientController@resendPhoneToken')->name('confirm.resend')->withoutMiddleware([ConfirmPhonePatient::class]);
-        Route::get('/confirmphone/{code?}', 'PatientController@confirmPhone')->name('confirm')->withoutMiddleware([ConfirmPhonePatient::class]);
+        Route::get('/confirm-phone', 'PatientController@confirmPhonePage')->name('confirm.tampon')->withoutMiddleware([PhoneConfirm::class]);
+        Route::get('/confirm-phone/resend', 'PatientController@resendPhoneToken')->name('confirm.resend')->withoutMiddleware([PhoneConfirm::class]);
+        Route::get('/confirmphone/{code?}', 'PatientController@confirmPhone')->name('confirm')->withoutMiddleware([PhoneConfirm::class]);
     });
 
     // Authentification des Patientes

@@ -137,21 +137,21 @@ abstract class TestCase extends BaseTestCase
         ]);
     }
 
-    public function createPatient(Medecin $medecin = null) : Patient
+    public function createPatient(Medecin $medecin = null, array $data = []) : Patient
     {
         if(!$medecin) $medecin = $this->createMedecin();
         
         Notification::fake();
         return $medecin->patients()->create([
-            'first_name' => $this->faker->firstName,
-            'last_name' => $this->faker->lastName,
-            'birthday' => Carbon::now()->subYears(rand(17,35)),
-            'address' => $this->faker->address,
-            'phone' =>  rand(771000000, 789999999),
-            'email' => $this->faker->unique()->safeEmail,
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'first_name' => $data['first_name'] ?? $this->faker->firstName,
+            'last_name' => $data['last_name'] ?? $this->faker->lastName,
+            'birthday' =>  $data['birthday'] ?? Carbon::now()->subYears(rand(17,35)),
+            'address' => $data['address'] ?? $this->faker->address,
+            'phone' =>  $data['phone'] ?? rand(771000000, 789999999),
+            'email' => $data['email'] ?? $this->faker->unique()->safeEmail,
+            'password' => $data['password'] ?? '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
-            'is_active' => true,
+            'is_active' => $data['is_active'] ?? true,
         ]);
     }
 

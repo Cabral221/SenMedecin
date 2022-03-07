@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace App\Http\Middleware\Patient;
 
 use Closure;
 use App\Models\Patient;
 
-class ConfirmPhonePatient
+class PhoneConfirm
 {
     /**
      * Handle an incoming request.
